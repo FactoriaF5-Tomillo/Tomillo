@@ -22,7 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/course/create', 'CourseController@create')->name('course.create');
-Route::post('/course/store', 'CourseController@store')->name('course.store');
+//Route::post('/course/store', 'CourseController@store')->name('course.store');
 
 
 
