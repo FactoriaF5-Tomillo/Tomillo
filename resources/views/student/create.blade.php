@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label>Nombre</label>
-                        <input type="text" name="name" class="form-control" value="{{}}" required>
+                        <input type="text" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Apellido</label>
