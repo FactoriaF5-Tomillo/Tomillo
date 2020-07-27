@@ -37793,7 +37793,7 @@ var render = function() {
           _vm._l(_vm.students, function(student, i) {
             return _c("tr", { key: i }, [
               _c("td", [
-                _c("a", { attrs: { href: "student/show/" + student.id } }, [
+                _c("a", { attrs: { href: "student/" + student.id } }, [
                   _vm._v(_vm._s(student.name))
                 ])
               ]),
