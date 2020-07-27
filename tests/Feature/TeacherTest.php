@@ -44,21 +44,18 @@ class TeacherTest extends TestCase
         $response = $this->patch('api/teachers/' . $teacher->id, [
             'name' => 'Pau',
             'surname' => 'Gasol',
-            'nationality' => 'spanish',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-            'currentcourse' => 'gimnasia',
         ]
         );
         $this->assertDatabaseHas('teachers', [
             'name' => 'Pau',
             'surname' => 'Gasol',
-            'nationality' => 'spanish',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-            'currentcourse' => 'gimnasia',
         ]
         );
+
         $response->assertStatus(302);
         $response->assertRedirect('teachers');
     }

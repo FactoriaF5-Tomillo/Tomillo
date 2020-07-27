@@ -26,5 +26,6 @@ Route::patch('/students/{student}', 'StudentController@update')->name('student.u
 
 Route::get('/teachers', 'TeacherController@getTeachers');
 Route::post('/teachers', 'TeacherController@store');
+Route::patch('/teachers/{teacher}', 'TeacherController@update');
 
 Route::post('/course/store', 'CourseController@store')->name('course.store');

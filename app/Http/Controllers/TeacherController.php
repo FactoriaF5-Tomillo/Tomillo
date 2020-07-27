@@ -42,7 +42,9 @@ class TeacherController extends Controller
 
     public function update(Request $request, Teacher $teacher)
     {
-        //
+        $teacher->update($request->all());
+        $teachers = Teacher::all();
+        return redirect(route('student.index', compact('teacher')));
     }
 
     public function destroy(Teacher $teacher)
