@@ -57,6 +57,6 @@ class StudentController extends Controller
     public function destroy(Student $student)
     {
         $student->delete();
-        return redirect('/student');
+        return Student::all();
     }
 }
