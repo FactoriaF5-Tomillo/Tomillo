@@ -30,4 +30,15 @@ Route::get('/teachers/{teacher}', 'TeacherController@getTeacher');
 Route::patch('/teachers/{teacher}', 'TeacherController@update');
 Route::delete('/teachers/{teacher}', 'TeacherController@destroy');
 
+
+Route::get('/courses','CourseController@getCourses');
+
+Route::get('/courses/{course}','CourseController@getCourse');
+
+Route::post('/courses','CourseController@store');
+
+Route::delete('/courses/{course}','CourseController@destroy')->name('course.destroy');
+
+Route::patch('/courses/{course}','CourseController@update');
+
 Route::post('/course/store', 'CourseController@store')->name('course.store');

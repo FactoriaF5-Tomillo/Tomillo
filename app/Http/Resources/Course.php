@@ -18,7 +18,8 @@ class Course extends JsonResource
             'id'=>$this->id,
             'title'=>$this->title,
             'description'=>$this->description,
-            'days'=>$this->days
+            'start_date'=>$this->start_date,
+            'end_date'=>$this->end_date
         ];
     }
 }
