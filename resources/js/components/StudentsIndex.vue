@@ -44,7 +44,7 @@ export default {
       {
           axios.delete("/api/students/" + student.id).then(response =>{
 
-                  this.getStudents();
+                  this.students = response.data;
               }
           )
       }
