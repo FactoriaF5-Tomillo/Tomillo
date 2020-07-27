@@ -22,7 +22,7 @@ Route::get('/students', 'StudentController@getStudents');
 
 Route::get('/students/{student}', 'StudentController@getStudent');
 
-Route::post('/students', 'StudentController@store');
+Route::post('/students', 'StudentController@store')->name('student.store');
 
 Route::delete('/students/{student}', 'StudentController@destroy')->name('student.destroy');
 
