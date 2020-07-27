@@ -34,7 +34,6 @@ class StudentTest extends TestCase
 
     public function test_add_student_to_api()
     {
-
         $response = $this->post('/api/students', [
             'name' => 'Pau',
             'surname' => 'Gasol',
@@ -42,8 +41,7 @@ class StudentTest extends TestCase
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
             'currentcourse' => 'gimnasia',
-        ]
-        );
+        ]);
 
         $this->assertDatabaseHas('students', [
             'name' => 'Pau',
@@ -52,8 +50,7 @@ class StudentTest extends TestCase
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
             'currentcourse' => 'gimnasia',
-        ]
-        );
+        ]);
         $response->assertCreated();
     }
 

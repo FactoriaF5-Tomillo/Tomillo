@@ -10,50 +10,30 @@ class TeacherTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    public function test_access_api()
-    {
-        $response = $this->get('/api/teachers');
-
-        $response->assertStatus(200);
-    }
-
     public function test_api_returns_teachers_list()
     {
-        $Teacher = factory(Teacher::class, 5)->create();
+        $teacher = factory(Teacher::class, 5)->create();
 
         $response = $this->get('/api/teachers');
+        $response->assertStatus(200);
         $response->assertJsonCount(5);
     }
 
     public function test_add_teacher_to_api()
     {
-
         $response = $this->post('/api/teachers', [
             'name' => 'Pau',
             'surname' => 'Gasol',
-            'nationality' => 'spanish',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-            'currentcourse' => 'gimnasia',
-        ]
-        );
+        ]);
 
         $this->assertDatabaseHas('teachers', [
             'name' => 'Pau',
             'surname' => 'Gasol',
-            'nationality' => 'spanish',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-            'currentcourse' => 'gimnasia',
-        ]
-        );
+        ]);
         $response->assertCreated();
     }
 

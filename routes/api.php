@@ -19,13 +19,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/students', 'StudentController@getStudents');
-
 Route::get('/students/{student}', 'StudentController@getStudent');
-
 Route::post('/students', 'StudentController@store')->name('student.store');
-
 Route::delete('/students/{student}', 'StudentController@destroy')->name('student.destroy');
-
 Route::patch('/students/{student}', 'StudentController@update')->name('student.update');
+
+Route::get('/teachers', 'TeacherController@getTeachers');
+Route::post('/teachers', 'TeacherController@store');
 
 Route::post('/course/store', 'CourseController@store')->name('course.store');
