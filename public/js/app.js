@@ -37803,7 +37803,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-success",
-                    attrs: { href: "student/" + student.id }
+                    attrs: { href: "student/" + student.id + "/edit" }
                   },
                   [_vm._v("Modificar")]
                 )

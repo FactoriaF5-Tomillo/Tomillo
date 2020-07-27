@@ -16,7 +16,7 @@
               <a :href="'student/show/' + student.id">{{student.name}}</a>
             </td>
             <td>
-              <a :href="'student/' + student.id" class="btn btn-success">Modificar</a>
+              <a :href="'student/' + student.id + '/edit'" class="btn btn-success">Modificar</a>
             </td>
             <td>
               <button @click="deleteStudent(student)">Eliminar</button>
