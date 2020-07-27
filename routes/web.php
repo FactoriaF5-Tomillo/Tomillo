@@ -23,8 +23,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+
 Route::get('/student', 'StudentController@index')->name('students');
 
 Route::get('/student/create', 'StudentController@create')->name('student.create');
 
 Route::get('/student/{student}/edit', 'StudentController@edit')->name('student.edit');
+
+Route::get('/course/create', 'CourseController@create')->name('course.create');
+
+
+
+
+
