@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Student;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -18,93 +19,64 @@ class StudentTest extends TestCase
 
     public function test_access_api()
     {
-        $response = $this->get('/api/jobOffers');
+        $response = $this->get('/api/students');
 
         $response->assertStatus(200);
     }
 
-    public function test_api_returns_job_offer_list()
+    public function test_api_returns_students_list()
     {
-        $empresa = factory(Empresa::class, 5)->create();
-        $jobOffer = factory(JobOffer::class)->create();
+        factory(Student::class, 5)->create();
 
-        $response = $this->get('/api/jobOffers');
-        $response-> assertJsonCount(1);
+
+        $response = $this->get('/api/students');
+        $response-> assertJsonCount(5);
     }
 
-    public function test_add_job_offer_to_api()
+    public function test_add_student_to_api()
     {
-        $empresa = factory(Empresa::class)->create();
-        $language = factory(Language::class)->create();
 
-        $response = $this->post('/api/jobOffers',[
-                'position'=>'Developer',
-                'empresa_id'=>1,
-                'location'=>'BCN',
-                'description'=>'holu',
-                'languages'=> [1]
+        $response = $this->post('/api/students',[
+                'name'         => 'Pau',
+                'surname'      => 'Gasol',
+                'nationality'  => 'spanish',
+                'email'        => 'paugasol@gmail.com',
+                'gender'       => 'hombre',
+                'currentcourse'=> 'gimnasia'
             ]
         );
 
-        $this->assertDatabaseHas('job_offers', [
-                'position'=>'Developer',
-                'empresa_id'=> 1,
-                'location'=>'BCN',
-                'description'=>'holu',
+        $this->assertDatabaseHas('students', [
+                'name'         => 'Pau',
+                'surname'    => 'Gasol',
+                'nationality'  => 'spanish',
+                'email'        => 'paugasol@gmail.com',
+                'gender'      => 'hombre',
+                'currentcourse'=> 'gimnasia'
             ]
         );
 
         $response->assertStatus(201);
     }
 
-    public function test_delete_job_offer()
+    public function test_delete_student()
     {
-        $empresa = factory(Empresa::class, 5)->create();
-        $jobOffer = factory(JobOffer::class)->create();
+        $student = factory(Student::class)->create();
 
-        $this->assertDatabaseHas('job_offers', [
-            'id'=>$jobOffer->id,
-            'position'=>$jobOffer->position,
-            'empresa_id'=>$jobOffer->empresa_id,
-            'location'=>$jobOffer->location,
-            'description'=>$jobOffer->description
+        $response = $this->delete('/api/students/'.$student->id);
+
+        $this->assertDatabaseMissing('students', [
+            'name'         => $student->name,
+            'surname'      => $student->surname,
+            'nationality'  => $student->nationality,
+            'email'        => $student->email,
+            'gender'       => $student->gender,
+            'currentcourse'=> $student->currentcourse
+
         ]);
-
-        $response = $this->delete('/api/jobOffers/'.$jobOffer->id);
-
-        $this->assertDatabaseMissing('job_offers', [
-            'id'=>$jobOffer->id,
-            'position'=>$jobOffer->position,
-            'empresa_id'=>$jobOffer->empresa_id,
-            'location'=>$jobOffer->location,
-            'description'=>$jobOffer->description
-        ]);
-        $response->assertStatus(200);
-    }
-
-    public function test_update_job_offer()
-    {
-        $empresa = factory(Empresa::class, 5)->create();
-        $jobOffer = factory(JobOffer::class)->create();
-
-        $updatedJobOffer = [
-            'position'=>'Scrum Master'
-        ];
-
-        $response = $this->patch('/api/jobOffers/'.$jobOffer->id, $updatedJobOffer);
-
-        $this->assertDatabaseHas('job_offers', [
-            'position'=>'Scrum Master'
-        ]);
-    }
-
-    public function test_show_job_offer_details()
-    {
-        $empresa = factory(Empresa::class, 5)->create();
-        $jobOffer = factory(JobOffer::class)->create();
-
-        $response = $this->get('/empleos/'.$jobOffer->id);
-
         $response->assertStatus(302);
+        $response->assertRedirect('student');
     }
+
+
 }
