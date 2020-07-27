@@ -42,7 +42,7 @@ class ExampleTest extends TestCase
     }
     public function test_cant_access_admin_with_student_user()
     {
-        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'Student','name'=>'Student']);
+        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'student','name'=>'student']);
         $user = factory(User::class)->create(['id'=>20,'name'=> 'Mounir el imlahi','email'=> 'mounir@factoriaf5.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
         $this->assertDatabaseHas('users', [
@@ -55,7 +55,7 @@ class ExampleTest extends TestCase
 
     public function test_access_user_dashboard_with_student_user()
     {
-        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'Student','name'=>'Student']);
+        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'student','name'=>'student']);
         $user = factory(User::class)->create(['id'=>20,'name'=> 'Mounir el imlahi','email'=> 'mounir@factoriaf5.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
         $this->assertDatabaseHas('users', [
@@ -68,7 +68,7 @@ class ExampleTest extends TestCase
 
     public function test_cant_access_user_with_student_user()
     {
-        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'Student','name'=>'Student']);
+        $role = factory(Role::class)->create(['id'=>3, 'slug'=> 'student','name'=>'student']);
         $user = factory(User::class)->create(['id'=>20,'name'=> 'Mounir el imlahi','email'=> 'mounir@factoriaf5.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
         $this->assertDatabaseHas('users', [
@@ -85,7 +85,7 @@ class ExampleTest extends TestCase
     {
         factory(\App\Permission::class)->create(['name'=>'Ver perfiles', 'slug'=>'profile.index', 'description'=>'Con este permiso podrá ver todos los perfiles.']);
 
-        $role = factory(Role::class)->create(['id'=>Role::$default, 'slug'=> 'Student','name'=>'Student','full-access'=>'no']);
+        $role = factory(Role::class)->create(['id'=>Role::$default, 'slug'=> 'student','name'=>'student','full-access'=>'no']);
         $user = factory(User::class)->create(['access'=>'yes']);
         $role->permissions()->sync([1]);
 
@@ -97,7 +97,7 @@ class ExampleTest extends TestCase
     public function test_access_admin_with_admin_user()
     {
         $roleAdmin = factory(Role::class)->create(['id'=>1, 'slug'=> 'Admin','name'=>'Admin', 'full-access'=>'yes']);
-        $roleStudent = factory(Role::class)->create(['id'=>3, 'slug'=> 'Student','name'=>'Student', 'full-access'=>'no']);
+        $roleStudent = factory(Role::class)->create(['id'=>3, 'slug'=> 'student','name'=>'student', 'full-access'=>'no']);
         $user = factory(User::class)->create(['name'=> 'Alejandrooo Acho','email'=> 'alejo@acho.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
 
@@ -112,7 +112,7 @@ class ExampleTest extends TestCase
     public function test_admin_can_edit_a_user()
     {
         $roleAdmin = factory(Role::class)->create(['id'=>1, 'slug'=> 'Admin','name'=>'Admin', 'full-access'=>'yes']);
-        $roleStudent = factory(Role::class)->create(['id'=>3, 'slug'=> 'Student','name'=>'Student', 'full-access'=>'no']);
+        $roleStudent = factory(Role::class)->create(['id'=>3, 'slug'=> 'student','name'=>'student', 'full-access'=>'no']);
         $user = factory(User::class)->create(['name'=> 'Alejandrooo Acho','email'=> 'alejo@acho.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
 
@@ -131,7 +131,7 @@ class ExampleTest extends TestCase
     {
         factory(\App\Permission::class)->create(['name'=>'Eliminar usuario', 'slug'=>'user.destroy', 'description'=>'Con este permiso podrá eliminar todos los usuarios.']);
         $role = factory(Role::class)->create(['id'=>1, 'slug'=> 'Admin','name'=>'Admin', 'full-access'=>'yes']);
-        $roleStudent = factory(Role::class)->create(['id'=>Role::$default, 'slug'=> 'Student','name'=>'Student', 'full-access'=>'no']);
+        $roleStudent = factory(Role::class)->create(['id'=>Role::$default, 'slug'=> 'student','name'=>'student', 'full-access'=>'no']);
         $user = factory(User::class)->create(['name'=> 'Mounir','email'=> 'mounir@test.com'
             , 'password'=> '$10$360nxe4gky0xISfe9vi4JOWWbqrrlnzswAbykcVjBKM5ARZ7yxxDu','access'=>'yes']);
         $new_user = factory(User::class)->create(['name'=>'Marc', 'email'=> 'marc@test.com', 'access'=>'yes']);

@@ -25,7 +25,7 @@ Route::get('/students/{student}','StudentController@getStudent');
 
 Route::post('/students','StudentController@store');
 
-Route::delete('/students/{student}','StudentController@destroy');
+Route::delete('/students/{student}','StudentController@destroy')->name('student.destroy');
 
 Route::patch('/students/{student}','StudentController@update');
 

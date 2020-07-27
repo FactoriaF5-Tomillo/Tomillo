@@ -26,7 +26,7 @@ class StudentTest extends TestCase
 
     public function test_api_returns_students_list()
     {
-        factory(Student::class, 5)->create();
+        $student = factory(Student::class, 5)->create();
 
 
         $response = $this->get('/api/students');
@@ -55,8 +55,34 @@ class StudentTest extends TestCase
                 'currentcourse'=> 'gimnasia'
             ]
         );
-
+        $response->assertCreated();
         $response->assertStatus(201);
+    }
+
+    public function test_edit_student()
+    {
+        $student = factory(Student::class)->create();
+
+        $response = $this->patch('api/students/'.$student->id,[
+                'name'         => 'Pau',
+                'surname'      => 'Gasol',
+                'nationality'  => 'spanish',
+                'email'        => 'paugasol@gmail.com',
+                'gender'       => 'hombre',
+                'currentcourse'=> 'gimnasia'
+            ]
+        );
+        $this->assertDatabaseHas('students', [
+                'name'         => 'Pau',
+                'surname'      => 'Gasol',
+                'nationality'  => 'spanish',
+                'email'        => 'paugasol@gmail.com',
+                'gender'       => 'hombre',
+                'currentcourse'=> 'gimnasia'
+            ]
+        );
+        $response->assertStatus(302);
+        $response->assertRedirect('students');
     }
 
     public function test_delete_student()
@@ -77,6 +103,4 @@ class StudentTest extends TestCase
         $response->assertStatus(302);
         $response->assertRedirect('student');
     }
-
-
 }
