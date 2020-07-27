@@ -11,12 +11,12 @@
           </tr>
         </thead>
         <tbody>
-          <tr :v-for="(student, i) in students">
+          <tr v-bind:key="i" v-for="(student, i) in students">
             <td>
               <a :href="'student/show/' + student.id">{{student.name}}</a>
             </td>
             <td>
-              <a :href="'student/edit/' + student.id" class="btn btn-success">Modificar</a>
+              <a :href="'student/' + student.id" class="btn btn-success">Modificar</a>
             </td>
             <td>
               <button @click="deleteStudent(student)">Eliminar</button>

@@ -37788,14 +37788,13 @@ var render = function() {
       _c("table", { staticClass: "table" }, [
         _vm._m(1),
         _vm._v(" "),
-        _c("tbody", [
-          _c(
-            "tr",
-            { attrs: { "v-for": (_vm.student, _vm.i) in _vm.students } },
-            [
+        _c(
+          "tbody",
+          _vm._l(_vm.students, function(student, i) {
+            return _c("tr", { key: i }, [
               _c("td", [
-                _c("a", { attrs: { href: "student/show/" + _vm.student.id } }, [
-                  _vm._v(_vm._s(_vm.student.name))
+                _c("a", { attrs: { href: "student/show/" + student.id } }, [
+                  _vm._v(_vm._s(student.name))
                 ])
               ]),
               _vm._v(" "),
@@ -37804,7 +37803,7 @@ var render = function() {
                   "a",
                   {
                     staticClass: "btn btn-success",
-                    attrs: { href: "student/edit/" + _vm.student.id }
+                    attrs: { href: "student/" + student.id }
                   },
                   [_vm._v("Modificar")]
                 )
@@ -37816,16 +37815,17 @@ var render = function() {
                   {
                     on: {
                       click: function($event) {
-                        return _vm.deleteStudent(_vm.student)
+                        return _vm.deleteStudent(student)
                       }
                     }
                   },
                   [_vm._v("Eliminar")]
                 )
               ])
-            ]
-          )
-        ])
+            ])
+          }),
+          0
+        )
       ])
     ])
   ])
