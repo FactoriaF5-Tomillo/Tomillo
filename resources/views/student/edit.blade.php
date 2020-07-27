@@ -8,7 +8,7 @@
     <div class="card-body">
         <form action="{{Route('student.update', $student->id)}}" method="POST">
             @csrf
-            @method('put')
+            @method('patch')
             <div class="form-group">
                 <div class="form-group">
                     <label>Nombre</label>
