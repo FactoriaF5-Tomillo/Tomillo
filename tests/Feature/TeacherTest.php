@@ -12,11 +12,27 @@ class TeacherTest extends TestCase
 
     public function test_api_returns_teachers_list()
     {
-        $teacher = factory(Teacher::class, 5)->create();
+        $teachers = factory(Teacher::class, 5)->create();
 
         $response = $this->get('/api/teachers');
+
         $response->assertStatus(200);
         $response->assertJsonCount(5);
+    }
+
+    public function test_api_returns_one_teacher()
+    {
+        $teacher = factory(Teacher::class)->create();
+
+        $response = $this->get('/api/teachers/' . $teacher->id);
+
+        $response->assertStatus(200);
+        $response->assertJson([
+            'name' => $teacher->name,
+            'surname' => $teacher->surname,
+            'email' => $teacher->email,
+            'gender' => $teacher->gender,
+        ]);
     }
 
     public function test_add_teacher_to_api()

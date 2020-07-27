@@ -19,6 +19,11 @@ class TeacherController extends Controller
         return $teachers;
     }
 
+    public function getTeacher(Teacher $teacher)
+    {
+        return $teacher;
+    }
+
     public function create()
     {
         //

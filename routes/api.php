@@ -26,6 +26,7 @@ Route::patch('/students/{student}', 'StudentController@update')->name('student.u
 
 Route::get('/teachers', 'TeacherController@getTeachers');
 Route::post('/teachers', 'TeacherController@store');
+Route::get('/teachers/{teacher}', 'TeacherController@getTeacher');
 Route::patch('/teachers/{teacher}', 'TeacherController@update');
 Route::delete('/teachers/{teacher}', 'TeacherController@destroy');
 
