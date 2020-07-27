@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $students = Student::all();
@@ -23,15 +19,16 @@ class StudentController extends Controller
         $students = Student::all();
         return $students;
     }
+
     public function getStudent(Student $student)
     {
         return $student;
     }
+
     public function create()
     {
         return view('student.create');
     }
-
 
     public function store(Request $request)
     {
@@ -40,19 +37,15 @@ class StudentController extends Controller
         return $student;
     }
 
-
     public function show(Student $student)
     {
         return view('student.show', compact('student'));
-
     }
-
 
     public function edit(Student $student)
     {
         return view('student.edit', compact('student'));
     }
-
 
     public function update(Request $request, Student $student)
     {
@@ -60,7 +53,6 @@ class StudentController extends Controller
         $students = Student::all();
         return redirect(route('student.index', compact('students')));
     }
-
 
     public function destroy(Student $student)
     {
