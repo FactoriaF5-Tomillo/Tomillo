@@ -51,7 +51,8 @@ class StudentTest extends TestCase
             'gender' => 'hombre',
             'currentcourse' => 'gimnasia',
         ]);
-        $response->assertCreated();
+        $response->assertRedirect('/students');
+
     }
 
     public function test_edit_student()
