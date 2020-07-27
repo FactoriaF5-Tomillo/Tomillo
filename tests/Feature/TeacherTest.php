@@ -57,7 +57,6 @@ class TeacherTest extends TestCase
         );
 
         $response->assertStatus(302);
-        $response->assertRedirect('teachers');
     }
 
     public function test_delete_teacher()
