@@ -45,9 +45,11 @@ export default {
       });
     },
     deleteTeacher(teacher) {
-      axios.delete("/api/teachers/" + teacher.id).then((response) => {
-        this.teachers = response.data;
-      });
+     if (confirm("¿Estas seguro que quieres eliminar al profesor ?")) {
+        axios.delete("/api/teachers/" + teacher.id).then((response) => {
+          this.teachers = response.data;
+        });
+      }
     },
   },
   mounted() {
