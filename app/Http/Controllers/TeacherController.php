@@ -27,7 +27,7 @@ class TeacherController extends Controller
 
     public function create()
     {
-
+        return view('teacher.create');
     }
 
     public function store(Request $request)
