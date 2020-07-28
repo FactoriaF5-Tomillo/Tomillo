@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <courses-index></courses-index>
+    <course-index></course-index>
 @endsection
