@@ -40,7 +40,7 @@ Route::get('/course/{course}', 'CourseController@show')->name('course.show');
 
 Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit');
 
-
+Route::get('/teachers', 'TeacherController@index')->name('teacher.index');
 
 
 
