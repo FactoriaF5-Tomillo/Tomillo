@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="course in courses">
+          <tr v-bind:key="i" v-for="(course, i) in courses">
             <td>
               <a :href="'course/' + course.id">{{course.title}}</a>
             </td>
