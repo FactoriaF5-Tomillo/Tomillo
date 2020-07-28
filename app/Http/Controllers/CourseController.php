@@ -50,7 +50,7 @@ class CourseController extends Controller
     {
         $course->update($request->all());
         $courses = Course::all();
-        return redirect(route('course.index', compact('courses')));
+        return $courses;
     }
 
     public function destroy(Course $course)
