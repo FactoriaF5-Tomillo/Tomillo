@@ -37784,7 +37784,7 @@ var render = function() {
           _vm._l(_vm.courses, function(course) {
             return _c("tr", [
               _c("td", [
-                _c("a", { attrs: { href: "course/show/" + course.id } }, [
+                _c("a", { attrs: { href: "course/" + course.id } }, [
                   _vm._v(_vm._s(course.title))
                 ])
               ]),

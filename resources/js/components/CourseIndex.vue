@@ -13,7 +13,7 @@
         <tbody>
           <tr v-for="course in courses">
             <td>
-              <a :href="'course/show/' + course.id">{{course.title}}</a>
+              <a :href="'course/' + course.id">{{course.title}}</a>
             </td>
             <td>
               <a :href="'course/edit/' + course.id" class="btn btn-success">Modificar</a>
