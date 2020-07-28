@@ -10976,6 +10976,7 @@ main .content {
 }
 
 .course-list {
+  padding-top: 30px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 350px);
   grid-gap: 20px;
@@ -11025,5 +11026,19 @@ header h1 {
   right: 0;
   padding: 10px;
   text-align: right;
+}
+
+.course-card .course-footer button {
+  border: none;
+  background-color: transparent;
+}
+
+.course-card .course-footer .action-icon {
+  color: black;
+  padding: 5px;
+}
+
+.course-card .course-footer .action-icon ion-icon {
+  font-size: 22px;
 }
 

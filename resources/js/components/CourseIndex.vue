@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card-header d-flex justify-content-between">
+    <div class="dashboard-page-header">
       <h1>Cursos</h1>
       <div>
         <a href="/course/create" class="btn btn-primary">Añadir Curso</a>
@@ -15,8 +15,12 @@
           <p>{{course.description}}</p>
         </div>
         <div class="course-footer">
-          <a :href="'course/' + course.id + '/edit'" class="btn btn-success">Modificar</a>
-          <button @click="deleteCourse(course)" type="button" class="btn btn-danger">Eliminar</button>
+          <a :href="'course/' + course.id + '/edit'" class="action-icon">
+            <ion-icon name="create-outline"></ion-icon>
+          </a>
+          <button @click="deleteCourse(course)" class="action-icon">
+            <ion-icon name="trash-outline"></ion-icon>
+          </button>
         </div>
       </div>
     </div>

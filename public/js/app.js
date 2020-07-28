@@ -2050,6 +2050,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38686,24 +38690,25 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "btn btn-success",
+                staticClass: "action-icon",
                 attrs: { href: "course/" + course.id + "/edit" }
               },
-              [_vm._v("Modificar")]
+              [_c("ion-icon", { attrs: { name: "create-outline" } })],
+              1
             ),
             _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-danger",
-                attrs: { type: "button" },
+                staticClass: "action-icon",
                 on: {
                   click: function($event) {
                     return _vm.deleteCourse(course)
                   }
                 }
               },
-              [_vm._v("Eliminar")]
+              [_c("ion-icon", { attrs: { name: "trash-outline" } })],
+              1
             )
           ])
         ])
@@ -38717,24 +38722,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header d-flex justify-content-between" },
-      [
-        _c("h1", [_vm._v("Cursos")]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "/course/create" }
-            },
-            [_vm._v("Añadir Curso")]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "dashboard-page-header" }, [
+      _c("h1", [_vm._v("Cursos")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          { staticClass: "btn btn-primary", attrs: { href: "/course/create" } },
+          [_vm._v("Añadir Curso")]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -53338,8 +53336,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
