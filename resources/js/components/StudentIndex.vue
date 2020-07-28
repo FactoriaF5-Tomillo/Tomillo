@@ -44,10 +44,13 @@ export default {
         this.students = response.data;
       });
     },
+
     deleteStudent(student) {
-      axios.delete("/api/students/" + student.id).then((response) => {
-        this.students = response.data;
-      });
+      if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
+        axios.delete("/api/students/"  + student.id).then((response) => {
+          this.students = response.data;
+        });
+      }
     },
   },
   mounted() {

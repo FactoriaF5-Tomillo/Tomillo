@@ -2380,9 +2380,11 @@ __webpack_require__.r(__webpack_exports__);
     deleteStudent: function deleteStudent(student) {
       var _this2 = this;
 
-      axios["delete"]("/api/students/" + student.id).then(function (response) {
-        _this2.students = response.data;
-      });
+      if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
+        axios["delete"]("/api/students/" + student.id).then(function (response) {
+          _this2.students = response.data;
+        });
+      }
     }
   },
   mounted: function mounted() {
