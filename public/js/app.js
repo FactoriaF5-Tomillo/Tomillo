@@ -1944,6 +1944,13 @@ __webpack_require__.r(__webpack_exports__);
       course: {}
     };
   },
+  methods: {
+    createCourse: function createCourse() {
+      axios.post("/api/courses", this.course).then(function (response) {
+        window.location.replace("/courses");
+      });
+    }
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
   }
@@ -38076,7 +38083,26 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-secondary mb-2", attrs: { href: "/cursos" } },
+          [_vm._v("← Volver")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary mb-2",
+            on: {
+              click: function($event) {
+                return _vm.createCourse()
+              }
+            }
+          },
+          [_vm._v("Crear")]
+        )
+      ])
     ])
   ])
 }
@@ -38088,24 +38114,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("h1", [_vm._v("Crear curso")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-footer d-flex justify-content-between" },
-      [
-        _c(
-          "a",
-          { staticClass: "btn btn-secondary mb-2", attrs: { href: "/cursos" } },
-          [_vm._v("← Volver")]
-        ),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-primary mb-2" }, [_vm._v("Crear")])
-      ]
-    )
   }
 ]
 render._withStripped = true

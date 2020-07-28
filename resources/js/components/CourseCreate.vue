@@ -22,7 +22,7 @@
       </div>
       <div class="card-footer d-flex justify-content-between">
         <a class="btn btn-secondary mb-2" href="/cursos">&#8592; Volver</a>
-        <button class="btn btn-primary mb-2">Crear</button>
+        <button class="btn btn-primary mb-2" @click="createCourse()">Crear</button>
       </div>
     </div>
   </div>
@@ -34,6 +34,13 @@ export default {
     return {
       course: {},
     };
+  },
+  methods: {
+    createCourse() {
+      axios.post("/api/courses", this.course).then((response) => {
+        window.location.replace("/courses");
+      });
+    },
   },
   mounted() {
     console.log("Component mounted.");
