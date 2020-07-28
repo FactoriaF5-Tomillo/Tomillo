@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class>
     <div class="card-header d-flex justify-content-between">
       <h1>Cursos</h1>
       <div>
