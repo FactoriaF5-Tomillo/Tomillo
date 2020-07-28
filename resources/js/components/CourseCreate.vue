@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="card-footer d-flex justify-content-between">
-        <a class="btn btn-secondary mb-2" href="/cursos">&#8592; Volver</a>
+        <a class="btn btn-secondary mb-2" href="/courses">&#8592; Volver</a>
         <button class="btn btn-primary mb-2" @click="createCourse()">Crear</button>
       </div>
     </div>

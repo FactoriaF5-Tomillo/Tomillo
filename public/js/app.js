@@ -38208,7 +38208,10 @@ var render = function() {
       _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
         _c(
           "a",
-          { staticClass: "btn btn-secondary mb-2", attrs: { href: "/cursos" } },
+          {
+            staticClass: "btn btn-secondary mb-2",
+            attrs: { href: "/courses" }
+          },
           [_vm._v("← Volver")]
         ),
         _vm._v(" "),
