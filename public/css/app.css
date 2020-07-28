@@ -10989,3 +10989,31 @@ header h1 {
   font-size: 24px;
 }
 
+.course-card {
+  max-width: 400px;
+  max-height: 200px;
+  background-color: #dbdbdb;
+  border-radius: 10px;
+}
+
+.course-card .course-header {
+  border-radius: 10px 10px 0 0;
+  background-color: #777777;
+  padding: 10px;
+}
+
+.course-card .course-header a {
+  color: white;
+  font-size: 18px;
+  text-decoration: underline;
+}
+
+.course-card .course-body {
+  padding: 10px;
+}
+
+.course-card .course-footer {
+  padding: 10px;
+  text-align: right;
+}
+

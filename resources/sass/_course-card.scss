@@ -1,0 +1,23 @@
+.course-card {
+    max-width: 400px;
+    max-height: 200px;
+    background-color: #dbdbdb;
+    border-radius: 10px;
+    .course-header {
+        border-radius: 10px 10px 0 0;
+        background-color: rgb(119, 119, 119);
+        padding: 10px;
+        a {
+            color: white;
+            font-size: 18px;
+            text-decoration: underline;
+        }
+    }
+    .course-body {
+        padding: 10px;
+    }
+    .course-footer {
+        padding: 10px;
+        text-align: right;
+    }
+}

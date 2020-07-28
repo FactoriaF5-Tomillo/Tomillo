@@ -1,5 +1,5 @@
 <template>
-  <div class>
+  <div>
     <div class="card-header d-flex justify-content-between">
       <h1>Cursos</h1>
       <div>
@@ -7,26 +7,18 @@
       </div>
     </div>
     <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Titulo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-bind:key="i" v-for="(course, i) in courses">
-            <td>
-              <a :href="'course/' + course.id">{{course.title}}</a>
-            </td>
-            <td>
-              <a :href="'course/' + course.id + '/edit'" class="btn btn-success">Modificar</a>
-            </td>
-            <td>
-              <button @click="deleteCourse(course)" type="button" class="btn btn-danger">Eliminar</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="course-card" v-bind:key="i" v-for="(course, i) in courses">
+        <div class="course-header">
+          <a :href="'course/' + course.id">{{course.title}}</a>
+        </div>
+        <div class="course-body">
+          <p>{{course.description}}</p>
+        </div>
+        <div class="course-footer">
+          <a :href="'course/' + course.id + '/edit'" class="btn btn-success">Modificar</a>
+          <button @click="deleteCourse(course)" type="button" class="btn btn-danger">Eliminar</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
