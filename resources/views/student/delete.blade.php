@@ -7,11 +7,8 @@
             <form action="{{Route('book.destroy')}}" method="POST">
                 @csrf
                 @method('delete')
-            
-            </div>
-                <div class="card-footer">
-                <input type="submit" value="Crear" class = "btn btn-primary">
-            </div>
-        </form>
+
+            </form>
+    </div>
 </div>
 @endsection

@@ -12,11 +12,9 @@
                 </thead>
                 <tbody>
                 <tr v-for="student in students">
-                    <td><a :href="'student/show/' + student.id">{{student.name}}</a></td>
-                    <td><a :href="'student/edit/' + student.id" class="btn btn-success">Modificar</a></td>
-                    <td>
-                        <button @click="deleteStudent(student)">Eliminar</button>
-                    </td>
+                    <td><a :href="'student/' + student.id">{{student.name}}</a></td>
+                    <td><a :href="'student/' + student.id + '/edit'" class="btn btn-success">Modificar</a></td>
+                    <td><button @click="deleteStudent(student)" class="btn btn-danger">Eliminar</button></td>
                 </tr>
                 </tbody>
             </table>
