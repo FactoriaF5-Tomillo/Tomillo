@@ -2,7 +2,7 @@
   <div>
     <div class="card-header">Actualizar Datos del Alumno</div>
     <div class="card-body">
-      <form :action="'/api/students/' + student.id">
+      <form @submit.prevent>
         <div class="form-group">
           <div class="form-group">
             <label>Nombre</label>
@@ -66,12 +66,17 @@ export default {
     return {};
   },
   mounted() {
+
     console.log("Component mounted.");
+
   },
-  methods: {
-    updateStudentInfo(student) {
-      axios.patch("/api/students/" + student.id, this.student);
-    },
-  },
+    methods:{
+
+        updateStudentInfo(student){
+            axios.patch("/api/students/"+ student.id, this.student).then(
+                window.location.replace('/students'))
+        }
+    }
+
 };
 </script>

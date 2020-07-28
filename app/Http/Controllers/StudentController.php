@@ -32,7 +32,7 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        $student = Student::create($request->all());
+        Student::create($request->all());
         //return redirect('/api/students');
         return redirect('/students');
     }
@@ -51,7 +51,8 @@ class StudentController extends Controller
     {
         $student->update($request->all());
         $students = Student::all();
-        return redirect(route('student.index', compact('students')));
+        //return redirect('/students', compact('students'));
+        return $students;
     }
 
     public function destroy(Student $student)
