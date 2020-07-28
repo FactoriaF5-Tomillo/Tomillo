@@ -4,7 +4,7 @@
           Actualizar Datos del Alumno
       </div>
       <div class="card-body">
-          <form :action="'/api/students/' + student.id" method="POST">
+          <form :action="'/api/students/' + student.id">
               <div class="form-group">
                   <div class="form-group">
                       <label>Nombre</label>
@@ -32,7 +32,7 @@
                   </div>
               </div>
               <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Guardar</button>
+                  <button class="btn btn-primary" @click="updateStudentInfo(student)" value="Actualizar">Actualizar</button>
               </div>
           </form>
       </div>
@@ -48,20 +48,15 @@ export default {
     };
   },
   mounted() {
-    console.log("Component mounted.");
+        
+        console.log("Component mounted.");
   },
     methods:{
-      editStudentInfo(){
-          axios.post("/api/students/" + student.id,
-              {
-                  name:this.name,
-                  surname:this.surname,
-                  nationality:this.nationality,
-                  email:this.email,
-                  gender:this.gender,
-                  currentcourse:this.currentcourse
-              })
-      }
+        
+        updateStudentInfo(student){    
+                axios.patch("/api/students/" + student.id, this.student)
+        }
+
     }
 };
 </script>
