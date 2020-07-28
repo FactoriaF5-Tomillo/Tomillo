@@ -43,7 +43,7 @@ class TeacherController extends Controller
 
     public function edit(Teacher $teacher)
     {
-        //
+        return view('teacher.edit', compact('teacher'));
     }
 
     public function update(Request $request, Teacher $teacher)
