@@ -6,17 +6,17 @@
       </div>
       <div class="card-body">
         <label>Titutlo</label>
-        <input class="form-control" type="text" name="title" />
+        <input class="form-control" type="text" name="title" v-model="course.title" />
         <label>Descripcion</label>
-        <input class="form-control" type="text" name="description" />
+        <input class="form-control" type="text" name="description" v-model="course.description" />
         <div class="row">
           <div class="col">
             <label>Fecha primero dia</label>
-            <input class="form-control" type="date" name="start-date" />
+            <input class="form-control" type="date" name="start_date" v-model="course.start_date" />
           </div>
           <div class="col">
             <label>Fecha ultimo dia</label>
-            <input class="form-control" type="date" name="end-date" />
+            <input class="form-control" type="date" name="end_date" v-model="course.end_date" />
           </div>
         </div>
       </div>
@@ -30,7 +30,6 @@
 
 <script>
 export default {
-  props: ["course"],
   data() {
     return {
       course: {},
