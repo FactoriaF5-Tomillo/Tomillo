@@ -13,7 +13,7 @@
         <tbody>
           <tr v-bind:key="i" v-for="(teacher, i) in teachers">
             <td>
-              <a :href="'teache/' + teacher.id">{{teacher.name}}</a>
+              <a :href="'teacher/' + teacher.id">{{teacher.name}}</a>
             </td>
             <td>
               <a :href="'teacher/' + teacher.id + '/edit'" class="btn btn-success">Modificar</a>

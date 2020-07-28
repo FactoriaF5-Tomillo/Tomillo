@@ -39194,7 +39194,7 @@ var render = function() {
           _vm._l(_vm.teachers, function(teacher, i) {
             return _c("tr", { key: i }, [
               _c("td", [
-                _c("a", { attrs: { href: "teache/" + teacher.id } }, [
+                _c("a", { attrs: { href: "teacher/" + teacher.id } }, [
                   _vm._v(_vm._s(teacher.name))
                 ])
               ]),
@@ -52404,8 +52404,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

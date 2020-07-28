@@ -26,9 +26,9 @@ Route::delete('/students/{student}', 'StudentController@destroy')->name('student
 
 Route::get('/teachers', 'TeacherController@getTeachers');
 Route::get('/teachers/{teacher}', 'TeacherController@getTeacher');
-Route::post('/teachers', 'TeacherController@store');
-Route::patch('/teachers/{teacher}', 'TeacherController@update');
-Route::delete('/teachers/{teacher}', 'TeacherController@destroy');
+Route::post('/teachers', 'TeacherController@store')->name('student.store');
+Route::patch('/teachers/{teacher}', 'TeacherController@update')->name('student.update');
+Route::delete('/teachers/{teacher}', 'TeacherController@destroy')->name('student.destroy');
 
 Route::get('/courses', 'CourseController@getCourses');
 Route::get('/courses/{course}', 'CourseController@getCourse');
