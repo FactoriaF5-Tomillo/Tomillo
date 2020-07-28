@@ -50,7 +50,7 @@ class TeacherController extends Controller
     {
         $teacher->update($request->all());
         $teachers = Teacher::all();
-        return redirect(route('teacher.index', compact('teacher')));
+        return $teachers;
     }
 
     public function destroy(Teacher $teacher)
