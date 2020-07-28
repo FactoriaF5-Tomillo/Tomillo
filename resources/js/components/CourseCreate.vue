@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <div class="card">
       <div class="card-header">
         <h1>Crear curso</h1>
