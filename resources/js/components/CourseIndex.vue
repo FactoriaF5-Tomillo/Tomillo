@@ -16,7 +16,7 @@
               <a :href="'course/' + course.id">{{course.title}}</a>
             </td>
             <td>
-              <a :href="'course/edit/' + course.id" class="btn btn-success">Modificar</a>
+              <a :href="'course/' + course.id + '/edit'" class="btn btn-success">Modificar</a>
             </td>
             <td>
               <button @click="deleteCourse(course)" type="button" class="btn btn-danger">Eliminar</button>
