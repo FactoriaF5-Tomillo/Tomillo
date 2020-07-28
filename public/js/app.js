@@ -2128,10 +2128,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2186,6 +2182,26 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2358,8 +2374,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2381,6 +2395,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2516,8 +2536,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
 //
 //
 //
@@ -38151,7 +38169,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _c("div", { staticClass: "card" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -38316,7 +38334,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _c("div", { staticClass: "card" }, [
       _vm._m(0),
       _vm._v(" "),
@@ -38586,33 +38604,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", [
-        _c("table", { staticClass: "table" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v(_vm._s(_vm.course.title))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.course.description))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.course.start_date))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.course.end_date))])
-            ])
-          ])
-        ]),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(1),
         _vm._v(" "),
-        _c(
-          "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/courses" } },
-          [_vm._v("Volver")]
-        )
-      ])
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v(_vm._s(_vm.course.title))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.course.description))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.course.start_date))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.course.end_date))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-secondary", attrs: { href: "/courses" } },
+        [_vm._v("Volver")]
+      )
     ])
   ])
 }
@@ -38712,9 +38728,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        Actualizar Datos del Alumno\n    ")
+      _vm._v("Actualizar Datos del Alumno")
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
@@ -39021,37 +39037,35 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", [
-        _c("table", { staticClass: "table" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v(_vm._s(_vm.student.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.student.surname))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.student.nationality))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.student.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.student.gender))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.student.currentcourse))])
-            ])
-          ])
-        ]),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(1),
         _vm._v(" "),
-        _c(
-          "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
-          [_vm._v("Volver")]
-        )
-      ])
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v(_vm._s(_vm.student.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.student.surname))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.student.nationality))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.student.email))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.student.gender))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.student.currentcourse))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
+        [_vm._v("Volver")]
+      )
     ])
   ])
 }
@@ -39106,7 +39120,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
@@ -39302,33 +39316,31 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "container" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", [
-        _c("table", { staticClass: "table" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("tbody", [
-            _c("tr", [
-              _c("td", [_vm._v(_vm._s(_vm.teacher.name))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.teacher.surname))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.teacher.email))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.teacher.gender))])
-            ])
-          ])
-        ]),
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(1),
         _vm._v(" "),
-        _c(
-          "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/teachers" } },
-          [_vm._v("Volver")]
-        )
-      ])
+        _c("tbody", [
+          _c("tr", [
+            _c("td", [_vm._v(_vm._s(_vm.teacher.name))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.teacher.surname))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.teacher.email))]),
+            _vm._v(" "),
+            _c("td", [_vm._v(_vm._s(_vm.teacher.gender))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "a",
+        { staticClass: "btn btn-secondary", attrs: { href: "/teachers" } },
+        [_vm._v("Volver")]
+      )
     ])
   ])
 }
