@@ -12,22 +12,36 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+ */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/students', 'StudentController@getStudents');
+Route::get('/students/{student}', 'StudentController@getStudent');
+Route::post('/students', 'StudentController@store')->name('student.store');
+Route::delete('/students/{student}', 'StudentController@destroy')->name('student.destroy');
+Route::patch('/students/{student}', 'StudentController@update')->name('student.update');
 
-Route::get('/students','StudentController@getStudents');
+Route::get('/teachers', 'TeacherController@getTeachers');
+Route::post('/teachers', 'TeacherController@store');
+Route::get('/teachers/{teacher}', 'TeacherController@getTeacher');
+Route::patch('/teachers/{teacher}', 'TeacherController@update');
+Route::delete('/teachers/{teacher}', 'TeacherController@destroy');
 
-Route::get('/students/{student}','StudentController@getStudent');
 
-Route::post('/students','StudentController@store');
+Route::get('/courses','CourseController@getCourses');
 
-Route::delete('/students/{student}','StudentController@destroy')->name('student.destroy');
+Route::get('/courses/{course}','CourseController@getCourse');
+
 
 Route::patch('/students/{student}','StudentController@update')->name('student.update');
 
-Route::post('/course/store','CourseController@store')->name('course.store');
+Route::post('/courses','CourseController@store');
+
+
+Route::delete('/courses/{course}','CourseController@destroy')->name('course.destroy');
+
+Route::patch('/courses/{course}','CourseController@update');
 

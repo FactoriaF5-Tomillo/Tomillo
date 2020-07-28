@@ -31,7 +31,14 @@ Route::get('/student/{student}', 'StudentController@show')->name('student.show')
 
 Route::get('/student/{student}/edit', 'StudentController@edit')->name('student.edit');
 
+
+Route::get('/courses', 'CourseController@index')->name('course.index');
+
 Route::get('/course/create', 'CourseController@create')->name('course.create');
+
+Route::get('/course/{course}', 'CourseController@show')->name('course.show');
+
+Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit');
 
 
 

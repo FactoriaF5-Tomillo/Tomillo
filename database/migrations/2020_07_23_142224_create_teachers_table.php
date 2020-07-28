@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTeachersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+
     public function up()
     {
         Schema::create('teachers', function (Blueprint $table) {
@@ -18,15 +14,11 @@ class CreateTeachersTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email');
+            $table->string('gender');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('teachers');

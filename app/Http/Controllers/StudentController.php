@@ -34,7 +34,7 @@ class StudentController extends Controller
     {
         $student = Student::create($request->all());
         //return redirect('/api/students');
-        return $student;
+        return redirect('/students');
     }
 
     public function show(Student $student)

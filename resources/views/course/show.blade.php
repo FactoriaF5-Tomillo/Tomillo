@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <student-index></student-index>
+<course-show :course='@json($course)'></course-show>
 @endsection

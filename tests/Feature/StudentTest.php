@@ -28,58 +28,54 @@ class StudentTest extends TestCase
     {
         $student = factory(Student::class, 5)->create();
 
-
         $response = $this->get('/api/students');
-        $response-> assertJsonCount(5);
+        $response->assertJsonCount(5);
     }
 
     public function test_add_student_to_api()
     {
-
-        $response = $this->post('/api/students',[
-                'name'         => 'Pau',
-                'surname'      => 'Gasol',
-                'nationality'  => 'spanish',
-                'email'        => 'paugasol@gmail.com',
-                'gender'       => 'hombre',
-                'currentcourse'=> 'gimnasia'
-            ]
-        );
+        $response = $this->post('/api/students', [
+            'name' => 'Pau',
+            'surname' => 'Gasol',
+            'nationality' => 'spanish',
+            'email' => 'paugasol@gmail.com',
+            'gender' => 'hombre',
+            'currentcourse' => 'gimnasia',
+        ]);
 
         $this->assertDatabaseHas('students', [
-                'name'         => 'Pau',
-                'surname'    => 'Gasol',
-                'nationality'  => 'spanish',
-                'email'        => 'paugasol@gmail.com',
-                'gender'      => 'hombre',
-                'currentcourse'=> 'gimnasia'
-            ]
-        );
-        $response->assertCreated();
-        $response->assertStatus(201);
+            'name' => 'Pau',
+            'surname' => 'Gasol',
+            'nationality' => 'spanish',
+            'email' => 'paugasol@gmail.com',
+            'gender' => 'hombre',
+            'currentcourse' => 'gimnasia',
+        ]);
+        $response->assertRedirect('/students');
+
     }
 
     public function test_edit_student()
     {
         $student = factory(Student::class)->create();
 
-        $response = $this->patch('api/students/'.$student->id,[
-                'name'         => 'Pau',
-                'surname'      => 'Gasol',
-                'nationality'  => 'spanish',
-                'email'        => 'paugasol@gmail.com',
-                'gender'       => 'hombre',
-                'currentcourse'=> 'gimnasia'
-            ]
+        $response = $this->patch('api/students/' . $student->id, [
+            'name' => 'Pau',
+            'surname' => 'Gasol',
+            'nationality' => 'spanish',
+            'email' => 'paugasol@gmail.com',
+            'gender' => 'hombre',
+            'currentcourse' => 'gimnasia',
+        ]
         );
         $this->assertDatabaseHas('students', [
-                'name'         => 'Pau',
-                'surname'      => 'Gasol',
-                'nationality'  => 'spanish',
-                'email'        => 'paugasol@gmail.com',
-                'gender'       => 'hombre',
-                'currentcourse'=> 'gimnasia'
-            ]
+            'name' => 'Pau',
+            'surname' => 'Gasol',
+            'nationality' => 'spanish',
+            'email' => 'paugasol@gmail.com',
+            'gender' => 'hombre',
+            'currentcourse' => 'gimnasia',
+        ]
         );
         $response->assertStatus(302);
         $response->assertRedirect('students');
@@ -89,18 +85,17 @@ class StudentTest extends TestCase
     {
         $student = factory(Student::class)->create();
 
-        $response = $this->delete('/api/students/'.$student->id);
+        $response = $this->delete('/api/students/' . $student->id);
 
         $this->assertDatabaseMissing('students', [
-            'name'         => $student->name,
-            'surname'      => $student->surname,
-            'nationality'  => $student->nationality,
-            'email'        => $student->email,
-            'gender'       => $student->gender,
-            'currentcourse'=> $student->currentcourse
+            'name' => $student->name,
+            'surname' => $student->surname,
+            'nationality' => $student->nationality,
+            'email' => $student->email,
+            'gender' => $student->gender,
+            'currentcourse' => $student->currentcourse,
 
         ]);
-        $response->assertStatus(302);
-        $response->assertRedirect('student');
+        $response->assertStatus(200);
     }
 }
