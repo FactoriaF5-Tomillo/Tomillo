@@ -1,7 +1,10 @@
 <template>
-  <div class="container">
-    <div class="card-header">
-      <a href="/teacher/create" class="btn btn-primary">Añadir profesor</a>
+  <div>
+    <div class="card-header d-flex justify-content-between">
+      <h1>Profesores</h1>
+      <div>
+        <a href="/teacher/create" class="btn btn-primary">Añadir profesor</a>
+      </div>
     </div>
     <div>
       <table class="table">

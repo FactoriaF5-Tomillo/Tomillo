@@ -2283,6 +2283,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2441,6 +2444,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -38912,7 +38918,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
@@ -38966,13 +38972,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/student/create" } },
-        [_vm._v("Añadir Alumno")]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "card-header d-flex justify-content-between" },
+      [
+        _c("h1", [_vm._v("Alumnos")]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "/student/create" }
+            },
+            [_vm._v("Añadir Alumno")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -39182,7 +39199,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", [
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
@@ -39236,13 +39253,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/teacher/create" } },
-        [_vm._v("Añadir profesor")]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "card-header d-flex justify-content-between" },
+      [
+        _c("h1", [_vm._v("Profesores")]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "/teacher/create" }
+            },
+            [_vm._v("Añadir profesor")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
