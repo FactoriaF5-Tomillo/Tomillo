@@ -10975,6 +10975,12 @@ main .content {
   padding: 30px;
 }
 
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 350px);
+  grid-gap: 20px;
+}
+
 header {
   height: 50px;
   background-color: #444444;
@@ -10990,8 +10996,9 @@ header h1 {
 }
 
 .course-card {
-  max-width: 400px;
-  max-height: 200px;
+  max-width: 350px;
+  height: 200px;
+  position: relative;
   background-color: #dbdbdb;
   border-radius: 10px;
 }
@@ -11013,6 +11020,9 @@ header h1 {
 }
 
 .course-card .course-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
   padding: 10px;
   text-align: right;
 }

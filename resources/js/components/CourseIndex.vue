@@ -6,7 +6,7 @@
         <a href="/course/create" class="btn btn-primary">Añadir Curso</a>
       </div>
     </div>
-    <div>
+    <div class="course-list">
       <div class="course-card" v-bind:key="i" v-for="(course, i) in courses">
         <div class="course-header">
           <a :href="'course/' + course.id">{{course.title}}</a>

@@ -1,6 +1,7 @@
 .course-card {
-    max-width: 400px;
-    max-height: 200px;
+    max-width: 350px;
+    height: 200px;
+    position: relative;
     background-color: #dbdbdb;
     border-radius: 10px;
     .course-header {
@@ -17,6 +18,9 @@
         padding: 10px;
     }
     .course-footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
         padding: 10px;
         text-align: right;
     }
