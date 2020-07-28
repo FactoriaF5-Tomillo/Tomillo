@@ -19,7 +19,7 @@
               <a :href="'course/edit/' + course.id" class="btn btn-success">Modificar</a>
             </td>
             <td>
-              <button @click="deleteCourse(course)">Eliminar</button>
+              <button @click="deleteCourse(course)" type="button" class="btn btn-danger">Eliminar</button>
             </td>
           </tr>
         </tbody>
@@ -42,9 +42,11 @@ export default {
       });
     },
     deleteCourse(course) {
-      axios.delete("/api/courses/" + course.id).then((response) => {
-        this.courses = response.data;
-      });
+      if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
+        axios.delete("/api/courses/" + course.id).then((response) => {
+          this.courses = response.data;
+        });
+      }
     },
   },
   mounted() {
