@@ -8,27 +8,27 @@
               <div class="form-group">
                   <div class="form-group">
                       <label>Nombre</label>
-                      <input type="text" name="name" v-model="name" class="form-control" :value="student.name" required>
+                      <input type="text" name="name" v-model="student.name" class="form-control" required>
                   </div>
                   <div class="form-group">
                       <label>Apellido</label>
-                      <input type="text" name="surname" v-model="surname" class="form-control" :value="student.surname" required>
+                      <input type="text" name="surname" v-model="student.surname" class="form-control" required>
                   </div>
                   <div class="form-group">
                       <label>Nacionalidad</label>
-                      <input type="text" name="nationality" v-model="nationality" class="form-control" :value="student.nationality" required>
+                      <input type="text" name="nationality" v-model="student.nationality" class="form-control" required>
                   </div>
                   <div class="form-group">
                       <label>Email</label>
-                      <input type="email" name="email" v-model="email" class="form-control" :value="student.email" required>
+                      <input type="email" name="email" v-model="student.email" class="form-control" required>
                   </div>
                   <div class="form-group">
                       <label>Sexo</label>
-                      <input type="text" name="gender" v-model="gender" class="form-control" :value="student.gender" required>
+                      <input type="text" name="gender" v-model="student.gender" class="form-control"  required>
                   </div>
                   <div class="form-group">
                       <label>Curso Actual</label>
-                      <input type="text" name="currentcourse" v-model="currentcourse" class="form-control" :value="student.currentcourse" required>
+                      <input type="text" name="currentcourse" v-model="student.currentcourse" class="form-control" required>
                   </div>
               </div>
               <div class="card-footer">
@@ -44,12 +44,7 @@ export default {
   props: ["student"],
   data() {
     return {
-        name: '',
-        surname: '',
-        nationality: '',
-        email: '',
-        gender: '',
-        currentcourse:''
+
     };
   },
   mounted() {
