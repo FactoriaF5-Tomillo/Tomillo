@@ -2055,6 +2055,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38476,13 +38479,24 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c(
-        "a",
-        { staticClass: "btn btn-primary", attrs: { href: "/course/create" } },
-        [_vm._v("Añadir Curso")]
-      )
-    ])
+    return _c(
+      "div",
+      { staticClass: "card-header d-flex justify-content-between" },
+      [
+        _c("h1", [_vm._v("Cursos")]),
+        _vm._v(" "),
+        _c("div", [
+          _c(
+            "a",
+            {
+              staticClass: "btn btn-primary",
+              attrs: { href: "/course/create" }
+            },
+            [_vm._v("Añadir Curso")]
+          )
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -52191,8 +52205,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
