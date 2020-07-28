@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 <div class="container">
@@ -7,7 +7,7 @@
             <form action="{{Route('course.destroy')}}" method="POST">
                 @csrf
                 @method('delete')
-            
+
             </div>
                 <div class="card-footer">
                 <input type="submit" value="Crear" class = "btn btn-primary">
