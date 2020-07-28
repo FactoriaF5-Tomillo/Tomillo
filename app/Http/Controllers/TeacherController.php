@@ -38,7 +38,7 @@ class TeacherController extends Controller
 
     public function show(Teacher $teacher)
     {
-        //
+        return view('teacher.show', compact('teacher'));
     }
 
     public function edit(Teacher $teacher)
@@ -50,7 +50,7 @@ class TeacherController extends Controller
     {
         $teacher->update($request->all());
         $teachers = Teacher::all();
-        return redirect(route('student.index', compact('teacher')));
+        return redirect(route('teacher.index', compact('teacher')));
     }
 
     public function destroy(Teacher $teacher)

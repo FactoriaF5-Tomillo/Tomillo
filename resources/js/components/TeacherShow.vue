@@ -10,10 +10,8 @@
             <tr>
               <th scope="col">Nombre</th>
               <th scope="col">Apellido</th>
-              <th scope="col">Nacionalidad</th>
               <th scope="col">Email</th>
               <th scope="col">Sexo</th>
-              <th scope="col">Curso Actual</th>
             </tr>
           </thead>
           <tbody>
