@@ -2124,10 +2124,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
     return {};
+  },
+  methods: {
+    deleteCourse: function deleteCourse(course) {
+      if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
+        axios["delete"]("/api/courses/" + course.id).then(function (response) {
+          window.location.replace("/courses");
+        });
+      }
+    }
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -38761,29 +38771,69 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v(_vm._s(_vm.course.title))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.course.description))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.course.start_date))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.course.end_date))])
-          ])
-        ])
+    _c("div", { staticClass: "info" }, [
+      _c("div", { staticClass: "info-header" }, [
+        _c("h3", [_vm._v(_vm._s(_vm.course.title))])
       ]),
       _vm._v(" "),
-      _c(
-        "a",
-        { staticClass: "btn btn-secondary", attrs: { href: "/courses" } },
-        [_vm._v("Volver")]
-      )
-    ])
+      _c("div", { staticClass: "info-body" }, [
+        _c("p", [_vm._v(_vm._s(_vm.course.description))])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-footer" }, [
+        _c("p", [_vm._v("Fecha de inicio: " + _vm._s(_vm.course.start_date))]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v("Fecha de terminacion: " + _vm._s(_vm.course.end_date))
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "actions" }, [
+      _c("h3", [_vm._v("Acciones:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "action-buttons" }, [
+        _c("a", { staticClass: "btn btn-dark", attrs: { href: "" } }, [
+          _vm._v("Asignar Alumnos")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-dark", attrs: { href: "" } }, [
+          _vm._v("Asignar Profe")
+        ]),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-dark",
+            attrs: { href: "/course/" + _vm.course.id + "/edit" }
+          },
+          [_vm._v("Editar")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-dark",
+            attrs: { href: "" },
+            on: {
+              click: function($event) {
+                return _vm.deleteCourse(_vm.course)
+              }
+            }
+          },
+          [_vm._v("Eliminar")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "a",
+      {
+        staticClass: "back-button btn btn-secondary",
+        attrs: { href: "/courses" }
+      },
+      [_vm._v("Volver")]
+    )
   ])
 }
 var staticRenderFns = [
@@ -38791,26 +38841,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h1", [_vm._v("Datos del curso")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Titulo")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Descripcion")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [
-          _vm._v("Fecha de inicialización")
-        ]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha de finalización")])
-      ])
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Info")])
     ])
   }
 ]

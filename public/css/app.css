@@ -11042,3 +11042,56 @@ header h1 {
   font-size: 22px;
 }
 
+.page-title h1 {
+  font-size: 36px;
+}
+
+.info {
+  max-width: 600px;
+  background-color: #cfcfcf;
+  border-radius: 10px;
+  margin-bottom: 50px;
+}
+
+.info .info-header {
+  border-radius: 10px 10px 0 0;
+  padding: 15px;
+  background-color: #5a5a5a;
+}
+
+.info .info-header h3 {
+  color: white;
+  font-size: 24px;
+}
+
+.info .info-body {
+  padding: 15px;
+}
+
+.info .info-footer {
+  margin: 0 15px;
+  padding: 15px 0;
+  border-top: 1px solid #5a5a5a;
+}
+
+.info .info-footer p {
+  display: inline;
+  margin-right: 15px !important;
+}
+
+.actions {
+  max-width: 600px;
+}
+
+.actions h3 {
+  font-size: 24px;
+}
+
+.actions .action-buttons .btn {
+  margin-right: 5px;
+}
+
+.back-button {
+  margin-top: 50px;
+}
+
