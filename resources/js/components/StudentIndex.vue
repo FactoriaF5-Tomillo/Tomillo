@@ -15,12 +15,18 @@
         </thead>
         <tbody>
           <tr v-bind:key="i" v-for="(student, i) in students">
-            <td>
-              <a :href="'student/' + student.id">{{student.name}}</a>
-            </td>
-            <td>
-              <a :href="'student/' + student.id + '/edit'" class="btn btn-success">Modificar</a>
-            </td>
+                <td>
+                  <a :href="'student/' + student.id">{{student.name}}</a>
+                </td>
+                <td>
+                  <a :href="'student/' + student.id + '/edit'" class="btn btn-success">Modificar</a>
+                </td>
+              <td>
+                  <select class="form-control" v-model="courses" required>
+                      <option>Elija curso</option>
+                      <option v-for="course in courses" v-bind:value="course.id" >{{ course.name }}</option>
+                  </select>
+              </td>
             <td>
               <button @click="deleteStudent(student)">Eliminar</button>
             </td>
@@ -35,7 +41,8 @@
 export default {
   data() {
     return {
-      students: [],
+        students: [],
+        courses: []
     };
   },
   methods: {
@@ -44,7 +51,6 @@ export default {
         this.students = response.data;
       });
     },
-
     deleteStudent(student) {
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
         axios.delete("/api/students/"  + student.id).then((response) => {
@@ -52,10 +58,17 @@ export default {
         });
       }
     },
+      getCourses() {
+        axios.get("/api/courses").then((response) => {
+              this.courses = response.data;
+          });
+      }
   },
   mounted() {
-    this.getStudents();
+      this.getStudents();
+      this.getCourses();
     console.log("Component mounted.");
   },
+
 };
 </script>
