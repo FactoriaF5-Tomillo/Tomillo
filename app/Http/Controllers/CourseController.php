@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Course;
+use App\Student;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -57,5 +58,11 @@ class CourseController extends Controller
     {
         $course->delete();
         return Course::all();
+    }
+
+    public function addStudent(Course $course, Student $student)
+    {
+        $course->students()->associate($student);
+        return redirect('/students');
     }
 }
