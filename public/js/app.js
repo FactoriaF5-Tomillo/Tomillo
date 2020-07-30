@@ -2638,7 +2638,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39896,49 +39895,49 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.teachers, function(teacher, i) {
-            return _c("tr", { key: i }, [
-              _c("td", [
-                _c("a", { attrs: { href: "teacher/" + teacher.id } }, [
-                  _vm._v(_vm._s(teacher.name))
-                ])
+    _c("div", { staticClass: "list" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list-content" },
+        _vm._l(_vm.teachers, function(teacher, i) {
+          return _c("div", { key: i, staticClass: "list-row" }, [
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(teacher.name))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(teacher.surname))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(teacher.email))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "list-actions" }, [
+              _c("a", { attrs: { href: "/teacher/" + teacher.id + "/edit" } }, [
+                _vm._v("Editar")
               ]),
               _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { href: "teacher/" + teacher.id + "/edit" }
-                  },
-                  [_vm._v("Modificar")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteTeacher(teacher)
-                      }
+              _c(
+                "a",
+                {
+                  staticClass: "list-actions",
+                  attrs: { href: "" },
+                  on: {
+                    click: function($event) {
+                      return _vm.deleteTeacher(teacher)
                     }
-                  },
-                  [_vm._v("Eliminar")]
-                )
-              ])
+                  }
+                },
+                [_vm._v("Eliminar")]
+              )
             ])
-          }),
-          0
-        )
-      ])
+          ])
+        }),
+        0
+      )
     ])
   ])
 }
@@ -39947,31 +39946,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header d-flex justify-content-between" },
-      [
-        _c("h1", [_vm._v("Profesores")]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "/teacher/create" }
-            },
-            [_vm._v("Añadir profesor")]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Profesores")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { href: "/teacher/create" }
+          },
+          [_vm._v("Añadir profesor")]
+        )
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [_c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")])])
+    return _c("div", { staticClass: "list-heading" }, [
+      _c("div", { staticClass: "list-row" }, [
+        _c("h3", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Acciones")])
+      ])
     ])
   }
 ]
@@ -53264,8 +53267,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
