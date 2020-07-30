@@ -16,6 +16,12 @@
       </div>
     </div>
     <div class="actions">
+      <h3>Pages:</h3>
+      <div class="action-buttons">
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/students'">Alumnos</a>
+      </div>
+    </div>
+    <div class="actions">
       <h3>Acciones:</h3>
       <div class="action-buttons">
         <a class="btn btn-dark" :href="'/course/' + course.id + '/showAssignTeacher'">Asignar Profe</a>
@@ -24,7 +30,9 @@
         <a class="btn btn-dark" href @click.prevent @click="deleteCourse(course)">Eliminar</a>
       </div>
     </div>
-    <a class="back-button btn btn-secondary" href="/courses">Volver</a>
+    <div>
+      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+    </div>
   </div>
 </template>
 
@@ -42,6 +50,9 @@ export default {
           window.location.replace("/courses");
         });
       }
+    },
+    goBack() {
+      window.history.back();
     },
   },
   mounted() {

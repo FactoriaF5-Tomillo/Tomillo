@@ -2340,6 +2340,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2352,6 +2360,9 @@ __webpack_require__.r(__webpack_exports__);
           window.location.replace("/courses");
         });
       }
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -2408,12 +2419,13 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {};
   },
-  methods: {},
+  methods: {
+    goBack: function goBack() {
+      window.history.back();
+    }
+  },
   mounted: function mounted() {
     console.log("Component mounted.");
-  },
-  goBack: function goBack() {
-    window.history.back();
   }
 });
 
@@ -39349,6 +39361,21 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "actions" }, [
+      _c("h3", [_vm._v("Pages:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "action-buttons" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-dark",
+            attrs: { href: "/course/" + _vm.course.id + "/students" }
+          },
+          [_vm._v("Alumnos")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "actions" }, [
       _c("h3", [_vm._v("Acciones:")]),
       _vm._v(" "),
       _c("div", { staticClass: "action-buttons" }, [
@@ -39400,14 +39427,26 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "a",
-      {
-        staticClass: "back-button btn btn-secondary",
-        attrs: { href: "/courses" }
-      },
-      [_vm._v("Volver")]
-    )
+    _c("div", [
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [

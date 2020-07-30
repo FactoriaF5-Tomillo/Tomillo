@@ -37,12 +37,13 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    goBack() {
+      window.history.back();
+    },
+  },
   mounted() {
     console.log("Component mounted.");
-  },
-  goBack() {
-    window.history.back();
   },
 };
 </script>
