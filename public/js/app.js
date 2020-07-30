@@ -1956,7 +1956,14 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/students").then(function (response) {
         response.data.forEach(function (student) {
-          student.selected = false;
+          if (student.course) {
+            console.log("im doing the if");
+            student.selected = true;
+          }
+
+          if (!student.course) {
+            student.selected = false;
+          }
 
           _this.students.push(student);
         });

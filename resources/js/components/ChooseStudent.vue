@@ -45,7 +45,13 @@ export default {
     getStudents() {
       axios.get("/api/students").then((response) => {
         response.data.forEach((student) => {
-          student.selected = false;
+          if (student.course) {
+            console.log("im doing the if");
+            student.selected = true;
+          }
+          if (!student.course) {
+            student.selected = false;
+          }
           this.students.push(student);
         });
       });

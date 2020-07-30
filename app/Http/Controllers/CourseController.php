@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Student;
 use App\Teacher;
+use App\Http\Resources\Course as CourseResource;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -18,13 +19,13 @@ class CourseController extends Controller
 
     public function getCourses()
     {
-        $courses = Course::all();
+        $courses = CourseResource::collection(Course::all());
         return $courses;
     }
 
     public function getCourse(Course $course)
     {
-        return $course;
+        return New CourseResource($course);
     }
 
     public function create()
