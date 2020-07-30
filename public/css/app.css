@@ -11146,3 +11146,16 @@ header h1 {
   justify-content: space-between;
 }
 
+.show-user {
+  margin-bottom: 30px;
+}
+
+.show-user .user-info {
+  margin-bottom: 20px;
+}
+
+.show-user .user-info p {
+  display: inline;
+  margin-right: 10px !important;
+}
+

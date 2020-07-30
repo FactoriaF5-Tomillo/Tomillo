@@ -18,11 +18,10 @@
     <div class="actions">
       <h3>Acciones:</h3>
       <div class="action-buttons">
-          <a class="btn btn-dark" :href="'/course/' + course.id + '/showAssignTeacher'">Asignar Profe</a>
-          <a class="btn btn-dark" :href="'/course/' + course.id + '/chooseStudent'">Asignar Alumnos</a>
-
-          <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
-          <a class="btn btn-dark" href @click="deleteCourse(course)">Eliminar</a>
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/showAssignTeacher'">Asignar Profe</a>
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/chooseStudent'">Asignar Alumnos</a>
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
+        <a class="btn btn-dark" href @click.prevent @click="deleteCourse(course)">Eliminar</a>
       </div>
     </div>
     <a class="back-button btn btn-secondary" href="/courses">Volver</a>
@@ -31,10 +30,9 @@
 
 <script>
 export default {
-    props: ['course'],
+  props: ["course"],
   data() {
-    return {
-    };
+    return {};
   },
 
   methods: {

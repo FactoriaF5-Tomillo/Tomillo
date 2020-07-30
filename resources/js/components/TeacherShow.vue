@@ -1,28 +1,23 @@
 <template>
   <div>
-    <div class="card-header">
+    <div class="page-title">
       <h1>Datos Del Profesor</h1>
     </div>
+    <div class="show-user">
+      <div class="user-info">
+        <h3>{{teacher.name}} {{teacher.surname}}</h3>
+        <p>
+          <strong>Genro:</strong>
+          {{teacher.gender}}
+        </p>
+      </div>
+      <p>
+        <strong>Email:</strong>
+        {{teacher.email}}
+      </p>
+    </div>
     <div>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Email</th>
-            <th scope="col">Sexo</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{teacher.name}}</td>
-            <td>{{teacher.surname}}</td>
-            <td>{{teacher.email}}</td>
-            <td>{{teacher.gender}}</td>
-          </tr>
-        </tbody>
-      </table>
-      <a href="/teachers" class="btn btn-secondary">Volver</a>
+      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
     </div>
   </div>
 </template>
@@ -32,6 +27,11 @@ export default {
   props: ["teacher"],
   data() {
     return {};
+  },
+  methods: {
+    goBack() {
+      window.history.back();
+    },
   },
   mounted() {
     console.log("Component mounted.");

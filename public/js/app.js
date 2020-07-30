@@ -2286,9 +2286,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['course'],
+  props: ["course"],
   data: function data() {
     return {};
   },
@@ -2621,15 +2620,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
     return {};
+  },
+  methods: {
+    goBack: function goBack() {
+      window.history.back();
+    }
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -2875,15 +2874,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["teacher"],
   data: function data() {
     return {};
+  },
+  methods: {
+    goBack: function goBack() {
+      window.history.back();
+    }
   },
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -39196,9 +39195,14 @@ var render = function() {
             staticClass: "btn btn-dark",
             attrs: { href: "" },
             on: {
-              click: function($event) {
-                return _vm.deleteCourse(_vm.course)
-              }
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.deleteCourse(_vm.course)
+                }
+              ]
             }
           },
           [_vm._v("Eliminar")]
@@ -39436,11 +39440,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _c("option", { attrs: { value: "Hombre" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _c("option", { attrs: { value: "Mujer" } }, [_vm._v("Mujer")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+            _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -39681,11 +39685,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _c("option", { attrs: { value: "Hombre" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _c("option", { attrs: { value: "Mujer" } }, [_vm._v("Mujer")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+            _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -39906,31 +39910,47 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table" }, [
-        _vm._m(1),
+    _c("div", { staticClass: "show-user" }, [
+      _c("div", { staticClass: "user-info" }, [
+        _c("h3", [
+          _vm._v(_vm._s(_vm.student.name) + " " + _vm._s(_vm.student.surname))
+        ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v(_vm._s(_vm.student.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.student.surname))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.student.nationality))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.student.email))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.student.gender))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.student.currentcourse))])
-          ])
+        _c("p", [
+          _c("strong", [_vm._v("Nacionalidad:")]),
+          _vm._v("\n        " + _vm._s(_vm.student.nationality) + "\n      ")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("strong", [_vm._v("Genro:")]),
+          _vm._v("\n        " + _vm._s(_vm.student.gender) + "\n      ")
         ])
       ]),
       _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Email:")]),
+        _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
       _c(
         "a",
-        { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
-        [_vm._v("Volver")]
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
       )
     ])
   ])
@@ -39940,28 +39960,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Datos Del Alumno")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nacionalidad")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sexo")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Curso Actual")])
-      ])
     ])
   }
 ]
@@ -40102,11 +40102,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _c("option", { attrs: { value: "Hombre" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _c("option", { attrs: { value: "Mujer" } }, [_vm._v("Mujer")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+            _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -40294,11 +40294,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _c("option", { attrs: { value: "Hombre" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _c("option", { attrs: { value: "Mujer" } }, [_vm._v("Mujer")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+            _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -40490,27 +40490,42 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table" }, [
-        _vm._m(1),
+    _c("div", { staticClass: "show-user" }, [
+      _c("div", { staticClass: "user-info" }, [
+        _c("h3", [
+          _vm._v(_vm._s(_vm.teacher.name) + " " + _vm._s(_vm.teacher.surname))
+        ]),
         _vm._v(" "),
-        _c("tbody", [
-          _c("tr", [
-            _c("td", [_vm._v(_vm._s(_vm.teacher.name))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.teacher.surname))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.teacher.email))]),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.teacher.gender))])
-          ])
+        _c("p", [
+          _c("strong", [_vm._v("Genro:")]),
+          _vm._v("\n        " + _vm._s(_vm.teacher.gender) + "\n      ")
         ])
       ]),
       _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Email:")]),
+        _vm._v("\n      " + _vm._s(_vm.teacher.email) + "\n    ")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
       _c(
         "a",
-        { staticClass: "btn btn-secondary", attrs: { href: "/teachers" } },
-        [_vm._v("Volver")]
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
       )
     ])
   ])
@@ -40520,24 +40535,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Datos Del Profesor")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Email")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Sexo")])
-      ])
     ])
   }
 ]
@@ -53895,8 +53894,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
