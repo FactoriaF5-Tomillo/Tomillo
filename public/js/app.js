@@ -2330,17 +2330,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2351,7 +2340,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateStudentInfo: function updateStudentInfo(student) {
-      axios.patch("/api/students/" + student.id, this.student).then(window.location.replace('/students'));
+      axios.patch("/api/students/" + student.id, this.student).then(window.location.replace("/students"));
     }
   }
 });
@@ -39118,223 +39107,216 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card-header" }, [
-      _vm._v("Actualizar Datos del Alumno")
-    ]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c(
-        "form",
-        {
+    _c("div", { staticClass: "form" }, [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.name,
+              expression: "student.name"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "name", required: "" },
+          domProps: { value: _vm.student.name },
           on: {
-            submit: function($event) {
-              $event.preventDefault()
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "name", $event.target.value)
             }
           }
-        },
-        [
-          _c("div", { staticClass: "form-group" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Nombre")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.name,
-                    expression: "student.name"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: "name", required: "" },
-                domProps: { value: _vm.student.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.student, "name", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Apellido")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.surname,
-                    expression: "student.surname"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: "surname", required: "" },
-                domProps: { value: _vm.student.surname },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.student, "surname", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Nacionalidad")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.nationality,
-                    expression: "student.nationality"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: "nationality", required: "" },
-                domProps: { value: _vm.student.nationality },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.student, "nationality", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Email")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.email,
-                    expression: "student.email"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "email", name: "email", required: "" },
-                domProps: { value: _vm.student.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.student, "email", $event.target.value)
-                  }
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Sexo")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.student.gender,
-                      expression: "student.gender"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.student,
-                        "gender",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "male" } }, [
-                    _vm._v("Hombre")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "female" } }, [
-                    _vm._v("Mujer")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", [_vm._v("Curso Actual")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.currentcourse,
-                    expression: "student.currentcourse"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: "currentcourse", required: "" },
-                domProps: { value: _vm.student.currentcourse },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.student, "currentcourse", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-footer" }, [
-            _c(
-              "button",
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.surname,
+              expression: "student.surname"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "surname", required: "" },
+          domProps: { value: _vm.student.surname },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "surname", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Nacionalidad")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.nationality,
+              expression: "student.nationality"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "nationality", required: "" },
+          domProps: { value: _vm.student.nationality },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "nationality", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.email,
+              expression: "student.email"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "email", name: "email", required: "" },
+          domProps: { value: _vm.student.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "email", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Sexo")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
               {
-                staticClass: "btn btn-primary",
-                attrs: { value: "Actualizar" },
-                on: {
-                  click: function($event) {
-                    return _vm.updateStudentInfo(_vm.student)
-                  }
-                }
-              },
-              [_vm._v("Actualizar")]
-            )
-          ])
-        ]
-      )
+                name: "model",
+                rawName: "v-model",
+                value: _vm.student.gender,
+                expression: "student.gender"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.student,
+                  "gender",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Curso Actual")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.currentcourse,
+              expression: "student.currentcourse"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "text", name: "currentcourse", required: "" },
+          domProps: { value: _vm.student.currentcourse },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "currentcourse", $event.target.value)
+            }
+          }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-submit" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
+          [_vm._v("← Volver")]
+        ),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { value: "Crear" },
+            on: {
+              click: function($event) {
+                return _vm.updateStudentInfo(_vm.student)
+              }
+            }
+          },
+          [_vm._v("Editar")]
+        )
+      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Actualizar Datos del Alumno")])
+    ])
+  }
+]
 render._withStripped = true
 
 
