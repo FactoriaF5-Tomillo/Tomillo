@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="card-header">Añadir Alumno</div>
-    <div class="card-body">
+    <div class="page-title">
+      <h1>Añadir Alumno</h1>
+    </div>
+    <div class="form">
       <div class="form-group">
         <label>Nombre</label>
         <input type="text" v-model="student.name" name="name" class="form-control" required />
@@ -42,7 +44,8 @@
           required
         />
       </div>
-      <div class="card-footer">
+      <div class="form-submit">
+        <a class="btn btn-secondary" href="/courses">&#8592; Volver</a>
         <button class="btn btn-primary" @click="createStudent(student)" value="Crear">Crear</button>
       </div>
     </div>

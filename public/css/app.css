@@ -11135,3 +11135,14 @@ header h1 {
   grid-column: 4;
 }
 
+.form {
+  max-width: 600px;
+}
+
+.form .form-submit {
+  width: 100%;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+

@@ -2244,6 +2244,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2492,6 +2495,12 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -38877,9 +38886,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card-header" }, [_vm._v("Añadir Alumno")]),
+    _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
+    _c("div", { staticClass: "form" }, [
       _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Nombre")]),
         _vm._v(" "),
@@ -39053,7 +39062,13 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer" }, [
+      _c("div", { staticClass: "form-submit" }, [
+        _c(
+          "a",
+          { staticClass: "btn btn-secondary", attrs: { href: "/courses" } },
+          [_vm._v("← Volver")]
+        ),
+        _vm._v(" "),
         _c(
           "button",
           {
@@ -39071,7 +39086,16 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Añadir Alumno")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39535,10 +39559,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "form" }, [
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("input", {
@@ -39561,8 +39585,10 @@ var render = function() {
               _vm.$set(_vm.teacher, "name", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Apellido")]),
         _vm._v(" "),
         _c("input", {
@@ -39585,8 +39611,10 @@ var render = function() {
               _vm.$set(_vm.teacher, "surname", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Email")]),
         _vm._v(" "),
         _c("input", {
@@ -39609,8 +39637,10 @@ var render = function() {
               _vm.$set(_vm.teacher, "email", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Sexo")]),
         _vm._v(" "),
         _c(
@@ -39653,7 +39683,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
+      _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
           {
@@ -39684,7 +39714,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Añadir profesor")])
     ])
   }
