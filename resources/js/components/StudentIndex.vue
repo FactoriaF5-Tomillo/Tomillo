@@ -17,7 +17,7 @@
       </div>
       <div class="list-content">
         <div class="list-row" v-bind:key="i" v-for="(student, i) in students">
-          <p class="list-data">{{student.name}}</p>
+          <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
           <p class="list-data">{{student.surname}}</p>
           <p class="list-data" v-if="student.course">{{student.course.title}}</p>
           <div class="list-actions">

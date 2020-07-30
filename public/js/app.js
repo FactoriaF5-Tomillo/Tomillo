@@ -39343,9 +39343,14 @@ var render = function() {
         { staticClass: "list-content" },
         _vm._l(_vm.students, function(student, i) {
           return _c("div", { key: i, staticClass: "list-row" }, [
-            _c("p", { staticClass: "list-data" }, [
-              _vm._v(_vm._s(student.name))
-            ]),
+            _c(
+              "a",
+              {
+                staticClass: "list-data",
+                attrs: { href: "/student/" + student.id }
+              },
+              [_vm._v(_vm._s(student.name))]
+            ),
             _vm._v(" "),
             _c("p", { staticClass: "list-data" }, [
               _vm._v(_vm._s(student.surname))
@@ -39908,9 +39913,14 @@ var render = function() {
         { staticClass: "list-content" },
         _vm._l(_vm.teachers, function(teacher, i) {
           return _c("div", { key: i, staticClass: "list-row" }, [
-            _c("p", { staticClass: "list-data" }, [
-              _vm._v(_vm._s(teacher.name))
-            ]),
+            _c(
+              "a",
+              {
+                staticClass: "list-data",
+                attrs: { href: "/teacher/" + teacher.id }
+              },
+              [_vm._v(_vm._s(teacher.name))]
+            ),
             _vm._v(" "),
             _c("p", { staticClass: "list-data" }, [
               _vm._v(_vm._s(teacher.surname))

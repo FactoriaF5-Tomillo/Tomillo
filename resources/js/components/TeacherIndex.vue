@@ -17,7 +17,7 @@
       </div>
       <div class="list-content">
         <div class="list-row" v-bind:key="i" v-for="(teacher, i) in teachers">
-          <p class="list-data">{{teacher.name}}</p>
+          <a :href="'/teacher/' + teacher.id" class="list-data">{{teacher.name}}</a>
           <p class="list-data">{{teacher.surname}}</p>
           <p class="list-data">{{teacher.email}}</p>
           <div class="list-actions">
