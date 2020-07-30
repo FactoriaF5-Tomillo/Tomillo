@@ -39,7 +39,8 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
-        return view('course.show', compact('course'));
+        $students = Student::all();
+        return view('course.show', compact('course', 'students'));
     }
 
     public function edit(Course $course)
@@ -60,9 +61,12 @@ class CourseController extends Controller
         return Course::all();
     }
 
-    public function addStudent(Course $course, Student $student)
+    public function addStudentToTheCourse(Course $course, Student $student)
     {
-        $course->students()->associate($student);
-        return redirect('/students');
+        //$student = Student::find($request->id);
+        $student->course()->save($course);
+        //$course->students()->associate($student);
+        //return redirect('/students');
+        return $student;
     }
 }

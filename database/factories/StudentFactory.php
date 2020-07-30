@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Student;
+
 use Faker\Generator as Faker;
 
 $factory->define(Student::class, function (Faker $faker) {
@@ -10,6 +11,6 @@ $factory->define(Student::class, function (Faker $faker) {
     $course = $faker->randomElement(['Peluqueria','Estética', 'Cocina', 'Informática', 'Carpintería']);
     return [
         'name'=>$faker->name, 'surname'=>$faker->lastName, 'nationality'=>$faker->country,
-        'email'=>$faker->email, 'gender'=>$gender, 'currentcourse'=>$course
+        'email'=>$faker->email, 'gender'=>$gender, 'currentcourse'=>$course, 'course_id'=>1
     ];
 });
