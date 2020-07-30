@@ -1,33 +1,27 @@
 <template>
   <div>
-    <div class="card">
-      <div class="card-header">
-        <h1>Asignar alumnos al curso: {{course.title}}</h1>
-      </div>
-      <div class="card-body">
-        <div class="row">
-            <div class="list">
-                <div class="list-heading">
-                    <div class="list-row">
-                        <h5>Nombre</h5>
-                        <h5>Apellido</h5>
-                    </div>
-                </div>
-                <div class="list-content">
-                    <div class="list-row" v-bind:key="i" v-for="(student, i) in students">
-                        <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
-                        <p class="list-data">{{student.surname}}</p>
-                        <div class="list-actions">
-                            <button class="btn btn-primary mb-2" @click="addStudentToTheCourse(student)">Asignar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="page-title">
+      <h1>Asignar alumnos al curso: {{course.title}}</h1>
+    </div>
+    <div class="list">
+      <div class="list-heading">
+        <div class="list-row">
+          <h5>Nombre</h5>
+          <h5>Apellido</h5>
         </div>
       </div>
-      <div class="card-footer d-flex justify-content-between">
-        <a class="btn btn-secondary mb-2" href="/courses">&#8592; Volver</a>
+      <div class="list-content">
+        <div class="list-row" v-bind:key="i" v-for="(student, i) in students">
+          <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
+          <p class="list-data">{{student.surname}}</p>
+          <div class="list-actions">
+            <a @click.prevent href @click="addStudentToTheCourse(student)">Asignar</a>
+          </div>
+        </div>
       </div>
+    </div>
+    <div>
+      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
     </div>
   </div>
 </template>
@@ -37,28 +31,30 @@ export default {
   props: ["course"],
   data() {
     return {
-        students:[],
+      students: [],
     };
   },
   methods: {
-      getStudents() {
-          axios.get("/api/students").then((response) => {
-              console.log(response);
-              this.students = response.data;
-          });
-      },
-      addStudentToTheCourse(student)
-      {
-          axios.post("/api/courses/"+ this.course.id + "/addStudentToTheCourse", {
-              student_id: student.id,
-              course_id: this.course.id
-          }).then((response) => {
-              ;
-          });
-      },
+    getStudents() {
+      axios.get("/api/students").then((response) => {
+        console.log(response);
+        this.students = response.data;
+      });
+    },
+    addStudentToTheCourse(student) {
+      axios
+        .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+          student_id: student.id,
+          course_id: this.course.id,
+        })
+        .then((response) => {});
+    },
+    goBack() {
+      window.history.back();
+    },
   },
   mounted() {
-      this.getStudents();
+    this.getStudents();
     console.log("Component mounted.");
   },
 };

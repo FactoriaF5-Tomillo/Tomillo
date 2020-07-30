@@ -1936,12 +1936,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -1962,9 +1956,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
         student_id: student.id,
         course_id: this.course.id
-      }).then(function (response) {
-        ;
-      });
+      }).then(function (response) {});
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -38484,59 +38479,77 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _c("div", { staticClass: "card-header" }, [
-        _c("h1", [
-          _vm._v("Asignar alumnos al curso: " + _vm._s(_vm.course.title))
-        ])
-      ]),
+    _c("div", { staticClass: "page-title" }, [
+      _c("h1", [
+        _vm._v("Asignar alumnos al curso: " + _vm._s(_vm.course.title))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "list" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "list" }, [
-            _vm._m(0),
-            _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list-content" },
+        _vm._l(_vm.students, function(student, i) {
+          return _c("div", { key: i, staticClass: "list-row" }, [
             _c(
-              "div",
-              { staticClass: "list-content" },
-              _vm._l(_vm.students, function(student, i) {
-                return _c("div", { key: i, staticClass: "list-row" }, [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "list-data",
-                      attrs: { href: "/student/" + student.id }
-                    },
-                    [_vm._v(_vm._s(student.name))]
-                  ),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "list-data" }, [
-                    _vm._v(_vm._s(student.surname))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "list-actions" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-primary mb-2",
-                        on: {
-                          click: function($event) {
-                            return _vm.addStudentToTheCourse(student)
-                          }
-                        }
+              "a",
+              {
+                staticClass: "list-data",
+                attrs: { href: "/student/" + student.id }
+              },
+              [_vm._v(_vm._s(student.name))]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(student.surname))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "list-actions" }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
                       },
-                      [_vm._v("Asignar")]
-                    )
-                  ])
-                ])
-              }),
-              0
-            )
+                      function($event) {
+                        return _vm.addStudentToTheCourse(student)
+                      }
+                    ]
+                  }
+                },
+                [_vm._v("Asignar")]
+              )
+            ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._m(1)
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
+      )
     ])
   ])
 }
@@ -38552,25 +38565,6 @@ var staticRenderFns = [
         _c("h5", [_vm._v("Apellido")])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-footer d-flex justify-content-between" },
-      [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-secondary mb-2",
-            attrs: { href: "/courses" }
-          },
-          [_vm._v("← Volver")]
-        )
-      ]
-    )
   }
 ]
 render._withStripped = true

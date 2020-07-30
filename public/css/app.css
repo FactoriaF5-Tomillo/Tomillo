@@ -11103,6 +11103,7 @@ header h1 {
 
 .list {
   max-width: 1000px;
+  margin-bottom: 30px;
 }
 
 .list .list-heading {
