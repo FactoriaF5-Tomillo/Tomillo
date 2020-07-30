@@ -40,6 +40,8 @@ Route::get('/course/{course}', 'CourseController@show')->name('course.show');
 
 Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit');
 
+Route::get('/course/{course}/chooseStudent', 'CourseController@chooseStudent')->name('course.chooseStudent');
+
 Route::get('/teachers', 'TeacherController@index')->name('teacher.index');
 
 Route::get('/teacher/create', 'TeacherController@create')->name('teacher.create');

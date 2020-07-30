@@ -62,10 +62,15 @@ class CourseController extends Controller
         return Course::all();
     }
 
-    public function addStudentToTheCourse(Course $course, Student $student)
+    public function chooseStudent(Course $course)
     {
-        //$student = Student::find($request->id);
-        $student->course()->save($course);
+        return view('course.chooseStudent', compact('course'));
+    }
+    public function addStudentToTheCourse(Request $request, Course $course)
+    {
+        $course = Course::find($request->course_id);
+        $student = Student::find($request->student_id);
+        $course->students()->save($student);
         //$course->students()->associate($student);
         //return redirect('/students');
         return $student;
@@ -89,3 +94,4 @@ class CourseController extends Controller
         return view('course.add_teacher', compact('course'));
     }
 }
+

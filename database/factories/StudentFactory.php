@@ -11,6 +11,6 @@ $factory->define(Student::class, function (Faker $faker) {
     $course = $faker->randomElement(['Peluqueria','Estética', 'Cocina', 'Informática', 'Carpintería']);
     return [
         'name'=>$faker->name, 'surname'=>$faker->lastName, 'nationality'=>$faker->country,
-        'email'=>$faker->email, 'gender'=>$gender, 'currentcourse'=>$course, 'course_id'=>1
+        'email'=>$faker->email, 'gender'=>$gender, 'currentcourse'=>$course,
     ];
 });

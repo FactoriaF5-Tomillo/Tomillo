@@ -18,8 +18,9 @@
     <div class="actions">
       <h3>Acciones:</h3>
       <div class="action-buttons">
-          <a class="btn btn-dark" href>Asignar Alumnos</a>
           <a class="btn btn-dark" :href="'/course/' + course.id + '/showAssignTeacher'">Asignar Profe</a>
+          <a class="btn btn-dark" :href="'/course/' + course.id + '/chooseStudent'">Asignar Alumnos</a>
+
           <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
           <a class="btn btn-dark" href @click="deleteCourse(course)">Eliminar</a>
       </div>
@@ -44,12 +45,6 @@ export default {
         });
       }
     },
-      addStudentToTheCourse()
-      {
-          axios.post("/api/courses/"+ course.id + "/addStudentToTheCourse", this.students[0]).then((response) => {
-              window.location.replace("/courses");
-            });
-      },
   },
   mounted() {
     console.log("Component mounted.");
