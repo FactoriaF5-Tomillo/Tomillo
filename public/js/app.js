@@ -2576,6 +2576,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["teacher"],
   data: function data() {
@@ -39723,10 +39728,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "form" }, [
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Nombre")]),
         _vm._v(" "),
         _c("input", {
@@ -39749,8 +39754,10 @@ var render = function() {
               _vm.$set(_vm.teacher, "name", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Apellido")]),
         _vm._v(" "),
         _c("input", {
@@ -39773,8 +39780,10 @@ var render = function() {
               _vm.$set(_vm.teacher, "surname", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Email")]),
         _vm._v(" "),
         _c("input", {
@@ -39797,31 +39806,11 @@ var render = function() {
               _vm.$set(_vm.teacher, "email", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Sexo")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.teacher.gender,
-              expression: "teacher.gender"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "gender" },
-          domProps: { value: _vm.teacher.gender },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.teacher, "gender", $event.target.value)
-            }
-          }
-        }),
         _vm._v(" "),
         _c(
           "select",
@@ -39830,8 +39819,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.student.gender,
-                expression: "student.gender"
+                value: _vm.teacher.gender,
+                expression: "teacher.gender"
               }
             ],
             staticClass: "form-control",
@@ -39846,7 +39835,7 @@ var render = function() {
                     return val
                   })
                 _vm.$set(
-                  _vm.student,
+                  _vm.teacher,
                   "gender",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
@@ -39863,7 +39852,7 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
+      _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
           {
@@ -39883,7 +39872,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Editar")]
+          [_vm._v("Crear")]
         )
       ])
     ])
@@ -39894,7 +39883,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
+    return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Añadir profesor")])
     ])
   }
