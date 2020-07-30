@@ -46,7 +46,6 @@ export default {
       axios.get("/api/students").then((response) => {
         response.data.forEach((student) => {
           if (student.course) {
-            console.log("im doing the if");
             student.selected = true;
           }
           if (!student.course) {
@@ -64,7 +63,6 @@ export default {
       axios
         .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
           student_id: student.id,
-          course_id: this.course.id,
         })
         .then((response) => {});
     },

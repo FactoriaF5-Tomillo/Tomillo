@@ -70,7 +70,6 @@ export default {
       axios
         .post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
           teachers: selectedTeachersIds,
-          course_id: this.course.id,
         })
         .then((response) => {
           window.location.replace("/course/" + this.course.id);

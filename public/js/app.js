@@ -1957,7 +1957,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/students").then(function (response) {
         response.data.forEach(function (student) {
           if (student.course) {
-            console.log("im doing the if");
             student.selected = true;
           }
 
@@ -1975,8 +1974,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     addStudentToTheCourse: function addStudentToTheCourse(student) {
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
-        student_id: student.id,
-        course_id: this.course.id
+        student_id: student.id
       }).then(function (response) {});
     },
     assignStudents: function assignStudents() {
@@ -2086,8 +2084,7 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(selectedTeachersIds);
       axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
-        teachers: selectedTeachersIds,
-        course_id: this.course.id
+        teachers: selectedTeachersIds
       }).then(function (response) {
         window.location.replace("/course/" + _this2.course.id);
       });
@@ -39663,7 +39660,7 @@ var render = function() {
             staticClass: "btn btn-primary",
             attrs: { href: "/course/" + _vm.course.id + "/showAssignTeacher" }
           },
-          [_vm._v("Assignar alumnos")]
+          [_vm._v("Assignar profesores")]
         )
       ])
     ]),

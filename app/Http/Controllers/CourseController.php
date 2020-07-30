@@ -70,8 +70,6 @@ class CourseController extends Controller
 
     public function addStudentToTheCourse(Request $request, Course $course)
     {
-        $course = Course::find($request->course_id);
-
         foreach ($request->students as $studentId) {
             $student = Student::find($studentId);
             $course->students()->save($student);
@@ -91,10 +89,8 @@ class CourseController extends Controller
         return view('course.add_teacher', compact('course'));
     }
 
-    public function addTeacherToTheCourse(Request $request)
+    public function addTeacherToTheCourse(Request $request, Course $course)
     {
-        $course = Course::find($request->course_id);
-
         foreach ($request->teachers as $teacherId) {
             $teacher = Teacher::find($teacherId);
             $course->teachers()->attach($teacher);
