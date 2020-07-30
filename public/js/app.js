@@ -39620,8 +39620,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.student.gender,
-                expression: "student.gender"
+                value: _vm.teacher.gender,
+                expression: "teacher.gender"
               }
             ],
             staticClass: "form-control",
@@ -39636,7 +39636,7 @@ var render = function() {
                     return val
                   })
                 _vm.$set(
-                  _vm.student,
+                  _vm.teacher,
                   "gender",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
