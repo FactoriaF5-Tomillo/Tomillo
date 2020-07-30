@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
-use App\Course;
 use App\Http\Resources\Student as StudentResource;
+use App\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -35,7 +34,6 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         Student::create($request->all());
-        //return redirect('/api/students');
         return redirect('/students');
     }
 
@@ -53,7 +51,6 @@ class StudentController extends Controller
     {
         $student->update($request->all());
         $students = Student::all();
-        //return redirect('/students', compact('students'));
         return $students;
     }
 
