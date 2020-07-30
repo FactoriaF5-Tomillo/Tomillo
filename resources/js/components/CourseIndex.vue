@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="dashboard-page-header">
+    <div class="page-title">
       <h1>Cursos</h1>
       <div>
         <a href="/course/create" class="btn btn-primary">Añadir Curso</a>

@@ -1,9 +1,30 @@
-.table-list{
-    display:block;
-    max-height:400px;
-    overflow: auto; 
-
-    .table-body{
-        overflow-y:scroll;
+.list {
+    max-width: 1000px;
+    .list-heading {
+        margin-bottom: 20px;
+        border-bottom: 1px solid rgb(44, 44, 44);
+        .list-row {
+            display: grid;
+            grid-template-columns: repeat(4, calc(100% / 4));
+        }
     }
-} 
+    .list-content {
+        max-height: 65vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        .list-row {
+            display: grid;
+            grid-template-columns: repeat(4, calc((100% + 20px) / 4));
+            padding: 10px 0;
+
+            &:nth-child(odd) {
+                background-color: rgb(235, 235, 235);
+            }
+
+            .list-actions {
+                grid-column: 4;
+            }
+        }
+    }
+}

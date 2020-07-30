@@ -2391,19 +2391,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38699,7 +38686,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "dashboard-page-header" }, [
+    return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Cursos")]),
       _vm._v(" "),
       _c("div", [
@@ -39313,63 +39300,33 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table-list table" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          { staticClass: "table-body" },
-          _vm._l(_vm.students, function(student, i) {
-            return _c("tr", { key: i }, [
-              _c("td", [
-                _c("a", { attrs: { href: "student/" + student.id } }, [
-                  _vm._v(_vm._s(student.name))
+    _c("div", { staticClass: "list" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list-content" },
+        _vm._l(_vm.students, function(student, i) {
+          return _c("div", { key: i, staticClass: "list-row" }, [
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(student.name))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(student.surname))
+            ]),
+            _vm._v(" "),
+            student.course
+              ? _c("p", { staticClass: "list-data" }, [
+                  _vm._v(_vm._s(student.course.title))
                 ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "student/" + student.id } }, [
-                  _vm._v(_vm._s(student.surname))
-                ])
-              ]),
-              _vm._v(" "),
-              student.course
-                ? _c("td", [_vm._v(_vm._s(student.course.title))])
-                : _vm._e(),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "action-icon",
-                    attrs: { href: "student/" + student.id + "/edit" }
-                  },
-                  [_c("ion-icon", { attrs: { name: "create-outline" } })],
-                  1
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "action-icon",
-                    on: {
-                      click: function($event) {
-                        return _vm.deleteStudent(student)
-                      }
-                    }
-                  },
-                  [_c("ion-icon", { attrs: { name: "trash-outline" } })],
-                  1
-                )
-              ])
-            ])
-          }),
-          0
-        )
-      ])
+              : _vm._e(),
+            _vm._v(" "),
+            _vm._m(2, true)
+          ])
+        }),
+        0
+      )
     ])
   ])
 }
@@ -39397,17 +39354,27 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-head" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+    return _c("div", { staticClass: "list-heading" }, [
+      _c("div", { staticClass: "list-row" }, [
+        _c("h3", [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
+        _c("h3", [_vm._v("Apellido")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Curso")]),
+        _c("h3", [_vm._v("Curso")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+        _c("h3", [_vm._v("Acciones")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "list-actions" }, [
+      _c("a", { attrs: { href: "" } }, [_vm._v("Editar")]),
+      _vm._v(" "),
+      _c("a", { staticClass: "list-actions", attrs: { href: "" } }, [
+        _vm._v("Eliminar")
       ])
     ])
   }
