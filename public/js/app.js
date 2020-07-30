@@ -2231,10 +2231,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      student: {}
+      student: {
+        course_id: 1
+      }
     };
   },
   mounted: function mounted() {
@@ -2242,7 +2256,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createStudent: function createStudent(student) {
-      axios.post("/api/students/", this.student).then(window.location.replace('/students'));
+      axios.post("/api/students/", this.student).then(window.location.replace("/students"));
     }
   }
 });
@@ -2410,7 +2424,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
         axios["delete"]("/api/students/" + student.id).then(function (response) {
-          _this2.students = response.data;
+          _this2.getStudents();
         });
       }
     }
@@ -2486,6 +2500,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -38863,10 +38879,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _vm._v("\n        Añadir Alumno\n    ")
-    ]),
+  return _c("div", [
+    _c("div", { staticClass: "card-header" }, [_vm._v("Añadir Alumno")]),
     _vm._v(" "),
     _c("div", { staticClass: "card-body" }, [
       _c("div", { staticClass: "form-group" }, [
@@ -38976,27 +38990,42 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Sexo")]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.student.gender,
-              expression: "student.gender"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "gender", required: "" },
-          domProps: { value: _vm.student.gender },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.student.gender,
+                expression: "student.gender"
               }
-              _vm.$set(_vm.student, "gender", $event.target.value)
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.student,
+                  "gender",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
             }
-          }
-        })
+          },
+          [
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Female")])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
@@ -39305,7 +39334,9 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(student.course.title))]),
+              student.course
+                ? _c("td", [_vm._v(_vm._s(student.course.title))])
+                : _vm._e(),
               _vm._v(" "),
               _c("td", [
                 _c(
@@ -39562,29 +39593,44 @@ var render = function() {
           }
         }),
         _vm._v(" "),
-        _c("label", [_vm._v("Genero")]),
+        _c("label", [_vm._v("Sexo")]),
         _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.teacher.gender,
-              expression: "teacher.gender"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "gender" },
-          domProps: { value: _vm.teacher.gender },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.teacher.gender,
+                expression: "teacher.gender"
               }
-              _vm.$set(_vm.teacher, "gender", $event.target.value)
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.teacher,
+                  "gender",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
             }
-          }
-        })
+          },
+          [
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Female")])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [

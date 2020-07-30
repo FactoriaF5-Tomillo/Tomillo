@@ -25,7 +25,7 @@
             <td>
               <a :href="'student/' + student.id">{{student.surname}}</a>
             </td>
-            <td>{{student.course.title}}</td>
+            <td v-if="student.course">{{student.course.title}}</td>
             <td>
               <a :href="'student/' + student.id + '/edit'" class="action-icon">
                 <ion-icon name="create-outline"></ion-icon>
@@ -60,7 +60,7 @@ export default {
     deleteStudent(student) {
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
         axios.delete("/api/students/" + student.id).then((response) => {
-          this.students = response.data;
+          this.getStudents();
         });
       }
     },
