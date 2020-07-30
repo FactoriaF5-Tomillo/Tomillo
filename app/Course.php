@@ -13,4 +13,8 @@ class Course extends Model
     {
         return $this->hasMany('Student');
     }
+    public function teachers()
+    {
+        return $this->belongsToMany('Teacher');
+    }
 }

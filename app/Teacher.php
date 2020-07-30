@@ -12,4 +12,8 @@ class Teacher extends Model
         'email',
         'gender',
     ];
+    public function courses()
+    {
+        return $this->belongsToMany('Course');
+    }
 }
