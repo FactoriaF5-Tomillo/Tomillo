@@ -26,7 +26,7 @@
       </div>
       <div class="form-submit">
         <a class="btn btn-secondary mb-2" href="/teachers">&#8592; Volver</a>
-        <button class="btn btn-primary mb-2" @click="editTeacher()">Crear</button>
+        <button class="btn btn-primary mb-2" @click="editTeacher()">Editar</button>
       </div>
     </div>
   </div>
