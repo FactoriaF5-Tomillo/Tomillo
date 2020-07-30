@@ -2011,10 +2011,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2035,6 +2031,9 @@ __webpack_require__.r(__webpack_exports__);
         teacher_id: teacher.id,
         course_id: this.course.id
       });
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -38479,14 +38478,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "page-title" }, [
-      _c("h1", [
-        _vm._v("Asignar alumnos al curso: " + _vm._s(_vm.course.title))
-      ])
-    ]),
+    _vm._m(0),
     _vm._v(" "),
     _c("div", { staticClass: "list" }, [
-      _vm._m(0),
+      _vm._m(1),
       _vm._v(" "),
       _c(
         "div",
@@ -38558,6 +38553,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Asignar alumnos al curso")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "list-heading" }, [
       _c("div", { staticClass: "list-row" }, [
         _c("h5", [_vm._v("Nombre")]),
@@ -38591,45 +38594,75 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", [
-      _c("table", { staticClass: "table-list table" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          { staticClass: "table-body" },
-          _vm._l(_vm.teachers, function(teacher, i) {
-            return _c("tr", { key: i }, [
-              _c("td", [
-                _c("a", { attrs: { href: "teacher/" + teacher.id } }, [
-                  _vm._v(_vm._s(teacher.name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c("a", { attrs: { href: "teacher/" + teacher.id } }, [
-                  _vm._v(_vm._s(teacher.surname))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
-                    on: {
-                      click: function($event) {
+    _c("div", { staticClass: "list" }, [
+      _vm._m(1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list-content" },
+        _vm._l(_vm.teachers, function(teacher, i) {
+          return _c("div", { key: i, staticClass: "list-row" }, [
+            _c(
+              "a",
+              {
+                staticClass: "list-data",
+                attrs: { href: "/teacher/" + teacher.id }
+              },
+              [_vm._v(_vm._s(teacher.name))]
+            ),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(teacher.surname))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "list-data" }, [
+              _vm._v(_vm._s(teacher.email))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "list-actions" }, [
+              _c(
+                "a",
+                {
+                  attrs: { href: "" },
+                  on: {
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
+                      },
+                      function($event) {
                         return _vm.assignTeacher(teacher)
                       }
-                    }
-                  },
-                  [_vm._v("Asignar ")]
-                )
-              ])
+                    ]
+                  }
+                },
+                [_vm._v("Asignar")]
+              )
             ])
-          }),
-          0
-        )
-      ])
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
+      )
     ])
   ])
 }
@@ -38639,31 +38672,22 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "page-title" }, [
-      _c("h1", [_vm._v("Profesores")]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "a",
-          {
-            staticClass: "btn btn-primary",
-            attrs: { href: "/teacher/create" }
-          },
-          [_vm._v("Crear Profesor")]
-        )
-      ])
+      _c("h1", [_vm._v("Asignar profesores al curso")])
     ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-head" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+    return _c("div", { staticClass: "list-heading" }, [
+      _c("div", { staticClass: "list-row" }, [
+        _c("h3", [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
+        _c("h3", [_vm._v("Apellido")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Asignar")])
+        _c("h3", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Acciones")])
       ])
     ])
   }

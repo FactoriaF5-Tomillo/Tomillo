@@ -1,34 +1,30 @@
 <template>
   <div>
     <div class="page-title">
-      <h1>Profesores</h1>
-      <div>
-        <a href="/teacher/create" class="btn btn-primary">Crear Profesor</a>
+      <h1>Asignar profesores al curso</h1>
+    </div>
+    <div class="list">
+      <div class="list-heading">
+        <div class="list-row">
+          <h3>Nombre</h3>
+          <h3>Apellido</h3>
+          <h3>Email</h3>
+          <h3>Acciones</h3>
+        </div>
+      </div>
+      <div class="list-content">
+        <div class="list-row" v-bind:key="i" v-for="(teacher, i) in teachers">
+          <a :href="'/teacher/' + teacher.id" class="list-data">{{teacher.name}}</a>
+          <p class="list-data">{{teacher.surname}}</p>
+          <p class="list-data">{{teacher.email}}</p>
+          <div class="list-actions">
+            <a @click.prevent href @click="assignTeacher(teacher)">Asignar</a>
+          </div>
+        </div>
       </div>
     </div>
     <div>
-      <table class="table-list table">
-        <thead class="table-head">
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Asignar</th>
-          </tr>
-        </thead>
-        <tbody class="table-body">
-          <tr v-bind:key="i" v-for="(teacher, i) in teachers">
-            <td>
-              <a :href="'teacher/' + teacher.id">{{teacher.name}}</a>
-            </td>
-            <td>
-              <a :href="'teacher/' + teacher.id">{{teacher.surname}}</a>
-            </td>
-            <td>
-                <button  @click="assignTeacher(teacher)" >Asignar </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
     </div>
   </div>
 </template>
@@ -39,7 +35,7 @@ export default {
   props: ["course"],
   data() {
     return {
-        teachers: [],
+      teachers: [],
     };
   },
   methods: {
@@ -49,11 +45,14 @@ export default {
       });
     },
     assignTeacher(teacher) {
-        axios.post("/api/courses/"+ this.course.id + "/addTeacherToTheCourse", {
-          teacher_id: teacher.id,
-          course_id: this.course.id
-        })
-    }
+      axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
+        teacher_id: teacher.id,
+        course_id: this.course.id,
+      });
+    },
+    goBack() {
+      window.history.back();
+    },
   },
   mounted() {
     this.getTeachers();

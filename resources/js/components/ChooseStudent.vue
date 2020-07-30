@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h1>Asignar alumnos al curso: {{course.title}}</h1>
+      <h1>Asignar alumnos al curso</h1>
     </div>
     <div class="list">
       <div class="list-heading">
