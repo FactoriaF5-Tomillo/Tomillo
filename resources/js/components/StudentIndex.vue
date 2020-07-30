@@ -21,8 +21,8 @@
           <p class="list-data">{{student.surname}}</p>
           <p class="list-data" v-if="student.course">{{student.course.title}}</p>
           <div class="list-actions">
-            <a href>Editar</a>
-            <a href class="list-actions">Eliminar</a>
+            <a :href="'/student/' + student.id + '/edit'">Editar</a>
+            <a @click="deleteStudent(student)" class="list-actions">Eliminar</a>
           </div>
         </div>
       </div>

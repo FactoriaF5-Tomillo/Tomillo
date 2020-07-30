@@ -22,7 +22,7 @@
           <p class="list-data">{{teacher.email}}</p>
           <div class="list-actions">
             <a :href="'/teacher/' + teacher.id + '/edit'">Editar</a>
-            <a @click="deleteTeacher(teacher)" href class="list-actions">Eliminar</a>
+            <a @click="deleteTeacher(teacher)" class="list-actions">Eliminar</a>
           </div>
         </div>
       </div>
