@@ -22,7 +22,7 @@
           <p class="list-data" v-if="student.course">{{student.course.title}}</p>
           <div class="list-actions">
             <a :href="'/student/' + student.id + '/edit'">Editar</a>
-            <a @click="deleteStudent(student)" class="list-actions">Eliminar</a>
+            <a @click.prevent @click="deleteStudent(student)" href class="list-actions">Eliminar</a>
           </div>
         </div>
       </div>

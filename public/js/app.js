@@ -39371,10 +39371,16 @@ var render = function() {
                 "a",
                 {
                   staticClass: "list-actions",
+                  attrs: { href: "" },
                   on: {
-                    click: function($event) {
-                      return _vm.deleteStudent(student)
-                    }
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
+                      },
+                      function($event) {
+                        return _vm.deleteStudent(student)
+                      }
+                    ]
                   }
                 },
                 [_vm._v("Eliminar")]
@@ -39939,10 +39945,16 @@ var render = function() {
                 "a",
                 {
                   staticClass: "list-actions",
+                  attrs: { href: "" },
                   on: {
-                    click: function($event) {
-                      return _vm.deleteTeacher(teacher)
-                    }
+                    click: [
+                      function($event) {
+                        $event.preventDefault()
+                      },
+                      function($event) {
+                        return _vm.deleteTeacher(teacher)
+                      }
+                    ]
                   }
                 },
                 [_vm._v("Eliminar")]
