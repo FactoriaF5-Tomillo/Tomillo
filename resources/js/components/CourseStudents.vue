@@ -4,7 +4,7 @@
       <h1>Alumnos de {{course.title}}</h1>
       <div>
         <a
-          :href="'/course/' + course.id + '/chooseStudent'"
+          :href="'/course/' + course.id + '/assign-studetns'"
           class="btn btn-primary"
         >Assignar alumnos</a>
       </div>

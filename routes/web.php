@@ -34,10 +34,10 @@ Route::get('/courses', 'CourseController@index')->name('course.index');
 Route::get('/course/create', 'CourseController@create')->name('course.create');
 Route::get('/course/{course}', 'CourseController@show')->name('course.show');
 Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit');
-Route::get('/course/{course}/chooseStudent', 'CourseController@chooseStudent')->name('course.chooseStudent');
+Route::get('/course/{course}/assign-studetns', 'CourseController@chooseStudent')->name('course.assign-studetns');
 Route::get('/course/{course}/students', 'CourseController@showStudents');
 Route::get('/course/{course}/teachers', 'CourseController@showTeachers');
-Route::get('/course/{course}/showAssignTeacher', 'CourseController@showAssignTeacher')->name('course.showAssignTeacher');
+Route::get('/course/{course}/assign-teachers', 'CourseController@showAssignTeacher')->name('course.assign-teachers');
 
 
 Route::get('/teachers', 'TeacherController@index')->name('teacher.index');

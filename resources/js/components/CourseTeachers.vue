@@ -4,7 +4,7 @@
       <h1>Alumnos de {{course.title}}</h1>
       <div>
         <a
-          :href="'/course/' + course.id + '/showAssignTeacher'"
+          :href="'/course/' + course.id + '/assign-teachers'"
           class="btn btn-primary"
         >Assignar profesores</a>
       </div>

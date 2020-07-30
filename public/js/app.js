@@ -39449,7 +39449,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-dark",
-            attrs: { href: "/course/" + _vm.course.id + "/showAssignTeacher" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
           },
           [_vm._v("Asignar Profe")]
         ),
@@ -39458,7 +39458,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-dark",
-            attrs: { href: "/course/" + _vm.course.id + "/chooseStudent" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
           },
           [_vm._v("Asignar Alumnos")]
         ),
@@ -39555,7 +39555,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-primary",
-            attrs: { href: "/course/" + _vm.course.id + "/chooseStudent" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
           },
           [_vm._v("Assignar alumnos")]
         )
@@ -39658,7 +39658,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-primary",
-            attrs: { href: "/course/" + _vm.course.id + "/showAssignTeacher" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
           },
           [_vm._v("Assignar profesores")]
         )
