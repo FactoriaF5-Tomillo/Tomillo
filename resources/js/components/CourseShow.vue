@@ -18,10 +18,10 @@
     <div class="actions">
       <h3>Acciones:</h3>
       <div class="action-buttons">
-        <a class="btn btn-dark" href>Asignar Alumnos</a>
-        <a class="btn btn-dark" href>Asignar Profe</a>
-        <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
-        <a class="btn btn-dark" href @click="deleteCourse(course)">Eliminar</a>
+          <a class="btn btn-dark" href>Asignar Alumnos</a>
+          <a class="btn btn-dark" href>Asignar Profe</a>
+          <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
+          <a class="btn btn-dark" href @click="deleteCourse(course)">Eliminar</a>
       </div>
     </div>
     <a class="back-button btn btn-secondary" href="/courses">Volver</a>
@@ -30,10 +30,12 @@
 
 <script>
 export default {
-  props: ["course"],
+    props: ['course'],
   data() {
-    return {};
+    return {
+    };
   },
+
   methods: {
     deleteCourse(course) {
       if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
@@ -42,6 +44,12 @@ export default {
         });
       }
     },
+      addStudentToTheCourse()
+      {
+          axios.post("/api/courses/"+ course.id + "/addStudentToTheCourse", this.students[0]).then((response) => {
+              window.location.replace("/courses");
+            });
+      },
   },
   mounted() {
     console.log("Component mounted.");

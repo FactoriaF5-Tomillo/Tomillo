@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Student;
+use App\Course;
+use App\Http\Resources\Student as StudentResource;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -16,7 +18,7 @@ class StudentController extends Controller
 
     public function getStudents()
     {
-        $students = Student::all();
+        $students = StudentResource::collection(Student::all());
         return $students;
     }
 

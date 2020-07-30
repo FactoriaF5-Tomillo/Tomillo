@@ -60,7 +60,8 @@ export default {
     },
       getCourses() {
         axios.get("/api/courses").then((response) => {
-              this.courses = response.data;
+            console.log("Hola");
+            this.courses = response.data;
           });
       }
   },

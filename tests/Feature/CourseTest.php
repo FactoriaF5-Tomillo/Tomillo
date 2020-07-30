@@ -3,8 +3,11 @@
 namespace Tests\Feature;
 
 use App\Course;
+use App\Student;
+use App\Http\Controllers\CourseController;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+
 
 class CourseTest extends TestCase
 {
@@ -89,4 +92,15 @@ class CourseTest extends TestCase
         ]);
         $response->assertStatus(200);
     }
+
+    /*public function test_Add_Student_To_Course()
+    {
+        $course = factory(Course::class)->create();
+        $student = factory(Student::class)->create();
+        $courseController = new CourseController();
+        $StudentCourse =$courseController->addStudentToTheCourse($course, $student);
+        $this->assertDatabaseMissing('student', [
+            'course_id' => $course->id,
+        ]);
+    }*/
 }
