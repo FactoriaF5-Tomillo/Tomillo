@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h1>Añadir profesor</h1>
+      <h1>Actualizar datos del profesor</h1>
     </div>
     <div class="form">
       <div class="form-group">

@@ -1999,6 +1999,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -38485,10 +38487,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "form" }, [
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Titutlo")]),
         _vm._v(" "),
         _c("input", {
@@ -38511,8 +38513,10 @@ var render = function() {
               _vm.$set(_vm.course, "title", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
         _c("label", [_vm._v("Descripcion")]),
         _vm._v(" "),
         _c("input", {
@@ -38535,64 +38539,64 @@ var render = function() {
               _vm.$set(_vm.course, "description", $event.target.value)
             }
           }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col" }, [
-            _c("label", [_vm._v("Fecha primero dia")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.course.start_date,
-                  expression: "course.start_date"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "date", name: "start_date" },
-              domProps: { value: _vm.course.start_date },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.course, "start_date", $event.target.value)
-                }
-              }
-            })
-          ]),
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col" }, [
+          _c("label", [_vm._v("Fecha primero dia")]),
           _vm._v(" "),
-          _c("div", { staticClass: "col" }, [
-            _c("label", [_vm._v("Fecha ultimo dia")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.course.end_date,
-                  expression: "course.end_date"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "date", name: "end_date" },
-              domProps: { value: _vm.course.end_date },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.course, "end_date", $event.target.value)
-                }
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.course.start_date,
+                expression: "course.start_date"
               }
-            })
-          ])
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date", name: "start_date" },
+            domProps: { value: _vm.course.start_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.course, "start_date", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col" }, [
+          _c("label", [_vm._v("Fecha ultimo dia")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.course.end_date,
+                expression: "course.end_date"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { type: "date", name: "end_date" },
+            domProps: { value: _vm.course.end_date },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.course, "end_date", $event.target.value)
+              }
+            }
+          })
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
+      _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
           {
@@ -38623,8 +38627,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header" }, [
-      _c("h1", [_vm._v("Crear curso")])
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Actualizar datos del curso")])
     ])
   }
 ]
@@ -39888,7 +39892,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "page-title" }, [
-      _c("h1", [_vm._v("Añadir profesor")])
+      _c("h1", [_vm._v("Actualizar datos del profesor")])
     ])
   }
 ]
