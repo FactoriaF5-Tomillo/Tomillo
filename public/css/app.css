@@ -11117,7 +11117,7 @@ header h1 {
 }
 
 .list .list-content {
-  max-height: 65vh;
+  max-height: 60vh;
   overflow-y: auto;
   overflow-x: hidden;
 }

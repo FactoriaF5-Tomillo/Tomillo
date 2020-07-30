@@ -83,7 +83,7 @@ export default {
           course_id: this.course.id,
         })
         .then((response) => {
-          window.location.replace("/course/" + this.course.id);
+          window.location.replace("/course/" + this.course.id + "/students");
         });
     },
     goBack() {

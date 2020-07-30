@@ -80,6 +80,17 @@ class CourseController extends Controller
         return $course;
     }
 
+    public function showStudents(Course $course)
+    {
+        $course = New CourseResource($course);
+        return view('course.studentList', compact('course'));
+    }
+
+    public function showAssignTeacher(Course $course)
+    {
+        return view('course.add_teacher', compact('course'));
+    }
+
     public function addTeacherToTheCourse(Request $request)
     {
         $course = Course::find($request->course_id);
@@ -91,10 +102,5 @@ class CourseController extends Controller
 
         $courses = Course::all();
         return $course;
-    }
-
-    public function showAssignTeacher(Course $course)
-    {
-        return view('course.add_teacher', compact('course'));
     }
 }
