@@ -1,7 +1,7 @@
 main {
     height: calc(100vh - 50px);
     display: grid;
-    grid-template-columns: 10vw 90vw;
+    grid-template-columns: 150px calc(100vw - 150px);
     .side-bar {
         background-color: #999999;
         .nav-buttons {

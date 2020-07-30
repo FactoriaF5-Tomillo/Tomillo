@@ -6,39 +6,26 @@
         <a href="/student/create" class="btn btn-primary">Añadir Alumno</a>
       </div>
     </div>
-    <div>
-      <table class="table-list table">
-        <thead class="table-head">
-          <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Curso</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
-          </tr>
-        </thead>
-        <tbody class="table-body">
-          <tr v-bind:key="i" v-for="(student, i) in students">
-            <td>
-              <a :href="'student/' + student.id">{{student.name}}</a>
-            </td>
-            <td>
-              <a :href="'student/' + student.id">{{student.surname}}</a>
-            </td>
-            <td v-if="student.course">{{student.course.title}}</td>
-            <td>
-              <a :href="'student/' + student.id + '/edit'" class="action-icon">
-                <ion-icon name="create-outline"></ion-icon>
-              </a>
-            </td>
-            <td>
-              <a @click="deleteStudent(student)" class="action-icon">
-                <ion-icon name="trash-outline"></ion-icon>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="list">
+      <div class="list-heading">
+        <div class="list-row">
+          <h3>Nombre</h3>
+          <h3>Apellido</h3>
+          <h3>Curso</h3>
+          <h3>Acciones</h3>
+        </div>
+      </div>
+      <div class="list-content">
+        <div class="list-row" v-bind:key="i" v-for="(student, i) in students">
+          <p class="list-data">{{student.name}}</p>
+          <p class="list-data">{{student.surname}}</p>
+          <p class="list-data" v-if="student.course">{{student.course.title}}</p>
+          <div class="list-actions">
+            <a href>Editar</a>
+            <a href class="list-actions">Eliminar</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
