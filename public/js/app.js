@@ -2384,11 +2384,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      students: [],
-      courses: []
+      students: []
     };
   },
   methods: {
@@ -2396,6 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/students").then(function (response) {
+        console.log(response);
         _this.students = response.data;
       });
     },
@@ -2407,19 +2413,10 @@ __webpack_require__.r(__webpack_exports__);
           _this2.students = response.data;
         });
       }
-    },
-    getCourses: function getCourses() {
-      var _this3 = this;
-
-      axios.get("/api/courses").then(function (response) {
-        console.log("Hola");
-        _this3.courses = response.data;
-      });
     }
   },
   mounted: function mounted() {
     this.getStudents();
-    this.getCourses();
     console.log("Component mounted.");
   }
 });
@@ -39288,11 +39285,12 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
-      _c("table", { staticClass: "table" }, [
+      _c("table", { staticClass: "table-list table" }, [
         _vm._m(1),
         _vm._v(" "),
         _c(
           "tbody",
+          { staticClass: "table-body" },
           _vm._l(_vm.students, function(student, i) {
             return _c("tr", { key: i }, [
               _c("td", [
@@ -39302,70 +39300,38 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
+                _c("a", { attrs: { href: "student/" + student.id } }, [
+                  _vm._v(_vm._s(student.surname))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(student.course.title))]),
+              _vm._v(" "),
+              _c("td", [
                 _c(
                   "a",
                   {
-                    staticClass: "btn btn-success",
+                    staticClass: "action-icon",
                     attrs: { href: "student/" + student.id + "/edit" }
                   },
-                  [_vm._v("Modificar")]
+                  [_c("ion-icon", { attrs: { name: "create-outline" } })],
+                  1
                 )
               ]),
               _vm._v(" "),
               _c("td", [
                 _c(
-                  "select",
+                  "a",
                   {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.courses,
-                        expression: "courses"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { required: "" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.courses = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  [
-                    _c("option", [_vm._v("Elija curso")]),
-                    _vm._v(" "),
-                    _vm._l(_vm.courses, function(course) {
-                      return _c("option", { domProps: { value: course.id } }, [
-                        _vm._v(_vm._s(course.name))
-                      ])
-                    })
-                  ],
-                  2
-                )
-              ]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "button",
-                  {
+                    staticClass: "action-icon",
                     on: {
                       click: function($event) {
                         return _vm.deleteStudent(student)
                       }
                     }
                   },
-                  [_vm._v("Eliminar")]
+                  [_c("ion-icon", { attrs: { name: "trash-outline" } })],
+                  1
                 )
               ])
             ])
@@ -39381,31 +39347,37 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "card-header d-flex justify-content-between" },
-      [
-        _c("h1", [_vm._v("Alumnos")]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "/student/create" }
-            },
-            [_vm._v("Añadir Alumno")]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Alumnos")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { href: "/student/create" }
+          },
+          [_vm._v("Añadir Alumno")]
+        )
+      ])
+    ])
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [_c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")])])
+    return _c("thead", { staticClass: "table-head" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Curso")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
     ])
   }
 ]

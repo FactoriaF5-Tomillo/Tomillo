@@ -11095,3 +11095,13 @@ header h1 {
   margin-top: 50px;
 }
 
+.table-list {
+  display: block;
+  max-height: 400px;
+  overflow: auto;
+}
+
+.table-list .table-body {
+  overflow-y: scroll;
+}
+
