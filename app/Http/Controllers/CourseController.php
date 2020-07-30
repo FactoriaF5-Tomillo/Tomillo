@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Teacher;
 use App\Course;
 use App\Student;
 use Illuminate\Http\Request;
@@ -68,5 +69,23 @@ class CourseController extends Controller
         //$course->students()->associate($student);
         //return redirect('/students');
         return $student;
+    }
+
+    public function addTeacherToTheCourse(Request $request)
+    {
+
+        $course = Course::find($request->course_id);
+
+        $teacher = Teacher::find($request->course_id);
+
+        $course->teachers()->attach($teacher);
+
+        $courses = Course::all();
+        return $course;
+    }
+
+    public function showAssignTeacher(Course $course)
+    {
+        return view('course.add_teacher', compact('course'));
     }
 }

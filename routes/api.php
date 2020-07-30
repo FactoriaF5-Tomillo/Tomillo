@@ -36,3 +36,4 @@ Route::post('/courses', 'CourseController@store');
 Route::patch('/courses/{course}', 'CourseController@update');
 Route::delete('/courses/{course}', 'CourseController@destroy')->name('course.destroy');
 Route::post('/courses/{course}/addStudentToTheCourse', 'CourseController@addStudentToTheCourse');
+Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeacherToTheCourse');
