@@ -1936,11 +1936,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
     return {
-      students: []
+      students: [],
+      selectedStudents: []
     };
   },
   methods: {
@@ -1948,15 +1955,37 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/students").then(function (response) {
-        console.log(response);
-        _this.students = response.data;
+        response.data.forEach(function (student) {
+          student.selected = false;
+
+          _this.students.push(student);
+        });
       });
+    },
+    selectStudent: function selectStudent(student, index) {
+      this.students[index].selected = true;
+      this.selectedStudents.push(student);
     },
     addStudentToTheCourse: function addStudentToTheCourse(student) {
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
         student_id: student.id,
         course_id: this.course.id
       }).then(function (response) {});
+    },
+    assignStudents: function assignStudents() {
+      var _this2 = this;
+
+      var selectedStudentsIds = [];
+      this.selectedStudents.forEach(function (student) {
+        selectedStudentsIds.push(student.id);
+      });
+      console.log(selectedStudentsIds);
+      axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+        students: selectedStudentsIds,
+        course_id: this.course.id
+      }).then(function (response) {
+        window.location.replace("/course/" + _this2.course.id);
+      });
     },
     goBack: function goBack() {
       window.history.back();
@@ -2041,7 +2070,7 @@ __webpack_require__.r(__webpack_exports__);
       this.teachers[index].selected = true;
       this.selectedTeachers.push(teacher);
     },
-    assignTeachers: function assignTeachers(teacher) {
+    assignTeachers: function assignTeachers() {
       var _this2 = this;
 
       var selectedTeachersIds = [];
@@ -38526,23 +38555,31 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "list-actions" }, [
-              _c(
-                "a",
-                {
-                  attrs: { href: "" },
-                  on: {
-                    click: [
-                      function($event) {
-                        $event.preventDefault()
-                      },
-                      function($event) {
-                        return _vm.addStudentToTheCourse(student)
+              student.selected
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      attrs: { disabled: "" }
+                    },
+                    [_vm._v("Selecionado")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              !student.selected
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      on: {
+                        click: function($event) {
+                          return _vm.selectStudent(student, i)
+                        }
                       }
-                    ]
-                  }
-                },
-                [_vm._v("Asignar")]
-              )
+                    },
+                    [_vm._v("Selecionar")]
+                  )
+                : _vm._e()
             ])
           ])
         }),
@@ -38568,6 +38605,25 @@ var render = function() {
           }
         },
         [_vm._v("← Volver")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.assignStudents()
+              }
+            ]
+          }
+        },
+        [_vm._v("Submit")]
       )
     ])
   ])

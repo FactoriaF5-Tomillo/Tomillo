@@ -70,11 +70,13 @@ class CourseController extends Controller
     public function addStudentToTheCourse(Request $request, Course $course)
     {
         $course = Course::find($request->course_id);
-        $student = Student::find($request->student_id);
-        $course->students()->save($student);
-        //$course->students()->associate($student);
-        //return redirect('/students');
-        return $student;
+
+        foreach ($request->students as $studentId) {
+            $student = Student::find($studentId);
+            $course->students()->save($student);
+        };
+
+        return $course;
     }
 
     public function addTeacherToTheCourse(Request $request)

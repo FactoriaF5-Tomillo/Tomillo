@@ -58,7 +58,7 @@ export default {
       this.teachers[index].selected = true;
       this.selectedTeachers.push(teacher);
     },
-    assignTeachers(teacher) {
+    assignTeachers() {
       let selectedTeachersIds = [];
 
       this.selectedTeachers.forEach((teacher) => {

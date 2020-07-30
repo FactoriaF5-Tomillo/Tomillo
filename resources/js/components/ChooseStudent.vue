@@ -15,13 +15,19 @@
           <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
           <p class="list-data">{{student.surname}}</p>
           <div class="list-actions">
-            <a @click.prevent href @click="addStudentToTheCourse(student)">Asignar</a>
+            <button v-if="student.selected" class="btn btn-primary btn-sm" disabled>Selecionado</button>
+            <button
+              v-if="!student.selected"
+              class="btn btn-primary btn-sm"
+              @click="selectStudent(student, i)"
+            >Selecionar</button>
           </div>
         </div>
       </div>
     </div>
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+      <a @click.prevent @click="assignStudents()" href class="list-actions">Submit</a>
     </div>
   </div>
 </template>
@@ -32,14 +38,21 @@ export default {
   data() {
     return {
       students: [],
+      selectedStudents: [],
     };
   },
   methods: {
     getStudents() {
       axios.get("/api/students").then((response) => {
-        console.log(response);
-        this.students = response.data;
+        response.data.forEach((student) => {
+          student.selected = false;
+          this.students.push(student);
+        });
       });
+    },
+    selectStudent(student, index) {
+      this.students[index].selected = true;
+      this.selectedStudents.push(student);
     },
     addStudentToTheCourse(student) {
       axios
@@ -48,6 +61,24 @@ export default {
           course_id: this.course.id,
         })
         .then((response) => {});
+    },
+    assignStudents() {
+      let selectedStudentsIds = [];
+
+      this.selectedStudents.forEach((student) => {
+        selectedStudentsIds.push(student.id);
+      });
+
+      console.log(selectedStudentsIds);
+
+      axios
+        .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+          students: selectedStudentsIds,
+          course_id: this.course.id,
+        })
+        .then((response) => {
+          window.location.replace("/course/" + this.course.id);
+        });
     },
     goBack() {
       window.history.back();
