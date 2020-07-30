@@ -19,24 +19,23 @@
         </thead>
         <tbody class="table-body">
           <tr v-bind:key="i" v-for="(student, i) in students">
-                <td>
-                  <a :href="'student/' + student.id">{{student.name}}</a>
-                </td>
-                <td>
-                  <a :href="'student/' + student.id">{{student.surname}}</a>
-                </td>
-                <td>
-                  {{student.course}}
-                </td>
-                <td>
-                  <a :href="'student/' + student.id + '/edit'" class="action-icon">
-                  <ion-icon name="create-outline"></ion-icon></a>
-                </td>
-                <td>
-                  <a @click="deleteStudent(student)" class="action-icon">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </a>
-                </td>
+            <td>
+              <a :href="'student/' + student.id">{{student.name}}</a>
+            </td>
+            <td>
+              <a :href="'student/' + student.id">{{student.surname}}</a>
+            </td>
+            <td>{{student.course.title}}</td>
+            <td>
+              <a :href="'student/' + student.id + '/edit'" class="action-icon">
+                <ion-icon name="create-outline"></ion-icon>
+              </a>
+            </td>
+            <td>
+              <a @click="deleteStudent(student)" class="action-icon">
+                <ion-icon name="trash-outline"></ion-icon>
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -48,35 +47,27 @@
 export default {
   data() {
     return {
-        students: [],
-        courses: []
+      students: [],
     };
   },
   methods: {
     getStudents() {
       axios.get("/api/students").then((response) => {
+        console.log(response);
         this.students = response.data;
       });
     },
     deleteStudent(student) {
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
-        axios.delete("/api/students/"  + student.id).then((response) => {
+        axios.delete("/api/students/" + student.id).then((response) => {
           this.students = response.data;
         });
       }
     },
-      getCourses() {
-        axios.get("/api/courses").then((response) => {
-            console.log("Hola");
-            this.courses = response.data;
-          });
-      }
   },
   mounted() {
-      this.getStudents();
-      this.getCourses();
+    this.getStudents();
     console.log("Component mounted.");
   },
-
 };
 </script>

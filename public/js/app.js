@@ -2126,11 +2126,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-<<<<<<< Updated upstream
   props: ['course'],
-=======
-  props: ["course"],
->>>>>>> Stashed changes
   data: function data() {
     return {};
   },
@@ -2141,14 +2137,11 @@ __webpack_require__.r(__webpack_exports__);
           window.location.replace("/courses");
         });
       }
-<<<<<<< Updated upstream
     },
     addStudentToTheCourse: function addStudentToTheCourse() {
       axios.post("/api/courses/" + course.id + "/addStudentToTheCourse", this.students[0]).then(function (response) {
         window.location.replace("/courses");
       });
-=======
->>>>>>> Stashed changes
     }
   },
   mounted: function mounted() {
@@ -2391,21 +2384,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-<<<<<<< Updated upstream
-=======
 //
 //
 //
 //
 //
 //
-//
->>>>>>> Stashed changes
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      students: [],
-      courses: []
+      students: []
     };
   },
   methods: {
@@ -2413,6 +2401,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/students").then(function (response) {
+        console.log(response);
         _this.students = response.data;
       });
     },
@@ -2424,22 +2413,10 @@ __webpack_require__.r(__webpack_exports__);
           _this2.students = response.data;
         });
       }
-    },
-    getCourses: function getCourses() {
-      var _this3 = this;
-
-      axios.get("/api/courses").then(function (response) {
-<<<<<<< Updated upstream
-        console.log("Hola");
-=======
->>>>>>> Stashed changes
-        _this3.courses = response.data;
-      });
     }
   },
   mounted: function mounted() {
     this.getStudents();
-    this.getCourses();
     console.log("Component mounted.");
   }
 });
@@ -39308,19 +39285,12 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
-<<<<<<< Updated upstream
-      _c("table", { staticClass: "table" }, [
-=======
       _c("table", { staticClass: "table-list table" }, [
->>>>>>> Stashed changes
         _vm._m(1),
         _vm._v(" "),
         _c(
           "tbody",
-<<<<<<< Updated upstream
-=======
           { staticClass: "table-body" },
->>>>>>> Stashed changes
           _vm._l(_vm.students, function(student, i) {
             return _c("tr", { key: i }, [
               _c("td", [
@@ -39330,71 +39300,15 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
-<<<<<<< Updated upstream
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-success",
-                    attrs: { href: "student/" + student.id + "/edit" }
-                  },
-                  [_vm._v("Modificar")]
-=======
                 _c("a", { attrs: { href: "student/" + student.id } }, [
                   _vm._v(_vm._s(student.surname))
                 ])
               ]),
               _vm._v(" "),
-              _c("td", [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(student.course) +
-                    "\n              "
->>>>>>> Stashed changes
-                )
-              ]),
+              _c("td", [_vm._v(_vm._s(student.course.title))]),
               _vm._v(" "),
               _c("td", [
                 _c(
-<<<<<<< Updated upstream
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.courses,
-                        expression: "courses"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { required: "" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.courses = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  [
-                    _c("option", [_vm._v("Elija curso")]),
-                    _vm._v(" "),
-                    _vm._l(_vm.courses, function(course) {
-                      return _c("option", { domProps: { value: course.id } }, [
-                        _vm._v(_vm._s(course.name))
-                      ])
-                    })
-                  ],
-                  2
-=======
                   "a",
                   {
                     staticClass: "action-icon",
@@ -39402,32 +39316,22 @@ var render = function() {
                   },
                   [_c("ion-icon", { attrs: { name: "create-outline" } })],
                   1
->>>>>>> Stashed changes
                 )
               ]),
               _vm._v(" "),
               _c("td", [
                 _c(
-<<<<<<< Updated upstream
-                  "button",
-                  {
-=======
                   "a",
                   {
                     staticClass: "action-icon",
->>>>>>> Stashed changes
                     on: {
                       click: function($event) {
                         return _vm.deleteStudent(student)
                       }
                     }
                   },
-<<<<<<< Updated upstream
-                  [_vm._v("Eliminar")]
-=======
                   [_c("ion-icon", { attrs: { name: "trash-outline" } })],
                   1
->>>>>>> Stashed changes
                 )
               ])
             ])
@@ -39443,26 +39347,6 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< Updated upstream
-    return _c(
-      "div",
-      { staticClass: "card-header d-flex justify-content-between" },
-      [
-        _c("h1", [_vm._v("Alumnos")]),
-        _vm._v(" "),
-        _c("div", [
-          _c(
-            "a",
-            {
-              staticClass: "btn btn-primary",
-              attrs: { href: "/student/create" }
-            },
-            [_vm._v("Añadir Alumno")]
-          )
-        ])
-      ]
-    )
-=======
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Alumnos")]),
       _vm._v(" "),
@@ -39477,16 +39361,11 @@ var staticRenderFns = [
         )
       ])
     ])
->>>>>>> Stashed changes
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-<<<<<<< Updated upstream
-    return _c("thead", [
-      _c("tr", [_c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")])])
-=======
     return _c("thead", { staticClass: "table-head" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
@@ -39499,7 +39378,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
       ])
->>>>>>> Stashed changes
     ])
   }
 ]
@@ -53296,13 +53174,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< Updated upstream
 __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
-=======
-__webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
->>>>>>> Stashed changes
 
 
 /***/ })
