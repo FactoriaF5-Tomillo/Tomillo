@@ -2126,7 +2126,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+<<<<<<< Updated upstream
   props: ['course'],
+=======
+  props: ["course"],
+>>>>>>> Stashed changes
   data: function data() {
     return {};
   },
@@ -2137,11 +2141,14 @@ __webpack_require__.r(__webpack_exports__);
           window.location.replace("/courses");
         });
       }
+<<<<<<< Updated upstream
     },
     addStudentToTheCourse: function addStudentToTheCourse() {
       axios.post("/api/courses/" + course.id + "/addStudentToTheCourse", this.students[0]).then(function (response) {
         window.location.replace("/courses");
       });
+=======
+>>>>>>> Stashed changes
     }
   },
   mounted: function mounted() {
@@ -2384,6 +2391,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+<<<<<<< Updated upstream
+=======
+//
+//
+//
+//
+//
+//
+//
+>>>>>>> Stashed changes
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2412,7 +2429,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.get("/api/courses").then(function (response) {
+<<<<<<< Updated upstream
         console.log("Hola");
+=======
+>>>>>>> Stashed changes
         _this3.courses = response.data;
       });
     }
@@ -39288,11 +39308,19 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
+<<<<<<< Updated upstream
       _c("table", { staticClass: "table" }, [
+=======
+      _c("table", { staticClass: "table-list table" }, [
+>>>>>>> Stashed changes
         _vm._m(1),
         _vm._v(" "),
         _c(
           "tbody",
+<<<<<<< Updated upstream
+=======
+          { staticClass: "table-body" },
+>>>>>>> Stashed changes
           _vm._l(_vm.students, function(student, i) {
             return _c("tr", { key: i }, [
               _c("td", [
@@ -39302,6 +39330,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("td", [
+<<<<<<< Updated upstream
                 _c(
                   "a",
                   {
@@ -39309,11 +39338,24 @@ var render = function() {
                     attrs: { href: "student/" + student.id + "/edit" }
                   },
                   [_vm._v("Modificar")]
+=======
+                _c("a", { attrs: { href: "student/" + student.id } }, [
+                  _vm._v(_vm._s(student.surname))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(student.course) +
+                    "\n              "
+>>>>>>> Stashed changes
                 )
               ]),
               _vm._v(" "),
               _c("td", [
                 _c(
+<<<<<<< Updated upstream
                   "select",
                   {
                     directives: [
@@ -39352,20 +39394,40 @@ var render = function() {
                     })
                   ],
                   2
+=======
+                  "a",
+                  {
+                    staticClass: "action-icon",
+                    attrs: { href: "student/" + student.id + "/edit" }
+                  },
+                  [_c("ion-icon", { attrs: { name: "create-outline" } })],
+                  1
+>>>>>>> Stashed changes
                 )
               ]),
               _vm._v(" "),
               _c("td", [
                 _c(
+<<<<<<< Updated upstream
                   "button",
                   {
+=======
+                  "a",
+                  {
+                    staticClass: "action-icon",
+>>>>>>> Stashed changes
                     on: {
                       click: function($event) {
                         return _vm.deleteStudent(student)
                       }
                     }
                   },
+<<<<<<< Updated upstream
                   [_vm._v("Eliminar")]
+=======
+                  [_c("ion-icon", { attrs: { name: "trash-outline" } })],
+                  1
+>>>>>>> Stashed changes
                 )
               ])
             ])
@@ -39381,6 +39443,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+<<<<<<< Updated upstream
     return _c(
       "div",
       { staticClass: "card-header d-flex justify-content-between" },
@@ -39399,13 +39462,44 @@ var staticRenderFns = [
         ])
       ]
     )
+=======
+    return _c("div", { staticClass: "page-title" }, [
+      _c("h1", [_vm._v("Alumnos")]),
+      _vm._v(" "),
+      _c("div", [
+        _c(
+          "a",
+          {
+            staticClass: "btn btn-primary",
+            attrs: { href: "/student/create" }
+          },
+          [_vm._v("Añadir Alumno")]
+        )
+      ])
+    ])
+>>>>>>> Stashed changes
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+<<<<<<< Updated upstream
     return _c("thead", [
       _c("tr", [_c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")])])
+=======
+    return _c("thead", { staticClass: "table-head" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellido")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Curso")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Edit")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Delete")])
+      ])
+>>>>>>> Stashed changes
     ])
   }
 ]
@@ -53202,8 +53296,13 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< Updated upstream
 __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
+>>>>>>> Stashed changes
 
 
 /***/ })
