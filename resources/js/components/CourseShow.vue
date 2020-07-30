@@ -19,6 +19,7 @@
       <h3>Pages:</h3>
       <div class="action-buttons">
         <a class="btn btn-dark" :href="'/course/' + course.id + '/students'">Alumnos</a>
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/teachers'">Profesores</a>
       </div>
     </div>
     <div class="actions">

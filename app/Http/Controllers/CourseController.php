@@ -103,4 +103,10 @@ class CourseController extends Controller
         $courses = Course::all();
         return $course;
     }
+
+    public function showTeachers(Course $course)
+    {
+        $course = New CourseResource($course);
+        return view('course.teacherList', compact('course'));
+    }
 }
