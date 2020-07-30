@@ -45,7 +45,7 @@
         />
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary" href="/courses">&#8592; Volver</a>
+        <a class="btn btn-secondary" href="/students">&#8592; Volver</a>
         <button class="btn btn-primary" @click="createStudent(student)" value="Crear">Crear</button>
       </div>
     </div>

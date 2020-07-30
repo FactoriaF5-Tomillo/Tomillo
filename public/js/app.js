@@ -39065,7 +39065,7 @@ var render = function() {
       _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/courses" } },
+          { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
           [_vm._v("← Volver")]
         ),
         _vm._v(" "),
