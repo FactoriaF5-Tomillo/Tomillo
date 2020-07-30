@@ -1,0 +1,18 @@
+.table-list{
+    display:block;
+    .table-head{
+        display:block;
+        overflow: auto; 
+        tr{
+            overflow: auto; 
+        }
+        
+    }
+    .table-body{
+        display:block;
+        max-height:300px;
+        overflow: auto; 
+        overflow-y:scroll;
+        
+    }
+} 
