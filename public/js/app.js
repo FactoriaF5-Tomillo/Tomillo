@@ -2410,7 +2410,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
         axios["delete"]("/api/students/" + student.id).then(function (response) {
-          _this2.students = response.data;
+          _this2.getStudents();
         });
       }
     }

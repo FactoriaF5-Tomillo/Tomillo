@@ -60,7 +60,7 @@ export default {
     deleteStudent(student) {
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
         axios.delete("/api/students/" + student.id).then((response) => {
-          this.students = response.data;
+          this.getStudents();
         });
       }
     },
