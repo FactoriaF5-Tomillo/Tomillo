@@ -2011,11 +2011,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
     return {
-      teachers: []
+      teachers: [],
+      selectedTeachers: []
     };
   },
   methods: {
@@ -2023,13 +2030,30 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/teachers").then(function (response) {
-        _this.teachers = response.data;
+        response.data.forEach(function (teacher) {
+          teacher.selected = false;
+
+          _this.teachers.push(teacher);
+        });
       });
     },
-    assignTeacher: function assignTeacher(teacher) {
+    selectTeacher: function selectTeacher(teacher, index) {
+      this.teachers[index].selected = true;
+      this.selectedTeachers.push(teacher);
+    },
+    assignTeachers: function assignTeachers(teacher) {
+      var _this2 = this;
+
+      var selectedTeachersIds = [];
+      this.selectedTeachers.forEach(function (teacher) {
+        selectedTeachersIds.push(teacher.id);
+      });
+      console.log(selectedTeachersIds);
       axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
-        teacher_id: teacher.id,
+        teachers: selectedTeachersIds,
         course_id: this.course.id
+      }).then(function (response) {
+        window.location.replace("/course/" + _this2.course.id);
       });
     },
     goBack: function goBack() {
@@ -38620,23 +38644,31 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "list-actions" }, [
-              _c(
-                "a",
-                {
-                  attrs: { href: "" },
-                  on: {
-                    click: [
-                      function($event) {
-                        $event.preventDefault()
-                      },
-                      function($event) {
-                        return _vm.assignTeacher(teacher)
+              teacher.selected
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      attrs: { disabled: "" }
+                    },
+                    [_vm._v("Selecionado")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              !teacher.selected
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-sm",
+                      on: {
+                        click: function($event) {
+                          return _vm.selectTeacher(teacher, i)
+                        }
                       }
-                    ]
-                  }
-                },
-                [_vm._v("Asignar")]
-              )
+                    },
+                    [_vm._v("Selecionar")]
+                  )
+                : _vm._e()
             ])
           ])
         }),
@@ -38662,6 +38694,25 @@ var render = function() {
           }
         },
         [_vm._v("← Volver")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.assignTeachers()
+              }
+            ]
+          }
+        },
+        [_vm._v("Submit")]
       )
     ])
   ])
@@ -38683,9 +38734,9 @@ var staticRenderFns = [
       _c("div", { staticClass: "list-row" }, [
         _c("h3", [_vm._v("Nombre")]),
         _vm._v(" "),
-        _c("h3", [_vm._v("Apellido")]),
-        _vm._v(" "),
         _c("h3", [_vm._v("Email")]),
+        _vm._v(" "),
+        _c("h3", [_vm._v("Selcionado")]),
         _vm._v(" "),
         _c("h3", [_vm._v("Acciones")])
       ])

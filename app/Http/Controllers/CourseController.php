@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
 use App\Course;
 use App\Student;
+use App\Teacher;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -66,6 +66,7 @@ class CourseController extends Controller
     {
         return view('course.chooseStudent', compact('course'));
     }
+
     public function addStudentToTheCourse(Request $request, Course $course)
     {
         $course = Course::find($request->course_id);
@@ -78,12 +79,12 @@ class CourseController extends Controller
 
     public function addTeacherToTheCourse(Request $request)
     {
-
         $course = Course::find($request->course_id);
 
-        $teacher = Teacher::find($request->course_id);
-
-        $course->teachers()->attach($teacher);
+        foreach ($request->teachers as $teacherId) {
+            $teacher = Teacher::find($teacherId);
+            $course->teachers()->attach($teacher);
+        };
 
         $courses = Course::all();
         return $course;
@@ -94,4 +95,3 @@ class CourseController extends Controller
         return view('course.add_teacher', compact('course'));
     }
 }
-

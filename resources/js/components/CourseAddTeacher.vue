@@ -7,24 +7,30 @@
       <div class="list-heading">
         <div class="list-row">
           <h3>Nombre</h3>
-          <h3>Apellido</h3>
           <h3>Email</h3>
+          <h3>Selcionado</h3>
           <h3>Acciones</h3>
         </div>
       </div>
       <div class="list-content">
-        <div class="list-row" v-bind:key="i" v-for="(teacher, i) in teachers">
+        <div class="list-row" :key="i" v-for="(teacher, i) in teachers">
           <a :href="'/teacher/' + teacher.id" class="list-data">{{teacher.name}}</a>
           <p class="list-data">{{teacher.surname}}</p>
           <p class="list-data">{{teacher.email}}</p>
           <div class="list-actions">
-            <a @click.prevent href @click="assignTeacher(teacher)">Asignar</a>
+            <button v-if="teacher.selected" class="btn btn-primary btn-sm" disabled>Selecionado</button>
+            <button
+              v-if="!teacher.selected"
+              class="btn btn-primary btn-sm"
+              @click="selectTeacher(teacher, i)"
+            >Selecionar</button>
           </div>
         </div>
       </div>
     </div>
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+      <a @click.prevent @click="assignTeachers()" href class="list-actions">Submit</a>
     </div>
   </div>
 </template>
@@ -36,19 +42,39 @@ export default {
   data() {
     return {
       teachers: [],
+      selectedTeachers: [],
     };
   },
   methods: {
     getTeachers() {
       axios.get("/api/teachers").then((response) => {
-        this.teachers = response.data;
+        response.data.forEach((teacher) => {
+          teacher.selected = false;
+          this.teachers.push(teacher);
+        });
       });
     },
-    assignTeacher(teacher) {
-      axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
-        teacher_id: teacher.id,
-        course_id: this.course.id,
+    selectTeacher(teacher, index) {
+      this.teachers[index].selected = true;
+      this.selectedTeachers.push(teacher);
+    },
+    assignTeachers(teacher) {
+      let selectedTeachersIds = [];
+
+      this.selectedTeachers.forEach((teacher) => {
+        selectedTeachersIds.push(teacher.id);
       });
+
+      console.log(selectedTeachersIds);
+
+      axios
+        .post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
+          teachers: selectedTeachersIds,
+          course_id: this.course.id,
+        })
+        .then((response) => {
+          window.location.replace("/course/" + this.course.id);
+        });
     },
     goBack() {
       window.history.back();
