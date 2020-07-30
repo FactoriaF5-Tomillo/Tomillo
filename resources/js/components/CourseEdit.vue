@@ -23,8 +23,8 @@
         </div>
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary mb-2" href="/courses">&#8592; Volver</a>
-        <button class="btn btn-primary mb-2" @click="editCourse()">Editar</button>
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+        <button class="btn btn-primary" @click="editCourse()">Editar</button>
       </div>
     </div>
   </div>
@@ -43,6 +43,9 @@ export default {
         .then((response) => {
           window.location.replace("/courses");
         });
+    },
+    goBack() {
+      window.history.back();
     },
   },
   mounted() {

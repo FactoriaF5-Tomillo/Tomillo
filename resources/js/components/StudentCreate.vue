@@ -45,7 +45,7 @@
         />
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary" href="/students">&#8592; Volver</a>
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn btn-primary" @click="createStudent(student)" value="Crear">Crear</button>
       </div>
     </div>
@@ -69,6 +69,9 @@ export default {
       axios
         .post("/api/students/", this.student)
         .then(window.location.replace("/students"));
+    },
+    goBack() {
+      window.history.back();
     },
   },
 };

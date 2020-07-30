@@ -23,8 +23,8 @@
         </div>
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary mb-2" href="/courses">&#8592; Volver</a>
-        <button class="btn btn-primary mb-2" @click="createCourse()">Crear</button>
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+        <button class="btn btn-primary" @click="createCourse()">Crear</button>
       </div>
     </div>
   </div>
@@ -42,6 +42,9 @@ export default {
       axios.post("/api/courses", this.course).then((response) => {
         window.location.replace("/courses");
       });
+    },
+    goBack() {
+      window.history.back();
     },
   },
   mounted() {

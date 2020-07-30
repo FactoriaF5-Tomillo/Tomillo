@@ -45,7 +45,7 @@
         />
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary" href="/students">&#8592; Volver</a>
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn btn-primary" @click="updateStudentInfo(student)" value="Crear">Editar</button>
       </div>
     </div>
@@ -66,6 +66,9 @@ export default {
       axios
         .patch("/api/students/" + student.id, this.student)
         .then(window.location.replace("/students"));
+    },
+    goBack() {
+      window.history.back();
     },
   },
 };

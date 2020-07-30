@@ -1951,6 +1951,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/courses", this.course).then(function (response) {
         window.location.replace("/courses");
       });
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -2011,6 +2014,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.patch("/api/courses/" + this.course.id, this.course).then(function (response) {
         window.location.replace("/courses");
       });
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -2265,6 +2271,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     createStudent: function createStudent(student) {
       axios.post("/api/students/", this.student).then(window.location.replace("/students"));
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   }
 });
@@ -2345,6 +2354,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     updateStudentInfo: function updateStudentInfo(student) {
       axios.patch("/api/students/" + student.id, this.student).then(window.location.replace("/students"));
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   }
 });
@@ -2533,6 +2545,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/teachers", this.teacher).then(function (response) {
         window.location.replace("/teachers");
       });
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -2595,6 +2610,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.patch("/api/teachers/" + this.teacher.id, this.teacher).then(function (response) {
         window.location.replace("/teachers");
       });
+    },
+    goBack: function goBack() {
+      window.history.back();
     }
   },
   mounted: function mounted() {
@@ -38433,8 +38451,18 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-secondary mb-2",
-            attrs: { href: "/courses" }
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
           },
           [_vm._v("← Volver")]
         ),
@@ -38442,7 +38470,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary mb-2",
+            staticClass: "btn btn-primary",
             on: {
               click: function($event) {
                 return _vm.createCourse()
@@ -38600,8 +38628,18 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-secondary mb-2",
-            attrs: { href: "/courses" }
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
           },
           [_vm._v("← Volver")]
         ),
@@ -38609,7 +38647,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary mb-2",
+            staticClass: "btn btn-primary",
             on: {
               click: function($event) {
                 return _vm.editCourse()
@@ -39067,7 +39105,20 @@ var render = function() {
       _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
+          {
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
+          },
           [_vm._v("← Volver")]
         ),
         _vm._v(" "),
@@ -39299,7 +39350,20 @@ var render = function() {
       _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
-          { staticClass: "btn btn-secondary", attrs: { href: "/students" } },
+          {
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
+          },
           [_vm._v("← Volver")]
         ),
         _vm._v(" "),
@@ -39682,8 +39746,18 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-secondary mb-2",
-            attrs: { href: "/teachers" }
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
           },
           [_vm._v("← Volver")]
         ),
@@ -39691,7 +39765,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary mb-2",
+            staticClass: "btn btn-primary",
             on: {
               click: function($event) {
                 return _vm.createTeacher()
@@ -39864,8 +39938,18 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-secondary mb-2",
-            attrs: { href: "/teachers" }
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
           },
           [_vm._v("← Volver")]
         ),

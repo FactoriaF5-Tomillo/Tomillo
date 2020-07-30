@@ -25,7 +25,7 @@
         </select>
       </div>
       <div class="form-submit">
-        <a class="btn btn-secondary mb-2" href="/teachers">&#8592; Volver</a>
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn btn-primary mb-2" @click="editTeacher()">Editar</button>
       </div>
     </div>
@@ -45,6 +45,9 @@ export default {
         .then((response) => {
           window.location.replace("/teachers");
         });
+    },
+    goBack() {
+      window.history.back();
     },
   },
   mounted() {
