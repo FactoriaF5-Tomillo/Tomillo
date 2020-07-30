@@ -12,10 +12,11 @@
         <label>Email</label>
         <input class="form-control" type="text" name="email" v-model="teacher.email" />
         <label>Sexo</label>
-        <select v-model="teacher.gender" class="form-control">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
+            <select v-model="student.gender" class="form-control">
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+                <option value="female">Otro</option>
+            </select>
       </div>
       <div class="card-footer d-flex justify-content-between">
         <a class="btn btn-secondary mb-2" href="/teachers">&#8592; Volver</a>

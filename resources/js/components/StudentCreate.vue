@@ -27,8 +27,9 @@
       <div class="form-group">
         <label>Sexo</label>
         <select v-model="student.gender" class="form-control">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="male">Hombre</option>
+          <option value="female">Mujer</option>
+          <option value="female">Otro</option>
         </select>
       </div>
       <div class="form-group">

@@ -33,9 +33,13 @@
             <input type="email" name="email" v-model="student.email" class="form-control" required />
           </div>
           <div class="form-group">
-            <label>Sexo</label>
-            <input type="text" name="gender" v-model="student.gender" class="form-control" required />
-          </div>
+                <label>Sexo</label>
+                    <select v-model="student.gender" class="form-control">
+                        <option value="male">Hombre</option>
+                        <option value="female">Mujer</option>
+                        <option value="female">Otro</option>
+                    </select>
+        </div>
           <div class="form-group">
             <label>Curso Actual</label>
             <input

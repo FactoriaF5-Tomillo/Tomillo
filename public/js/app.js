@@ -2243,6 +2243,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2272,6 +2273,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -2514,6 +2519,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2543,6 +2549,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -39008,9 +39019,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Female")])
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -39205,27 +39218,50 @@ var render = function() {
             _c("div", { staticClass: "form-group" }, [
               _c("label", [_vm._v("Sexo")]),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.student.gender,
-                    expression: "student.gender"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text", name: "gender", required: "" },
-                domProps: { value: _vm.student.gender },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.student.gender,
+                      expression: "student.gender"
                     }
-                    _vm.$set(_vm.student, "gender", $event.target.value)
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.student,
+                        "gender",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
                   }
-                }
-              })
+                },
+                [
+                  _c("option", { attrs: { value: "male" } }, [
+                    _vm._v("Hombre")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "female" } }, [
+                    _vm._v("Mujer")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -39569,8 +39605,8 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.teacher.gender,
-                expression: "teacher.gender"
+                value: _vm.student.gender,
+                expression: "student.gender"
               }
             ],
             staticClass: "form-control",
@@ -39585,7 +39621,7 @@ var render = function() {
                     return val
                   })
                 _vm.$set(
-                  _vm.teacher,
+                  _vm.student,
                   "gender",
                   $event.target.multiple ? $$selectedVal : $$selectedVal[0]
                 )
@@ -39593,9 +39629,11 @@ var render = function() {
             }
           },
           [
-            _c("option", { attrs: { value: "male" } }, [_vm._v("Male")]),
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "female" } }, [_vm._v("Female")])
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
           ]
         )
       ]),
@@ -39756,7 +39794,46 @@ var render = function() {
               _vm.$set(_vm.teacher, "gender", $event.target.value)
             }
           }
-        })
+        }),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.student.gender,
+                expression: "student.gender"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.student,
+                  "gender",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { attrs: { value: "male" } }, [_vm._v("Hombre")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Mujer")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "female" } }, [_vm._v("Otro")])
+          ]
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-footer d-flex justify-content-between" }, [
@@ -53187,8 +53264,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
