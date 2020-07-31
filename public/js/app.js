@@ -38757,7 +38757,7 @@ var render = function() {
             ]
           }
         },
-        [_vm._v("Submit")]
+        [_vm._v("Guardar")]
       )
     ])
   ])
@@ -38902,7 +38902,7 @@ var render = function() {
             ]
           }
         },
-        [_vm._v("Submit")]
+        [_vm._v("Guardar")]
       )
     ])
   ])

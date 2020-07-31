@@ -27,7 +27,7 @@
     </div>
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
-      <a @click.prevent @click="assignStudents()" href class="list-actions">Submit</a>
+      <a @click.prevent @click="assignStudents()" href class="list-actions">Guardar</a>
     </div>
   </div>
 </template>
