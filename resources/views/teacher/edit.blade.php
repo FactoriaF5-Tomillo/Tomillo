@@ -1,4 +1,4 @@
 @extends('layouts.dashboard')
 @section('content')
-<teacher-edit :teacher='@json($teacher)'></teacher-edit>
+<teacher-edit :user='@json($user)'></teacher-edit>
 @endsection

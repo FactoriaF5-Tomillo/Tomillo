@@ -18,17 +18,17 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/students', 'StudentController@getStudents');
-Route::get('/students/{student}', 'StudentController@getStudent');
-Route::post('/students', 'StudentController@store')->name('student.store');
-Route::patch('/students/{student}', 'StudentController@update')->name('student.update');
-Route::delete('/students/{student}', 'StudentController@destroy')->name('student.destroy');
+Route::get('/students', 'UserController@getStudents');
+Route::get('/students/{student}', 'UserController@getStudent');
+Route::post('/students', 'UserController@store')->name('student.store');
+Route::patch('/students/{student}', 'UserController@update')->name('student.update');
+Route::delete('/students/{student}', 'UserController@destroy')->name('student.destroy');
 
-Route::get('/teachers', 'TeacherController@getTeachers');
-Route::get('/teachers/{teacher}', 'TeacherController@getTeacher');
-Route::post('/teachers', 'TeacherController@store')->name('student.store');
-Route::patch('/teachers/{teacher}', 'TeacherController@update')->name('student.update');
-Route::delete('/teachers/{teacher}', 'TeacherController@destroy')->name('student.destroy');
+Route::get('/teachers', 'UserController@getTeachers');
+Route::get('/teachers/{teacher}', 'UserController@getTeacher');
+Route::post('/teachers', 'UserController@store')->name('student.store');
+Route::patch('/teachers/{teacher}', 'UserController@update')->name('student.update');
+Route::delete('/teachers/{teacher}', 'UserController@destroy')->name('student.destroy');
 
 Route::get('/courses', 'CourseController@getCourses');
 Route::get('/courses/{course}', 'CourseController@getCourse');
