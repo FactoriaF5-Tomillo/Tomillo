@@ -10,10 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+
      */
     protected $fillable = [
         'name', 'surname', 'email', 'password', 'type', 'gender','nationality'
@@ -36,4 +33,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
 }
