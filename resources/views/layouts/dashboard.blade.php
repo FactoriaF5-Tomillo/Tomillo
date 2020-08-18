@@ -24,10 +24,10 @@
 </head>
 <body>
     <div id="app">
-        <header>
+        <header class="dashboard-header">
             <h1>Tomillo</h1>
         </header>
-        <main class="">
+        <main class="dashboard">
             <div class="side-bar">
                 <div class="nav-buttons">
                     <a href="/courses" class="btn btn-secondary">Cursos</a>
