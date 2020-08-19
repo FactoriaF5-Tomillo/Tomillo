@@ -25,13 +25,13 @@ class UserController extends Controller
 
     public function getTeachers()
     {
-        $teachers = User::where('type', 'Teacher')->get();
+        $teachers = UserResource::collection(User::where('type', 'Teacher')->get());
         return $teachers;
     }
 
     public function getTeacher(User $user)
     {
-        return $user;
+        return new UserResource($user);
     }
 
     public function getStudents()
@@ -42,7 +42,7 @@ class UserController extends Controller
 
     public function getStudent(User $user)
     {
-        return $user;
+        return new UserResource($user);
     }
 
     public function createTeacher()
