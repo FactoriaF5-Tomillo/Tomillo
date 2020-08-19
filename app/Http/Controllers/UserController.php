@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\User;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class UserController extends Controller
 
     public function getStudents()
     {
-        $students = User::where('type', 'Student')->get();
+        $students = UserResource::collection(User::where('type', 'Student')->get());
         return $students;
     }
 
