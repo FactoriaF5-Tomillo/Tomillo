@@ -25,8 +25,8 @@
     <div class="actions">
       <h3>Acciones:</h3>
       <div class="action-buttons">
-        <a class="btn btn-dark" :href="'/course/' + course.id + '/assign-teachers'">Asignar Profe</a>
         <a class="btn btn-dark" :href="'/course/' + course.id + '/assign-studetns'">Asignar Alumnos</a>
+        <a class="btn btn-dark" :href="'/course/' + course.id + '/assign-teachers'">Asignar Profe</a>
         <a class="btn btn-dark" :href="'/course/' + course.id + '/edit'">Editar</a>
         <a class="btn btn-dark" href @click.prevent @click="deleteCourse(course)">Eliminar</a>
       </div>

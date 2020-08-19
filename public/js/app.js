@@ -39469,18 +39469,18 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-dark",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
           },
-          [_vm._v("Asignar Profe")]
+          [_vm._v("Asignar Alumnos")]
         ),
         _vm._v(" "),
         _c(
           "a",
           {
             staticClass: "btn btn-dark",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
           },
-          [_vm._v("Asignar Alumnos")]
+          [_vm._v("Asignar Profe")]
         ),
         _vm._v(" "),
         _c(
