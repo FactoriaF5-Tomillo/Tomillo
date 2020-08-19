@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Http\Resources\User as UserResource;
+
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
@@ -57,7 +59,14 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $user = User::create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'type' => 'Teacher',
+            'gender' => $request->gender,
+            'password' => Hash::make('password')
+        ]);
         return $user;
     }
 
