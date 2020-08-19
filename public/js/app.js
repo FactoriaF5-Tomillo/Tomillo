@@ -1942,6 +1942,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -1956,12 +1960,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/students").then(function (response) {
         response.data.forEach(function (student) {
-          //   if (student.course) {
-          //     student.selected = true;
-          //   }
-          //   if (!student.course) {
-          //     student.selected = false;
-          //   }
+          student.selected = false;
+
           _this.students.push(student);
         });
       });
@@ -1969,6 +1969,11 @@ __webpack_require__.r(__webpack_exports__);
     selectStudent: function selectStudent(student, index) {
       this.students[index].selected = true;
       this.selectedStudents.push(student);
+    },
+    unselectStudent: function unselectStudent(student, studentIndex) {
+      this.students[studentIndex].selected = false;
+      var index = this.selectedStudents.indexOf(studentIndex);
+      this.selectedStudents.splice(index, 1);
     },
     addStudentToTheCourse: function addStudentToTheCourse(student) {
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
@@ -38700,8 +38705,12 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm",
-                      attrs: { disabled: "" }
+                      staticClass: "btn btn-primary btn-sm selected-button",
+                      on: {
+                        click: function($event) {
+                          return _vm.unselectStudent(student, i)
+                        }
+                      }
                     },
                     [_vm._v("Selecionado")]
                   )

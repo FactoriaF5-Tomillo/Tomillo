@@ -8,7 +8,6 @@ use App\Teacher;
 Use App\User;
 use App\Http\Resources\Course as CourseResource;
 use App\Policies\CoursePolicy;
-use App\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller

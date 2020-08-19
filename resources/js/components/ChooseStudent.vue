@@ -15,7 +15,11 @@
           <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
           <p class="list-data">{{student.surname}}</p>
           <div class="list-actions">
-            <button v-if="student.selected" class="btn btn-primary btn-sm" disabled>Selecionado</button>
+            <button
+              v-if="student.selected"
+              class="btn btn-primary btn-sm selected-button"
+              @click="unselectStudent(student, i)"
+            >Selecionado</button>
             <button
               v-if="!student.selected"
               class="btn btn-primary btn-sm"
@@ -45,12 +49,7 @@ export default {
     getStudents() {
       axios.get("/api/students").then((response) => {
         response.data.forEach((student) => {
-          //   if (student.course) {
-          //     student.selected = true;
-          //   }
-          //   if (!student.course) {
-          //     student.selected = false;
-          //   }
+          student.selected = false;
           this.students.push(student);
         });
       });
@@ -58,6 +57,11 @@ export default {
     selectStudent(student, index) {
       this.students[index].selected = true;
       this.selectedStudents.push(student);
+    },
+    unselectStudent(student, studentIndex) {
+      this.students[studentIndex].selected = false;
+      const index = this.selectedStudents.indexOf(studentIndex);
+      this.selectedStudents.splice(index, 1);
     },
     addStudentToTheCourse(student) {
       axios
