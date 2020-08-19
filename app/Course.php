@@ -1,8 +1,8 @@
 <?php
 
 namespace App;
-use App\Student;
-use App\Teacher;
+use App\User;
+
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class Course extends Model
 
     public function users()
     {
-        return $this->hasMany(Student::class);
+        return $this->belongsToMany(User::class);
     }
 }

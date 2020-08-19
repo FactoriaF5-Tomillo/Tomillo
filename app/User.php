@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\Course;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,6 +36,6 @@ class User extends Authenticatable
 
     public function course()
     {
-        return $this->hasMany(Course::class);
+        return $this->belongsToMany(Course::class);
     }
 }
