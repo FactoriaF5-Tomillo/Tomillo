@@ -10,16 +10,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function indexTeacher()
     {
         $teachers = User::where('type', 'Teacher')->get();
         return view('teacher.index', compact('teachers'));
-
     }
 
     public function indexStudent()
@@ -27,8 +21,6 @@ class UserController extends Controller
         $students = User::where('type', 'Student')->get();
         return view('student.index', compact('students'));
     }
-
-
 
     public function getTeachers()
     {
@@ -40,11 +32,13 @@ class UserController extends Controller
     {
         return $user;
     }
+
     public function getStudents()
     {
         $students = User::where('type', 'Student')->get();
         return $students;
     }
+
     public function getStudent(User $user)
     {
         return $user;
@@ -54,6 +48,7 @@ class UserController extends Controller
     {
         return view('teacher.create');
     }
+
     public function createStudent()
     {
         return view('student.create');
@@ -68,8 +63,8 @@ class UserController extends Controller
     public function showStudent(User $user)
     {
         return view('student.show', compact('user'));
-        
     }
+
     public function showTeacher(User $user)
     {
         return view('teacher.show', compact('user'));
@@ -85,13 +80,6 @@ class UserController extends Controller
         return view('teacher.edit', compact('user'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, User $user)
     {
         $user->update($request->all());

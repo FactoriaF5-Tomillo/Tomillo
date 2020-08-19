@@ -10,18 +10,18 @@ class CourseUserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        foreach(User::where('type', 'Student')->get() as $user) {
-            $numberOfCourses = 5;
+    // public function run()
+    // {
+    //     foreach(User::where('type', 'Student')->get() as $user) {
+    //         $numberOfCourses = 5;
 
-            foreach(Course::all() as $key=>$course) {
-                if ($key <= $numberOfCourses) {
-                    $course->users()->attach($user->id);
-                }
-            }
+    //         foreach(Course::all() as $key=>$course) {
+    //             if ($key <= $numberOfCourses) {
+    //                 $course->users()->attach($user->id);
+    //             }
+    //         }
 
-            $course->save();
-        }
-    }
+    //         $course->save();
+    //     }
+    // }
 }

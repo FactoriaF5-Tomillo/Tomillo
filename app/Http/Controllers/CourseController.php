@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Student;
 use App\Teacher;
+Use App\User;
 use App\Http\Resources\Course as CourseResource;
 use Illuminate\Http\Request;
 
@@ -70,9 +71,9 @@ class CourseController extends Controller
 
     public function addStudentToTheCourse(Request $request, Course $course)
     {
-        foreach ($request->students as $studentId) {
-            $student = Student::find($studentId);
-            $course->students()->save($student);
+        foreach ($request->students as $userId) {
+            $user = User::find($userId);
+            $course->users()->save($user);
         };
 
         return $course;
@@ -91,9 +92,9 @@ class CourseController extends Controller
 
     public function addTeacherToTheCourse(Request $request, Course $course)
     {
-        foreach ($request->teachers as $teacherId) {
-            $teacher = Teacher::find($teacherId);
-            $course->teachers()->attach($teacher);
+        foreach ($request->teachers as $userId) {
+            $user = User::find($userId);
+            $course->users()->attach($user);
         };
 
         $courses = Course::all();

@@ -9,6 +9,32 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class Course extends JsonResource
 {
+    private function students()
+    {
+        $students = [];
+        
+        foreach($this->users as $user) {
+            if($user->type === "Student") {
+                array_push($students, $user);
+            }
+        }
+
+        return $students;
+    }
+
+    private function teachers()
+    {
+        $teachers = [];
+        
+        foreach($this->users as $user) {
+            if($user->type === "Teacher") {
+                array_push($teachers, $user);
+            }
+        }
+
+        return $teachers;
+    }
+
     public function toArray($request)
     {
         return [
@@ -17,7 +43,8 @@ class Course extends JsonResource
             'description' => $this->description,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
-            'users' => UserResource::collection($this->users),
+            'students' => UserResource::collection($this->students()),
+            'teachers' => UserResource::collection($this->teachers())
         ];
     }
 }
