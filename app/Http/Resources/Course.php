@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use App\Http\Resources\Student as StudentResource;
 use App\Http\Resources\Teacher as TeacherResource;
+use App\Http\Resources\User as UserResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class Course extends JsonResource
@@ -16,8 +17,7 @@ class Course extends JsonResource
             'description' => $this->description,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
-            'students' => StudentResource::collection($this->students),
-            'teachers' => TeacherResource::collection($this->teachers)
+            'users' => UserResource::collection($this->users),
         ];
     }
 }
