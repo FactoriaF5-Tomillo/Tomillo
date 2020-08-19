@@ -7,6 +7,8 @@ use App\Student;
 use App\Teacher;
 Use App\User;
 use App\Http\Resources\Course as CourseResource;
+use App\Policies\CoursePolicy;
+use App\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -48,11 +50,14 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
+        $this->authorize('update', $course);
         return view('course.edit', compact('course'));
     }
 
     public function update(Request $request, Course $course)
     {
+        //$user = Auth::user();
+        $this->authorize('update', $course);
         $course->update($request->all());
         $courses = Course::all();
         return $courses;
@@ -60,6 +65,8 @@ class CourseController extends Controller
 
     public function destroy(Course $course)
     {
+        dd($course);
+        $this->authorize('delete', $course);
         $course->delete();
         return Course::all();
     }

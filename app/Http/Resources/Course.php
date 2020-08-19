@@ -12,7 +12,7 @@ class Course extends JsonResource
     private function students()
     {
         $students = [];
-        
+
         foreach($this->users as $user) {
             if($user->type === "Student") {
                 array_push($students, $user);
@@ -25,7 +25,7 @@ class Course extends JsonResource
     private function teachers()
     {
         $teachers = [];
-        
+
         foreach($this->users as $user) {
             if($user->type === "Teacher") {
                 array_push($teachers, $user);
