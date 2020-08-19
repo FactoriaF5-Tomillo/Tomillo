@@ -1956,14 +1956,12 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/students").then(function (response) {
         response.data.forEach(function (student) {
-          if (student.course) {
-            student.selected = true;
-          }
-
-          if (!student.course) {
-            student.selected = false;
-          }
-
+          //   if (student.course) {
+          //     student.selected = true;
+          //   }
+          //   if (!student.course) {
+          //     student.selected = false;
+          //   }
           _this.students.push(student);
         });
       });
@@ -2051,6 +2049,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2074,6 +2076,11 @@ __webpack_require__.r(__webpack_exports__);
     selectTeacher: function selectTeacher(teacher, index) {
       this.teachers[index].selected = true;
       this.selectedTeachers.push(teacher);
+    },
+    unselectTeacher: function unselectTeacher(teacher, teacherIndex) {
+      this.teachers[teacherIndex].selected = false;
+      var index = this.selectedTeachers.indexOf(teacherIndex);
+      this.selectedTeachers.splice(index, 1);
     },
     assignTeachers: function assignTeachers() {
       var _this2 = this;
@@ -38838,10 +38845,14 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm",
-                      attrs: { disabled: "" }
+                      staticClass: "btn btn-primary btn-sm selected-button",
+                      on: {
+                        click: function($event) {
+                          return _vm.unselectTeacher(teacher, i)
+                        }
+                      }
                     },
-                    [_vm._v("Selecionado")]
+                    [_vm._v("Unselect")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -38856,7 +38867,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Selecionar")]
+                    [_vm._v("Select")]
                   )
                 : _vm._e()
             ])

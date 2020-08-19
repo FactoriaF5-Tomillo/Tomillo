@@ -18,12 +18,16 @@
           <p class="list-data">{{teacher.surname}}</p>
           <p class="list-data">{{teacher.email}}</p>
           <div class="list-actions">
-            <button v-if="teacher.selected" class="btn btn-primary btn-sm" disabled>Selecionado</button>
+            <button
+              v-if="teacher.selected"
+              class="btn btn-primary btn-sm selected-button"
+              @click="unselectTeacher(teacher, i)"
+            >Unselect</button>
             <button
               v-if="!teacher.selected"
               class="btn btn-primary btn-sm"
               @click="selectTeacher(teacher, i)"
-            >Selecionar</button>
+            >Select</button>
           </div>
         </div>
       </div>
@@ -57,6 +61,11 @@ export default {
     selectTeacher(teacher, index) {
       this.teachers[index].selected = true;
       this.selectedTeachers.push(teacher);
+    },
+    unselectTeacher(teacher, teacherIndex) {
+      this.teachers[teacherIndex].selected = false;
+      const index = this.selectedTeachers.indexOf(teacherIndex);
+      this.selectedTeachers.splice(index, 1);
     },
     assignTeachers() {
       let selectedTeachersIds = [];
