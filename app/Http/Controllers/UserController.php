@@ -27,6 +27,9 @@ class UserController extends Controller
         $students = User::where('type', 'Student')->get();
         return view('student.index', compact('students'));
     }
+
+
+
     public function getTeachers()
     {
         $teachers = User::where('type', 'Teacher')->get();
@@ -62,21 +65,23 @@ class UserController extends Controller
         return $user;
     }
 
-    public function show(User $user)
+    public function showStudent(User $user)
     {
-        if ($user->type = 'Student')
-        {
-            return view('student.show', compact('user'));
-        }
+        return view('student.show', compact('user'));
+        
+    }
+    public function showTeacher(User $user)
+    {
         return view('teacher.show', compact('user'));
     }
 
-    public function edit(User $user)
+    public function editStudent(User $user)
     {
-        if ($user->type = 'Student')
-        {
-            return view('student.edit', compact('user'));
-        }
+        return view('student.edit', compact('user'));
+    }
+
+    public function editTeacher(User $user)
+    {
         return view('teacher.edit', compact('user'));
     }
 
