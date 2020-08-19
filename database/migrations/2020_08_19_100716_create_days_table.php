@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,7 +15,12 @@ class CreateDaysTable extends Migration
     public function up()
     {
         Schema::create('days', function (Blueprint $table) {
+
             $table->id();
+            $table->timestamp('date');
+            $table->timestamp('check-in')->nullable();
+            $table->timestamp('check-out')->nullable();
+
             $table->timestamps();
         });
     }
