@@ -77,8 +77,6 @@ export default {
         selectedStudentsIds.push(student.id);
       });
 
-      console.log(selectedStudentsIds);
-
       axios
         .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
           students: selectedStudentsIds,

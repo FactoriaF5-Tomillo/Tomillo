@@ -32,7 +32,7 @@
       </div>
     </div>
     <div>
-      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+      <a href="/courses" class="list-actions">&#8592; Volver</a>
     </div>
   </div>
 </template>

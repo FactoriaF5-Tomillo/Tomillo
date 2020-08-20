@@ -1987,7 +1987,6 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedStudents.forEach(function (student) {
         selectedStudentsIds.push(student.id);
       });
-      console.log(selectedStudentsIds);
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
         students: selectedStudentsIds,
         course_id: this.course.id
@@ -2098,7 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
         teachers: selectedTeachersIds
       }).then(function (response) {
-        window.location.replace("/course/" + _this2.course.id);
+        window.location.replace("/course/" + _this2.course.id + "/teachers");
       });
     },
     goBack: function goBack() {
@@ -38860,7 +38859,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Unselect")]
+                    [_vm._v("Selecionado")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -38875,7 +38874,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Select")]
+                    [_vm._v("Selecionar")]
                   )
                 : _vm._e()
             ])
@@ -39516,26 +39515,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "a",
-        {
-          staticClass: "list-actions",
-          attrs: { href: "" },
-          on: {
-            click: [
-              function($event) {
-                $event.preventDefault()
-              },
-              function($event) {
-                return _vm.goBack()
-              }
-            ]
-          }
-        },
-        [_vm._v("← Volver")]
-      )
-    ])
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -39545,6 +39525,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Info")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { staticClass: "list-actions", attrs: { href: "/courses" } }, [
+        _vm._v("← Volver")
+      ])
     ])
   }
 ]
@@ -54532,8 +54522,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
