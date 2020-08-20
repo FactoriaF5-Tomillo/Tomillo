@@ -60,13 +60,21 @@ class Day extends Model
 
         $time=self::setTime();
 
-        if($this->checkOut!=null){
+        if($this->checkIfCheckedOut()){
             return $this;
         }
 
         $this->update(array('checkOut' => $time));
 
         return $this;
+    }
+
+    public function checkIfCheckedOut(){
+
+        if($this->checkOut==null){
+            return False;
+        }
+        return True;
     }
 
     
