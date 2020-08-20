@@ -26,14 +26,14 @@ class Day extends Model
 
     public static function setDate()
     {
-        $date= Carbon::now();
+        $date= Carbon::now()->setTimezone('Europe/Madrid');
         //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY'); 
         return $date;
     }
 
     public static function setTime()
     {
-        $time = Carbon::now();
+        $time = Carbon::now()->setTimezone('Europe/Madrid');
         //->setTimezone('Europe/Madrid')->isoFormat('HH:mm'); 
         return $time;
 
