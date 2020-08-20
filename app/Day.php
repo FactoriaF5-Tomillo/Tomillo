@@ -56,6 +56,15 @@ class Day extends Model
         return $day;
     }
 
+    public function checkOut(){
+
+        $time=self::setTime();
+
+        $this->checkOut=$time;
+
+        return $this;
+    }
+
     
 
     
