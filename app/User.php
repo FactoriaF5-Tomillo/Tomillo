@@ -43,4 +43,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Day::class);
     }
+
+    public function justifications() {
+        return $this->hasMany(Justification::class);  
+     }
 }
