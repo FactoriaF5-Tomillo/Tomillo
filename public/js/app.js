@@ -2586,16 +2586,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -39968,32 +39958,6 @@ var render = function() {
             _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Curso Actual")]),
-        _vm._v(" "),
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.student.currentcourse,
-              expression: "student.currentcourse"
-            }
-          ],
-          staticClass: "form-control",
-          attrs: { type: "text", name: "currentcourse", required: "" },
-          domProps: { value: _vm.student.currentcourse },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.student, "currentcourse", $event.target.value)
-            }
-          }
-        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-submit" }, [

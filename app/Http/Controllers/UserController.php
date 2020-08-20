@@ -57,7 +57,21 @@ class UserController extends Controller
         return view('student.create');
     }
 
-    public function store(Request $request)
+    public function storeStudent(Request $request)
+    {
+        $user = User::create([
+            'name' => $request->name,
+            'surname' => $request->surname,
+            'email' => $request->email,
+            'type' => 'Student',
+            'gender' => $request->gender,
+            'nationality' => $request->nationality,
+            'password' => Hash::make('password')
+        ]);
+        return $user;
+    }
+
+    public function storeTeacher(Request $request)
     {
         $user = User::create([
             'name' => $request->name,
@@ -69,6 +83,7 @@ class UserController extends Controller
         ]);
         return $user;
     }
+
 
     public function showStudent(User $user)
     {
