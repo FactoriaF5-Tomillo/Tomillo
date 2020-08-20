@@ -24,7 +24,8 @@ class DayController extends Controller
      */
     public function create()
     {
-        //
+        
+
     }
 
     /**
@@ -35,7 +36,8 @@ class DayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
     }
 
     /**

@@ -40,3 +40,5 @@ Route::middleware('auth:api')->delete('/courses/{course}', 'CourseController@des
 
 Route::post('/courses/{course}/addStudentToTheCourse', 'CourseController@addStudentToTheCourse');
 Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeacherToTheCourse');
+
+Route::post('/students/{user}/checkin', 'UserController@checkIn')->name('student.checkin');

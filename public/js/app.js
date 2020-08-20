@@ -2811,6 +2811,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2819,6 +2824,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       window.history.back();
+    },
+    checkin: function checkin(student) {
+      axios.post("/api/students/" + student.id + "/checkin", this.student);
     }
   },
   mounted: function mounted() {
@@ -40423,6 +40431,20 @@ var render = function() {
     _vm._v(" "),
     _c("div", [
       _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.checkin(_vm.student)
+            }
+          }
+        },
+        [_vm._v("Check In")]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
         "a",
         {
           staticClass: "list-actions",
@@ -54522,8 +54544,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -49,3 +49,4 @@ Route::get('/student/create', 'UserController@createStudent')->name('student.cre
 Route::get('/student/{user}', 'UserController@showStudent')->name('student.show');
 Route::get('/student/{user}/edit', 'UserController@editStudent')->name('student.edit');
 
+

@@ -21,6 +21,11 @@
       </p>
     </div>
     <div>
+      <button @click="checkin(student)">Check In</button>
+    </div>
+
+
+    <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
     </div>
   </div>
@@ -36,6 +41,10 @@ export default {
     goBack() {
       window.history.back();
     },
+    checkin(student){
+      axios.post("/api/students/"+student.id+"/checkin", this.student)
+    }
+   
   },
   mounted() {
     console.log("Component mounted.");
