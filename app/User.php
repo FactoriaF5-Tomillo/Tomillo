@@ -16,20 +16,10 @@ class User extends Authenticatable
         'name', 'surname', 'email', 'password', 'type', 'gender','nationality'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -46,5 +36,5 @@ class User extends Authenticatable
 
     public function justifications() {
         return $this->hasMany(Justification::class);  
-     }
+    }
 }

@@ -26,6 +26,17 @@
     <div id="app">
         <header class="dashboard-header">
             <h1>Tomillo</h1>
+            <div class="user">
+                <a class="btn btn-danger btn-sm" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                    {{ __('Cerrar sesion') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </div>
         </header>
         <main class="dashboard">
             <div class="side-bar">
