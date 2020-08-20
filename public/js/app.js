@@ -1955,10 +1955,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getStudents: function getStudents() {
+    getAvailableStudents: function getAvailableStudents() {
       var _this = this;
 
-      axios.get("/api/students").then(function (response) {
+      axios.get("/api/available-students").then(function (response) {
         response.data.forEach(function (student) {
           student.selected = false;
 
@@ -2000,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getStudents();
+    this.getAvailableStudents();
     console.log("Component mounted.");
   }
 });
@@ -54519,8 +54519,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

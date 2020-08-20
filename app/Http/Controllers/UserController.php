@@ -42,6 +42,21 @@ class UserController extends Controller
         return $students;
     }
 
+    public function getAvailableStudents()
+    {
+        $students = User::where('type', 'Student')->get();
+
+        $availableStudents = [];
+
+        foreach($students as $student) {
+            if(count($student->course) == 0) {
+                array_push($availableStudents, $student);
+            }
+        }
+
+        return UserResource::collection($availableStudents);
+    }
+
     public function getStudent(User $user)
     {
         return new UserResource($user);
