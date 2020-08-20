@@ -42,3 +42,4 @@ Route::post('/courses/{course}/addStudentToTheCourse', 'CourseController@addStud
 Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeacherToTheCourse');
 
 Route::post('/students/{user}/checkin', 'UserController@checkIn')->name('student.checkin');
+Route::patch('/students/{user}/checkout', 'UserController@checkOut')->name('student.checkout');

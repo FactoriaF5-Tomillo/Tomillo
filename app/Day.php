@@ -60,7 +60,11 @@ class Day extends Model
 
         $time=self::setTime();
 
-        $this->checkOut=$time;
+        if($this->checkOut!=null){
+            return $this;
+        }
+
+        $this->update(array('checkOut' => $time));
 
         return $this;
     }

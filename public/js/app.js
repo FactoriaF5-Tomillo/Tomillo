@@ -2816,6 +2816,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2827,6 +2828,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     checkin: function checkin(student) {
       axios.post("/api/students/" + student.id + "/checkin", this.student);
+    },
+    checkout: function checkout(student) {
+      axios.patch("/api/students/" + student.id + "/checkout", this.student);
     }
   },
   mounted: function mounted() {
@@ -40440,6 +40444,18 @@ var render = function() {
           }
         },
         [_vm._v("Check In")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.checkout(_vm.student)
+            }
+          }
+        },
+        [_vm._v("Check Out")]
       )
     ]),
     _vm._v(" "),

@@ -26,11 +26,9 @@ class UserTest extends TestCase
         $day= factory(Day::class)->create();
 
         $user->addDayToUser($day);
-
-        dd($user->days);
   
         $this->assertNotNull($user->days);
-       //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla
+        $this->assertContains($day, $user->days); //falla pero no entiendo por que falla
 
     }
 }
