@@ -35,6 +35,45 @@ class Course extends JsonResource
         return $teachers;
     }
 
+    private function studentsGenderMale()
+    {
+        $students = [];
+
+        foreach($this->users as $user) {
+            if($user->gender === "Male") {
+                array_push($students, $user);
+            }
+        }
+
+        return $students;
+    }
+
+    private function studentsGenderFemale()
+    {
+        $students = [];
+
+        foreach($this->users as $user) {
+            if($user->gender === "Female") {
+                array_push($students, $user);
+            }
+        }
+
+        return $students;
+    }
+
+    private function studentsGenderOthers()
+    {
+        $students = [];
+
+        foreach($this->users as $user) {
+            if($user->gender === "Others") {
+                array_push($students, $user);
+            }
+        }
+
+        return $students;
+    }
+
     public function toArray($request)
     {
         return [
