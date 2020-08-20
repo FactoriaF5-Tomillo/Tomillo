@@ -1955,10 +1955,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getStudents: function getStudents() {
+    getAvailableStudents: function getAvailableStudents() {
       var _this = this;
 
-      axios.get("/api/students").then(function (response) {
+      axios.get("/api/available-students").then(function (response) {
         response.data.forEach(function (student) {
           student.selected = false;
 
@@ -2000,7 +2000,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.getStudents();
+    this.getAvailableStudents();
     console.log("Component mounted.");
   }
 });

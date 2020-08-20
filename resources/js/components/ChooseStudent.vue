@@ -46,8 +46,8 @@ export default {
     };
   },
   methods: {
-    getStudents() {
-      axios.get("/api/students").then((response) => {
+    getAvailableStudents() {
+      axios.get("/api/available-students").then((response) => {
         response.data.forEach((student) => {
           student.selected = false;
           this.students.push(student);
@@ -93,7 +93,7 @@ export default {
     },
   },
   mounted() {
-    this.getStudents();
+    this.getAvailableStudents();
     console.log("Component mounted.");
   },
 };

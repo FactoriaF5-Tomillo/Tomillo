@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/students', 'UserController@getStudents');
+Route::get('/available-students', 'UserController@getAvailableStudents');
 Route::get('/students/{user}', 'UserController@getStudent');
 Route::post('/students', 'UserController@storeStudent')->name('student.store');
 Route::patch('/students/{user}', 'UserController@update')->name('student.update');
