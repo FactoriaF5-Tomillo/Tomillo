@@ -77,9 +77,16 @@ class CourseController extends Controller
 
     public function addStudentToTheCourse(Request $request, Course $course)
     {
-        foreach ($request->students as $userId) {
+        foreach ($request->students as $userId)
+        {
             $user = User::find($userId);
-            $course->users()->save($user);
+            $user_course = User::getActualCourse($user);
+
+            if ($user_course == null)
+            {
+                $course->users()->save($user);
+            }
+            continue;
         };
 
         return $course;

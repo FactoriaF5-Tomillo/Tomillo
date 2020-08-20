@@ -45,6 +45,13 @@ class User extends Authenticatable
     }
 
     public function justifications() {
-        return $this->hasMany(Justification::class);  
+        return $this->hasMany(Justification::class);
+     }
+
+     public static function getActualCourse(User $user)
+     {
+         $user_course = $user->course()->first();
+         //dd($user_course->id);
+         return $user_course;
      }
 }

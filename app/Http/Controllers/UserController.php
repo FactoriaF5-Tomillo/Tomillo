@@ -55,7 +55,8 @@ class UserController extends Controller
 
         $availableStudents = [];
 
-        foreach($students as $student) {
+        foreach($students as $student)
+        {
             if(count($student->course) == 0) {
                 array_push($availableStudents, $student);
             }
