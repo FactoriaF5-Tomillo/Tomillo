@@ -5,7 +5,7 @@
       <div>
         <a
           :href="'/course/' + course.id + '/assign-teachers'"
-          class="btn btn-primary"
+          class="btn primary-button"
         >Assignar profesores</a>
       </div>
     </div>

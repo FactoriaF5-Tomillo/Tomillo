@@ -3,7 +3,7 @@
     <div class="page-title">
       <h1>Alumnos</h1>
       <div>
-        <a href="/student/create" class="btn btn-primary">Añadir Alumno</a>
+        <a href="/student/create" class="btn primary-button">Añadir Alumno</a>
       </div>
     </div>
     <div class="list">

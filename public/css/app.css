@@ -10954,7 +10954,8 @@ p {
 .dashboard-header {
   height: 50px;
   padding: 10px 0;
-  background-color: #444444;
+  background-color: #2e6951;
+  color: #ffffff;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -10963,6 +10964,10 @@ p {
 .dashboard-header h1 {
   padding-left: 20px;
   font-size: 24px;
+}
+
+.dashboard-header h1 a {
+  color: #ffffff;
 }
 
 .dashboard-header .user-dropdown {
@@ -10976,7 +10981,7 @@ p {
 }
 
 .dashboard .side-bar {
-  background-color: #999999;
+  background-color: #e8e8e8;
 }
 
 .dashboard .side-bar .nav-buttons {
@@ -11006,23 +11011,24 @@ p {
   max-width: 350px;
   height: 200px;
   position: relative;
-  background-color: #dbdbdb;
-  border-radius: 10px;
+  background-color: #e8e8e8;
+  border-radius: 15px 15px 10px 10px;
 }
 
 .course-card .course-header {
   border-radius: 10px 10px 0 0;
-  background-color: #777777;
+  background-color: #2e6951;
   padding: 10px;
 }
 
 .course-card .course-header a {
-  color: white;
+  color: #ffffff;
   font-size: 18px;
   text-decoration: underline;
 }
 
 .course-card .course-body {
+  color: #000000;
   padding: 10px;
 }
 
@@ -11040,7 +11046,7 @@ p {
 }
 
 .course-card .course-footer .action-icon {
-  color: black;
+  color: #000000;
   padding: 5px;
   outline: none;
 }
@@ -11135,7 +11141,7 @@ p {
 }
 
 .list .list-content .list-row:nth-child(odd) {
-  background-color: #ebebeb;
+  background-color: #e8e8e8;
 }
 
 .list .list-content .list-row .list-actions {
@@ -11169,18 +11175,19 @@ p {
 .form-card {
   max-width: 550px;
   margin-top: 70px;
-  border: 2px solid #d1d1d1;
+  border: 2px solid #2e6951;
   border-radius: 10px;
 }
 
 .form-card .form-header {
   padding: 10px;
   margin-bottom: 20px;
-  background-color: #d1d1d1;
+  background-color: #2e6951;
   border-radius: 8px 8px 0 0;
 }
 
 .form-card .form-header h3 {
+  color: #ffffff;
   margin: 0;
 }
 
@@ -11207,8 +11214,16 @@ p {
   height: 125px;
   position: absolute;
   bottom: 0;
-  background-color: grey;
-  border-top: 2px solid black;
+  background-color: #e8e8e8;
+  border-top: 2px solid #2e6951;
+}
+
+.primary-button {
+  background-color: #e1e723;
+}
+
+.secondary-button {
+  background-color: #72a951;
 }
 
 .selected-button {

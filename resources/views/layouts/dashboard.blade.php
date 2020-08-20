@@ -25,9 +25,9 @@
 <body>
     <div id="app">
         <header class="dashboard-header">
-            <h1>Tomillo</h1>
+            <h1><a href="/home">Tomillo</a></h1>
             <div class="user-dropdown dropdown">
-                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn primary-button btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ Auth::user()->name }}
                 </button>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -44,9 +44,9 @@
         <main class="dashboard">
             <div class="side-bar">
                 <div class="nav-buttons">
-                    <a href="/courses" class="btn btn-secondary">Cursos</a>
-                    <a href="/students" class="btn btn-secondary">Alumnos</a>
-                    <a href="/teachers" class="btn btn-secondary">Profesores</a>
+                    <a href="/courses" class="btn secondary-button">Cursos</a>
+                    <a href="/students" class="btn secondary-button">Alumnos</a>
+                    <a href="/teachers" class="btn secondary-button">Profesores</a>
                 </div>
             </div>
             <div class="content">

@@ -2277,6 +2277,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -38711,7 +38715,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm selected-button",
+                      staticClass: "btn primary-button btn-sm selected-button",
                       on: {
                         click: function($event) {
                           return _vm.unselectStudent(student, i)
@@ -38726,7 +38730,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm",
+                      staticClass: "btn primary-button btn-sm",
                       on: {
                         click: function($event) {
                           return _vm.selectStudent(student, i)
@@ -38860,7 +38864,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm selected-button",
+                      staticClass: "btn primary-button btn-sm selected-button",
                       on: {
                         click: function($event) {
                           return _vm.unselectTeacher(teacher, i)
@@ -38875,7 +38879,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary btn-sm",
+                      staticClass: "btn primary-button btn-sm",
                       on: {
                         click: function($event) {
                           return _vm.selectTeacher(teacher, i)
@@ -39113,7 +39117,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             on: {
               click: function($event) {
                 return _vm.createCourse()
@@ -39290,7 +39294,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             on: {
               click: function($event) {
                 return _vm.editCourse()
@@ -39398,7 +39402,10 @@ var staticRenderFns = [
       _c("div", [
         _c(
           "a",
-          { staticClass: "btn btn-primary", attrs: { href: "/course/create" } },
+          {
+            staticClass: "btn primary-button",
+            attrs: { href: "/course/create" }
+          },
           [_vm._v("Añadir Curso")]
         )
       ])
@@ -39575,7 +39582,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
           },
           [_vm._v("Assignar alumnos")]
@@ -39678,7 +39685,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
           },
           [_vm._v("Assignar profesores")]
@@ -39994,7 +40001,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { value: "Crear" },
             on: {
               click: function($event) {
@@ -40239,7 +40246,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { value: "Crear" },
             on: {
               click: function($event) {
@@ -40357,7 +40364,7 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { href: "/student/create" }
           },
           [_vm._v("Añadir Alumno")]
@@ -40644,7 +40651,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             on: {
               click: function($event) {
                 return _vm.createTeacher()
@@ -40836,7 +40843,7 @@ var render = function() {
         _c(
           "button",
           {
-            staticClass: "btn btn-primary mb-2",
+            staticClass: "btn primary-button mb-2",
             on: {
               click: function($event) {
                 return _vm.editTeacher()
@@ -40951,7 +40958,7 @@ var staticRenderFns = [
         _c(
           "a",
           {
-            staticClass: "btn btn-primary",
+            staticClass: "btn primary-button",
             attrs: { href: "/teacher/create" }
           },
           [_vm._v("Añadir profesor")]

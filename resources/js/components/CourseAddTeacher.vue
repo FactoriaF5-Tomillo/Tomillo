@@ -20,12 +20,12 @@
           <div class="list-actions">
             <button
               v-if="teacher.selected"
-              class="btn btn-primary btn-sm selected-button"
+              class="btn primary-button btn-sm selected-button"
               @click="unselectTeacher(teacher, i)"
             >Selecionado</button>
             <button
               v-if="!teacher.selected"
-              class="btn btn-primary btn-sm"
+              class="btn primary-button btn-sm"
               @click="selectTeacher(teacher, i)"
             >Selecionar</button>
           </div>

@@ -10,7 +10,7 @@
 
             </div>
                 <div class="card-footer">
-                <input type="submit" value="Crear" class = "btn btn-primary">
+                <input type="submit" value="Crear" class = "btn primary-button">
             </div>
         </form>
 </div>

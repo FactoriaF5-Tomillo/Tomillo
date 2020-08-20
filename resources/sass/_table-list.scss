@@ -20,7 +20,7 @@
             padding: 10px 0;
 
             &:nth-child(odd) {
-                background-color: rgb(235, 235, 235);
+                background-color: $secondary-grey;
             }
 
             .list-actions {
