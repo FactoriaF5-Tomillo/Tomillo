@@ -60,5 +60,15 @@ class DayTest extends TestCase
 
     }
 
+    public function test_check_if_user_checked_out(){
+
+        $user= factory(User::class)->create();
+        $day= Day::checkIn($user);
+
+        $this->assertFalse($day->checkIfCheckedOut());
+
+
+    }
+
     
 }
