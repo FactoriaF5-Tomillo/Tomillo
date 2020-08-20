@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Resources\User as UserResource;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -25,6 +26,12 @@ class UserController extends Controller
         return view('student.index', compact('students'));
     }
 
+    public function getLoggedUser()
+    {
+        $loggeduser = Auth::user();
+        $user = User::find($loggeduser->id);
+        return $user;
+    }
     public function getTeachers()
     {
         $teachers = UserResource::collection(User::where('type', 'Teacher')->get());
@@ -108,7 +115,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $user->update($request->all());
-        
+
         return $user;
     }
 

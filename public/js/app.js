@@ -2281,6 +2281,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      user: {},
       courses: []
     };
   },
@@ -2300,10 +2301,18 @@ __webpack_require__.r(__webpack_exports__);
           _this2.courses = response.data;
         });
       }
+    },
+    getLoggedUser: function getLoggedUser() {
+      var _this3 = this;
+
+      axios.get("/loggeduser").then(function (response) {
+        _this3.user = response.data;
+      });
     }
   },
   mounted: function mounted() {
     this.getCourses();
+    this.getLoggedUser();
     console.log("Component mounted.");
   }
 });
@@ -39337,29 +39346,33 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "course-footer" }, [
-            _c(
-              "a",
-              {
-                staticClass: "action-icon",
-                attrs: { href: "course/" + course.id + "/edit" }
-              },
-              [_c("ion-icon", { attrs: { name: "create-outline" } })],
-              1
-            ),
+            _vm.user.type == "Admin"
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "action-icon",
+                    attrs: { href: "course/" + course.id + "/edit" }
+                  },
+                  [_c("ion-icon", { attrs: { name: "create-outline" } })],
+                  1
+                )
+              : _vm._e(),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "action-icon",
-                on: {
-                  click: function($event) {
-                    return _vm.deleteCourse(course)
-                  }
-                }
-              },
-              [_c("ion-icon", { attrs: { name: "trash-outline" } })],
-              1
-            )
+            _vm.user.type == "Admin"
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "action-icon",
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteCourse(course)
+                      }
+                    }
+                  },
+                  [_c("ion-icon", { attrs: { name: "trash-outline" } })],
+                  1
+                )
+              : _vm._e()
           ])
         ])
       }),
@@ -54519,8 +54532,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\JoseO\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ruffy\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

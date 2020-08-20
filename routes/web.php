@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('/log-out', 'HomeController@index')->name('log-out');
 Route::get('/home', 'HomeController@homeindex')->name('home');
 
-
+Route::get('/loggeduser', 'UserController@getLoggedUser');
 
 Route::get('/courses', 'CourseController@index')->name('course.index')->middleware('can:viewAny,App\Course');
 Route::get('/course/create', 'CourseController@create')->name('course.create')->middleware('can:viewAny,App\Course');

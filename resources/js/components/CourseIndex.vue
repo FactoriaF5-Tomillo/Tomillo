@@ -15,10 +15,10 @@
           <p>{{course.description}}</p>
         </div>
         <div class="course-footer">
-          <a :href="'course/' + course.id + '/edit'" class="action-icon">
+          <a :href="'course/' + course.id + '/edit'" class="action-icon" v-if="user.type == 'Admin'">
             <ion-icon name="create-outline"></ion-icon>
           </a>
-          <button @click="deleteCourse(course)" class="action-icon">
+          <button @click="deleteCourse(course)" class="action-icon" v-if="user.type == 'Admin'">
             <ion-icon name="trash-outline"></ion-icon>
           </button>
         </div>
@@ -31,6 +31,7 @@
 export default {
   data() {
     return {
+         user: {},
       courses: [],
     };
   },
@@ -47,9 +48,15 @@ export default {
         });
       }
     },
+      getLoggedUser() {
+          axios.get("/loggeduser").then((response) => {
+              this.user = response.data;
+          });
+      },
   },
   mounted() {
     this.getCourses();
+    this.getLoggedUser();
     console.log("Component mounted.");
   },
 };
