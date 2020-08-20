@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 
+
 use App\User;
+use App\Day;
 use App\Http\Resources\User as UserResource;
 
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +13,8 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 class UserController extends Controller
 {
@@ -139,5 +143,10 @@ class UserController extends Controller
     {
         $user->delete();
         return User::all();
+    }
+
+    public function checkIn(User $user){
+       
+        return Day::checkIn($user);
     }
 }

@@ -22,12 +22,12 @@
               v-if="teacher.selected"
               class="btn btn-primary btn-sm selected-button"
               @click="unselectTeacher(teacher, i)"
-            >Unselect</button>
+            >Selecionado</button>
             <button
               v-if="!teacher.selected"
               class="btn btn-primary btn-sm"
               @click="selectTeacher(teacher, i)"
-            >Select</button>
+            >Selecionar</button>
           </div>
         </div>
       </div>
@@ -81,7 +81,7 @@ export default {
           teachers: selectedTeachersIds,
         })
         .then((response) => {
-          window.location.replace("/course/" + this.course.id);
+          window.location.replace("/course/" + this.course.id + "/teachers");
         });
     },
     goBack() {

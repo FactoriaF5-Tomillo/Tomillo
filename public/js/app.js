@@ -1987,7 +1987,6 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedStudents.forEach(function (student) {
         selectedStudentsIds.push(student.id);
       });
-      console.log(selectedStudentsIds);
       axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
         students: selectedStudentsIds,
         course_id: this.course.id
@@ -2098,7 +2097,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
         teachers: selectedTeachersIds
       }).then(function (response) {
-        window.location.replace("/course/" + _this2.course.id);
+        window.location.replace("/course/" + _this2.course.id + "/teachers");
       });
     },
     goBack: function goBack() {
@@ -2812,6 +2811,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2820,6 +2824,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       window.history.back();
+    },
+    checkin: function checkin(student) {
+      axios.post("/api/students/" + student.id + "/checkin", this.student);
     }
   },
   mounted: function mounted() {
@@ -38860,7 +38867,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Unselect")]
+                    [_vm._v("Selecionado")]
                   )
                 : _vm._e(),
               _vm._v(" "),
@@ -38875,7 +38882,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("Select")]
+                    [_vm._v("Selecionar")]
                   )
                 : _vm._e()
             ])
@@ -39472,7 +39479,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn btn-dark",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
           },
           [_vm._v("Asignar Alumnos")]
         ),
@@ -39516,26 +39523,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "a",
-        {
-          staticClass: "list-actions",
-          attrs: { href: "" },
-          on: {
-            click: [
-              function($event) {
-                $event.preventDefault()
-              },
-              function($event) {
-                return _vm.goBack()
-              }
-            ]
-          }
-        },
-        [_vm._v("← Volver")]
-      )
-    ])
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -39545,6 +39533,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Info")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { staticClass: "list-actions", attrs: { href: "/courses" } }, [
+        _vm._v("← Volver")
+      ])
     ])
   }
 ]
@@ -40429,6 +40427,20 @@ var render = function() {
         _c("strong", [_vm._v("Email:")]),
         _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.checkin(_vm.student)
+            }
+          }
+        },
+        [_vm._v("Check In")]
+      )
     ]),
     _vm._v(" "),
     _c("div", [

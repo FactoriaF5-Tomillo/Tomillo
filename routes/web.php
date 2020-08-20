@@ -18,7 +18,7 @@ use App\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -48,4 +48,5 @@ Route::get('/students', 'UserController@indexStudent')->name('student.index')->m
 Route::get('/student/create', 'UserController@createStudent')->name('student.create');
 Route::get('/student/{user}', 'UserController@showStudent')->name('student.show');
 Route::get('/student/{user}/edit', 'UserController@editStudent')->name('student.edit');
+
 

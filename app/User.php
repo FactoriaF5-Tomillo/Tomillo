@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Course;
+use App\Day;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,20 +17,10 @@ class User extends Authenticatable
         'name', 'surname', 'email', 'password', 'type', 'gender','nationality'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -45,6 +36,7 @@ class User extends Authenticatable
     }
 
     public function justifications() {
+
         return $this->hasMany(Justification::class);
      }
 
@@ -54,4 +46,9 @@ class User extends Authenticatable
          //dd($user_course->id);
          return $user_course;
      }
+
+    public function addDayToUser($day){
+
+        return $this->days()->save($day);
+    }
 }
