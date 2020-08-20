@@ -2,14 +2,15 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
-//use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Day;
+use App\User;
 
 class DayTest extends TestCase
 {
     
-    //use RefreshDatabase;
+    use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -23,15 +24,31 @@ class DayTest extends TestCase
     {
         $date= Day::setDate();
         $this->assertNotNull($date);
+       
     }
 
+    public function test_set_time()
+    {
+        $time= Day::setTime();
+        $this->assertNotNull($time);
+        
+    }
+
+    
     public function test_check_in()
     {
-        $date= Day::setDate();
-        
-        $day= Day::checkIn($date, $date, $date);
+        $user= factory(User::class)->create();
 
-        $this->assertEquals($day->date, $date);
+        $day= Day::checkIn($user);
+
+        $user->addDayToUser($day);
+
+        $this->assertNotNull($day);
+        $this->assertNotNull($day->date);
+        $this->assertNotNull($day->checkIn);
+        $this->assertEquals($user->id, $day->user->id);
 
     }
+
+    
 }

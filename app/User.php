@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Course;
+use App\Day;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -42,5 +43,10 @@ class User extends Authenticatable
     public function days()
     {
         return $this->hasMany(Day::class);
+    }
+
+    public function addDayToUser($day){
+
+        return $this->days()->save($day);
     }
 }

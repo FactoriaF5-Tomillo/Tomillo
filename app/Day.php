@@ -2,6 +2,7 @@
 
 namespace App;
 use Carbon\Carbon;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,21 +26,41 @@ class Day extends Model
 
     public static function setDate()
     {
-
-        return Carbon::now()->format('Y-m-d H:i:s');
-        
+        $date= Carbon::now();
+        //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY'); 
+        return $date;
     }
 
-    private static function checkIn(){
+    public static function setTime()
+    {
+        $time = Carbon::now();
+        //->setTimezone('Europe/Madrid')->isoFormat('HH:mm'); 
+        return $time;
+
+    }
+
+
+    public static function checkIn(User $user){
 
         $date=self::setDate();
+        $time=self::setTime();
 
         $day = Day::create([
             'date' => $date,
-            'checkIn' => $date,
-            'checkOut' => $date,
+            'checkIn' => $time,
+            'checkOut' => null,
         ]);
 
+        $user->addDayToUser($day);
+        
         return $day;
     }
+
+    
+
+    
+
+    
+
+    
 }

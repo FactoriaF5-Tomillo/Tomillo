@@ -2801,6 +2801,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -2809,6 +2814,9 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     goBack: function goBack() {
       window.history.back();
+    },
+    checkin: function checkin(student) {
+      axios.post("/api/students/" + student.id + "/checkin", this.student);
     }
   },
   mounted: function mounted() {
@@ -40432,6 +40440,20 @@ var render = function() {
         _c("strong", [_vm._v("Email:")]),
         _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
       ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c(
+        "button",
+        {
+          on: {
+            click: function($event) {
+              return _vm.checkin(_vm.student)
+            }
+          }
+        },
+        [_vm._v("Check In")]
+      )
     ]),
     _vm._v(" "),
     _c("div", [

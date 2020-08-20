@@ -98,7 +98,8 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function checkIn(){
-        return Day::checkIn();
+    public function checkIn(User $user){
+       
+        return Day::checkIn($user);
     }
 }
