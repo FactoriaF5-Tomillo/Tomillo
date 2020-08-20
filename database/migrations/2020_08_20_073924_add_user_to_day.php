@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDayUserTable extends Migration
+class AddUserToDay extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateDayUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('day_user', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('day_id');
-            $table->foreign('day_id')->references('id')->on('days');
-            $table->foreignId('user_id');
+        Schema::table('days', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
         });
     }
 
@@ -30,6 +26,8 @@ class CreateDayUserTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('day_user');
+        Schema::table('day', function (Blueprint $table) {
+            //
+        });
     }
 }

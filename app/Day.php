@@ -18,17 +18,19 @@ class Day extends Model
         $this->checkOut = $checkOut;
     */
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public static function setDate()
     {
-        return Carbon::now();
+
+        return Carbon::now()->format('Y-m-d H:i:s');
+        
     }
 
-    private static function checkIn($date, $checkIn, $checkOut){
+    private static function checkIn(){
 
         $date=self::setDate();
 

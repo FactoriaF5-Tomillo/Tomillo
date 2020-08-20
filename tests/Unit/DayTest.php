@@ -3,10 +3,13 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+//use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Day;
 
 class DayTest extends TestCase
 {
+    
+    //use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -25,6 +28,7 @@ class DayTest extends TestCase
     public function test_check_in()
     {
         $date= Day::setDate();
+        
         $day= Day::checkIn($date, $date, $date);
 
         $this->assertEquals($day->date, $date);
