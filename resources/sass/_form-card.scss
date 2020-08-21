@@ -1,16 +1,17 @@
 .form-card {
     max-width: 550px;
     margin-top: 70px;
-    border: 2px solid rgb(209, 209, 209);
+    border: 2px solid $primary-green;
     border-radius: 10px;
 
     .form-header {
         padding: 10px;
         margin-bottom: 20px;
-        background-color: rgb(209, 209, 209);
+        background-color: $primary-green;
         border-radius: 8px 8px 0 0;
 
         h3 {
+            color: $primary-white;
             margin: 0;
         }
     }

@@ -3,7 +3,7 @@
     <div class="page-title">
       <h1>Cursos</h1>
       <div>
-        <a href="/course/create" class="btn btn-primary">Añadir Curso</a>
+        <a href="/course/create" class="btn primary-button">Añadir Curso</a>
       </div>
     </div>
     <div class="course-list">
@@ -15,7 +15,11 @@
           <p>{{course.description}}</p>
         </div>
         <div class="course-footer">
-          <a :href="'course/' + course.id + '/edit'" class="action-icon" v-if="user.type == 'Admin'">
+          <a
+            :href="'course/' + course.id + '/edit'"
+            class="action-icon"
+            v-if="user.type == 'Admin'"
+          >
             <ion-icon name="create-outline"></ion-icon>
           </a>
           <button @click="deleteCourse(course)" class="action-icon" v-if="user.type == 'Admin'">
@@ -31,7 +35,7 @@
 export default {
   data() {
     return {
-         user: {},
+      user: {},
       courses: [],
     };
   },
@@ -48,11 +52,11 @@ export default {
         });
       }
     },
-      getLoggedUser() {
-          axios.get("/loggeduser").then((response) => {
-              this.user = response.data;
-          });
-      },
+    getLoggedUser() {
+      axios.get("/loggeduser").then((response) => {
+        this.user = response.data;
+      });
+    },
   },
   mounted() {
     this.getCourses();

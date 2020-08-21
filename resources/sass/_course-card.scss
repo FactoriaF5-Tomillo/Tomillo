@@ -2,19 +2,20 @@
     max-width: 350px;
     height: 200px;
     position: relative;
-    background-color: #dbdbdb;
-    border-radius: 10px;
+    background-color: $secondary-grey;
+    border-radius: 15px 15px 10px 10px;
     .course-header {
         border-radius: 10px 10px 0 0;
-        background-color: rgb(119, 119, 119);
+        background-color: $primary-green;
         padding: 10px;
         a {
-            color: white;
+            color: $primary-white;
             font-size: 18px;
             text-decoration: underline;
         }
     }
     .course-body {
+        color: $primary-black;
         padding: 10px;
     }
     .course-footer {
@@ -28,7 +29,7 @@
             background-color: transparent;
         }
         .action-icon {
-            color: black;
+            color: $primary-black;
             padding: 5px;
             outline: none;
             ion-icon {

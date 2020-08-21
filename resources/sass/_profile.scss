@@ -1,0 +1,54 @@
+.profile {
+    padding-top: 50px;
+
+    .profile-info {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+
+        h1 {
+            font-size: 40px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    .profile-course {
+        border-radius: 10px;
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: $secondary-grey;
+
+        .course-header {
+            padding: 10px 15px;
+            background-color: $primary-green;
+            color: $primary-white;
+            border-radius: 10px 10px 0 0;
+
+            h3 {
+                margin: 0;
+            }
+
+            hr {
+                margin-top: 5px;
+                margin-bottom: 10px;
+                background-color: $secondary-grey;
+            }
+
+            h4 {
+                margin: 0;
+            }
+        }
+        .course-content {
+            padding: 10px 15px;
+
+            .course-assistance {
+                h5 {
+                    margin-bottom: 15px;
+                }
+            }
+        }
+    }
+}

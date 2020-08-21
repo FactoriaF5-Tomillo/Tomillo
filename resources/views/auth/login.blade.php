@@ -50,7 +50,7 @@
             
             <div class="form-footer">
                 <div>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn primary-button">
                         {{ __('Login') }}
                     </button>
 

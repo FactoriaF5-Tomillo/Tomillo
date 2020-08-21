@@ -46,7 +46,7 @@
       </div>
       <div class="form-submit">
         <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
-        <button class="btn btn-primary" @click="updateStudentInfo(student)" value="Crear">Editar</button>
+        <button class="btn primary-button" @click="updateStudentInfo(student)" value="Crear">Editar</button>
       </div>
     </div>
   </div>

@@ -125,6 +125,11 @@ class UserController extends Controller
         return view('student.show', compact('user'));
     }
 
+    public function showStudentProfile(User $user)
+    {
+        return view('student.profile', compact('user'));
+    }
+
     public function showTeacher(User $user)
     {
         return view('teacher.show', compact('user'));

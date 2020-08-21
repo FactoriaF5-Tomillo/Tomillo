@@ -3,7 +3,7 @@
     <div class="page-title">
       <h1>Profesores</h1>
       <div>
-        <a href="/teacher/create" class="btn btn-primary">Añadir profesor</a>
+        <a href="/teacher/create" class="btn primary-button">Añadir profesor</a>
       </div>
     </div>
     <div class="list">
