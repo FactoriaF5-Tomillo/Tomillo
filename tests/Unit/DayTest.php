@@ -67,6 +67,9 @@ class DayTest extends TestCase
 
         $this->assertFalse($day->checkIfCheckedOut());
 
+        $day->checkOut();
+
+        $this->assertTrue($day->checkIfCheckedOut());
 
     }
 

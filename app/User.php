@@ -43,4 +43,21 @@ class User extends Authenticatable
 
         return $this->days()->save($day);
     }
+
+    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment 
+    public function checkIfCanCheckIn()
+    {
+
+        if($this->days!=null){
+            if($this->days->last()->checkOut==null){
+                return False;
+            }
+            return True;
+        }
+        return True;
+        
+        
+    }
+    */
 }
+
