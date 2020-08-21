@@ -7,6 +7,7 @@ use App\Student;
 use App\Teacher;
 Use App\User;
 use App\Http\Resources\Course as CourseResource;
+//use Illuminate\Database\Eloquent\Collection::to_array();
 use App\Policies\CoursePolicy;
 use Illuminate\Http\Request;
 
@@ -105,12 +106,17 @@ class CourseController extends Controller
 
     public function addTeacherToTheCourse(Request $request, Course $course)
     {
-        foreach ($request->teachers as $userId) {
+        foreach ($request->teachers as $userId)
+        {
             $user = User::find($userId);
-            $course->users()->attach($user);
-        };
+            $user_course = User::getAllTeacherCourses($user);
 
-        $courses = Course::all();
+            if ($user_course->contains($course)) {
+                continue;
+            }
+            $course->users()->attach($user);
+        }
+        //$courses = Course::all();
         return $course;
     }
 
