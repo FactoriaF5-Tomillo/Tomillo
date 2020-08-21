@@ -11230,3 +11230,57 @@ p {
   background-color: #69c85c;
 }
 
+.profile {
+  padding-top: 50px;
+}
+
+.profile .profile-info {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.profile .profile-info h1 {
+  font-size: 40px;
+}
+
+.profile .profile-info p {
+  font-size: 16px;
+}
+
+.profile .profile-course {
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: #e8e8e8;
+}
+
+.profile .profile-course .course-header {
+  padding: 10px 15px;
+  background-color: #2e6951;
+  color: #ffffff;
+  border-radius: 10px 10px 0 0;
+}
+
+.profile .profile-course .course-header h3 {
+  margin: 0;
+}
+
+.profile .profile-course .course-header hr {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: #e8e8e8;
+}
+
+.profile .profile-course .course-header h4 {
+  margin: 0;
+}
+
+.profile .profile-course .course-content {
+  padding: 10px 15px;
+}
+
+.profile .profile-course .course-content .course-assistance h5 {
+  margin-bottom: 15px;
+}
+

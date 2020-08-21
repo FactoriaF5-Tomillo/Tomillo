@@ -2819,12 +2819,36 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
     return {};
   },
   methods: {
+    getDate: function getDate() {
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, "0");
+      var mm = String(today.getMonth() + 1).padStart(2, "0"); //January is 0!
+
+      var yyyy = today.getFullYear();
+      return today = dd + "/" + mm + "/" + yyyy;
+    },
     goBack: function goBack() {
       window.history.back();
     },
@@ -40471,66 +40495,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "show-user" }, [
-      _c("div", { staticClass: "user-info" }, [
-        _c("h3", [
+  return _c("div", { staticClass: "profile" }, [
+    _c("section", { staticClass: "profile-info" }, [
+      _c("div", [
+        _c("h1", [
           _vm._v(_vm._s(_vm.student.name) + " " + _vm._s(_vm.student.surname))
         ]),
         _vm._v(" "),
-        _c("p", [
-          _c("strong", [_vm._v("Nacionalidad:")]),
-          _vm._v("\n        " + _vm._s(_vm.student.nationality) + "\n      ")
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("strong", [_vm._v("Genro:")]),
-          _vm._v("\n        " + _vm._s(_vm.student.gender) + "\n      ")
+        _c("div", [
+          _c("p", [
+            _c("strong", [_vm._v("Email:")]),
+            _vm._v("\n          " + _vm._s(_vm.student.email) + "\n        ")
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._m(1),
+          _vm._v(" "),
+          _c("p", [
+            _c("strong", [_vm._v("Nacionalidad:")]),
+            _vm._v(
+              "\n          " + _vm._s(_vm.student.nationality) + "\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c("p", [
+            _c("strong", [_vm._v("Genro:")]),
+            _vm._v("\n          " + _vm._s(_vm.student.gender) + "\n        ")
+          ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Email:")]),
-        _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
       ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.checkin(_vm.student)
-            }
-          }
-        },
-        [_vm._v("Check In")]
-      )
+    _c("section", { staticClass: "profile-course" }, [
+      _vm._m(2),
+      _vm._v(" "),
+      _c("div", { staticClass: "course-content" }, [
+        _c("p", [
+          _vm._v(
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada enim vel enim pretium varius. Praesent vitae tempor magna, vel pellentesque ex. Mauris ultrices in sem at accumsan. Praesent vitae mollis orci. Interdum et malesuada fames ac ante ipsum primis in faucibus."
+          )
+        ]),
+        _vm._v(" "),
+        _c("hr"),
+        _vm._v(" "),
+        _c("div", { staticClass: "course-assistance" }, [
+          _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn primary-button",
+              on: {
+                click: function($event) {
+                  return _vm.checkin(_vm.student)
+                }
+              }
+            },
+            [_vm._v("Check In")]
+          )
+        ])
+      ])
     ]),
     _vm._v(" "),
-    _c("div", [
-      _c(
-        "a",
-        {
-          staticClass: "list-actions",
-          attrs: { href: "" },
-          on: {
-            click: [
-              function($event) {
-                $event.preventDefault()
-              },
-              function($event) {
-                return _vm.goBack()
-              }
-            ]
-          }
-        },
-        [_vm._v("← Volver")]
-      )
-    ])
+    _c("div")
   ])
 }
 var staticRenderFns = [
@@ -40538,8 +40566,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "page-title" }, [
-      _c("h1", [_vm._v("Datos Del Alumno")])
+    return _c("p", [
+      _c("strong", [_vm._v("Fecha:")]),
+      _vm._v("\n          20/5/1999\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _c("strong", [_vm._v("Edad:")]),
+      _vm._v("\n          21 años\n        ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "course-header" }, [
+      _c("h3", [_vm._v("Fullstack 850h Webdev")]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("h4", [_vm._v("FactoriaF5")])
     ])
   }
 ]
