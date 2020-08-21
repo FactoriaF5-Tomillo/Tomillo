@@ -36,6 +36,14 @@ class UserController extends Controller
         $user = User::find($loggeduser->id);
         return $user;
     }
+
+    public function getTeacherCourses()
+    {
+        $user = $this->getLoggedUser();
+        $teacher_courses = User::getAllTeacherCourses($user);
+        return $teacher_courses;
+    }
+
     public function getTeachers()
     {
         $teachers = UserResource::collection(User::where('type', 'Teacher')->get());
@@ -146,7 +154,7 @@ class UserController extends Controller
     }
 
     public function checkIn(User $user){
-       
+
         return Day::checkIn($user);
     }
 }

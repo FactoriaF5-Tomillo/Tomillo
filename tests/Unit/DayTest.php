@@ -9,7 +9,7 @@ use App\User;
 
 class DayTest extends TestCase
 {
-    
+
     use RefreshDatabase;
     /**
      * A basic unit test example.
@@ -24,17 +24,17 @@ class DayTest extends TestCase
     {
         $date= Day::setDate();
         $this->assertNotNull($date);
-       
+
     }
 
     public function test_set_time()
     {
         $time= Day::setTime();
         $this->assertNotNull($time);
-        
+
     }
 
-    
+
     public function test_check_in()
     {
         $user= factory(User::class)->create();
@@ -46,9 +46,9 @@ class DayTest extends TestCase
         $this->assertNotNull($day);
         $this->assertNotNull($day->date);
         $this->assertNotNull($day->checkIn);
-        $this->assertEquals($user->id, $day->user->id);
+        $this->assertEquals($user->id, $day->user_id);
 
     }
 
-    
+
 }

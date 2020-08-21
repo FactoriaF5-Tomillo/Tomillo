@@ -28,6 +28,8 @@ Route::get('/home', 'HomeController@homeindex')->name('home');
 
 Route::get('/loggeduser', 'UserController@getLoggedUser');
 
+Route::get('/teacherCurrentCourses', 'UserController@getTeacherCourses');
+
 Route::get('/courses', 'CourseController@index')->name('course.index')->middleware('can:viewAny,App\Course');
 Route::get('/course/create', 'CourseController@create')->name('course.create')->middleware('can:viewAny,App\Course');
 Route::get('/course/{course}', 'CourseController@show')->name('course.show');

@@ -3073,17 +3073,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["teacher"],
   data: function data() {
-    return {};
+    return {
+      teacher_courses: []
+    };
   },
   methods: {
+    getTeacherCourses: function getTeacherCourses() {
+      var _this = this;
+
+      axios.get("/teacherCurrentCourses").then(function (response) {
+        _this.teacher_courses = response.data;
+      });
+    },
     goBack: function goBack() {
       window.history.back();
     }
   },
   mounted: function mounted() {
+    this.getTeacherCourses();
     console.log("Component mounted.");
   }
 });
@@ -41008,13 +41029,34 @@ var render = function() {
         _vm._v(" "),
         _c("p", [
           _c("strong", [_vm._v("Genro:")]),
-          _vm._v("\n        " + _vm._s(_vm.teacher.gender) + "\n      ")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Email:")]),
-        _vm._v("\n      " + _vm._s(_vm.teacher.email) + "\n    ")
+          _vm._v("\n            " + _vm._s(_vm.teacher.gender) + "\n          ")
+        ]),
+        _vm._v(" "),
+        _c("p", [
+          _c("strong", [_vm._v("Email:")]),
+          _vm._v("\n            " + _vm._s(_vm.teacher.email) + "\n          ")
+        ]),
+        _c("br"),
+        _c("br"),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "course-list" },
+          _vm._l(_vm.teacher_courses, function(course, i) {
+            return _c("div", { key: i, staticClass: "course-card" }, [
+              _c("div", { staticClass: "course-header" }, [
+                _c("a", { attrs: { href: "course/" + course.id } }, [
+                  _vm._v(_vm._s(course.title))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "course-body" }, [
+                _c("p", [_vm._v(_vm._s(course.description))])
+              ])
+            ])
+          }),
+          0
+        )
       ])
     ]),
     _vm._v(" "),

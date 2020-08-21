@@ -43,12 +43,20 @@ class User extends Authenticatable
      public static function getActualCourse(User $user)
      {
          $user_course = $user->course()->first();
-         //dd($user_course->id);
+
          return $user_course;
      }
 
-    public function addDayToUser($day){
+    public static function getAllTeacherCourses(User $user)
+    {
+        $user_courses = $user->course()->get();
 
+        return $user_courses;
+    }
+
+    public function addDayToUser($day)
+    {
+        //dd($this->days()->save($day));
         return $this->days()->save($day);
     }
 }
