@@ -116,7 +116,7 @@ class CourseController extends Controller
             }
             $course->users()->attach($user);
         }
-        //$courses = Course::all();
+
         return $course;
     }
 
