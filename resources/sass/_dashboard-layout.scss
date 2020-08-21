@@ -27,11 +27,17 @@
         background-color: $secondary-grey;
         .nav-buttons {
             padding-top: 30px;
-            a {
+            .nav-button {
                 display: block;
-                max-width: 125px;
-                margin: 0 auto;
-                margin-bottom: 5px;
+                max-width: 135px;
+                margin-bottom: 7px;
+                padding: 8px 0 8px 10px;
+                border-radius: 0 5px 5px 0;
+                color: $primary-black;
+
+                &:hover {
+                    text-decoration: none;
+                }
             }
         }
     }

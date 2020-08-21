@@ -10988,11 +10988,17 @@ p {
   padding-top: 30px;
 }
 
-.dashboard .side-bar .nav-buttons a {
+.dashboard .side-bar .nav-buttons .nav-button {
   display: block;
-  max-width: 125px;
-  margin: 0 auto;
-  margin-bottom: 5px;
+  max-width: 135px;
+  margin-bottom: 7px;
+  padding: 8px 0 8px 10px;
+  border-radius: 0 5px 5px 0;
+  color: #000000;
+}
+
+.dashboard .side-bar .nav-buttons .nav-button:hover {
+  text-decoration: none;
 }
 
 .dashboard .content {
@@ -11220,10 +11226,20 @@ p {
 
 .primary-button {
   background-color: #e1e723;
+  transition-duration: 0.2s;
+}
+
+.primary-button:hover {
+  background-color: #d5db21;
 }
 
 .secondary-button {
   background-color: #72a951;
+  transition-duration: 0.2s;
+}
+
+.secondary-button:hover {
+  background-color: #5a9438;
 }
 
 .selected-button {

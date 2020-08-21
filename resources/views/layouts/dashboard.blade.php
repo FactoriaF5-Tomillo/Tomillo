@@ -44,9 +44,9 @@
         <main class="dashboard">
             <div class="side-bar">
                 <div class="nav-buttons">
-                    <a href="/courses" class="btn secondary-button">Cursos</a>
-                    <a href="/students" class="btn secondary-button">Alumnos</a>
-                    <a href="/teachers" class="btn secondary-button">Profesores</a>
+                    <a href="/courses" class="nav-button secondary-button">Cursos</a>
+                    <a href="/students" class="nav-button secondary-button">Alumnos</a>
+                    <a href="/teachers" class="nav-button secondary-button">Profesores</a>
                 </div>
             </div>
             <div class="content">
