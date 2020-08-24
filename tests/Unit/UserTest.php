@@ -52,4 +52,17 @@ class UserTest extends TestCase
         
     }
     */
+    public function test_check_if_checked_in_same_day(){
+
+        $user= factory(User::class)->create();
+        $day= factory(Day::class)->create();
+        $sameDay= factory(Day::class)->create();
+
+        $check1= $day->checkIfCheckedInSameDay($user);
+        $check2= $sameDay->checkIfCheckedInSameDay($user);
+  
+        $this->assertFalse($check1);
+        $this->assertTrue($check2);
+        
+    }
 }
