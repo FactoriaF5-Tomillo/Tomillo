@@ -34,6 +34,10 @@
           <option value="Otro">Otro</option>
         </select>
       </div>
+      <div class="form-group">
+        <label>Fecha de nascimiento</label>
+        <input type="date" v-model="student.date_of_birth" class="form-control" required />
+      </div>
       <div class="form-submit">
         <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn primary-button" @click="createStudent(student)" value="Crear">Crear</button>
@@ -46,9 +50,7 @@
 export default {
   data() {
     return {
-      student: {
-        course_id: 1,
-      },
+      student: {},
     };
   },
   mounted() {

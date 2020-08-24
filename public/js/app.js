@@ -2598,12 +2598,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      student: {
-        course_id: 1
-      }
+      student: {}
     };
   },
   mounted: function mounted() {
@@ -40082,6 +40084,32 @@ var render = function() {
             _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
           ]
         )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", [_vm._v("Fecha de nascimiento")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.student.date_of_birth,
+              expression: "student.date_of_birth"
+            }
+          ],
+          staticClass: "form-control",
+          attrs: { type: "date", required: "" },
+          domProps: { value: _vm.student.date_of_birth },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.student, "date_of_birth", $event.target.value)
+            }
+          }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-submit" }, [
