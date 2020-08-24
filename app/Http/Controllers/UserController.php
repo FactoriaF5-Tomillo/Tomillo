@@ -94,6 +94,7 @@ class UserController extends Controller
 
     public function storeStudent(Request $request)
     {
+        Carbon::createFromFormat('Y-m-d', $request->date_of_birth);
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,
@@ -101,6 +102,7 @@ class UserController extends Controller
             'type' => 'Student',
             'gender' => $request->gender,
             'nationality' => $request->nationality,
+            'date_of_birth' => $request->date_of_birth,
             'password' => Hash::make('password')
         ]);
         return $user;
@@ -122,11 +124,13 @@ class UserController extends Controller
 
     public function showStudent(User $user)
     {
+        $user = new UserResource($user);
         return view('student.show', compact('user'));
     }
 
     public function showStudentProfile(User $user)
     {
+        $user = new UserResource($user);
         return view('student.profile', compact('user'));
     }
 

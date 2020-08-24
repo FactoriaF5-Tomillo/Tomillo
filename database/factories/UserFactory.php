@@ -27,6 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'type' => $type,
         'gender' => $gender,
         'nationality' => $faker->country,
+        'date_of_birth' => '2005-1-1',
         'email_verified_at' => now(),
         'password' => Hash::make('password'), // password
         'remember_token' => Str::random(10),

@@ -10,11 +10,11 @@
           </p>
           <p>
             <strong>Fecha:</strong>
-            20/5/1999
+            {{student.date_of_birth}}
           </p>
           <p>
             <strong>Edad:</strong>
-            21 años
+            {{student.age}} años
           </p>
           <p>
             <strong>Nacionalidad:</strong>
@@ -27,14 +27,14 @@
         </div>
       </div>
     </section>
-    <section class="profile-course">
+    <section class="profile-course" v-if="student.course">
       <div class="course-header">
-        <h3>Fullstack 850h Webdev</h3>
+        <h3>{{student.course.title}}</h3>
         <hr />
         <h4>FactoriaF5</h4>
       </div>
       <div class="course-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada enim vel enim pretium varius. Praesent vitae tempor magna, vel pellentesque ex. Mauris ultrices in sem at accumsan. Praesent vitae mollis orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        <p>{{student.course.description}}</p>
         <hr />
         <div class="course-assistance">
           <h5>{{getDate()}}</h5>

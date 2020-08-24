@@ -20,17 +20,24 @@ class UserTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function test_add_day_to_user(){
-
+    public function test_add_day_to_user()
+    {
         $user= factory(User::class)->create();
         $day= factory(Day::class)->create();
 
         $user->addDayToUser($day);
 
-        dd($user->days);
-  
         $this->assertNotNull($user->days);
-       //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla
+        //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla
+    }
 
+    public function test_calc_age()
+    {
+        $user = factory(User::class)->create();
+        $expected = 15;
+
+        $age = $user->age();
+
+        $this->assertEquals($expected, $age);
     }
 }

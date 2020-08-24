@@ -4,6 +4,7 @@ namespace App;
 use App\Course;
 use App\Day;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,7 +15,7 @@ class User extends Authenticatable
 
 
     protected $fillable = [
-        'name', 'surname', 'email', 'password', 'type', 'gender','nationality'
+        'name', 'surname', 'email', 'password', 'type', 'gender', 'nationality', 'date_of_birth'
     ];
 
     protected $hidden = [
@@ -35,23 +36,23 @@ class User extends Authenticatable
         return $this->hasMany(Day::class);
     }
 
-    public function justifications() {
-
-        return $this->hasMany(Justification::class);
-     }
-
-     public static function getActualCourse(User $user)
-     {
-         $user_course = $user->course()->first();
-
-         return $user_course;
-     }
-
-    public static function getAllTeacherCourses(User $user)
+    public function justifications()
     {
-        $user_courses = $user->course()->get();
+        return $this->hasMany(Justification::class);
+    }
 
-        return $user_courses;
+    public function studentCourse()
+    {
+        $student_course = $this->course()->first();
+
+        return $student_course;
+    }
+
+    public function teacherCourses()
+    {
+        $teacher_courses = $this->course()->get();
+
+        return $teacher_courses;
     }
 
     public function addDayToUser($day)
@@ -59,6 +60,7 @@ class User extends Authenticatable
         //dd($this->days()->save($day));
         return $this->days()->save($day);
     }
+
 
     public static function getTotalStudentUsers($type)
     {
@@ -88,5 +90,13 @@ class User extends Authenticatable
     {
         $Total_Users = User::all();
         return count($Total_Users);
+    }
+
+    public function age()
+    {
+        $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
+
+        return $timeSince->format('%y');
+
     }
 }

@@ -55,3 +55,10 @@ Route::get('/student/{user}/edit', 'UserController@editStudent')->name('student.
 Route::get('/profile/{user}', 'UserController@showStudentProfile')->name('student.profile');
 
 
+/* Route::get('/justification/create', 'JustificationController@create')->name('justification.create');
+Route::post('/justification/create','JustificationController@uploadFile'); */
+
+Route::get('/upload','JustificationController@create')->name('justification.upload');
+Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
+
+

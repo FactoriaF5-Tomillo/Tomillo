@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Course;
 use App\User;
+
+use App\Http\Resources\User as UserResource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -39,14 +41,16 @@ class HomeController extends Controller
             $courses = Course::all();
             return view('course.index', compact('courses'));
         }
+
         if($loggeduser->type == 'Teacher')
         {
             return view('teacher.show', compact('user'));
         }
+
         if($loggeduser->type == 'Student')
         {
+            $user = new UserResource($user);
             return view('student.profile', compact('user'));
-
         }
     }
 }
