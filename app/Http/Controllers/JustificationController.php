@@ -23,7 +23,11 @@ class JustificationController extends Controller
 
        // dd($file);
         
-        $justification->upload_file($file);
+        $file_name= $justification->upload_file($file);
+
+        $justification->update([
+            'file' => $file_name,
+        ]);
 
         return $justification;
     }

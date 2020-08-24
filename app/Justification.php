@@ -23,6 +23,8 @@ class Justification extends Model
        
         $file->storeAs('uploads/', $file_name, ['disk'=>'public']);
 
+        return $file_name;
+
     }
 }
 
