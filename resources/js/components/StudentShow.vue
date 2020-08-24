@@ -22,6 +22,7 @@
     </div>
     <div>
       <button @click="checkin(student)">Check In</button>
+      <button @click="checkout(student)">Check Out</button>
     </div>
 
 
@@ -43,6 +44,9 @@ export default {
     },
     checkin(student){
       axios.post("/api/students/"+student.id+"/checkin", this.student)
+    },
+    checkout(student){
+      axios.patch("/api/students/"+student.id+"/checkout", this.student)
     }
    
   },

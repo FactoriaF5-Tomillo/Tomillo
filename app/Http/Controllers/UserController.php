@@ -166,4 +166,13 @@ class UserController extends Controller
 
         return Day::checkIn($user);
     }
+
+    public function checkOut(User $user){
+       
+        $dayToCheckOut= $user->days->last();
+
+        $dayToCheckOut->checkOut();
+    
+        return $dayToCheckOut;
+    }
 }

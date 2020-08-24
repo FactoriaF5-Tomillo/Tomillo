@@ -49,6 +49,29 @@ class DayTest extends TestCase
         $this->assertEquals($user->id, $day->user_id);
 
     }
+    public function test_check_out()
+    {
+        $user= factory(User::class)->create();
+        $day= Day::checkIn($user);
+
+        $day->checkout();
+
+        $this->assertNotNull($day->checkOut);
+
+    }
+
+    public function test_check_if_user_checked_out(){
+
+        $user= factory(User::class)->create();
+        $day= Day::checkIn($user);
+
+        $this->assertFalse($day->checkIfCheckedOut());
+
+        $day->checkOut();
+
+        $this->assertTrue($day->checkIfCheckedOut());
+
+    }
 
 
 }

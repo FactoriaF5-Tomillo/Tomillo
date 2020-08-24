@@ -56,4 +56,38 @@ class Day extends Model
         return $day;
     }
 
+    public function checkOut(){
+
+        $time=self::setTime();
+
+        if($this->checkIfCheckedOut()){
+            return $this;
+        }
+
+        $this->update(array('checkOut' => $time));
+
+        return $this;
+    }
+
+    public function checkIfCheckedOut(){
+
+        if($this->checkOut==null){
+            return False;
+        }
+        return True;
+    }
+
+    public function checkIfCheckedInSameDay(){
+
+
+    }
+
+
+    
+
+    
+
+    
+
+    
 }
