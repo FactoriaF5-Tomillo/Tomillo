@@ -46,7 +46,7 @@ class HomeController extends Controller
         if($loggeduser->type == 'Student')
         {
             return view('student.profile', compact('user'));
-            //return view('studentProfile', compact('user'));
+
         }
     }
 }

@@ -59,4 +59,34 @@ class User extends Authenticatable
         //dd($this->days()->save($day));
         return $this->days()->save($day);
     }
+
+    public static function getTotalStudentUsers($type)
+    {
+        $Student_Users = User::where('type', '=', $type)->get();
+        return count($Student_Users);
+    }
+
+    public static function getTotalMaleUsers($gender)
+    {
+        $Male_Users = User::where('gender', '=', $gender)->get();
+        return count($Male_Users);
+    }
+
+    public static function getTotalFemaleUsers($gender)
+    {
+        $Female_Users = User::where('gender', '=', $gender)->get();
+        return count($Female_Users);
+    }
+
+    public static function getTotalOtherUsers($gender)
+    {
+        $Other_Users = User::where('gender', '=', $gender)->get();
+        return count($Other_Users);
+    }
+
+    public static function getTotalUsers()
+    {
+        $Total_Users = User::all();
+        return count($Total_Users);
+    }
 }
