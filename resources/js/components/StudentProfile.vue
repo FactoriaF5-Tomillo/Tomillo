@@ -27,7 +27,7 @@
         </div>
       </div>
     </section>
-    <section class="profile-course">
+    <section class="profile-course" v-if="student.course">
       <div class="course-header">
         <h3>{{student.course.title}}</h3>
         <hr />

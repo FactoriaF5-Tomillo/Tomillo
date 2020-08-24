@@ -40777,38 +40777,40 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("section", { staticClass: "profile-course" }, [
-      _c("div", { staticClass: "course-header" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.student.course.title))]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("h4", [_vm._v("FactoriaF5")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "course-content" }, [
-        _c("p", [_vm._v(_vm._s(_vm.student.course.description))]),
-        _vm._v(" "),
-        _c("hr"),
-        _vm._v(" "),
-        _c("div", { staticClass: "course-assistance" }, [
-          _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
+    _vm.student.course
+      ? _c("section", { staticClass: "profile-course" }, [
+          _c("div", { staticClass: "course-header" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.student.course.title))]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("h4", [_vm._v("FactoriaF5")])
+          ]),
           _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn primary-button",
-              on: {
-                click: function($event) {
-                  return _vm.checkin(_vm.student)
-                }
-              }
-            },
-            [_vm._v("Check In")]
-          )
+          _c("div", { staticClass: "course-content" }, [
+            _c("p", [_vm._v(_vm._s(_vm.student.course.description))]),
+            _vm._v(" "),
+            _c("hr"),
+            _vm._v(" "),
+            _c("div", { staticClass: "course-assistance" }, [
+              _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn primary-button",
+                  on: {
+                    click: function($event) {
+                      return _vm.checkin(_vm.student)
+                    }
+                  }
+                },
+                [_vm._v("Check In")]
+              )
+            ])
+          ])
         ])
-      ])
-    ]),
+      : _vm._e(),
     _vm._v(" "),
     _c("div")
   ])
