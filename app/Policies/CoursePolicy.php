@@ -19,7 +19,7 @@ class CoursePolicy
     public function viewAny(User $user)
     {
         //dd($user->type);
-        if ($user->type === 'Admin')
+        if ($user->type === 'Admin' || $user->type === 'Teacher')
         {
             return true;
         }
@@ -70,7 +70,7 @@ class CoursePolicy
      */
     public function delete(User $user, Course $course)
     {
-        return  true;
+        return  $user->type === 'Admin';
     }
 
     /**

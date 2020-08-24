@@ -34,6 +34,8 @@ Route::get('/courses', 'CourseController@index')->name('course.index')->middlewa
 Route::get('/course/create', 'CourseController@create')->name('course.create')->middleware('can:viewAny,App\Course');
 Route::get('/course/{course}', 'CourseController@show')->name('course.show');
 Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit')->middleware('can:viewAny,App\Course');
+Route::middleware('auth')->delete('/courses/{course}', 'CourseController@destroy')
+    ->name('course.destroy');
 Route::get('/course/{course}/assign-students', 'CourseController@chooseStudent')->name('course.assign-students');
 Route::get('/course/{course}/students', 'CourseController@showStudents');
 Route::get('/course/{course}/teachers', 'CourseController@showTeachers');

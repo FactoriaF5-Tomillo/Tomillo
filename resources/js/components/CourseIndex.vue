@@ -47,7 +47,7 @@ export default {
     },
     deleteCourse(course) {
       if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
-        axios.delete("/api/courses/" + course.id).then((response) => {
+        axios.delete("/courses/" + course.id).then((response) => {
           this.courses = response.data;
         });
       }
