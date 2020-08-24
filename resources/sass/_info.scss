@@ -1,12 +1,12 @@
 .info {
     max-width: 600px;
-    background-color: #cfcfcf;
+    background-color: $secondary-grey;
     border-radius: 10px;
     margin-bottom: 50px;
     .info-header {
         border-radius: 10px 10px 0 0;
         padding: 15px;
-        background-color: #5a5a5a;
+        background-color: $primary-green;
         h3 {
             color: white;
             font-size: 24px;

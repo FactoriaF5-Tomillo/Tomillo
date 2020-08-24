@@ -2370,6 +2370,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -39625,7 +39631,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/students" }
           },
           [_vm._v("Alumnos")]
@@ -39634,7 +39640,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/teachers" }
           },
           [_vm._v("Profesores")]
@@ -39649,7 +39655,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
           },
           [_vm._v("Asignar Alumnos")]
@@ -39658,7 +39664,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
           },
           [_vm._v("Asignar Profe")]
@@ -39667,7 +39673,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "/course/" + _vm.course.id + "/edit" }
           },
           [_vm._v("Editar")]
@@ -39676,7 +39682,7 @@ var render = function() {
         _c(
           "a",
           {
-            staticClass: "btn btn-dark",
+            staticClass: "btn primary-button",
             attrs: { href: "" },
             on: {
               click: [
