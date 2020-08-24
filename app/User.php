@@ -41,18 +41,18 @@ class User extends Authenticatable
         return $this->hasMany(Justification::class);  
     }
 
-     public static function getActualCourse(User $user)
-     {
-         $user_course = $user->course()->first();
-
-         return $user_course;
-     }
-
-    public static function getAllTeacherCourses(User $user)
+    public function studentCourse()
     {
-        $user_courses = $user->course()->get();
+        $student_course = $this->course()->first();
 
-        return $user_courses;
+        return $student_course;
+    }
+
+    public function teacherCourses()
+    {
+        $teacher_courses = $this->course()->get();
+
+        return $teacher_courses;
     }
 
     public function addDayToUser($day)

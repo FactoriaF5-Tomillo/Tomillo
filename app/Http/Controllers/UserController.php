@@ -130,6 +130,7 @@ class UserController extends Controller
 
     public function showStudentProfile(User $user)
     {
+        $user = new UserResource($user);
         return view('student.profile', compact('user'));
     }
 

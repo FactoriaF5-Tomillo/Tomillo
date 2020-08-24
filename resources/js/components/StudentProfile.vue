@@ -29,12 +29,12 @@
     </section>
     <section class="profile-course">
       <div class="course-header">
-        <h3>Fullstack 850h Webdev</h3>
+        <h3>{{student.course.title}}</h3>
         <hr />
         <h4>FactoriaF5</h4>
       </div>
       <div class="course-content">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada enim vel enim pretium varius. Praesent vitae tempor magna, vel pellentesque ex. Mauris ultrices in sem at accumsan. Praesent vitae mollis orci. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+        <p>{{student.course.description}}</p>
         <hr />
         <div class="course-assistance">
           <h5>{{getDate()}}</h5>
