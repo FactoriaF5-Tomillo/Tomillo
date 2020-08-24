@@ -9,45 +9,43 @@ use Illuminate\Http\Request;
 class JustificationController extends Controller
 {
 
-    public function index()
-    {   
-        $justifications = Justification::all();
-        return view('justification.index')->with(compact('justifications'));
-    }
-   
-
     public function create(Request $request)
     {
-        $file = $request->file('File');
-        // \Storage::disk('local')->put($file,  \File::get($file));
+        return view('justification.upload');
     }
 
-
-    public function store(Request $request)
+    
+    public function uploadFile(Request $request)
     {
-        //
+        
+        $file = $request->file('File');
+        $extension = $file->extension();
+        dd($extension);
+        Storage::disk('local')->put('uploads',$file, \File::get($file));
+        
+        return $extension;
     }
+
+
 
 
     public function show(Justification $justification)
     {
-        //
+        return view('justification.show', compact('justification')); 
     }
 
-    public function edit(Justification $justification)
-    {
-        //
-    }
 
-  
     public function update(Request $request, Justification $justification)
     {
-        //
+        $justification->update($request->all());
+        $justifications = Justification::all();
+        return $justifications;
     }
 
 
-    public function destroy(Justification $justification)
+   public function destroy(Justification $justification)
     {
-        //
+        $justification->delete();
+        return Justification::all();
     }
 }

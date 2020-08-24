@@ -35,10 +35,10 @@ class User extends Authenticatable
         return $this->hasMany(Day::class);
     }
 
-    public function justifications() {
-
-        return $this->hasMany(Justification::class);
-     }
+    public function justifications() 
+    {
+        return $this->hasMany(Justification::class);  
+    }
 
      public static function getActualCourse(User $user)
      {

@@ -14,6 +14,8 @@ class CreateJustificationsTable extends Migration
             $table->string('file');
             $table->text('description');
             $table->boolean('approval');
+            $table->foreignId('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
