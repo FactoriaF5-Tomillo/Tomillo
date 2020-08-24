@@ -124,6 +124,7 @@ class UserController extends Controller
 
     public function showStudent(User $user)
     {
+        $user = new UserResource($user);
         return view('student.show', compact('user'));
     }
 

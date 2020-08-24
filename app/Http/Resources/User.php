@@ -22,6 +22,8 @@ class User extends JsonResource
             'type' => $this->type,
             'gender' => $this->gender,
             'nationality' => $this->nationality,
+            'age' => $this->age(),
+            'date_of_birth' => $this->date_of_birth,
             'course' => $this->course,
             'email_verified_at' => $this->email_verified_at,
             'password' => $this->password

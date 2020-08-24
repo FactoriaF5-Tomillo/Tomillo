@@ -4,6 +4,7 @@ namespace App;
 use App\Course;
 use App\Day;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -58,5 +59,12 @@ class User extends Authenticatable
     {
         //dd($this->days()->save($day));
         return $this->days()->save($day);
+    }
+
+    public function age()
+    {
+        $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
+
+        return $timeSince->format('%y');
     }
 }
