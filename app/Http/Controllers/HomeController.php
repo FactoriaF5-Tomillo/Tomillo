@@ -45,12 +45,8 @@ class HomeController extends Controller
         }
         if($loggeduser->type == 'Student')
         {
-            return view('studentProfile', compact('user'));
+            return view('student.profile', compact('user'));
+            //return view('studentProfile', compact('user'));
         }
-    }
-
-    public function coursesindex()
-    {
-
     }
 }
