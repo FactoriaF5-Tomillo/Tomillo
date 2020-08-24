@@ -40744,9 +40744,17 @@ var render = function() {
             _vm._v("\n          " + _vm._s(_vm.student.email) + "\n        ")
           ]),
           _vm._v(" "),
-          _vm._m(0),
+          _c("p", [
+            _c("strong", [_vm._v("Fecha:")]),
+            _vm._v(
+              "\n          " + _vm._s(_vm.student.date_of_birth) + "\n        "
+            )
+          ]),
           _vm._v(" "),
-          _vm._m(1),
+          _c("p", [
+            _c("strong", [_vm._v("Edad:")]),
+            _vm._v("\n          " + _vm._s(_vm.student.age) + " años\n        ")
+          ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Nacionalidad:")]),
@@ -40799,26 +40807,7 @@ var render = function() {
     _c("div")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("strong", [_vm._v("Fecha:")]),
-      _vm._v("\n          20/5/1999\n        ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("strong", [_vm._v("Edad:")]),
-      _vm._v("\n          21 años\n        ")
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

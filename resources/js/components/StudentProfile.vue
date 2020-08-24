@@ -10,11 +10,11 @@
           </p>
           <p>
             <strong>Fecha:</strong>
-            20/5/1999
+            {{student.date_of_birth}}
           </p>
           <p>
             <strong>Edad:</strong>
-            21 años
+            {{student.age}} años
           </p>
           <p>
             <strong>Nacionalidad:</strong>
