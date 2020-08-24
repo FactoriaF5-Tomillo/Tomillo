@@ -17,13 +17,15 @@ class JustificationController extends Controller
     
     public function uploadFile(Request $request)
     {
+        $justification =Justification::create($request->all());
         
-        $file = $request->file('File');
-        $extension = $file->extension();
-        dd($extension);
-        Storage::disk('local')->put('uploads',$file, \File::get($file));
+        $file = $request->file('file');
+
+       // dd($file);
         
-        return $extension;
+        $justification->upload_file($file);
+
+        return $justification;
     }
 
 

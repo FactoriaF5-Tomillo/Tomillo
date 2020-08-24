@@ -59,4 +59,6 @@ Route::get('/profile/{user}', 'UserController@showStudentProfile')->name('studen
 Route::post('/justification/create','JustificationController@uploadFile'); */
 
 Route::get('/upload','JustificationController@create')->name('justification.upload');
-Route::post('/upload','JustificationController@uploadFile');
+Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
+
+
