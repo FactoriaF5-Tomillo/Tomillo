@@ -8,12 +8,38 @@ use Illuminate\Http\Request;
 
 class JustificationController extends Controller
 {
+    public function index()
+    {
+        $justifications = Justification::all();
+        return view('justification.index', compact('justifications'));
+    }
+
+    public function getJustifications()
+    {
+        $justifications = Justification::all();
+        return $justifications;
+    }
+
+    public function getJustification(Justification $justification)
+    {
+        return $justification;
+    }
+
+    public function show(Justification $justification)
+    {
+        return view('justification.show', compact('justification'));
+    }
 
     public function create(Request $request)
     {
         return view('justification.upload');
     }
 
+    public function store(Request $request)
+    {
+        $justification = Justification::create($request->all());
+        return $justification;
+    }
     
     public function uploadFile(Request $request)
     {
@@ -32,14 +58,10 @@ class JustificationController extends Controller
         return $justification;
     }
 
-
-
-
-    public function show(Justification $justification)
+    public function edit(Justification $justification)
     {
-        return view('justification.show', compact('justification')); 
+        return view('justification.edit', compact('justification'));
     }
-
 
     public function update(Request $request, Justification $justification)
     {
@@ -49,9 +71,4 @@ class JustificationController extends Controller
     }
 
 
-   public function destroy(Justification $justification)
-    {
-        $justification->delete();
-        return Justification::all();
-    }
 }

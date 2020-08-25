@@ -56,11 +56,8 @@ Route::get('/student/{user}', 'UserController@showStudent')->name('student.show'
 Route::get('/student/{user}/edit', 'UserController@editStudent')->name('student.edit');
 Route::get('/profile/{user}', 'UserController@showStudentProfile')->name('student.profile');
 
-
-/* Route::get('/justification/create', 'JustificationController@create')->name('justification.create');
-Route::post('/justification/create','JustificationController@uploadFile'); */
-
+Route::get('/justifications', 'JustificationController@index')->name('justification.index')->middleware('auth');
 Route::get('/upload','JustificationController@create')->name('justification.upload');
+Route::get('/justification/{justification}', 'JustificationController@show')->name('justification.show');
 Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
-
-
+Route::get('/justification/{justification}/edit', 'JustificationController@edit')->name('justification.edit');
