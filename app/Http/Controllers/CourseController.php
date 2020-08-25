@@ -57,8 +57,10 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
         //$user = Auth::user();
-        $this->authorize('update', $course);
+        //$this->authorize('update', $course);
+
         $course->update($request->all());
+
         $courses = Course::all();
         return $courses;
     }
@@ -66,6 +68,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $this->authorize('delete', $course);
+        
         $course->delete();
         return Course::all();
     }

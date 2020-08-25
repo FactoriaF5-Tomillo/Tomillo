@@ -61,7 +61,6 @@ class User extends Authenticatable
         return $this->days()->save($day);
     }
 
-
     public static function getTotalStudentUsers($type)
     {
         $Student_Users = User::where('type', '=', $type)->get();
@@ -97,10 +96,14 @@ class User extends Authenticatable
         $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
 
         return $timeSince->format('%y');
-
     }
+
     /* when the user has no days assigned at all, the function and the test break because
     $user->days does not exist until the first day assignment
+
+
+    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment
+*/
     public function checkIfCanCheckIn()
     {
 
@@ -114,6 +117,5 @@ class User extends Authenticatable
 
 
     }
-    */
 }
 

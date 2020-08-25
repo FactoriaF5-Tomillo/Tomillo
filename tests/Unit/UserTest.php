@@ -10,15 +10,6 @@ use App\Day;
 class UserTest extends TestCase
 {
     use RefreshDatabase;
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
 
     public function test_add_day_to_user()
     {
@@ -28,7 +19,7 @@ class UserTest extends TestCase
         $user->addDayToUser($day);
 
         $this->assertNotNull($user->days);
-        //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla
+        //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla, Error: Failed asserting that a traversable contains
     }
 
     public function test_calc_age()
@@ -39,14 +30,9 @@ class UserTest extends TestCase
         $age = $user->age();
 
         $this->assertEquals($expected, $age);
-  
-        $this->assertNotNull($user->days);
-        $this->assertEquals($day->date, $user->days->last()->date);
-        $this->assertEquals($day->user_id, $user->id);
-
     }
-    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment 
 
+    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment 
     public function test_if_can_check_in(){
 
         $user= factory(User::class)->create();
@@ -61,8 +47,6 @@ class UserTest extends TestCase
         $user->days->last()->checkOut();
 
         $this->assertTrue($user->checkIfCanCheckIn());
-
-        
     }
     */
 }

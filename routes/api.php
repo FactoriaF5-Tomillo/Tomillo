@@ -25,6 +25,9 @@ Route::post('/students', 'UserController@storeStudent')->name('student.store');
 Route::patch('/students/{user}', 'UserController@update')->name('student.update');
 Route::delete('/students/{user}', 'UserController@destroy')->name('student.destroy');
 
+Route::post('/students/{user}/checkin', 'UserController@checkIn')->name('student.checkin');
+Route::patch('/students/{user}/checkout', 'UserController@checkOut')->name('student.checkout');
+
 Route::get('/teachers', 'UserController@getTeachers');
 Route::get('/teachers/{user}', 'UserController@getTeacher');
 Route::post('/teachers', 'UserController@storeTeacher')->name('teacher.store');
@@ -37,9 +40,7 @@ Route::post('/courses', 'CourseController@store');
 Route::patch('/courses/{course}', 'CourseController@update');
 /*Route::middleware('auth:api')->delete('/courses/{course}', 'CourseController@destroy')
     ->name('course.destroy');*/
-
 Route::post('/courses/{course}/addStudentToTheCourse', 'CourseController@addStudentToTheCourse');
 Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeacherToTheCourse');
 
-Route::post('/students/{user}/checkin', 'UserController@checkIn')->name('student.checkin');
-Route::patch('/students/{user}/checkout', 'UserController@checkOut')->name('student.checkout');
+
