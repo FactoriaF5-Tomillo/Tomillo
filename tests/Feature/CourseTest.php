@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use App\Course;
 use App\User;
-use App\Http\Controllers\CourseController;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -69,7 +68,7 @@ class CourseTest extends TestCase
     }
 
     //Need to mock a user somehow
-    public function test_api_deletes_course()
+    public function test_course_delete_when_user_is_admin()
     {
         $user = factory(User::class)->states('Admin')->create();
         $course = factory(Course::class)->create();
@@ -83,6 +82,16 @@ class CourseTest extends TestCase
             'start_date' => $course->start_date,
             'end_date' => $course->end_date,
         ]);
+    }
+
+    public function test_course_delete_when_user_is_not_admin()
+    {
+        $user = factory(User::class)->states('Teacher')->create();
+        $course = factory(Course::class)->create();
+
+        $response = $this->actingAs($user)->delete('/courses/' . $course->id);
+
+        $response->assertStatus(403);
     }
 
     public function test_add_student_to_course()

@@ -14,30 +14,40 @@ class Course extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public static function getAllCourseStudents(Course $course)
+    public function totalStudents()
     {
-        $course_students = $course->users()->get();
-        return $course_students;
-    }
-    public static function getAllCourseMaleStudents(Course $course)
-    {
-        $course_MaleStudents = $course->users()->where('gender', '=', 'Hombre')->get();
+        $listOfStudents = $this->users()->where('type', '=', 'Student')->get();
 
-        return $course_MaleStudents;
+        $totalNumberOfStudents = count($listOfStudents);
+
+        return $totalNumberOfStudents;
     }
 
-    public static function getAllCourseFemaleStudents(Course $course)
+    public function totalMaleStudents()
     {
-        $course_FemaleStudents = $course->users()->where('gender', '=', 'Mujer')->get();
+        $listOfStudents = $this->users()->where('gender', '=', 'Hombre')->get();
 
-        return $course_FemaleStudents;
+        $totalNumberOfMaleStudents = count($listOfStudents);
+
+        return $totalNumberOfMaleStudents;
     }
 
-    public static function getAllCourseOtherStudents(Course $course)
+    public function totalFemaleStudents()
     {
-        $course_FemaleStudents = $course->users()->where('gender', '=', 'Otro')->get();
+        $listOfStudents = $this->users()->where('gender', '=', 'Mujer')->get();
 
-        return $course_FemaleStudents;
+        $totalNumberOfFemaleStudents = count($listOfStudents);
+
+        return $totalNumberOfFemaleStudents;
+    }
+
+    public function totalOtherStudents()
+    {
+        $listOfStudents = $this->users()->where('gender', '=', 'Otro')->get();
+
+        $totalNumberOfOtherStudents = count($listOfStudents);
+
+        return $totalNumberOfOtherStudents;
     }
 
     public static function getCourseMaleStudentsPercentage(Course $course)
