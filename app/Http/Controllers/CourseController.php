@@ -6,8 +6,9 @@ use App\Course;
 use App\Student;
 use App\Teacher;
 Use App\User;
+
 use App\Http\Resources\Course as CourseResource;
-//use Illuminate\Database\Eloquent\Collection::to_array();
+
 use App\Policies\CoursePolicy;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,7 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $this->authorize('update', $course);
+
         return view('course.edit', compact('course'));
     }
 

@@ -29,14 +29,16 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
         factory(User::class)->create([
-            'name'=>'Francisco'
-            ,'surname'=> 'Goncalves'
-            ,'email'=>'student@tomillo.com'
-            ,'type'=>'Student'
-            , 'gender'=>'Hombre'
-            ,'nationality'=> 'Portugal'
-            ,'password' => Hash::make('password')
+            'name'=>'Francisco',
+            'surname'=> 'Goncalves',
+            'email'=>'student@tomillo.com',
+            'type'=>'Student',
+            'gender'=>'Hombre',
+            'nationality'=> 'Portugal',
+            'password' => Hash::make('password')
         ]);
-        factory(User::class, 25)->create();
+        
+        factory(User::class, 15)->states('Teacher')->create();
+        factory(User::class, 30)->states('Student')->create();
     }
 }

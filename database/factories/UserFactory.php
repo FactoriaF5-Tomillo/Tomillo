@@ -23,8 +23,8 @@ $factory->define(User::class, function (Faker $faker) {
     $gender = $faker->randomElement(['Hombre', 'Mujer', "Otro"]);
 
     return [
-        'name' => $faker->name,
-        'surname' => $faker->name,
+        'name' => $faker->firstName,
+        'surname' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
         'type' => $type,
         'gender' => $gender,
