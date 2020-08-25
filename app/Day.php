@@ -26,7 +26,8 @@ class Day extends Model
 
     public static function setDate()
     {
-        $date= Carbon::now()->setTimezone('Europe/Madrid');
+        $date= Carbon::now()->setTimezone('Europe/Madrid')->toDateString();
+        var_dump($date);
         //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY');
         return $date;
     }
@@ -76,11 +77,22 @@ class Day extends Model
         }
         return True;
     }
+    /*
+    public function checkIfCheckedInSameDay(User $user){
 
-    public function checkIfCheckedInSameDay(){
-
+        //$date = DB::table('days')->where('user_id', $user->id)->value('date');
+        $dayToBeCheckedIn= $this->date->toDateString();
+      
+        foreach ($user->days as $dayUser){
+            if (??==$dayToBeCheckedIn){
+                
+                return True;
+            }
+        }
+        return False;
 
     }
+    */
 
 
     
