@@ -65,8 +65,8 @@ class DayTest extends TestCase
 
     }
 
-    public function test_check_if_checked_in_same_day(){
-
+    public function test_check_if_checked_in_same_day()
+    {
         $user = factory(User::class)->create();
     
         $assignedDay = factory(Day::class)->create();//creates a day instance of today
@@ -86,8 +86,8 @@ class DayTest extends TestCase
         //$check2 = $$anotherDay->checkIfCheckedInSameDay($user);
       
         $this->assertTrue($check1);
-        //$this->assertFalse($check2);
-        }
+        //$this->assertTrue($check2);
+    }
 
     public function test_time_worked_in_a_day()
     {
