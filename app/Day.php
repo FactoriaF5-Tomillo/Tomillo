@@ -28,6 +28,8 @@ class Day extends Model
     {
         $date= Carbon::now()->setTimezone('Europe/Madrid')->toDateString();
 
+        var_dump($date);
+        //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY');
         return $date;
     }
 
@@ -42,6 +44,7 @@ class Day extends Model
     public static function checkIn(User $user)
     {
         $date=self::setDate(); //string
+
         $time=self::setTime();
 
         $day = Day::create([
@@ -81,8 +84,8 @@ class Day extends Model
         return True;
     }
 
-    public function checkIfCheckedInSameDay(User $user){
-
+    public function checkIfCheckedInSameDay(User $user)
+    {
         foreach ($user->days as $dayUser){
             //var_dump($this->date);
             //var_dump($dayUser->date);

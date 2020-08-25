@@ -11,11 +11,14 @@ class StadisticsTest extends TestCase
 {
     use RefreshDatabase;
 
+
     //This test is redundent. The function returns a number, if its 0 its 0 if its 10 its 10. Behaviour doesnt change
-    public function test_no_students_in_db()
+
+    public function test_No_Students_In_DB()
     {
-        $Admin_Users = factory(User::class, 5)->states('Admin')->create();
-        $Teacher_Users = factory(User::class, 5)->states('Teacher')->create();
+        $Admin_Users= factory(User::class, 5)->create(['type'=>'Admin']);
+        $Teacher_Users= factory(User::class, 5)->create(['type'=>'Teacher']);
+
 
         $type = 'Student';
         $Total_Student_Users = User::getTotalStudentUsers($type);

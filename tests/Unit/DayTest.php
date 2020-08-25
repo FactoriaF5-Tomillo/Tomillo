@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Day;
 use App\User;
 
+
 class DayTest extends TestCase
 {
     use RefreshDatabase;
@@ -68,23 +69,23 @@ class DayTest extends TestCase
     public function test_check_if_checked_in_same_day()
     {
         $user = factory(User::class)->create();
-    
+
         $assignedDay = factory(Day::class)->create();//creates a day instance of today
         $user->addDayToUser($assignedDay); //assigns the day to user
-            
+
         $dayToCompare = factory(Day::class)->create(); //another day instance of today, not assigned
-    
+
         /*
         $anotherDay = Day::create([
             'date' => '2021-03-03'
         ]);
         */
-    
+
         //when we try to reach the days field of user before assigning any day by check-in, the user object anull itself
-    
+
         $check1 = $dayToCompare->checkIfCheckedInSameDay($user);
         //$check2 = $$anotherDay->checkIfCheckedInSameDay($user);
-      
+
         $this->assertTrue($check1);
         //$this->assertTrue($check2);
     }
