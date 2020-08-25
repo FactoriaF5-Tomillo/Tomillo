@@ -63,22 +63,19 @@ class DayTest extends TestCase
 
     }
 
-    // public function test_check_if_checked_in_same_day(){
+    public function test_check_if_checked_in_same_day(){
 
-    //     $user = factory(User::class)->create();
+    $user = factory(User::class)->create();
+
+    $checkedInDay = Day::checkIn($user);//creates a day instance of today and checks in
         
-    //     $dayToCompare = factory(Day::class)->create();
-    //     $checkedInDay = Day::checkIn($user);
+    $dayToCompare = factory(Day::class)->create(); //another day instance of today, not checked-in
 
-    //     //when we try to reach the days field of user before assigning any day by check-in, the user object anull itself
+    //when we try to reach the days field of user before assigning any day by check-in, the user object anull itself
 
-    //     $check1 = $dayToCompare->checkIfCheckedInSameDay($user);
-         
-    //     //can't access $user->days!!!
-
-    //     $check2= $dayToCompare->checkIfCheckedInSameDay($user);
+    $check1 = $dayToCompare->checkIfCheckedInSameDay($user);
   
-    //     $this->assertTrue($check1);
-    //     //$this->assertTrue($check2);
-    // }
+    $this->assertTrue($check1);
+    //$this->assertTrue($check2);
+    }
 }

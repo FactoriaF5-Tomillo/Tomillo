@@ -9,6 +9,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Day::class, function (Faker $faker) {
     return [
-        'date' => Carbon::now()->setTimezone('Europe/Madrid'),
+        'date' => Carbon::now()->setTimezone('Europe/Madrid')->toDateString(),
     ];
 });

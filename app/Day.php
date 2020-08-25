@@ -76,22 +76,19 @@ class Day extends Model
         }
         return True;
     }
-    /*
+    
     public function checkIfCheckedInSameDay(User $user){
-
-        //$date = DB::table('days')->where('user_id', $user->id)->value('date');
-        $dayToBeCheckedIn= $this->date->toDateString();
       
         foreach ($user->days as $dayUser){
-            if (??==$dayToBeCheckedIn){
-                
+            //var_dump($this->date);
+            //var_dump($dayUser->date);
+            if ($dayUser->date==$this->date){
                 return True;
             }
         }
         return False;
-
     }
-    */
+    
 
 
     
