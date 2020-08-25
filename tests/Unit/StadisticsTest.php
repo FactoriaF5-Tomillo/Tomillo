@@ -11,11 +11,6 @@ class StadisticsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testExample()
-    {
-        $this->assertTrue(true);
-    }
-
     public function test_No_Students_In_DB()
     {
         $Admin_Users= factory(User::class, 5)->create(['type'=>'Admin']);

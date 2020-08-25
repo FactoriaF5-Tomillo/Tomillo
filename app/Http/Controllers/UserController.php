@@ -95,6 +95,7 @@ class UserController extends Controller
     public function storeStudent(Request $request)
     {
         Carbon::createFromFormat('Y-m-d', $request->date_of_birth);
+
         $user = User::create([
             'name' => $request->name,
             'surname' => $request->surname,

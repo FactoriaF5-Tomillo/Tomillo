@@ -2,17 +2,18 @@
 
 namespace Tests\Feature;
 
-use App\Teacher;
+use App\User;
+
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class TeacherTest extends TestCase
+class UserTeacherTest extends TestCase
 {
     use RefreshDatabase;
 
     public function test_api_returns_teachers_list()
     {
-        $teachers = factory(Teacher::class, 5)->create();
+        $users = factory(User::class, 5)->states('Teacher')->create();
 
         $response = $this->get('/api/teachers');
 
@@ -20,9 +21,9 @@ class TeacherTest extends TestCase
         $response->assertJsonCount(5);
     }
 
-    public function test_api_returns_one_teacher()
+    public function test_api_returns_single_teacher()
     {
-        $teacher = factory(Teacher::class)->create();
+        $teacher = factory(User::class)->states('Teacher')->create();
 
         $response = $this->get('/api/teachers/' . $teacher->id);
 
@@ -35,61 +36,55 @@ class TeacherTest extends TestCase
         ]);
     }
 
-    public function test_add_teacher_to_api()
+    public function test_api_create_teacher()
     {
-        $response = $this->post('/api/teachers', [
+        $teacher = [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-        ]);
+        ];
 
-        $this->assertDatabaseHas('teachers', [
-            'name' => 'Pau',
-            'surname' => 'Gasol',
-            'email' => 'paugasol@gmail.com',
-            'gender' => 'hombre',
-        ]);
-        $response->assertCreated();
+        $response = $this->post('/api/teachers', $teacher);
+
+        $response->assertStatus(201);
+        $this->assertDatabaseHas('users', $teacher);
     }
 
-    public function test_edit_teacher()
+    public function test_api_edit_teacher()
     {
-        $teacher = factory(Teacher::class)->create();
+        $teacher = factory(User::class)->create();
 
         $response = $this->patch('api/teachers/' . $teacher->id, [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-        ]
-        );
-        $this->assertDatabaseHas('teachers', [
+        ]);
+
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('users', [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'email' => 'paugasol@gmail.com',
             'gender' => 'hombre',
-        ]
-        );
-
-        $response->assertStatus(302);
+        ]);
     }
 
-    public function test_delete_teacher()
+    public function test_api_delete_teacher()
     {
-        $teacher = factory(Teacher::class)->create();
+        $teacher = factory(User::class)->create();
 
         $response = $this->delete('/api/teachers/' . $teacher->id);
 
+        $response->assertStatus(200);
         $this->assertDatabaseMissing('teachers', [
+            'id' => $teacher->id,
             'name' => $teacher->name,
             'surname' => $teacher->surname,
             'nationality' => $teacher->nationality,
             'email' => $teacher->email,
             'gender' => $teacher->gender,
-            'currentcourse' => $teacher->currentcourse,
-
         ]);
-        $response->assertStatus(200);
     }
 }

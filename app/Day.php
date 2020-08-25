@@ -40,9 +40,8 @@ class Day extends Model
 
     }
 
-
-    public static function checkIn(User $user){
-
+    public static function checkIn(User $user)
+    {
         $date=self::setDate();
         $time=self::setTime();
 
