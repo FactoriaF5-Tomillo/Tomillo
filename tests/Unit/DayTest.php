@@ -84,7 +84,11 @@ class DayTest extends TestCase
 
     public function test_time_worked_in_a_day()
     {
-        $workedtimeinDay = Day::getTimeWorkedInADay();
+        $hour = 8; $minute = 00; $second = 00; $tz = 'Europe/Madrid';
+        $start = Carbon::createFromTime($hour, $minute, $second, $tz);
+        $time = Carbon::now()->setTimezone('Europe/Madrid');
+        $day = factory(Day::class)->create(['checkIn'=> $start, 'checkOut'=> $time]);
+        $workedtimeinDay = Day::getTimeWorkedInADay($day);
 
         $HourRightNow = Carbon::now()->setTimezone('Europe/Madrid')->hour;
         $MinutesRightNow = Carbon::now()->setTimezone('Europe/Madrid')->minute;
