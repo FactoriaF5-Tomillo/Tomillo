@@ -92,7 +92,7 @@ class Day extends Model
 
     public static function getTimeWorkedInADay()
     {
-        $time=self::setTime();
+        $time = self::setTime();
         $hour = 8; $minute = 00; $second = 00; $tz = 'Europe/Madrid';
         $start = Carbon::createFromTime($hour, $minute, $second, $tz);
         $WorkedTimeDay = [];
@@ -107,11 +107,4 @@ class Day extends Model
         //dd($WorkedTimeDay);
         return $WorkedTimeDay;
     }
-
-
-
-
-
-
-
 }

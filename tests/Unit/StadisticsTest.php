@@ -11,40 +11,40 @@ class StadisticsTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_No_Students_In_DB()
+    //This test is redundent. The function returns a number, if its 0 its 0 if its 10 its 10. Behaviour doesnt change
+    public function test_no_students_in_db()
     {
-        $Admin_Users= factory(User::class, 5)->create(['type'=>'Admin']);
-        $Teacher_Users= factory(User::class, 5)->create(['type'=>'Teacher']);
+        $Admin_Users = factory(User::class, 5)->states('Admin')->create();
+        $Teacher_Users = factory(User::class, 5)->states('Teacher')->create();
 
         $type = 'Student';
         $Total_Student_Users = User::getTotalStudentUsers($type);
 
         $this->assertEquals(0, $Total_Student_Users);
-
     }
 
     // test si hay alumnos en la base de datos
-    public function test_UserTable_Is_Not_Empty()
+    public function test_user_table_is_not_empty()
     {
-        $Users= factory(User::class, 15)->create();
-        $Total_Users = User::getTotalUsers();
-        $this->assertEquals(count($Users), $Total_Users);
+        $users = factory(User::class, 15)->create();
 
+        $totalUsers = User::getTotalUsers();
+
+        $this->assertEquals(count($users), $totalUsers);
     }
 
     //calcular el total de alumnos hombres
-    public function test_Total_Male_Users()
+    public function test_total_male_users()
     {
-        $Male_Users= factory(User::class, 15)->create(['gender'=>'Hombre']);
-        $Female_Users= factory(User::class, 15)->create(['gender'=>'Mujer']);
+        $maleUsers= factory(User::class, 15)->create(['gender'=>'Hombre']);
+        $femaleUsers= factory(User::class, 15)->create(['gender'=>'Mujer']);
 
         $gender = 'Hombre';
-        $Total_Male_Users = User::getTotalMaleUsers($gender);
+        $totalMaleUsers = User::getTotalMaleUsers($gender);
 
-        $this->assertEquals(count($Male_Users), $Total_Male_Users);
-        $Total_Users = User::getTotalUsers();
-        $this->assertEquals(30, $Total_Users);
-
+        $this->assertEquals(count($maleUsers), $totalMaleUsers);
+        $totalUsers = User::getTotalUsers();
+        $this->assertEquals(30, $totalUsers);
     }
 
     //calcular el total de alumnos mujeres
@@ -59,11 +59,10 @@ class StadisticsTest extends TestCase
         $this->assertEquals(count($Female_Users), $Total_Female_Users);
         $Total_Users = User::getTotalUsers();
         $this->assertEquals(30, $Total_Users);
-
     }
 
     //calcular el total de alumnos otros
-    public function test_Total_Other_Users()
+    public function test_total_other_users()
     {
         $Male_Users= factory(User::class, 15)->create(['gender'=>'Hombre']);
         $Female_Users= factory(User::class, 15)->create(['gender'=>'Mujer']);
@@ -75,8 +74,8 @@ class StadisticsTest extends TestCase
         $this->assertEquals(count($Other_Users), $Total_Other_Users);
         $Total_Users = User::getTotalUsers();
         $this->assertEquals(45, $Total_Users);
-
     }
+
     public function test_Return_All_Course_Users()
     {
         $course = factory(Course::class)->create();
