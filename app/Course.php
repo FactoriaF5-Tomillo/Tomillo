@@ -50,30 +50,33 @@ class Course extends Model
         return $totalNumberOfOtherStudents;
     }
 
-    public static function getCourseMaleStudentsPercentage(Course $course)
+    public function malePercentage()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $MaleStudents = self::getAllCourseMaleStudents($course);
-        $MalePercentage = ((count($MaleStudents))/(count($TotalCourseStudents)))*100;
-        //dd($MalePercentage);
-        return $MalePercentage;
+        $totalStudents = $this->totalStudents();
+        $totalMaleStudents = $this->totalMaleStudents();
+
+        $malePercentage = ($totalMaleStudents / $totalStudents) * 100;
+
+        return intval($malePercentage);
     }
 
-    public static function getCourseFemaleStudentsPercentage(Course $course)
+    public function femalePercentage()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $FemaleStudents = self::getAllCourseFemaleStudents($course);
-        $FemalePercentage = ((count($FemaleStudents))/(count($TotalCourseStudents)))*100;
+        $totalStudents = $this->totalStudents();
+        $totalFemaleStudents = $this->totalFemaleStudents();
 
-        return $FemalePercentage;
+        $femalePercentage = ($totalFemaleStudents / $totalStudents) * 100;
+
+        return intval($femalePercentage);
     }
 
-    public static function getCourseOtherStudentsPercentage(Course $course)
+    public function otherPercentage()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $OtherStudents = self::getAllCourseOtherStudents($course);
-        $OtherPercentage = ((count($OtherStudents))/(count($TotalCourseStudents)))*100;
+        $totalStudents = $this->totalStudents();
+        $totalOtherStudents = $this->totalOtherStudents();
 
-        return $OtherPercentage;
+        $otherPercentage = ($totalOtherStudents / $totalStudents) * 100;
+
+        return intval($otherPercentage);
     }
 }

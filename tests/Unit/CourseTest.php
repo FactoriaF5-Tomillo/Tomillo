@@ -67,7 +67,6 @@ class CourseTest extends TestCase
         $femaleStudents = factory(User::class, 10)->create(['type' => 'Student', 'gender'=>'Mujer']);
         $otherStudents  = factory(User::class, 5)->create(['type' => 'Student', 'gender'=>'Otro']);
         $students = User::all();
-
         foreach ($students as $student)
         {
             $course->users()->attach($student);
@@ -76,5 +75,56 @@ class CourseTest extends TestCase
         $totalOther = $course->totalOtherStudents();
 
         $this->assertEquals(5, $totalOther);
+    }
+
+    public function test_calc_male_students_percentage()
+    {
+        $course = factory(Course::class)->create();
+        $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
+        $femaleStudents = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Mujer']);
+        $otherStudents  = factory(User::class, 2)->create(['type' => 'Student', 'gender'=>'Otro']);
+        $students = User::all();
+        foreach ($students as $student)
+        {
+            $course->users()->attach($student);
+        }
+
+        $malePercentage = $course->malePercentage();
+
+        $this->assertSame(40, $malePercentage);
+    }
+
+    public function test_calc_female_students_percentage()
+    {
+        $course = factory(Course::class)->create();
+        $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
+        $femaleStudents = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Mujer']);
+        $otherStudents  = factory(User::class, 2)->create(['type' => 'Student', 'gender'=>'Otro']);
+        $students = User::all();
+        foreach ($students as $student)
+        {
+            $course->users()->attach($student);
+        }
+
+        $femalePercentage = $course->femalePercentage();
+
+        $this->assertSame(40, $femalePercentage);
+    }
+
+    public function test_calc_other_students_percentage()
+    {
+        $course = factory(Course::class)->create();
+        $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
+        $femaleStudents = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Mujer']);
+        $otherStudents  = factory(User::class, 2)->create(['type' => 'Student', 'gender'=>'Otro']);
+        $students = User::all();
+        foreach ($students as $student)
+        {
+            $course->users()->attach($student);
+        }
+
+        $otherPercentage = $course->otherPercentage();
+
+        $this->assertSame(20, $otherPercentage);
     }
 }
