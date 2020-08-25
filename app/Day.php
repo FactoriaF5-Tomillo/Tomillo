@@ -82,12 +82,28 @@ class Day extends Model
 
     }
 
+    public static function getTimeWorkedInADay()
+    {
+        $time=self::setTime();
+        $hour = 8; $minute = 00; $second = 00; $tz = 'Europe/Madrid';
+        $start = Carbon::createFromTime($hour, $minute, $second, $tz);
+        $WorkedTimeDay = [];
+        //dd($time->diffForHumans($start));
+        //dd($time->diff($start)->format('%H:%I:%S'));
+        $diffInHours = $time->diffInHours($start);
+        array_push($WorkedTimeDay, $diffInHours);
 
-    
+        $diffInMinutes = $time->diffInMinutes($start);
+        array_push($WorkedTimeDay, $diffInMinutes);
 
-    
+        //dd($WorkedTimeDay);
+        return $WorkedTimeDay;
+    }
 
-    
 
-    
+
+
+
+
+
 }

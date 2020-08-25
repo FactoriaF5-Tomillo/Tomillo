@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Carbon\Carbon;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Day;
@@ -81,11 +82,24 @@ class DayTest extends TestCase
 
         $check1= $day->checkIfCheckedInSameDay($user);
         $check2= $sameDay->checkIfCheckedInSameDay($user);
-  
+
         $this->assertFalse($check1);
         $this->assertTrue($check2);
-        
+
     }
 
+    public function test_time_worked_in_a_day()
+    {
+        $workedtimeinDay = Day::getTimeWorkedInADay();
+
+        $HourRightNow = Carbon::now()->setTimezone('Europe/Madrid')->hour;
+        $MinutesRightNow = Carbon::now()->setTimezone('Europe/Madrid')->minute;
+
+        $HoursPassedSinceStart   = $HourRightNow - 8;
+        $MinutesPassedSinceStart = ($HoursPassedSinceStart * 60) + $MinutesRightNow;
+
+        $this->assertEquals($HoursPassedSinceStart, $workedtimeinDay[0]);
+        $this->assertEquals($MinutesPassedSinceStart, $workedtimeinDay[1]);
+    }
 
 }
