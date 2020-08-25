@@ -45,13 +45,12 @@ class CourseTest extends TestCase
         $response->assertStatus(201);
     }
 
-
-    //Middleware not working. Admin has no authorization to edit
-    public function test_api_edits_course()
+    public function test_api_edits_course_when_user_is_admin()
     {
+        $user = factory(User::class)->states('Admin')->create();
         $course = factory(Course::class)->create();
 
-        $response = $this->patch('api/courses/' . $course->id, [
+        $response = $this->actingAs($user)->patch('/courses/' . $course->id, [
             'title' => 'Full Stack',
             'description' => 'Better boot-camp',
             'start_date' => '27-07-2020',
@@ -67,7 +66,21 @@ class CourseTest extends TestCase
         ]);
     }
 
-    //Need to mock a user somehow
+    public function test_api_edits_course_when_user_is_not_admin()
+    {
+        $user = factory(User::class)->states('Teacher')->create();
+        $course = factory(Course::class)->create();
+
+        $response = $this->actingAs($user)->patch('/courses/' . $course->id, [
+            'title' => 'Full Stack',
+            'description' => 'Better boot-camp',
+            'start_date' => '27-07-2020',
+            'end_date' => '14-4-2021',
+        ]);
+
+        $response->assertStatus(403);
+    }
+
     public function test_course_delete_when_user_is_admin()
     {
         $user = factory(User::class)->states('Admin')->create();
