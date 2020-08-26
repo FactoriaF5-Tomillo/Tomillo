@@ -117,12 +117,21 @@ class Course extends Model
         return $StringRange;
     }
 
-    public function getCourseDaysAsString(){
+    public function getCourseDaysAsCarbon(){
 
         $CompleteRange = $this->getRangeOfDates();
         $CourseDays = self::excludeWeekendsFromRange($CompleteRange);
+
+        return $CourseDays;
+    }
+
+    public function getCourseDaysAsString(){
+
+        $CourseDays = $this->getCourseDaysAsCarbon();
+
         $CourseDaysAsStrings = self::convertCarbonRangeIntoStringRange($CourseDays);
 
         return $CourseDaysAsStrings;
     }
+
 }
