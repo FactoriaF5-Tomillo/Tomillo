@@ -103,4 +103,13 @@ class Course extends Model
         }
         return $StringRange;
     }
+
+    public function getCourseDays(){
+
+        $CompleteRange = $this->getRangeOfDates();
+        $CourseDays = self::excludeWeekendsFromRange($CompleteRange);
+        $CourseDaysAsStrings = self::convertCarbonRangeIntoStringRange($CourseDays);
+
+        return $CourseDaysAsStrings;
+    }
 }

@@ -73,4 +73,30 @@ class CourseTest extends TestCase
         $this->assertNotContains($Saturday, $StringRange);
 
     }
+    public function test_get_course_days(){
+
+        $start = date("2020-01-02");
+        $end = date("2020-01-11");
+
+        $friday = date("2020-01-03");
+        $saturday = date("2020-01-04");
+        $sunday = date("2020-01-05");
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => $start,
+            'end_date' => $end
+        ]);
+
+        $CourseDays = $course->getCourseDays();
+
+        $this->assertIsArray($CourseDays);
+        $this->assertIsString($CourseDays[0]);
+        $this->assertContains($friday, $CourseDays); 
+        $this->assertNotContains($saturday, $CourseDays);
+        $this->assertNotContains($sunday, $CourseDays);
+        $this->assertNotContains(date("2020-01-12"), $CourseDays);
+
+    }
 }
