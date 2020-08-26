@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\User;
 use App\Day;
 use App\Http\Resources\User as UserResource;
