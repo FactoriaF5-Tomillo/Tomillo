@@ -128,17 +128,21 @@ class User extends Authenticatable
         }
         return True;
     }
-    public static function calculateAssistedDays($course){
+    public function calculateAssistedDays($course){
         
-        $CourseDays = $course->getCourseDaysUntilNow(); //string type
+        $courseDays = $course->getCourseDaysUntilNow(); //array of string type
+        $checkedInDays = $this->days;
 
+        $assistedDays = 0;
 
-        //convert the limited range into string-list
-
-        //for each course-day in the list, iterate days of users:
-            //    iffounds: asssisted.
-            //    ifnot: absence
-
+        foreach ($courseDays as $courseDay){
+            foreach ($checkedInDays as $checkedInDay){
+                if ($courseDay==$checkedInDay->date){
+                    $assistedDays++;
+                }
+            }
+        }
+        return $assistedDays;
     }
 
     

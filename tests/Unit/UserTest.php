@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Day;
+use App\Course;
 
 class UserTest extends TestCase
 {
@@ -99,5 +100,32 @@ class UserTest extends TestCase
         $totalOtherUsers = User::totalOtherUsers();
 
         $this->assertEquals(15, $totalOtherUsers);
+    }
+
+    public function test_calculate_assisted_days(){
+
+        $student = factory(User::class)->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $day1= factory(Day::class)->create(['date'=>"2020-01-01"]);
+        $day2= factory(Day::class)->create(['date'=>"2020-01-02"]);
+        $weekendDuringCourse = factory(Day::class)->create(['date'=>"2020-01-04"]);
+        $dayOutOfCourseDates = factory(Day::class)->create(['date'=>"2020-03-02"]);
+
+        $student->addDayToUser($day1);
+        $student->addDayToUser($day2);
+        $student->addDayToUser($weekendDuringCourse);
+        $student->addDayToUser($dayOutOfCourseDates);
+
+        $AssistedDays = $student->calculateAssistedDays($course);
+
+        $this->assertEquals(2, $AssistedDays);
+        $this->assertEquals(4, count($student->days));
     }
 }
