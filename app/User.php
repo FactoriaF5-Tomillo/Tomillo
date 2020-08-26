@@ -145,6 +145,18 @@ class User extends Authenticatable
         return $assistedDays;
     }
 
+    public function calculateAbsentDays($course){
+
+        $courseDays = $course->getCourseDaysUntilNow();
+        $NumberOfCourseDays = count($courseDays);
+        $assistedDays = $this->calculateAssistedDays($course);
+
+        $absentDays = $NumberOfCourseDays-$assistedDays;
+
+        return $absentDays;
+
+    }
+
     
 }
 

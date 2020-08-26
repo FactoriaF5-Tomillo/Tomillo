@@ -128,4 +128,35 @@ class UserTest extends TestCase
         $this->assertEquals(2, $AssistedDays);
         $this->assertEquals(4, count($student->days));
     }
+
+    public function test_calculate_absent_days(){
+        $student = factory(User::class)->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-07")
+        ]);
+
+        $Wednesday= factory(Day::class)->create(['date'=>"2020-01-01"]);//student attends
+        $Thursday= factory(Day::class)->create(['date'=>"2020-01-02"]);//student attends
+        $Friday= factory(Day::class)->create(['date'=>"2020-01-03"]);//student attends
+        $Saturday= factory(Day::class)->create(['date'=>"2020-01-04"]); //check-in by accident
+        
+        $Monday= factory(Day::class)->create(['date'=>"2020-01-06"]); //student doesn't attend
+        $Tuesday= factory(Day::class)->create(['date'=>"2020-01-07"]); //student doesn't attend
+        $dayOutOfCourseDates = factory(Day::class)->create(['date'=>"2020-03-02"]);
+
+        $student->addDayToUser($Wednesday);//student attends
+        $student->addDayToUser($Thursday);//student attends
+        $student->addDayToUser($Friday);//student attends
+        $student->addDayToUser($Saturday);//check-in by accident
+        $student->addDayToUser($dayOutOfCourseDates);
+
+        $AbsentDays = $student->calculateAbsentDays($course);
+
+        $this->assertEquals(2 , $AbsentDays);
+        $this->assertEquals(5, count($student->days));
+    }
 }
