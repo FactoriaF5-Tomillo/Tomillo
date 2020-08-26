@@ -38,9 +38,9 @@ export default {
   methods: {
     editJustification() {
       axios
-        .patch("/api/justifications/" + this.justification.id, this.justification)
+        .put("/justifications/" + this.justification.id, this.justification)
         .then((response) => {
-          window.location.replace("/justifications");
+          window.history.back();
         });
     },
     goBack() {

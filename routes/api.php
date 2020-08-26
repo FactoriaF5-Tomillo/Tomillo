@@ -46,5 +46,5 @@ Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeac
 Route::get('/justifications', 'JustificationController@getJustifications');
 Route::get('/justifications/{justification}', 'JustificationController@getJustification');
 Route::post('/justifications', 'JustificationController@store')->name('justification.store');
-Route::patch('/justifications/{justification}', 'JustificationController@update')->name('justification.update');
+
 

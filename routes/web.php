@@ -61,3 +61,4 @@ Route::get('/upload','JustificationController@create')->name('justification.uplo
 Route::get('/justification/{justification}', 'JustificationController@show')->name('justification.show');
 Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
 Route::get('/justification/{justification}/edit', 'JustificationController@edit')->name('justification.edit');
+Route::put('/justifications/{justification}', 'JustificationController@update')->name('justification.update');

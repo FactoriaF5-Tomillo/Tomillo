@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Justification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Policies\CoursePolicy;
 
 class JustificationController extends Controller
 {
@@ -60,15 +61,17 @@ class JustificationController extends Controller
 
     public function edit(Justification $justification)
     {
+        $this->authorize('update', $justification);
         return view('justification.edit', compact('justification'));
     }
 
     public function update(Request $request, Justification $justification)
     {
+        $this->authorize('update', $justification);
         $justification->update($request->all());
         $justifications = Justification::all();
         return $justifications;
     }
-
+    
 
 }
