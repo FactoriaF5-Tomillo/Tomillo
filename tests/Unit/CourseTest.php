@@ -6,6 +6,7 @@ use App\Course;
 use Tests\TestCase; //changed from PHPUnit
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use Tests\Unit\Carbonite;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -13,10 +14,21 @@ class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function test_convert_carbon_range_into_string_range(){
+
+        $period = CarbonPeriod::create(date("2020-1-2"), date("2020-1-11"));
+        $CarbonRange = $period->toArray();
+
+        $StringRange = Course::convertCarbonRangeIntoStringRange($CarbonRange);
+
+        $this->assertIsArray($StringRange);
+        $this->assertIsString($StringRange[0]);
+    }
+
     public function test_get_range_of_dates(){
 
-        $start = date("2020-1-1");
-        $end = date("2020-1-11");
+        $start = date("2020-01-02");
+        $end = date("2020-01-11");
 
         $course= Course::create([
             'title' => 'Web Development',
@@ -24,30 +36,41 @@ class CourseTest extends TestCase
             'start_date' => $start,
             'end_date' => $end
         ]);
-       // buraya kadar iyi dd($course); 
 
-        $dayInBetween = Carbon::create(2020, 1, 7);
-        $dayOutOfRange = Carbon::create(2021, 05, 03);
+        $CourseDates = $course->getRangeOfDates();  //returns an array of Carbon Dates
+
+        $dayInBetween = date("2020-01-04");
+        $dayOutOfRange = date("2020-01-22");
         
-        $range = $course->getRangeOfDates();
+        $this->assertIsArray($CourseDates);
+        
+        $StringRange = Course::convertCarbonRangeIntoStringRange($CourseDates);
 
-        $this->assertIsArray($range);
-        //$this->assertContains($dayInBetween, $range); //Farklı objeler
-        $this->assertNotContains($dayOutOfRange, $range);
+        $this->assertContains($dayInBetween, $StringRange); 
+        $this->assertNotContains($dayOutOfRange, $StringRange);
     }
 
     public function test_exclude_weekends_from_range_of_dates(){
 
-        $start = date("2020-1-1");
-        $end = date("2020-1-11");
+        $period = CarbonPeriod::create(date("2020-1-1"), date("2020-1-11"));
+        $rangeAllDates = $period->toArray();
 
-        $period = CarbonPeriod::create($start, $end);
-        $range = $period->toArray();
+        $StringRange = Course::convertCarbonRangeIntoStringRange($rangeAllDates);
 
+        $Friday=date("2020-01-03");
+        $Saturday=date("2020-01-04");
 
-        $rangeWeekdaysOnly = Course::excludeWeekendsFromRange($range);
+        $this->assertContains($Friday, $StringRange); 
+        $this->assertContains($Saturday, $StringRange);
+
+        $rangeWeekdaysOnly = Course::excludeWeekendsFromRange($rangeAllDates);
 
         $this->assertIsArray($rangeWeekdaysOnly);
+
+        $StringRange = Course::convertCarbonRangeIntoStringRange($rangeWeekdaysOnly);
+
+        $this->assertContains($Friday, $StringRange); 
+        $this->assertNotContains($Saturday, $StringRange);
 
     }
 }

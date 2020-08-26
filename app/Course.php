@@ -74,17 +74,11 @@ class Course extends Model
 
     public function getRangeOfDates(){
 
-        $begin= $this->start_date; //string
-        $end= $this->end_date; //string
+        $begin= $this->start_date; 
+        $end= $this->end_date; 
 
         $period = CarbonPeriod::create($begin, $end);
 
-        // Iterate over the period
-        foreach ($period as $date) {
-            $date->format('Y-m-d');
-        }
-
-        // Convert the period to an array of dates
         $dates = $period->toArray();
 
         return $dates;
@@ -99,5 +93,14 @@ class Course extends Model
             }
         }
         return $OnlyWeekdays;
+    }
+    public static function convertCarbonRangeIntoStringRange($CarbonRange){
+       
+        $StringRange=array();
+        foreach ($CarbonRange as $date) {
+            $formtattedDate= $date->format('Y-m-d');
+            array_push($StringRange, $formtattedDate);
+        }
+        return $StringRange;
     }
 }
