@@ -130,12 +130,20 @@ class User extends Authenticatable
     }
     public function calculateAssistedDays(){
         
-        //get today in string
+        //get today in carbon
 
-        //get course-range in string
+        //get course-range in carbon
 
-        //iterate course-range until finding today
+        //limit course-range until today
+
+        //convert the limited range into string-list
+
+        //for each course-day in the list, iterate days of users:
+            //    iffounds: asssisted.
+            //    ifnot: absence
 
     }
+
+    
 }
 

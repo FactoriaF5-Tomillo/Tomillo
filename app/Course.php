@@ -134,4 +134,32 @@ class Course extends Model
         return $CourseDaysAsStrings;
     }
 
+    public function getRangeOfCourseDatesUntilNow(){ //not tested
+
+        $begin= $this->start_date; 
+
+        $end = Carbon::now()->setTimezone('Europe/Madrid');
+
+        if ($end->greaterThan($this->end_date)){
+            $end = $this->end_date;
+        }
+
+        $period = CarbonPeriod::create($begin, $end);
+
+        $dates = $period->toArray();
+
+        return $dates;
+    }
+
+    public function getCourseDaysUntilNow(){  //not tested
+
+        
+        $CompleteRange = $this->getRangeOfCourseDatesUntilNow();
+
+        $CourseDaysUntilToday = self::excludeWeekendsFromRange($CompleteRange);
+
+        return $CourseDaysUntilToday;
+        
+    }
+
 }
