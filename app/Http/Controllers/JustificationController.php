@@ -14,15 +14,15 @@ class JustificationController extends Controller
         return view('justification.upload');
     }
 
-    
+
     public function uploadFile(Request $request)
     {
         $justification =Justification::create($request->all());
-        
+
         $file = $request->file('file');
 
        // dd($file);
-        
+
         $file_name= $justification->upload_file($file);
 
         $justification->update([
@@ -37,7 +37,7 @@ class JustificationController extends Controller
 
     public function show(Justification $justification)
     {
-        return view('justification.show', compact('justification')); 
+        return view('justification.show', compact('justification'));
     }
 
 

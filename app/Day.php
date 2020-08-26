@@ -99,20 +99,14 @@ class Day extends Model
 
     public static function getTimeWorkedInADay($day)
     {
-        $time = self::setTime();
-        $hour = 8; $minute = 00; $second = 00; $tz = 'Europe/Madrid';
-        $start = Carbon::createFromTime($hour, $minute, $second, $tz);
-
         $WorkedTimeDay = [];
-        //dd($time->diffForHumans($start));
-        //dd($time->diff($start)->format('%H:%I:%S'));
+
         $diffInHours = $day->checkOut->diffInHours($day->checkIn);
         array_push($WorkedTimeDay, $diffInHours);
 
         $diffInMinutes = $day->checkOut->diffInMinutes($day->checkIn);
         array_push($WorkedTimeDay, $diffInMinutes);
 
-        //dd($WorkedTimeDay);
         return $WorkedTimeDay;
     }
 }
