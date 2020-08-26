@@ -159,4 +159,13 @@ class UserTest extends TestCase
         $this->assertEquals(2 , $AbsentDays);
         $this->assertEquals(5, count($student->days));
     }
+
+    public function test_calculate_justified_days(){
+
+        $student = factory(User::class)->create();
+
+        $justification = factory(Justification::class)->create();
+
+        $student->
+    }
 }

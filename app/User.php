@@ -157,6 +157,18 @@ class User extends Authenticatable
 
     }
 
+    public function calculateJustifiedDays(){ //not tested
+
+        $numberOfJustifiedDays=0;
+
+        foreach($this->justifications as $justification){
+            if($justification->approval==True){
+                $numberOfJustifiedDays++;
+            }
+        }
+        return $numberOfJustifiedDays;
+    }
+
     
 }
 
