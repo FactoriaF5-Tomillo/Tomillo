@@ -128,5 +128,14 @@ class User extends Authenticatable
         }
         return True;
     }
+    public function calculateAssistedDays(){
+        
+        //get today in string
+
+        //get course-range in string
+
+        //iterate course-range until finding today
+
+    }
 }
 

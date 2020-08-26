@@ -190,7 +190,7 @@ class CourseTest extends TestCase
         $this->assertNotContains($Saturday, $StringRange);
 
     }
-    public function test_get_course_days(){
+    public function test_get_course_days_as_string(){
 
         $start = date("2020-01-02");
         $end = date("2020-01-11");
@@ -206,7 +206,7 @@ class CourseTest extends TestCase
             'end_date' => $end
         ]);
 
-        $CourseDays = $course->getCourseDays();
+        $CourseDays = $course->getCourseDaysAsString();
 
         $this->assertIsArray($CourseDays);
         $this->assertIsString($CourseDays[0]);

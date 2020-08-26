@@ -117,7 +117,7 @@ class Course extends Model
         return $StringRange;
     }
 
-    public function getCourseDays(){
+    public function getCourseDaysAsString(){
 
         $CompleteRange = $this->getRangeOfDates();
         $CourseDays = self::excludeWeekendsFromRange($CompleteRange);
