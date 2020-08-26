@@ -233,24 +233,25 @@ class CourseTest extends TestCase
         Carbon::setTestNow($FakeToday); 
 
         $CourseDatesUntilToday = $course->getCourseDaysUntilNow();
-        $StringRangeUntilToday = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday);
+        //$StringRangeUntilToday = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday);
 
         $friday = date("2020-01-03");
         $saturday = date("2020-01-04");
         $weekdayAfterFakeToday = date("2020-01-17");
 
-        $this->assertIsArray($StringRangeUntilToday);
-        $this->assertContains($friday, $StringRangeUntilToday); 
-        $this->assertNotContains($saturday, $StringRangeUntilToday);
-        $this->assertNotContains($weekdayAfterFakeToday, $StringRangeUntilToday);
+        $this->assertIsArray($CourseDatesUntilToday);
+        $this->assertContains($friday, $CourseDatesUntilToday); 
+        $this->assertNotContains($saturday, $CourseDatesUntilToday);
+        $this->assertNotContains($weekdayAfterFakeToday, $CourseDatesUntilToday);
 
         $FakeTodayAfterCourseDates = Carbon::create(2020, 26, 8, 12);         
         Carbon::setTestNow($FakeTodayAfterCourseDates);
 
         $CourseDatesUntilToday2 = $course->getCourseDaysUntilNow();
-        $StringRangeUntilToday2 = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday2);
+        //$StringRangeUntilToday2 = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday2);
 
-        $this->assertNotContains($FakeTodayAfterCourseDates, $StringRangeUntilToday2);    
+        $dayAfterCourseRangeButBeforeFakeToday= date("2020-03-15");
+        $this->assertNotContains($dayAfterCourseRangeButBeforeFakeToday, $CourseDatesUntilToday2);    
 
     }
 }

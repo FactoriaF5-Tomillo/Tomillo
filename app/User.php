@@ -128,13 +128,10 @@ class User extends Authenticatable
         }
         return True;
     }
-    public function calculateAssistedDays(){
+    public static function calculateAssistedDays($course){
         
-        //get today in carbon
+        $CourseDays = $course->getCourseDaysUntilNow(); //string type
 
-        //get course-range in carbon
-
-        //limit course-range until today
 
         //convert the limited range into string-list
 

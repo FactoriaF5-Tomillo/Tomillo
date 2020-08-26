@@ -158,7 +158,9 @@ class Course extends Model
 
         $CourseDaysUntilToday = self::excludeWeekendsFromRange($CompleteRange);
 
-        return $CourseDaysUntilToday;
+        $CourseDaysUntilTodayAsString =self::convertCarbonRangeIntoStringRange($CourseDaysUntilToday);
+
+        return $CourseDaysUntilTodayAsString;
         
     }
 
