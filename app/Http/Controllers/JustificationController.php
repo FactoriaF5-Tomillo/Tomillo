@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Justification;
+
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Policies\CoursePolicy;
 
@@ -33,7 +35,7 @@ class JustificationController extends Controller
 
     public function create(Request $request)
     {
-        return view('justification.upload');
+        return view('justification.create');
     }
 
 
@@ -45,26 +47,27 @@ class JustificationController extends Controller
 
     public function uploadFile(Request $request)
     {
-        $justification =Justification::create($request->all());
-
+        $justification = Justification::create([
+            'description' => $request->description,
+            'file' => $request->file,
+            'user_id' => Auth::user()->id
+        ]);
+        
         $file = $request->file('file');
 
-       // dd($file);
-
-        $file_name= $justification->upload_file($file);
+        $file_name = $justification->upload_file($file);
 
         $justification->update([
             'file' => $file_name,
         ]);
 
-        return $justification;
+        return redirect('/home');
     }
 
     public function edit(Justification $justification)
     {
         $this->authorize('update', $justification);
         return view('justification.edit', compact('justification'));
-
     }
 
     public function update(Request $request, Justification $justification)
@@ -75,4 +78,9 @@ class JustificationController extends Controller
         return $justifications;
     }
 
+   public function destroy(Justification $justification)
+    {
+        $justification->delete();
+        return Justification::all();
+    }
 }

@@ -2584,6 +2584,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2592,8 +2600,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createJustification: function createJustification() {
-      axios.post("/api/justification", this.justification).then(function (response) {
-        window.location.replace("/justification");
+      axios.post("/api/justification", this.justification).then(function (response) {//window.location.replace("/justification");
       });
     },
     goBack: function goBack() {
@@ -40080,8 +40087,9 @@ var render = function() {
           },
           [
             _vm._m(1),
+            _vm._v(" "),
             _c("input", {
-              attrs: { type: "file", name: "File", required: "" }
+              attrs: { type: "file", name: "file", required: "" }
             }),
             _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
@@ -40169,7 +40177,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "File" } }, [
-      _c("b", [_vm._v("Archivo: ")])
+      _c("b", [_vm._v("Archivo:")])
     ])
   }
 ]

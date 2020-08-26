@@ -27,7 +27,7 @@ class User extends JsonResource
                 'date_of_birth' => $this->date_of_birth,
                 'course' => $this->studentCourse(),
                 'email_verified_at' => $this->email_verified_at,
-                'password' => $this->password
+                'justifications' => $this->justifications
             ];
         }
         return [
@@ -42,7 +42,6 @@ class User extends JsonResource
             'date_of_birth' => $this->date_of_birth,
             'course' => $this->course,
             'email_verified_at' => $this->email_verified_at,
-            'password' => $this->password
         ];
     }
 }

@@ -14,8 +14,8 @@ class Justification extends Model
         return $this->belongsTo(User::class);  
     }
 
-    public function upload_file($file){
-
+    public function upload_file($file)
+    {
         $this->file = $file->extension();
         $this->save();
 
@@ -24,7 +24,6 @@ class Justification extends Model
         $file->storeAs('uploads/', $file_name, ['disk'=>'public']);
 
         return $file_name;
-
     }
 }
 

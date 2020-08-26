@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Student;
 use App\Teacher;
-Use App\User;
+use App\User;
 
 use App\Http\Resources\Course as CourseResource;
-
 use App\Policies\CoursePolicy;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class CourseController extends Controller

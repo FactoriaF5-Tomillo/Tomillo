@@ -2,18 +2,26 @@
   <div>
     <div class="page-title">
       <h1>Añadir justificante</h1>
-      </div>
+    </div>
     <div class="form">
       <div class="form-group">
         <form id="frm" url="justifications" files="true" enctype="multipart/form-data">
-              <label for="File"><b>Archivo: </b></label><input type="file" name="File" required>
+          <label for="File">
+            <b>Archivo:</b>
+          </label>
+          <input type="file" name="file" required />
           <div class="form-group">
-              <label>Descripcion</label>
-              <input class="form-control" type="text" name="description" v-model="justification.description" />
+            <label>Descripcion</label>
+            <input
+              class="form-control"
+              type="text"
+              name="description"
+              v-model="justification.description"
+            />
           </div>
-              <input type="submit" value="Enviar" >
+          <input type="submit" value="Enviar" />
         </form>
-      </div>            
+      </div>
       <div class="form-submit">
         <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn btn-primary" @click="createJustification()">Crear</button>
@@ -32,7 +40,7 @@ export default {
   methods: {
     createJustification() {
       axios.post("/api/justification", this.justification).then((response) => {
-        window.location.replace("/justification");
+        //window.location.replace("/justification");
       });
     },
     goBack() {
