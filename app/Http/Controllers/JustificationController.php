@@ -5,15 +5,43 @@ namespace App\Http\Controllers;
 use App\Justification;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Policies\CoursePolicy;
 
 class JustificationController extends Controller
 {
+    public function index()
+    {
+        $justifications = Justification::all();
+        return view('justification.index', compact('justifications'));
+    }
+
+    public function getJustifications()
+    {
+        $justifications = Justification::all();
+        return $justifications;
+    }
+
+    public function getJustification(Justification $justification)
+    {
+        return $justification;
+    }
+
+    public function show(Justification $justification)
+    {
+        return view('justification.show', compact('justification'));
+    }
 
     public function create(Request $request)
     {
         return view('justification.upload');
     }
 
+
+    public function store(Request $request)
+    {
+        $justification = Justification::create($request->all());
+        return $justification;
+    }
 
     public function uploadFile(Request $request)
     {
@@ -32,26 +60,19 @@ class JustificationController extends Controller
         return $justification;
     }
 
-
-
-
-    public function show(Justification $justification)
+    public function edit(Justification $justification)
     {
-        return view('justification.show', compact('justification'));
-    }
+        $this->authorize('update', $justification);
+        return view('justification.edit', compact('justification'));
 
+    }
 
     public function update(Request $request, Justification $justification)
     {
+        $this->authorize('update', $justification);
         $justification->update($request->all());
         $justifications = Justification::all();
         return $justifications;
     }
 
-
-   public function destroy(Justification $justification)
-    {
-        $justification->delete();
-        return Justification::all();
-    }
 }

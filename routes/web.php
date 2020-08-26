@@ -34,12 +34,14 @@ Route::get('/courses', 'CourseController@index')->name('course.index')->middlewa
 Route::get('/course/create', 'CourseController@create')->name('course.create')->middleware('can:viewAny,App\Course');
 Route::get('/course/{course}', 'CourseController@show')->name('course.show');
 Route::get('/course/{course}/edit', 'CourseController@edit')->name('course.edit')->middleware('can:viewAny,App\Course');
-Route::middleware('auth')->delete('/courses/{course}', 'CourseController@destroy')
-    ->name('course.destroy');
 Route::get('/course/{course}/assign-students', 'CourseController@chooseStudent')->name('course.assign-students');
 Route::get('/course/{course}/students', 'CourseController@showStudents');
 Route::get('/course/{course}/teachers', 'CourseController@showTeachers');
 Route::get('/course/{course}/assign-teachers', 'CourseController@showAssignTeacher')->name('course.assign-teachers');
+Route::middleware('auth')->delete('/courses/{course}', 'CourseController@destroy')
+    ->name('course.destroy');
+Route::middleware('auth')->patch('/courses/{course}', 'CourseController@update')
+    ->name('course.update');
 
 
 Route::get('/teachers', 'UserController@indexTeacher')->name('teacher.index')->middleware('auth');
@@ -54,11 +56,9 @@ Route::get('/student/{user}', 'UserController@showStudent')->name('student.show'
 Route::get('/student/{user}/edit', 'UserController@editStudent')->name('student.edit');
 Route::get('/profile/{user}', 'UserController@showStudentProfile')->name('student.profile');
 
-
-/* Route::get('/justification/create', 'JustificationController@create')->name('justification.create');
-Route::post('/justification/create','JustificationController@uploadFile'); */
-
+Route::get('/justifications', 'JustificationController@index')->name('justification.index')->middleware('auth');
 Route::get('/upload','JustificationController@create')->name('justification.upload');
+Route::get('/justification/{justification}', 'JustificationController@show')->name('justification.show');
 Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
-
-
+Route::get('/justification/{justification}/edit', 'JustificationController@edit')->name('justification.edit');
+Route::put('/justifications/{justification}', 'JustificationController@update')->name('justification.update');

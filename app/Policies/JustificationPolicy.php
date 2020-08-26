@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Course;
+use App\Justification;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CoursePolicy
+class JustificationPolicy
 {
     use HandlesAuthorization;
 
@@ -19,29 +19,19 @@ class CoursePolicy
         return false;
     }
 
-    public function view(User $user, Course $course)
+    public function view(User $user, Justification $justification)
     {
         return true;
     }
 
     public function create(User $user)
     {
-        return $user->type === 'Admin';
+        return true;
     }
-
-    public function update(User $user, Course $course)
+    
+    public function update(User $user, Justification $justification)
     {
-        return $user->type === 'Admin';
-    }
-
-    public function delete(User $user, Course $course)
-    {
-        return  $user->type === 'Admin';
-    }
-
-    public function restore(User $user, Course $course)
-    {
-        //
+        return $user->type === 'Teacher';
     }
 
 }

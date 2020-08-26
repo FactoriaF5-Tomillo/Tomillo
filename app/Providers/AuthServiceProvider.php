@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+
+use App\Justification;
 use App\Course;
 use App\Policies\CoursePolicy;
+use App\Policies\JustificationPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,6 +19,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Course::class => CoursePolicy::class,
+        Justification::class => JustificationPolicy::class,
 
     ];
 

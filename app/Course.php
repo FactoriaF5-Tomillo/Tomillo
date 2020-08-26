@@ -2,6 +2,11 @@
 
 namespace App;
 use App\User;
+//use DatePeriod;
+//use DateInterval;
+//use DateTime;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,56 +19,119 @@ class Course extends Model
         return $this->belongsToMany(User::class);
     }
 
-    public static function getAllCourseStudents(Course $course)
+    public function totalStudents()
     {
-        $course_students = $course->users()->get();
-        return $course_students;
-    }
-    public static function getAllCourseMaleStudents(Course $course)
-    {
-        $course_MaleStudents = $course->users()->where('gender', '=', 'Hombre')->get();
+        $listOfStudents = $this->users()->where('type', '=', 'Student')->get();
 
-        return $course_MaleStudents;
+        $totalNumberOfStudents = count($listOfStudents);
+
+        return $totalNumberOfStudents;
     }
 
-    public static function getAllCourseFemaleStudents(Course $course)
+    public function totalMaleStudents()
     {
-        $course_FemaleStudents = $course->users()->where('gender', '=', 'Mujer')->get();
+        $listOfStudents = $this->users()->where('gender', '=', 'Hombre')->get();
 
-        return $course_FemaleStudents;
+        $totalNumberOfMaleStudents = count($listOfStudents);
+
+        return $totalNumberOfMaleStudents;
     }
 
-    public static function getAllCourseOtherStudents(Course $course)
+    public function totalFemaleStudents()
     {
-        $course_FemaleStudents = $course->users()->where('gender', '=', 'Otro')->get();
+        $listOfStudents = $this->users()->where('gender', '=', 'Mujer')->get();
 
-        return $course_FemaleStudents;
+        $totalNumberOfFemaleStudents = count($listOfStudents);
+
+        return $totalNumberOfFemaleStudents;
     }
 
-    public static function getCourseMaleStudentsPercentage(Course $course)
+    public function totalOtherStudents()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $MaleStudents = self::getAllCourseMaleStudents($course);
-        $MalePercentage = ((count($MaleStudents))/(count($TotalCourseStudents)))*100;
-        //dd($MalePercentage);
-        return $MalePercentage;
+        $listOfStudents = $this->users()->where('gender', '=', 'Otro')->get();
+
+        $totalNumberOfOtherStudents = count($listOfStudents);
+
+        return $totalNumberOfOtherStudents;
     }
 
-    public static function getCourseFemaleStudentsPercentage(Course $course)
+    public function malePercentage()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $FemaleStudents = self::getAllCourseFemaleStudents($course);
-        $FemalePercentage = ((count($FemaleStudents))/(count($TotalCourseStudents)))*100;
+        $totalStudents = $this->totalStudents();
+        $totalMaleStudents = $this->totalMaleStudents();
 
-        return $FemalePercentage;
+        $malePercentage = ($totalMaleStudents / $totalStudents) * 100;
+
+        return intval($malePercentage);
     }
 
-    public static function getCourseOtherStudentsPercentage(Course $course)
+    public function femalePercentage()
     {
-        $TotalCourseStudents = self::getAllCourseStudents($course);
-        $OtherStudents = self::getAllCourseOtherStudents($course);
-        $OtherPercentage = ((count($OtherStudents))/(count($TotalCourseStudents)))*100;
+        $totalStudents = $this->totalStudents();
+        $totalFemaleStudents = $this->totalFemaleStudents();
 
-        return $OtherPercentage;
+        $femalePercentage = ($totalFemaleStudents / $totalStudents) * 100;
+
+        return intval($femalePercentage);
     }
+
+    public function otherPercentage()
+    {
+        $totalStudents = $this->totalStudents();
+        $totalOtherStudents = $this->totalOtherStudents();
+
+        $otherPercentage = ($totalOtherStudents / $totalStudents) * 100;
+
+        return intval($otherPercentage);
+    }
+
+    public function getRangeOfDates(){
+
+        $begin= $this->start_date; 
+        $end= $this->end_date; 
+
+        $period = CarbonPeriod::create($begin, $end);
+
+        $dates = $period->toArray();
+
+        return $dates;
+    }
+
+    public static function excludeWeekendsFromRange(array $rangeOfDates){
+
+        $OnlyWeekdays=array();
+        foreach ($rangeOfDates as $date) {
+            if($date->isWeekend()==False){
+                array_push($OnlyWeekdays, $date);
+            }
+        }
+        return $OnlyWeekdays;
+    }
+    public static function convertCarbonRangeIntoStringRange($CarbonRange){
+       
+        $StringRange=array();
+        foreach ($CarbonRange as $date) {
+            $formtattedDate= $date->format('Y-m-d');
+            array_push($StringRange, $formtattedDate);
+        }
+        return $StringRange;
+    }
+
+    public function getCourseDaysAsCarbon(){
+
+        $CompleteRange = $this->getRangeOfDates();
+        $CourseDays = self::excludeWeekendsFromRange($CompleteRange);
+
+        return $CourseDays;
+    }
+
+    public function getCourseDaysAsString(){
+
+        $CourseDays = $this->getCourseDaysAsCarbon();
+
+        $CourseDaysAsStrings = self::convertCarbonRangeIntoStringRange($CourseDays);
+
+        return $CourseDaysAsStrings;
+    }
+
 }

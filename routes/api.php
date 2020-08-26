@@ -43,4 +43,8 @@ Route::patch('/courses/{course}', 'CourseController@update');
 Route::post('/courses/{course}/addStudentToTheCourse', 'CourseController@addStudentToTheCourse');
 Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeacherToTheCourse');
 
+Route::get('/justifications', 'JustificationController@getJustifications');
+Route::get('/justifications/{justification}', 'JustificationController@getJustification');
+Route::post('/justifications', 'JustificationController@store')->name('justification.store');
+
 

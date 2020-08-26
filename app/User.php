@@ -41,6 +41,14 @@ class User extends Authenticatable
         return $this->hasMany(Justification::class);
     }
 
+
+    public function age()
+    {
+        $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
+
+        return $timeSince->format('%y');
+    }
+
     public function studentCourse()
     {
         $student_course = $this->course()->first();
@@ -55,58 +63,63 @@ class User extends Authenticatable
         return $teacher_courses;
     }
 
+    //Static functions
+    public static function totalUsers()
+    {
+        $usersList = User::all();
+
+        $numberOfUsers = count($usersList);
+        
+        return $numberOfUsers;
+    }
+
+    public static function totalStudents()
+    {
+        $studentsList = User::where('type', '=', 'Student')->get();
+
+        $numberOfStudents = count($studentsList);
+
+        return $numberOfStudents;
+    }
+
+    public static function totalMaleUsers()
+    {
+        $maleUsersList = User::where('gender', '=', 'Hombre')->get();
+
+        $numberOfMaleUsers = count($maleUsersList);
+
+        return $numberOfMaleUsers;
+    }
+
+    public static function totalFemaleUsers()
+    {
+        $femaleUsersList = User::where('gender', '=', 'Mujer')->get();
+
+        $numberOfFemaleUsers = count($femaleUsersList);
+
+        return $numberOfFemaleUsers;
+    }
+
+    public static function totalOtherUsers()
+    {
+        $otherUsersList = User::where('gender', '=', 'Otro')->get();
+
+        $numberOfOtherUsers = count($otherUsersList);
+
+        return $numberOfOtherUsers;
+    }
+
+    // when the user has no days assigned at all, the function and the test break because
+    // $user->days does not exist until the first day assignment
+    // when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment
     public function addDayToUser($day)
     {
         //dd($this->days()->save($day));
         return $this->days()->save($day);
     }
 
-    public static function getTotalStudentUsers($type)
-    {
-        $Student_Users = User::where('type', '=', $type)->get();
-        return count($Student_Users);
-    }
-
-    public static function getTotalMaleUsers($gender)
-    {
-        $Male_Users = User::where('gender', '=', $gender)->get();
-        return count($Male_Users);
-    }
-
-    public static function getTotalFemaleUsers($gender)
-    {
-        $Female_Users = User::where('gender', '=', $gender)->get();
-        return count($Female_Users);
-    }
-
-    public static function getTotalOtherUsers($gender)
-    {
-        $Other_Users = User::where('gender', '=', $gender)->get();
-        return count($Other_Users);
-    }
-
-    public static function getTotalUsers()
-    {
-        $Total_Users = User::all();
-        return count($Total_Users);
-    }
-
-    public function age()
-    {
-        $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
-
-        return $timeSince->format('%y');
-    }
-
-    /* when the user has no days assigned at all, the function and the test break because
-    $user->days does not exist until the first day assignment
-
-
-    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment
-*/
     public function checkIfCanCheckIn()
     {
-
         if($this->days!=null){
             if($this->days->last()->checkOut==null){
                 return False;
@@ -114,7 +127,14 @@ class User extends Authenticatable
             return True;
         }
         return True;
+    }
+    public function calculateAssistedDays(){
+        
+        //get today in string
 
+        //get course-range in string
+
+        //iterate course-range until finding today
 
     }
 }
