@@ -134,7 +134,7 @@ class Course extends Model
         return $CourseDaysAsStrings;
     }
 
-    public function getRangeOfCourseDatesUntilNow(){ //not tested
+    public function getRangeOfCourseDatesUntilNow(){
 
         $begin= $this->start_date; 
 
@@ -151,7 +151,7 @@ class Course extends Model
         return $dates;
     }
 
-    public function getCourseDaysUntilNow(){  //not tested
+    public function getCourseDaysUntilNow(){ 
 
         
         $CompleteRange = $this->getRangeOfCourseDatesUntilNow();
