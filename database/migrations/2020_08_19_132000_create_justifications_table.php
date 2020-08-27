@@ -12,8 +12,11 @@ class CreateJustificationsTable extends Migration
         Schema::create('justifications', function (Blueprint $table) {
             $table->id();
             $table->mediumText('file')->nullable();
+            $table->text('title');
             $table->text('description');
             $table->boolean('approval')->nullable();
+            $table->string('start_date');
+            $table->string('end_date');
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

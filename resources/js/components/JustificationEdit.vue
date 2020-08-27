@@ -11,8 +11,17 @@
         </p>
       </div>
       <div class="form-group">
+          <strong>Titulo:</strong>
+          {{justification.title}}
+      </div>
+      <div class="form-group">
           <strong>Descripcion:</strong>
           {{justification.description}}
+      </div>
+      <div class="form-group">
+        <label>Fecha del justificante</label>
+        <input class="form-control" type="date" name="start_date" v-model="justification.start_date" />
+        <input class="form-control" type="date" name="end_date" v-model="justification.end_date" />
       </div>
       <div class="form-group">
         <label>Accion</label>

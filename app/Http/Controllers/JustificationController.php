@@ -48,8 +48,11 @@ class JustificationController extends Controller
     public function uploadFile(Request $request)
     {
         $justification = Justification::create([
+            'title' => $request->title,
             'description' => $request->description,
             'file' => $request->file,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
             'user_id' => Auth::user()->id
         ]);
         

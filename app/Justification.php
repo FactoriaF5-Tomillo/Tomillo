@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 
 class Justification extends Model
 {
-    protected $fillable = ['file', 'description', 'approval', 'user_id'];
+    protected $fillable = ['file', 'title', 'description', 'approval', 'start_date', 'end_date', 'user_id'];
 
     public function user() 
     {
