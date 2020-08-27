@@ -26,7 +26,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function course()
+    public function courses()
     {
         return $this->belongsToMany(Course::class);
     }
@@ -51,14 +51,14 @@ class User extends Authenticatable
 
     public function studentCourse()
     {
-        $student_course = $this->course()->first();
+        $student_course = $this->courses()->first();
 
         return $student_course;
     }
 
     public function teacherCourses()
     {
-        $teacher_courses = $this->course()->get();
+        $teacher_courses = $this->courses()->get();
 
         return $teacher_courses;
     }

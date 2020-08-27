@@ -123,6 +123,7 @@ class UserTest extends TestCase
         $student->addDayToUser($weekendDuringCourse);
         $student->addDayToUser($dayOutOfCourseDates);
 
+        
         $AssistedDays = $student->calculateAssistedDays($course);
 
         $this->assertEquals(2, $AssistedDays);
