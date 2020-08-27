@@ -15,8 +15,8 @@ class CreateJustificationsTable extends Migration
             $table->text('title');
             $table->text('description');
             $table->boolean('approval')->nullable();
-            $table->string('start_date');
-            $table->string('end_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
