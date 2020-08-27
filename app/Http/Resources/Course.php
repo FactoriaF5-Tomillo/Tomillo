@@ -76,6 +76,23 @@ class Course extends JsonResource
 
     public function toArray($request)
     {
+        if (count($this->users) === 0)
+        {
+            return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->description,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'students' => UserResource::collection($this->students()),
+            'teachers' => UserResource::collection($this->teachers()),
+            'totalStudents' => $this->totalStudents(),
+            'totalMaleStudents' => $this->totalMaleStudents(),
+            'totalFemaleStudents' => $this->totalFemaleStudents(),
+            'totalOtherStudents' => $this->totalOtherStudents(),
+            ];
+        }
+
         return [
             'id' => $this->id,
             'title' => $this->title,
