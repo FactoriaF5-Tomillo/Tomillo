@@ -3,7 +3,7 @@
     <div class="page-title">
       <h1>Estadísticas del curso</h1>
     </div>
-     <div class="info">
+      <div class="info">
       <div class="info-header">
         <h3>{{course.title}}</h3>
       </div>
