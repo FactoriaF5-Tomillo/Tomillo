@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Day extends Model
 {
-
+    const MinutesInHour = 60;
     protected $fillable = ['date', 'checkIn', 'checkOut'];
 
     /*
@@ -99,14 +99,27 @@ class Day extends Model
 
     public static function getTimeWorkedInADay($day)
     {
-        $WorkedTimeDay = [];
-
         $diffInHours = $day->checkOut->diffInHours($day->checkIn);
-        array_push($WorkedTimeDay, $diffInHours);
-
         $diffInMinutes = $day->checkOut->diffInMinutes($day->checkIn);
-        array_push($WorkedTimeDay, $diffInMinutes);
+        $minutes = $diffInMinutes % Day::MinutesInHour;
+        $WorkedTimeDay = ['Hours'=> $diffInHours, 'Minutes'=> $minutes];
 
         return $WorkedTimeDay;
+    }
+
+    public static function getWorkedHoursOfAStudentInACourse($days)
+    {
+        $totalHours   = 0;
+        $totalMinutes = 0;
+        foreach ($days as $day)
+        {
+            $timeDiff= self::getTimeWorkedInADay($day);
+            $totalHours  = $totalHours + $timeDiff['Hours'];
+            $totalMinutes= $totalMinutes +$timeDiff['Minutes'];
+            $Minutes = $totalMinutes % Day::MinutesInHour;
+        }
+        $TotalWorkedTimeCourse = ['Hours'=> $totalHours, 'Minutes'=> $Minutes];
+
+        return $TotalWorkedTimeCourse;
     }
 }

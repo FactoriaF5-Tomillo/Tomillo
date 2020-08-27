@@ -101,10 +101,29 @@ class DayTest extends TestCase
         $HourRightNow = Carbon::now()->setTimezone('Europe/Madrid')->hour;
         $MinutesRightNow = Carbon::now()->setTimezone('Europe/Madrid')->minute;
 
-        $HoursPassedSinceStart   = $HourRightNow - 8;
-        $MinutesPassedSinceStart = ($HoursPassedSinceStart * 60) + $MinutesRightNow;
+        $HoursPassedSinceStart   = $HourRightNow - $hour;
+        $MinutesPassedSinceStart = $MinutesRightNow;
 
-        $this->assertEquals($HoursPassedSinceStart, $workedtimeinDay[0]);
-        $this->assertEquals($MinutesPassedSinceStart, $workedtimeinDay[1]);
+        $this->assertEquals($HoursPassedSinceStart, $workedtimeinDay['Hours']);
+        $this->assertEquals($MinutesPassedSinceStart, $workedtimeinDay['Minutes']);
+    }
+
+    public function test_time_worked_in_a_course()
+    {
+        $starthour = 8; $startminute = 00; $startsecond = 00; $tz = 'Europe/Madrid';
+        $start = Carbon::createFromTime($starthour, $startminute, $startsecond, $tz);
+        $endhour = 16; $endminute = 30; $endsecond = 00;
+        $time = Carbon::createFromTime($endhour, $endminute, $endsecond, $tz);
+        $days = [];
+        $day1 = factory(Day::class)->create(['date'=>"2020-01-01", 'checkIn' => $start, 'checkOut' => $time]);
+        array_push($days, $day1);
+        $day2 = factory(Day::class)->create(['date'=>"2020-01-02", 'checkIn' => $start, 'checkOut' => $time]);
+        array_push($days, $day2);
+        $day3 = factory(Day::class)->create(['date'=>"2020-01-03", 'checkIn' => $start, 'checkOut' => $time]);
+        array_push($days, $day3);
+        $totalWorkedTimeInCourse = Day::getWorkedHoursOfAStudentInACourse($days);
+        //$this->assertNotNull($totalHoursInCourse);
+        $this->assertEquals(24, $totalWorkedTimeInCourse['Hours']);
+        $this->assertEquals(30, $totalWorkedTimeInCourse['Minutes']);
     }
 }
