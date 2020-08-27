@@ -2432,9 +2432,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 //
 //
 //
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39876,9 +39879,15 @@ var render = function() {
           {
             staticClass: "btn primary-button",
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             attrs: { href: "/course/" + _vm.course.id + "/justifications" }
           },
           [_vm._v("Justificaciones")]
+=======
+            attrs: { href: "/course/" + _vm.course.id + "/course-statistics" }
+          },
+          [_vm._v("Estadísticas")]
+>>>>>>> Stashed changes
 =======
             attrs: { href: "/course/" + _vm.course.id + "/course-statistics" }
           },
@@ -55619,8 +55628,13 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 __webpack_require__(/*! C:\Users\JoseO\Desktop\no\Tomillo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\JoseO\Desktop\no\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+=======
+__webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
+>>>>>>> Stashed changes
 =======
 __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\js\app.js */"./resources/js/app.js");
 module.exports = __webpack_require__(/*! C:\Users\sebastian\Desktop\Tomillo\resources\sass\app.scss */"./resources/sass/app.scss");
