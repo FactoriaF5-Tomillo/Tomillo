@@ -39,6 +39,7 @@ Route::get('/course/{course}/students', 'CourseController@showStudents');
 Route::get('/course/{course}/teachers', 'CourseController@showTeachers');
 Route::get('/course/{course}/assign-teachers', 'CourseController@showAssignTeacher')->name('course.assign-teachers');
 Route::get('/course/{course}/justifications', 'CourseController@showJustifications');
+Route::get('/course/{course}/course-statistics', 'CourseController@showStatistics')->name('course.course-statistics');
 Route::middleware('auth')->delete('/courses/{course}', 'CourseController@destroy')
     ->name('course.destroy');
 Route::middleware('auth')->patch('/courses/{course}', 'CourseController@update')

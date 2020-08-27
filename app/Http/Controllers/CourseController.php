@@ -70,7 +70,7 @@ class CourseController extends Controller
     public function destroy(Course $course)
     {
         $this->authorize('delete', $course);
-        
+
         $course->delete();
         return Course::all();
     }
@@ -130,5 +130,11 @@ class CourseController extends Controller
         $justifications = JustificationResource::collection($justifications);
 
         return view('course.justifications', compact('justifications'));
+    }
+
+    public function showStatistics(Course $course)
+    {
+        $course = New CourseResource($course);
+        return view('course.statistics', compact('course'));
     }
 }

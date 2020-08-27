@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="page-title">
-      <h1>Info</h1>
+      <h1>Información</h1>
     </div>
     <div class="info">
       <div class="info-header">
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="actions">
-      <h3>Pages:</h3>
+      <h3>Páginas:</h3>
       <div class="action-buttons">
         <a class="btn primary-button" :href="'/course/' + course.id + '/students'">Alumnos</a>
         <a class="btn primary-button" :href="'/course/' + course.id + '/teachers'">Profesores</a>
@@ -24,6 +24,7 @@
           class="btn primary-button"
           :href="'/course/' + course.id + '/justifications'"
         >Justificaciones</a>
+        <a class="btn primary-button" :href="'/course/' + course.id + '/course-statistics'">Estadísticas</a>
       </div>
     </div>
     <div class="actions">
@@ -36,7 +37,7 @@
         <a
           class="btn primary-button"
           :href="'/course/' + course.id + '/assign-teachers'"
-        >Asignar Profe</a>
+        >Asignar Profesor</a>
         <a class="btn primary-button" :href="'/course/' + course.id + '/edit'">Editar</a>
         <a class="btn primary-button" href @click.prevent @click="deleteCourse(course)">Eliminar</a>
       </div>

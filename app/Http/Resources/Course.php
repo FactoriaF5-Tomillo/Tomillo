@@ -85,6 +85,9 @@ class Course extends JsonResource
             'students' => UserResource::collection($this->students()),
             'teachers' => UserResource::collection($this->teachers()),
             'totalStudents' => $this->totalStudents(),
+            'totalMaleStudents' => $this->totalMaleStudents(),
+            'totalFemaleStudents' => $this->totalFemaleStudents(),
+            'totalOtherStudents' => $this->totalOtherStudents(),
         ];
     }
 }
