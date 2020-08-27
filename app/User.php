@@ -128,9 +128,10 @@ class User extends Authenticatable
         }
         return True;
     }
-    public function calculateAssistedDays($course){
-        
-        $courseDays = $course->getCourseDaysUntilNow(); //array of string type
+    public function calculateAssistedDays(){
+
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
         $checkedInDays = $this->days;
 
         $assistedDays = 0;
@@ -145,11 +146,12 @@ class User extends Authenticatable
         return $assistedDays;
     }
 
-    public function calculateAbsentDays($course){
+    public function calculateAbsentDays(){
 
-        $courseDays = $course->getCourseDaysUntilNow();
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow();
         $NumberOfCourseDays = count($courseDays);
-        $assistedDays = $this->calculateAssistedDays($course);
+        $assistedDays = $this->calculateAssistedDays();
 
         $absentDays = $NumberOfCourseDays-$assistedDays;
 
