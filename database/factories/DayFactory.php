@@ -12,3 +12,5 @@ $factory->define(Day::class, function (Faker $faker) {
         'date'    => Carbon::now()->setTimezone('Europe/Madrid')->toDateString(),
     ];
 });
+
+//'date'    => Carbon::now()->setTimezone('Europe/Madrid')->toDateString(),
