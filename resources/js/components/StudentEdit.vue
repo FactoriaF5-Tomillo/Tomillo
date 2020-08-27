@@ -34,16 +34,6 @@
           <option value="Otro">Otro</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Curso Actual</label>
-        <input
-          type="text"
-          v-model="student.currentcourse"
-          name="currentcourse"
-          class="form-control"
-          required
-        />
-      </div>
       <div class="form-submit">
         <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
         <button class="btn primary-button" @click="updateStudentInfo(student)" value="Crear">Editar</button>

@@ -10932,7 +10932,6 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
 }
 
 html {
@@ -11003,6 +11002,7 @@ p {
 
 .dashboard .content {
   padding: 30px;
+  overflow: scroll;
 }
 
 .course-list {
@@ -11180,7 +11180,8 @@ p {
 
 .form-card {
   max-width: 550px;
-  margin-top: 70px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   border: 2px solid #2e6951;
   border-radius: 10px;
 }
@@ -11218,7 +11219,6 @@ p {
 .home-footer {
   width: 100%;
   height: 125px;
-  position: absolute;
   bottom: 0;
   background-color: #e8e8e8;
   border-top: 2px solid #2e6951;
