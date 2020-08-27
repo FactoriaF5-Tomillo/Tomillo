@@ -67,7 +67,7 @@ class UserController extends Controller
 
         foreach($students as $student)
         {
-            if(count($student->course) == 0) {
+            if(count($student->courses) == 0) {
                 array_push($availableStudents, $student);
             }
         }

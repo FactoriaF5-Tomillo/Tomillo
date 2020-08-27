@@ -40,7 +40,7 @@ class User extends JsonResource
             'nationality' => $this->nationality,
             'age' => $this->age(),
             'date_of_birth' => $this->date_of_birth,
-            'course' => $this->course,
+            'course' => $this->courses,
             'email_verified_at' => $this->email_verified_at,
         ];
     }
