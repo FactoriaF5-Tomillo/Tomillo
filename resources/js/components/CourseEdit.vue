@@ -39,7 +39,7 @@ export default {
   methods: {
     editCourse() {
       axios
-        .patch("/api/courses/" + this.course.id, this.course)
+        .patch("/courses/" + this.course.id, this.course)
         .then((response) => {
           window.location.replace("/courses");
         });

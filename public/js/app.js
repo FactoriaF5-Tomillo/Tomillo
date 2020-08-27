@@ -2224,7 +2224,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editCourse: function editCourse() {
-      axios.patch("/api/courses/" + this.course.id, this.course).then(function (response) {
+      axios.patch("/courses/" + this.course.id, this.course).then(function (response) {
         window.location.replace("/courses");
       });
     },
