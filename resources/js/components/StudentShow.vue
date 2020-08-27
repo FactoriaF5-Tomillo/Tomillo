@@ -20,6 +20,21 @@
         {{student.email}}
       </p>
     </div>
+
+    <div>
+       <p>
+        <strong>Dias Asistidos:</strong>
+        {{student.assistedDays}}
+      </p>
+       <p>
+        <strong>Dias Absentes:</strong>
+        {{student.absentDays}}
+        <strong>, lo de qual justificados:</strong>
+        {{student.justifiedDays}}
+      </p>
+    </div>
+
+    
     <div>
       <button @click="checkin(student)">Check In</button>
       <button @click="checkout(student)">Check Out</button>
@@ -47,10 +62,6 @@ export default {
     },
     checkout(student){
       axios.patch("/api/students/"+student.id+"/checkout", this.student)
-    },
-    getAssistedDayNumber(student){
-      axios.get("route"+student.id, this.student)
-    
     }
 
 
