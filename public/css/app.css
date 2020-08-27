@@ -11246,6 +11246,22 @@ p {
   background-color: #69c85c;
 }
 
+.label {
+  max-width: 150px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+}
+
+.label-true {
+  background-color: #72a951;
+}
+
+.label-false {
+  background-color: #e3342f;
+}
+
 .profile {
   padding-top: 50px;
 }

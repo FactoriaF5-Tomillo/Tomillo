@@ -27,6 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         JsonResource::withoutWrapping();
-        Justification::observe(JustificationObserver::class);
+        //Justification::observe(JustificationObserver::class);
     }
 }

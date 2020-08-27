@@ -13,7 +13,7 @@ class CreateJustificationsTable extends Migration
             $table->id();
             $table->mediumText('file')->nullable();
             $table->text('description');
-            $table->boolean('approval')->nullable();
+            $table->boolean('approved')->default(false);
             $table->foreignId('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
