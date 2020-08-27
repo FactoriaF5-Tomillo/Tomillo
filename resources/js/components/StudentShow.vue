@@ -11,7 +11,7 @@
           {{student.nationality}}
         </p>
         <p>
-          <strong>Genro:</strong>
+          <strong>Género:</strong>
           {{student.gender}}
         </p>
       </div>
@@ -23,23 +23,23 @@
 
     <div>
        <p>
-        <strong>Dias Asistidos:</strong>
+        <strong>Días Asistidos:</strong>
         {{student.assistedDays}}
       </p>
        <p>
-        <strong>Dias Absentes:</strong>
+        <strong>Días Ausentes:</strong>
         {{student.absentDays}}
-        <strong>, lo de qual justificados:</strong>
+        <strong>, justificados:</strong>
         {{student.justifiedDays}}
       </p>
     </div>
 
-    
+
     <div>
       <button @click="checkin(student)">Check In</button>
       <button @click="checkout(student)">Check Out</button>
     </div>
-
+    <br>
 
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
@@ -65,7 +65,7 @@ export default {
     }
 
 
-   
+
   },
   mounted() {
     console.log("Component mounted.");

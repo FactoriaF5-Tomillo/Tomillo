@@ -88,6 +88,9 @@ class Course extends JsonResource
             'totalMaleStudents' => $this->totalMaleStudents(),
             'totalFemaleStudents' => $this->totalFemaleStudents(),
             'totalOtherStudents' => $this->totalOtherStudents(),
+            'malePercentage' => $this->malePercentage(),
+            'femalePercentage' => $this->femalePercentage(),
+            'otherPercentage' => $this->otherPercentage(),
         ];
     }
 }
