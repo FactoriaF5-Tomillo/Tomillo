@@ -26,7 +26,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function course()
+    public function courses()
     {
         return $this->belongsToMany(Course::class);
     }
@@ -51,14 +51,14 @@ class User extends Authenticatable
 
     public function studentCourse()
     {
-        $student_course = $this->course()->first();
+        $student_course = $this->courses()->first();
 
         return $student_course;
     }
 
     public function teacherCourses()
     {
-        $teacher_courses = $this->course()->get();
+        $teacher_courses = $this->courses()->get();
 
         return $teacher_courses;
     }
@@ -128,9 +128,10 @@ class User extends Authenticatable
         }
         return True;
     }
-    public function calculateAssistedDays($course){
-        
-        $courseDays = $course->getCourseDaysUntilNow(); //array of string type
+    public function calculateAssistedDays(){
+
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
         $checkedInDays = $this->days;
 
         $assistedDays = 0;
@@ -145,11 +146,12 @@ class User extends Authenticatable
         return $assistedDays;
     }
 
-    public function calculateAbsentDays($course){
+    public function calculateAbsentDays(){
 
-        $courseDays = $course->getCourseDaysUntilNow();
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow();
         $NumberOfCourseDays = count($courseDays);
-        $assistedDays = $this->calculateAssistedDays($course);
+        $assistedDays = $this->calculateAssistedDays();
 
         $absentDays = $NumberOfCourseDays-$assistedDays;
 

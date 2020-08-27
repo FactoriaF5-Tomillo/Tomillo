@@ -8,9 +8,10 @@ use App\Teacher;
 use App\User;
 
 use App\Http\Resources\Course as CourseResource;
+use App\Http\Resources\Justification as JustificationResource;
 use App\Policies\CoursePolicy;
-use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -114,5 +115,20 @@ class CourseController extends Controller
     {
         $course = New CourseResource($course);
         return view('course.teacherList', compact('course'));
+    }
+
+    public function showJustifications(Course $course)
+    {
+        $justifications = [];
+
+        foreach($course->users as $student){
+            foreach($student->justifications as $justification){
+                array_push($justifications, $justification);
+            }
+        }
+
+        $justifications = JustificationResource::collection($justifications);
+
+        return view('course.justifications', compact('justifications'));
     }
 }

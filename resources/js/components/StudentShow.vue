@@ -47,7 +47,13 @@ export default {
     },
     checkout(student){
       axios.patch("/api/students/"+student.id+"/checkout", this.student)
+    },
+    getAssistedDayNumber(student){
+      axios.get("route"+student.id, this.student)
+    
     }
+
+
    
   },
   mounted() {

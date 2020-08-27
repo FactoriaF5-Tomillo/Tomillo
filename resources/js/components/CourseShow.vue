@@ -20,6 +20,10 @@
       <div class="action-buttons">
         <a class="btn primary-button" :href="'/course/' + course.id + '/students'">Alumnos</a>
         <a class="btn primary-button" :href="'/course/' + course.id + '/teachers'">Profesores</a>
+        <a
+          class="btn primary-button"
+          :href="'/course/' + course.id + '/justifications'"
+        >Justificaciones</a>
       </div>
     </div>
     <div class="actions">

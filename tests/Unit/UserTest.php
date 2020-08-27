@@ -113,6 +113,8 @@ class UserTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
+        $course->users()->save($student);
+
         $day1= factory(Day::class)->create(['date'=>"2020-01-01"]);
         $day2= factory(Day::class)->create(['date'=>"2020-01-02"]);
         $weekendDuringCourse = factory(Day::class)->create(['date'=>"2020-01-04"]);
@@ -123,7 +125,7 @@ class UserTest extends TestCase
         $student->addDayToUser($weekendDuringCourse);
         $student->addDayToUser($dayOutOfCourseDates);
 
-        $AssistedDays = $student->calculateAssistedDays($course);
+        $AssistedDays = $student->calculateAssistedDays();
 
         $this->assertEquals(2, $AssistedDays);
         $this->assertEquals(4, count($student->days));
@@ -138,6 +140,8 @@ class UserTest extends TestCase
             'start_date' => date("2020-01-01"),
             'end_date' => date("2020-01-07")
         ]);
+
+        $course->users()->save($student);
 
         $Wednesday= factory(Day::class)->create(['date'=>"2020-01-01"]);//student attends
         $Thursday= factory(Day::class)->create(['date'=>"2020-01-02"]);//student attends
@@ -154,7 +158,7 @@ class UserTest extends TestCase
         $student->addDayToUser($Saturday);//check-in by accident
         $student->addDayToUser($dayOutOfCourseDates);
 
-        $AbsentDays = $student->calculateAbsentDays($course);
+        $AbsentDays = $student->calculateAbsentDays();
 
         $this->assertEquals(2 , $AbsentDays);
         $this->assertEquals(5, count($student->days));

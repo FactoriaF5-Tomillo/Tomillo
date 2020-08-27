@@ -83,8 +83,8 @@ class Course extends JsonResource
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'students' => UserResource::collection($this->students()),
-            'teachers' => UserResource::collection($this->teachers())
-
+            'teachers' => UserResource::collection($this->teachers()),
+            'totalStudents' => $this->totalStudents(),
         ];
     }
 }

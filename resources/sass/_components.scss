@@ -19,3 +19,19 @@
 .selected-button {
     background-color: rgb(105, 200, 92);
 }
+
+.label {
+    max-width: 150px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+}
+
+.label-true {
+    background-color: $secondary-faded-green;
+}
+
+.label-false {
+    background-color: $red;
+}

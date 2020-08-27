@@ -17,7 +17,7 @@ class UserCourseTest extends TestCase
         $user = factory(User::class)->create();
         $course = factory(Course::class)->create();
 
-        $user->course()->save($course);
+        $user->courses()->save($course);
         $user_course = $user->studentCourse();
 
         $this->assertNotNull($user_course);
