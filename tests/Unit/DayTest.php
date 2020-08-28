@@ -40,10 +40,10 @@ class DayTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
-        $course->users()->save($student); 
+        $course->users()->save($student);
 
-        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeTodayCourseDay); 
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
 
         $day= Day::checkIn($student);
 
@@ -66,10 +66,10 @@ class DayTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
-        $course->users()->save($student); 
+        $course->users()->save($student);
 
-        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeTodayCourseDay); 
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
 
         $day = Day::checkIn($student);
 
@@ -89,10 +89,10 @@ class DayTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
-        $course->users()->save($student); 
+        $course->users()->save($student);
 
-        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeTodayCourseDay); 
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
 
         $day = Day::checkIn($student);
 
@@ -146,11 +146,9 @@ class DayTest extends TestCase
         $time = Carbon::createFromTime(DayTest::endhour, DayTest::endminute, DayTest::endsecond, DayTest::tz);
         $days = [];
         $day1 = factory(Day::class)->create(['date'=>"2020-01-01", 'checkIn' => $start, 'checkOut' => $time]);
-        array_push($days, $day1);
         $day2 = factory(Day::class)->create(['date'=>"2020-01-02", 'checkIn' => $start, 'checkOut' => $time]);
-        array_push($days, $day2);
         $day3 = factory(Day::class)->create(['date'=>"2020-01-03", 'checkIn' => $start, 'checkOut' => $time]);
-        array_push($days, $day3);
+        array_push($days, $day1, $day2, $day3);
         $totalWorkedTimeInCourse = Day::getWorkedHoursOfAStudentInACourse($days);
 
         $this->assertEquals(24, $totalWorkedTimeInCourse['Hours']);
@@ -166,19 +164,48 @@ class DayTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
-        $FakeTodayNoCourseDay = Carbon::create(2020, 6, 1, 12);          
-        Carbon::setTestNow($FakeTodayNoCourseDay); 
+        $FakeTodayNoCourseDay = Carbon::create(2020, 6, 1, 12);
+        Carbon::setTestNow($FakeTodayNoCourseDay);
 
         $check1 = Day::checkIfTodayCorrespondsCourseDates($course);
         $this->assertFalse($check1);
 
-        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeTodayCourseDay); 
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
 
         $check2 = Day::checkIfTodayCorrespondsCourseDates($course);
         $this->assertTrue($check2);
 
     }
 
-    
+    public function test_average_total_attended_days_all_students_in_course()
+    {
+        $attended_course_days = [];
+        $course_start = date("2020-01-02");
+        $course_end = date("2020-01-08");
+        $users = factory(User::class, 2)->create(['type'=>'Student']);
+        $day1_user1= factory(Day::class)->create(['date'=>'2020-01-02', 'user_id'=>$users[0]->id]);
+        $day2_user1= factory(Day::class)->create(['date'=>'2020-01-03', 'user_id'=>$users[0]->id]);
+        $day3_user1= factory(Day::class)->create(['date'=>'2020-01-06', 'user_id'=>$users[0]->id]);
+        $day4_user1= factory(Day::class)->create(['date'=>'2020-01-07', 'user_id'=>$users[0]->id]);
+        $day1_user2= factory(Day::class)->create(['date'=>'2020-01-02', 'user_id'=>$users[1]->id]);
+        $day2_user2= factory(Day::class)->create(['date'=>'2020-01-06', 'user_id'=>$users[1]->id]);
+        $day3_user2= factory(Day::class)->create(['date'=>'2020-01-08', 'user_id'=>$users[1]->id]);
+        array_push($attended_course_days,$day1_user1, $day2_user1, $day3_user1, $day4_user1, $day1_user2,
+            $day2_user2, $day3_user2);
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => $course_start,
+            'end_date' => $course_end
+        ]);
+
+        foreach ($users as $user) {
+            $course->users()->save($user);
+        };
+        $average_Attended_days = Day::average_Attended_Days_course($attended_course_days, $course);
+        $attended_days = $average_Attended_days['Attended']; $absentDays = $average_Attended_days['Absent'];
+        $this->assertEquals(4, $attended_days);
+        $this->assertEquals(1, $absentDays);
+    }
 }

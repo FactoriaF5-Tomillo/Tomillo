@@ -139,5 +139,16 @@ class Day extends Model
         }
         return False;
     }
+    public static function average_Attended_Days_course($days ,$course)
+    {
 
+        $totaldaysAttendedAllStudents = count($days);
+        $totalCourseStudents = count($course->users()->get());
+        $averageAttendedDays = round ( $totaldaysAttendedAllStudents/$totalCourseStudents);
+
+        $totalCourseDays = count($course->getCourseDaysAsString());
+        $absentDays = $totalCourseDays - (intval($averageAttendedDays));
+        $attendedAndAbsentDays = ['Attended'=> $averageAttendedDays, 'Absent'=> $absentDays];
+        return $attendedAndAbsentDays;
+    }
 }
