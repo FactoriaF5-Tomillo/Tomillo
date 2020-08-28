@@ -140,8 +140,6 @@ class Day extends Model
             }
         }
         return False;
-
-    
     }
 
 }

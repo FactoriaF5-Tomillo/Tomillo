@@ -171,6 +171,13 @@ class User extends Authenticatable
         return $numberOfJustifiedDays;
     }
 
+    public function checkIfStudentHasCourse(){
+        if($this->studentCourse() == null){
+            return False;
+        }
+        return True;
+    }
+
     
 }
 

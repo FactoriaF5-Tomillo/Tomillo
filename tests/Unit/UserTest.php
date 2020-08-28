@@ -164,5 +164,28 @@ class UserTest extends TestCase
         $this->assertEquals(5, count($student->days));
     }
 
+    public function test_check_if_student_has_course(){
+
+        $student = factory(User::class)->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-07")
+        ]);
+
+        $check1 = $student->checkIfStudentHasCourse();
+
+        $this->assertFalse($check1);
+
+        $course->users()->save($student); 
+
+        $check2 = $student->checkIfStudentHasCourse();
+
+        $this->assertTrue($check2);
+
+    }
+
     
 }
