@@ -12,13 +12,6 @@ class Day extends Model
     const MinutesInHour = 60;
     protected $fillable = ['date', 'checkIn', 'checkOut'];
 
-    /*
-    private function __construct($date, $checkIn, $checkOut){
-
-        $this->date = Carbon::now();
-        $this->checkIn = Carbon::now();
-        $this->checkOut = $checkOut;
-    */
 
     public function user()
     {
@@ -29,7 +22,6 @@ class Day extends Model
     {
         $date= Carbon::now()->setTimezone('Europe/Madrid')->toDateString();
 
-        var_dump($date);
         //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY');
         return $date;
     }
@@ -45,9 +37,13 @@ class Day extends Model
     public static function checkIn(User $user)
     {
 
-        //check if user has a course assigned.
+        if($user->checkIfStudentHasCourse() == False){
+            return null;
+        }
 
-        //check if today corresponds to user's course dates.
+        if(self::checkIfTodayCorrespondsCourseDates($user->studentCourse()) == False){
+            return null;
+        }
 
         $date=self::setDate(); //string
 

@@ -30,24 +30,47 @@ class DayTest extends TestCase
 
     public function test_student_can_check_in()
     {
-        $user= factory(User::class)->create();
+        $student= factory(User::class)->create();
 
-        $day= Day::checkIn($user);
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student); 
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeTodayCourseDay); 
+
+        $day= Day::checkIn($student);
 
         $this->assertNotNull($day);
 
+        $this->assertNotNull($student->days);
         $this->assertNotNull($day->date);
         $this->assertNotNull($day->checkIn);
-        $this->assertEquals($user->id, $day->user_id);
-
-        // dd($user->days);
-        //$this->assertEquals($user->days[0], $day);
+        $this->assertEquals($student->id, $day->user_id);
     }
 
     public function test_check_out()
     {
-        $user = factory(User::class)->create();
-        $day = Day::checkIn($user);
+        $student = factory(User::class)->create();
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student); 
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeTodayCourseDay); 
+
+        $day = Day::checkIn($student);
 
         $day->checkout();
 
@@ -56,8 +79,21 @@ class DayTest extends TestCase
 
     public function test_check_if_user_checked_out(){
 
-        $user = factory(User::class)->create();
-        $day = Day::checkIn($user);
+        $student = factory(User::class)->create();
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student); 
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeTodayCourseDay); 
+
+        $day = Day::checkIn($student);
 
         $this->assertFalse($day->checkIfCheckedOut());
 
