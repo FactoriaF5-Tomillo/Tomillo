@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 use App\Course;
+use App\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 

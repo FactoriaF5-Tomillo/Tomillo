@@ -54,8 +54,10 @@ class JustificationController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'user_id' => Auth::user()->id
-        ]);
+        ]);     
+
         
+
         $file = $request->file('file');
 
         $file_name = $justification->upload_file($file);

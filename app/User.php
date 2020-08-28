@@ -3,6 +3,7 @@
 namespace App;
 use App\Course;
 use App\Day;
+use App\Justification;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -166,7 +167,7 @@ class User extends Authenticatable
         foreach($this->justifications as $justification){
             if($justification->approval==True){
                 $numberOfJustifiedDays = count($justification->getJustificationDates());
-                $totalJustifiedDays += $numberOfJustifiedDays;
+                $totalJustifiedDays = $totalJustifiedDays + $numberOfJustifiedDays;
             }
         }
         return $totalJustifiedDays;

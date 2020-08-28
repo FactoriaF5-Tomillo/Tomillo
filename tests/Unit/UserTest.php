@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\User;
 use App\Day;
 use App\Course;
+use App\Justification;
 
 class UserTest extends TestCase
 {
@@ -162,6 +163,51 @@ class UserTest extends TestCase
 
         $this->assertEquals(2 , $AbsentDays);
         $this->assertEquals(5, count($student->days));
+    }
+
+    public function test_calculate_justified_days_when_accepted(){
+
+        $student = factory(User::class)->create();
+
+        $justificationApproved= Justification::create([
+            'title' => 'Vacaciones',
+            'description' => 'Estuve en vacaciones', 
+            'approval' => True,
+            'start_date' => date("2020-02-01"),
+            'end_date' => date("2020-02-07"),
+            'user_id' => $student->id
+        ]);
+
+        $justificationApproved2= Justification::create([
+            'title' => 'Enfermedad',
+            'description' => 'Estuve enfermo', 
+            'approval' => True,
+            'start_date' => date("2020-03-01"),
+            'end_date' => date("2020-03-30"),
+            'user_id' => $student->id
+        ]);
+
+        $justifiedDays = $student->calculateJustifiedDays();
+
+        $this->assertEquals(26 , $justifiedDays);
+    }
+
+    public function test_calculate_justified_days_when_rejected(){
+
+        $student = factory(User::class)->create();
+
+        $justificationRejected= Justification::create([
+            'title' => 'Vacaciones',
+            'description' => 'Estuve en vacaciones', 
+            'approval' => False,
+            'start_date' => date("2020-03-01"),
+            'end_date' => date("2020-03-30"),
+            'user_id' => $student->id
+        ]);
+
+        $justifiedDays = $student->calculateJustifiedDays();
+
+        $this->assertEquals(0 , $justifiedDays);
     }
 
     public function test_check_if_student_has_course(){
