@@ -161,14 +161,15 @@ class User extends Authenticatable
 
     public function calculateJustifiedDays(){ //not tested
 
-        $numberOfJustifiedDays=0;
+        $totalJustifiedDays=0;
 
         foreach($this->justifications as $justification){
             if($justification->approval==True){
-                $numberOfJustifiedDays++;
+                $numberOfJustifiedDays = count($justification->getJustificationDates());
+                $totalJustifiedDays += $numberOfJustifiedDays;
             }
         }
-        return $numberOfJustifiedDays;
+        return $totalJustifiedDays;
     }
 
     public function checkIfStudentHasCourse(){
