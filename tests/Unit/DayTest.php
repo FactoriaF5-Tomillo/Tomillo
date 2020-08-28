@@ -15,7 +15,8 @@ use App\Course;
 class DayTest extends TestCase
 {
     use RefreshDatabase;
-
+    const hour = 8; const minute = 00; const second = 0; const tz = 'Europe/Madrid';
+    const endhour = 16; const endminute = 30; const endsecond = 0;
     public function test_set_date()
     {
         $date = Day::setDate();
@@ -111,7 +112,6 @@ class DayTest extends TestCase
         $user->addDayToUser($assignedDay); //assigns the day to user
 
         $dayToCompare = factory(Day::class)->create(); //another day instance of today, not assigned
-
         /*
         $anotherDay = Day::create([
             'date' => '2021-03-03'
@@ -119,18 +119,13 @@ class DayTest extends TestCase
         */
 
         //when we try to reach the days field of user before assigning any day by check-in, the user object anull itself
-
         $check1 = $dayToCompare->checkIfCheckedInSameDay($user);
-        //$check2 = $$anotherDay->checkIfCheckedInSameDay($user);
-
         $this->assertTrue($check1);
-        //$this->assertTrue($check2);
     }
 
     public function test_time_worked_in_a_day()
     {
-        $hour = 8; $minute = 00; $second = 00; $tz = 'Europe/Madrid';
-        $start = Carbon::createFromTime($hour, $minute, $second, $tz);
+        $start = Carbon::createFromTime(DayTest::hour, DayTest::minute, DayTest::second, DayTest::tz);
         $time = Carbon::now()->setTimezone('Europe/Madrid');
         $day = factory(Day::class)->create(['checkIn'=> $start, 'checkOut'=> $time]);
         $workedtimeinDay = Day::getTimeWorkedInADay($day);
@@ -138,7 +133,7 @@ class DayTest extends TestCase
         $HourRightNow = Carbon::now()->setTimezone('Europe/Madrid')->hour;
         $MinutesRightNow = Carbon::now()->setTimezone('Europe/Madrid')->minute;
 
-        $HoursPassedSinceStart   = $HourRightNow - $hour;
+        $HoursPassedSinceStart   = $HourRightNow - DayTest::hour;
         $MinutesPassedSinceStart = $MinutesRightNow;
 
         $this->assertEquals($HoursPassedSinceStart, $workedtimeinDay['Hours']);
@@ -147,10 +142,8 @@ class DayTest extends TestCase
 
     public function test_time_worked_in_a_course()
     {
-        $starthour = 8; $startminute = 00; $startsecond = 00; $tz = 'Europe/Madrid';
-        $start = Carbon::createFromTime($starthour, $startminute, $startsecond, $tz);
-        $endhour = 16; $endminute = 30; $endsecond = 00;
-        $time = Carbon::createFromTime($endhour, $endminute, $endsecond, $tz);
+        $start = Carbon::createFromTime(DayTest::hour, DayTest::minute, DayTest::second, DayTest::tz);
+        $time = Carbon::createFromTime(DayTest::endhour, DayTest::endminute, DayTest::endsecond, DayTest::tz);
         $days = [];
         $day1 = factory(Day::class)->create(['date'=>"2020-01-01", 'checkIn' => $start, 'checkOut' => $time]);
         array_push($days, $day1);
@@ -159,7 +152,7 @@ class DayTest extends TestCase
         $day3 = factory(Day::class)->create(['date'=>"2020-01-03", 'checkIn' => $start, 'checkOut' => $time]);
         array_push($days, $day3);
         $totalWorkedTimeInCourse = Day::getWorkedHoursOfAStudentInACourse($days);
-        //$this->assertNotNull($totalHoursInCourse);
+
         $this->assertEquals(24, $totalWorkedTimeInCourse['Hours']);
         $this->assertEquals(30, $totalWorkedTimeInCourse['Minutes']);
     }

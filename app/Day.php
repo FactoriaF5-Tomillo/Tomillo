@@ -101,8 +101,10 @@ class Day extends Model
 
     public static function getTimeWorkedInADay($day)
     {
-        $diffInHours = $day->checkOut->diffInHours($day->checkIn);
-        $diffInMinutes = $day->checkOut->diffInMinutes($day->checkIn);
+        $checkIn  = Carbon::parse($day->checkIn);
+        $checkOut = Carbon::parse($day->checkOut);
+        $diffInHours = $checkOut->diffInHours($checkIn);
+        $diffInMinutes = $checkOut->diffInMinutes($checkIn);
         $minutes = $diffInMinutes % Day::MinutesInHour;
         $WorkedTimeDay = ['Hours'=> $diffInHours, 'Minutes'=> $minutes];
 
