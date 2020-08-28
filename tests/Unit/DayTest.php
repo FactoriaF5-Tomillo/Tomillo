@@ -9,6 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 use App\Day;
 use App\User;
+use App\Course;
 
 
 class DayTest extends TestCase
@@ -126,4 +127,29 @@ class DayTest extends TestCase
         $this->assertEquals(24, $totalWorkedTimeInCourse['Hours']);
         $this->assertEquals(30, $totalWorkedTimeInCourse['Minutes']);
     }
+
+    public function test_check_if_today_corresponds_course_dates(){
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $FakeTodayNoCourseDay = Carbon::create(2020, 6, 1, 12);          
+        Carbon::setTestNow($FakeTodayNoCourseDay); 
+
+        $check1 = Day::checkIfTodayCorrespondsCourseDates($course);
+        $this->assertFalse($check1);
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeTodayCourseDay); 
+
+        $check2 = Day::checkIfTodayCorrespondsCourseDates($course);
+        $this->assertTrue($check2);
+
+    }
+
+    
 }

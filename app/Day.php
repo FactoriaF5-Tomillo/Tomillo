@@ -3,6 +3,7 @@
 namespace App;
 use Carbon\Carbon;
 use App\User;
+use App\Course;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -43,6 +44,11 @@ class Day extends Model
 
     public static function checkIn(User $user)
     {
+
+        //check if user has a course assigned.
+
+        //check if today corresponds to user's course dates.
+
         $date=self::setDate(); //string
 
         $time=self::setTime();
@@ -122,4 +128,20 @@ class Day extends Model
 
         return $TotalWorkedTimeCourse;
     }
+    public static function checkIfTodayCorrespondsCourseDates(Course $course){
+
+        $date=self::setDate(); //string
+
+        $courseDays = $course->getCourseDaysUntilNow(); //array of strings
+
+        foreach ($courseDays as $courseDay){
+            if ($courseDay == $date){
+                return True;
+            }
+        }
+        return False;
+
+    
+    }
+
 }
