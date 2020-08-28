@@ -10993,7 +10993,8 @@ p {
   margin-bottom: 7px;
   padding: 8px 0 8px 10px;
   border-radius: 0 5px 5px 0;
-  color: #000000;
+  font-weight: 600;
+  color: #ffffff;
 }
 
 .dashboard .side-bar .nav-buttons .nav-button:hover {
@@ -11029,8 +11030,8 @@ p {
 
 .course-card .course-header a {
   color: #ffffff;
+  font-weight: 600;
   font-size: 18px;
-  text-decoration: underline;
 }
 
 .course-card .course-body {
