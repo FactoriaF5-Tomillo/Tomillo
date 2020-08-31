@@ -180,6 +180,44 @@ class User extends Authenticatable
         return True;
     }
 
+    public function getAssistedDays(){
+
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
+        $checkedInDays = $this->days;
+
+        $assistedDays = array();
+
+        foreach ($courseDays as $courseDay){
+            foreach ($checkedInDays as $checkedInDay){
+                if ($courseDay==$checkedInDay->date){
+                    array_push($assistedDays, $courseDay);
+                }
+            }
+        }
+        return $assistedDays;
+    }
+
+    public function getAbsentDays(){
+
+        $StudentCourse = $this->studentCourse();
+        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
+        $checkedInDays = $this->days;
+
+        $absentDays = array();
+
+        foreach ($courseDays as $courseDay){
+            foreach ($checkedInDays as $checkedInDay){
+                if ($courseDay!=$checkedInDay->date){
+                    array_push($absentDays, $courseDay);
+                }
+            }
+        }
+        return $absentDays;
+    }
+
+
+
     
 }
 

@@ -233,5 +233,56 @@ class UserTest extends TestCase
 
     }
 
+    public function test_get_assisted_days()
+    {
+        $student = factory(User::class)->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $day1= factory(Day::class)->create(['date'=>"2020-01-01"]);
+        $day2= factory(Day::class)->create(['date'=>"2020-01-02"]);
+        $day3= factory(Day::class)->create(['date'=>"2020-01-03"]); 
+
+        $student->addDayToUser($day1);
+        $student->addDayToUser($day2);
+        $student->addDayToUser($day3);
+        
+
+        $AssistedDays = $student->getAssistedDays();
+
+        $this->assertIsArray($AssistedDays);
+        $this->assertEquals(3, count($AssistedDays));
+    }
+
+    public function test_get_absent_days()
+    {
+        $student = factory(User::class)->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-07")
+        ]);
+
+        $course->users()->save($student);
+
+        $day1= factory(Day::class)->create(['date'=>"2020-01-01"]);
+
+        $student->addDayToUser($day1);  
+
+        $AbsentDays = $student->getAbsentDays();
+
+        $this->assertIsArray($AbsentDays);
+        $this->assertEquals(4, count($AbsentDays));
+    }
+
     
 }
