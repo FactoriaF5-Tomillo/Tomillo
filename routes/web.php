@@ -69,3 +69,4 @@ Route::get('/upload','JustificationController@create')->name('justification.crea
 Route::post('/uploadFile','JustificationController@uploadFile')->name('justification.uploadFile');
 Route::get('/justification/{justification}/edit', 'JustificationController@edit')->name('justification.edit');
 Route::put('/justifications/{justification}', 'JustificationController@update')->name('justification.update');
+Route::get('/download/{file}', 'JustificationController@download');

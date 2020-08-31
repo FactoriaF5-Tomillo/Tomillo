@@ -88,4 +88,8 @@ class JustificationController extends Controller
         $justification->delete();
         return Justification::all();
     }
+    public function download($file_name) {
+        $file_path = public_path('storage/uploads/'.$file_name);
+        return response()->download($file_path);
+      }
 }

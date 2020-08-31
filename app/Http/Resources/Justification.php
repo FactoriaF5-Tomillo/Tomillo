@@ -10,9 +10,12 @@ class Justification extends JsonResource
     {
         return [
             'id' => $this->id,
+            'file' => $this->file,
             'description' => $this->description,
             'approved' => $this->approved,
             'user' => $this->user,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
         ];
     }
 }

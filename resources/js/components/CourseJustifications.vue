@@ -9,6 +9,9 @@
           <h3>Alumno</h3>
           <h3>Description</h3>
           <h3>Status</h3>
+          <h3>Fechas</h3>
+
+
         </div>
       </div>
       <div class="list-content">
@@ -17,6 +20,8 @@
           <p class="list-data">{{justification.description}}</p>
           <span v-if="!justification.approved" class="label label-false">No Acceptada</span>
           <span v-if="justification.approved" class="label label-true">Acceptada</span>
+          <p class="list-data">{{justification.start_date}} / {{justification.end_date}}</p>
+          <a :href="'/download/'+ String(justification.file)">Descargar</a> 
         </div>
       </div>
     </div>
