@@ -160,7 +160,7 @@ class User extends Authenticatable
 
     }
 
-    public function calculateJustifiedDays(){ //not tested
+    public function calculateJustifiedDays(){ 
 
         $totalJustifiedDays=0;
 
@@ -215,6 +215,24 @@ class User extends Authenticatable
         }
         return $absentDays;
     }
+
+    public function getJustifiedDays(){ 
+
+        $justifiedDays= array();
+
+        foreach($this->justifications as $justification){
+            if($justification->approval==True){
+                $justificationRange = $justification->getJustificationDates();
+                foreach($justificationRange as $justifiedDay){
+                    array_push($justifiedDays, $justifiedDay);
+                }
+                
+            }
+        }
+        return $justifiedDays;
+    }
+
+    
 
 
 

@@ -284,5 +284,33 @@ class UserTest extends TestCase
         $this->assertEquals(4, count($AbsentDays));
     }
 
+    public function test_get_justified_days(){
+
+        $student = factory(User::class)->create();
+
+        $justificationApproved= Justification::create([
+            'title' => 'Vacaciones',
+            'description' => 'Estuve en vacaciones', 
+            'approval' => True,
+            'start_date' => date("2020-02-01"),
+            'end_date' => date("2020-02-07"),
+            'user_id' => $student->id
+        ]);
+
+        $justificationApproved2= Justification::create([
+            'title' => 'Enfermedad',
+            'description' => 'Estuve enfermo', 
+            'approval' => True,
+            'start_date' => date("2020-03-01"),
+            'end_date' => date("2020-03-30"),
+            'user_id' => $student->id
+        ]);
+
+        $justifiedDays = $student->getJustifiedDays();
+
+        $this->assertIsArray($justifiedDays);
+        $this->assertEquals(26 , count($justifiedDays));
+    }
+
     
 }
