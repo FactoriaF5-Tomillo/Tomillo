@@ -3,6 +3,11 @@
 namespace Tests\Feature;
 
 use App\User;
+use App\Course;
+
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -95,4 +100,177 @@ class UserStudentTest extends TestCase
             'date_of_birth' => $student->date_of_birth
         ]);
     }
+
+    public function test_student_can_check_in()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeToday = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeToday); 
+
+        $response = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $response->assertStatus(201);
+
+        $this->assertDatabaseHas('days', [
+            'date' => date("2020-01-02"),
+            'user_id' => $student->id
+        ]);
+    }
+
+    public function test_student_cannot_check_in_when_it_is_not_a_course_day(){
+
+        $student = factory(User::class)->states('Student')->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeToday = Carbon::create(2020, 2, 1, 12);          
+        Carbon::setTestNow($FakeToday); 
+
+        $response = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseMissing('days', [
+            'user_id' => $student->id,
+        ]);
+    }
+
+    public function test_student_cannot_check_in_when_already_checked_in_on_the_same_day()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeToday = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeToday); 
+
+        $responseFirstCheckIn = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $responseSecondCheckIn = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $responseSecondCheckIn->assertStatus(200);
+    }
+
+    public function test_student_cannot_check_in_when_not_assigned_to_a_course()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course= Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $FakeToday = Carbon::create(2020, 1, 2, 12);          
+        Carbon::setTestNow($FakeToday); 
+
+        $response = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $response->assertStatus(200);
+
+        $this->assertDatabaseMissing('days', [
+            'date' => date("2020-01-02"),
+            'user_id' => $student->id
+        ]);
+    }
+
+    public function test_user_can_check_out()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
+
+        $responseCheckIn = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $responseCheckOut = $this->patch('/api/students/' . $student->id . '/checkout');
+
+        $responseCheckOut->assertStatus(200);
+
+        $this->assertDatabaseMissing('days', [
+            'checkOut' => $FakeTodayCourseDay,
+            'user_id' => $student->id
+        ]);
+    }
+
+    public function test_student_cannot_check_out_when_not_checked_in()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
+
+        $responseCheckOut = $this->patch('/api/students/' . $student->id . '/checkout');
+
+        $responseCheckOut->assertStatus(500);
+    }
+
+    public function test_student_cannot_check_out_when_already_checked_out()
+    {
+        $student = factory(User::class)->states('Student')->create();
+
+        $course = Course::create([
+            'title' => 'Web Development',
+            'description' => 'Full-Stack training',
+            'start_date' => date("2020-01-01"),
+            'end_date' => date("2020-01-31")
+        ]);
+
+        $course->users()->save($student);
+
+        $FakeTodayCourseDay = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeTodayCourseDay);
+
+        $responseCheckIn = $this->post('/api/students/' . $student->id . '/checkin');
+
+        $responseCheckOut = $this->patch('/api/students/' . $student->id . '/checkout');
+
+        $responseSecondCheckOut = $this->patch('/api/students/' . $student->id . '/checkout');
+
+        $responseSecondCheckOut->assertStatus(200);
+    }
+
 }
