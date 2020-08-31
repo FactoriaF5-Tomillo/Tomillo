@@ -131,20 +131,8 @@ class User extends Authenticatable
     }
     public function calculateAssistedDays(){
 
-        $StudentCourse = $this->studentCourse();
-        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
-        $checkedInDays = $this->days;
-
-        $assistedDays = 0;
-
-        foreach ($courseDays as $courseDay){
-            foreach ($checkedInDays as $checkedInDay){
-                if ($courseDay==$checkedInDay->date){
-                    $assistedDays++;
-                }
-            }
-        }
-        return $assistedDays;
+        $assistedDays = $this->getAssistedDays();
+        return count($assistedDays);
     }
 
     public function calculateAbsentDays(){
@@ -162,15 +150,8 @@ class User extends Authenticatable
 
     public function calculateJustifiedDays(){ 
 
-        $totalJustifiedDays=0;
-
-        foreach($this->justifications as $justification){
-            if($justification->approval==True){
-                $numberOfJustifiedDays = count($justification->getJustificationDates());
-                $totalJustifiedDays = $totalJustifiedDays + $numberOfJustifiedDays;
-            }
-        }
-        return $totalJustifiedDays;
+        $justifiedDays = $this->getJustifiedDays();
+        return count($justifiedDays);
     }
 
     public function checkIfStudentHasCourse(){
