@@ -2,9 +2,8 @@
 
 namespace App;
 use App\User;
-//use DatePeriod;
-//use DateInterval;
-//use DateTime;
+
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
 
@@ -151,9 +150,8 @@ class Course extends Model
         return $dates;
     }
 
-    public function getCourseDaysUntilNow(){ 
-
-        
+    public function getCourseDaysUntilNow()
+    {
         $CompleteRange = $this->getRangeOfCourseDatesUntilNow();
 
         $CourseDaysUntilToday = self::excludeWeekendsFromRange($CompleteRange);
@@ -161,7 +159,5 @@ class Course extends Model
         $CourseDaysUntilTodayAsString = self::convertCarbonRangeIntoStringRange($CourseDaysUntilToday);
 
         return $CourseDaysUntilTodayAsString;
-        
     }
-
 }
