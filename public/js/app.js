@@ -3164,6 +3164,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -3183,6 +3195,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     checkin: function checkin(student) {
       axios.post("/api/students/" + student.id + "/checkin", this.student);
+    },
+    checkout: function checkout(student) {
+      axios.patch("/api/students/" + student.id + "/checkout", this.student);
     }
   },
   mounted: function mounted() {
@@ -3201,12 +3216,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -41498,31 +41507,47 @@ var render = function() {
         _c("div", [
           _c("p", [
             _c("strong", [_vm._v("Email:")]),
-            _vm._v("\n          " + _vm._s(_vm.student.email) + "\n        ")
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.student.email) +
+                "\n                "
+            )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Fecha:")]),
             _vm._v(
-              "\n          " + _vm._s(_vm.student.date_of_birth) + "\n        "
+              "\n                    " +
+                _vm._s(_vm.student.date_of_birth) +
+                "\n                "
             )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Edad:")]),
-            _vm._v("\n          " + _vm._s(_vm.student.age) + " años\n        ")
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.student.age) +
+                " años\n                "
+            )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Nacionalidad:")]),
             _vm._v(
-              "\n          " + _vm._s(_vm.student.nationality) + "\n        "
+              "\n                    " +
+                _vm._s(_vm.student.nationality) +
+                "\n                "
             )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Genro:")]),
-            _vm._v("\n          " + _vm._s(_vm.student.gender) + "\n        ")
+            _vm._v(
+              "\n                    " +
+                _vm._s(_vm.student.gender) +
+                "\n                "
+            )
           ])
         ])
       ])
@@ -41546,24 +41571,45 @@ var render = function() {
             _c("div", { staticClass: "course-assistance" }, [
               _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn primary-button",
-                  on: {
-                    click: function($event) {
-                      return _vm.checkin(_vm.student)
+              _c("div", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn primary-button",
+                    on: {
+                      click: function($event) {
+                        return _vm.checkin(_vm.student)
+                      }
                     }
-                  }
-                },
-                [_vm._v("Check In")]
-              )
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Check In\n                    "
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn primary-button",
+                    on: {
+                      click: function($event) {
+                        return _vm.checkout(_vm.student)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Check Out\n                    "
+                    )
+                  ]
+                )
+              ])
             ])
           ])
         ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div")
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -41599,62 +41645,46 @@ var render = function() {
         _vm._v(" "),
         _c("p", [
           _c("strong", [_vm._v("Nacionalidad:")]),
-          _vm._v("\n        " + _vm._s(_vm.student.nationality) + "\n      ")
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.student.nationality) +
+              "\n            "
+          )
         ]),
         _vm._v(" "),
         _c("p", [
           _c("strong", [_vm._v("Género:")]),
-          _vm._v("\n        " + _vm._s(_vm.student.gender) + "\n      ")
+          _vm._v(
+            "\n                " + _vm._s(_vm.student.gender) + "\n            "
+          )
         ])
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Email:")]),
-        _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
+        _vm._v("\n            " + _vm._s(_vm.student.email) + "\n        ")
       ])
     ]),
     _vm._v(" "),
     _c("div", [
       _c("p", [
         _c("strong", [_vm._v("Días Asistidos:")]),
-        _vm._v("\n      " + _vm._s(_vm.student.assistedDays) + "\n    ")
+        _vm._v(
+          "\n            " + _vm._s(_vm.student.assistedDays) + "\n        "
+        )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Días Ausentes:")]),
-        _vm._v("\n      " + _vm._s(_vm.student.absentDays) + "\n      "),
+        _vm._v(
+          "\n            " + _vm._s(_vm.student.absentDays) + "\n            "
+        ),
         _c("strong", [_vm._v(", justificados:")]),
-        _vm._v("\n      " + _vm._s(_vm.student.justifiedDays) + "\n    ")
+        _vm._v(
+          "\n            " + _vm._s(_vm.student.justifiedDays) + "\n        "
+        )
       ])
     ]),
-    _vm._v(" "),
-    _c("div", [
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.checkin(_vm.student)
-            }
-          }
-        },
-        [_vm._v("Check In")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function($event) {
-              return _vm.checkout(_vm.student)
-            }
-          }
-        },
-        [_vm._v("Check Out")]
-      )
-    ]),
-    _vm._v(" "),
-    _c("br"),
     _vm._v(" "),
     _c("div", [
       _c(
