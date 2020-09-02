@@ -83,13 +83,22 @@ class JustificationController extends Controller
         return $justifications;
     }
 
-   public function destroy(Justification $justification)
+    public function approveJustification(Justification $justification, Request $request)
+    {
+        $justification->update([
+            "approval" => true
+        ]);
+        return $justification;
+    }
+
+    public function destroy(Justification $justification)
     {
         $justification->delete();
         return Justification::all();
     }
+
     public function download($file_name) {
-        $file_path = public_path('storage/uploads/'.$file_name);
+        $file_path = public_path('storage/uploads/'. $file_name);
         return response()->download($file_path);
-      }
+    }
 }

@@ -13,7 +13,7 @@ class Justification extends JsonResource
             'file' => $this->file,
             'description' => $this->description,
             'title' => $this->title,
-            'approved' => $this->approved,
+            'approved' => $this->approval,
             'user' => $this->user,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,

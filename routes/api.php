@@ -47,5 +47,5 @@ Route::post('/courses/{course}/addTeacherToTheCourse', 'CourseController@addTeac
 Route::get('/justifications', 'JustificationController@getJustifications');
 Route::get('/justifications/{justification}', 'JustificationController@getJustification');
 Route::post('/justifications', 'JustificationController@store')->name('justification.store');
-
+Route::get('/justification/{justification}/approve', 'JustificationController@approveJustification');
 Route::post('/courses/{course}/statistics', 'CourseController@statistics');

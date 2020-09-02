@@ -6,8 +6,8 @@
         <div class="list">
             <div class="list-heading">
                 <div class="list-row">
-                    <h3>Alumno</h3>
                     <h3>Titulo</h3>
+                    <h3>Alumno</h3>
                     <h3>Status</h3>
                     <h3>Fechas</h3>
                 </div>
@@ -18,10 +18,14 @@
                     v-bind:key="i"
                     v-for="(justification, i) in justifications"
                 >
+                    <a
+                        :href="'/justification/' + justification.id"
+                        class="list-data"
+                        >{{ justification.title }}</a
+                    >
                     <a :href="'/student/'" class="list-data">{{
                         justification.user.name
                     }}</a>
-                    <p class="list-data">{{ justification.title }}</p>
                     <span
                         v-if="!justification.approved"
                         class="label label-false"
