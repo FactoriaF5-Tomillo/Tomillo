@@ -47,6 +47,8 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        //dd(is_int(count($course->users()->get())));
+        $this->authorize('view', $course);
         $students = Student::all();
         return view('course.show', compact('course', 'students'));
     }
@@ -54,7 +56,6 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $this->authorize('update', $course);
-
         return view('course.edit', compact('course'));
     }
 
