@@ -2569,6 +2569,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -40209,27 +40221,33 @@ var render = function() {
     _c("div", [
       _c("p", [
         _c("strong", [_vm._v("Número total de alumnos:")]),
-        _vm._v("\n          " + _vm._s(_vm.course.totalStudents) + "\n      ")
+        _vm._v(
+          "\n            " + _vm._s(_vm.course.totalStudents) + "\n        "
+        )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Número total de hombres:")]),
         _vm._v(
-          "\n          " + _vm._s(_vm.course.totalMaleStudents) + "\n      "
+          "\n            " + _vm._s(_vm.course.totalMaleStudents) + "\n        "
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Número total de mujeres:")]),
         _vm._v(
-          "\n          " + _vm._s(_vm.course.totalFemaleStudents) + "\n      "
+          "\n            " +
+            _vm._s(_vm.course.totalFemaleStudents) +
+            "\n        "
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Otros géneros:")]),
         _vm._v(
-          "\n          " + _vm._s(_vm.course.totalOtherStudents) + "\n      "
+          "\n            " +
+            _vm._s(_vm.course.totalOtherStudents) +
+            "\n        "
         )
       ]),
       _vm._v(" "),
@@ -40237,20 +40255,22 @@ var render = function() {
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de hombres:")]),
-        _vm._v("\n          " + _vm._s(_vm.course.malePercentage) + "%\n      ")
+        _vm._v(
+          "\n            " + _vm._s(_vm.course.malePercentage) + "%\n        "
+        )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de mujeres:")]),
         _vm._v(
-          "\n          " + _vm._s(_vm.course.femalePercentage) + "%\n      "
+          "\n            " + _vm._s(_vm.course.femalePercentage) + "%\n        "
         )
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de otros géneros:")]),
         _vm._v(
-          "\n          " + _vm._s(_vm.course.otherPercentage) + "%\n      "
+          "\n            " + _vm._s(_vm.course.otherPercentage) + "%\n        "
         )
       ])
     ]),
@@ -40267,7 +40287,11 @@ var render = function() {
               _vm._v(" "),
               _vm._l(_vm.course.dates, function(date, i) {
                 return _c("th", { key: i, attrs: { scope: "col" } }, [
-                  _vm._v(_vm._s(date))
+                  _vm._v(
+                    "\n                        " +
+                      _vm._s(date) +
+                      "\n                    "
+                  )
                 ])
               })
             ],
@@ -40315,7 +40339,26 @@ var render = function() {
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", [
+      _c(
+        "a",
+        {
+          staticClass: "list-actions",
+          attrs: { href: "" },
+          on: {
+            click: [
+              function($event) {
+                $event.preventDefault()
+              },
+              function($event) {
+                return _vm.goBack()
+              }
+            ]
+          }
+        },
+        [_vm._v("← Volver")]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -40325,16 +40368,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Estadísticas del curso")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("a", { staticClass: "list-actions", attrs: { href: "/courses" } }, [
-        _vm._v("← Volver")
-      ])
     ])
   }
 ]
