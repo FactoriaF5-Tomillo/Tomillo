@@ -3301,6 +3301,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["teacher"],
   data: function data() {
@@ -3405,6 +3416,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -41725,49 +41740,6 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", [_vm._v("Sexo")]),
-        _vm._v(" "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.teacher.gender,
-                expression: "teacher.gender"
-              }
-            ],
-            staticClass: "form-control",
-            on: {
-              change: function($event) {
-                var $$selectedVal = Array.prototype.filter
-                  .call($event.target.options, function(o) {
-                    return o.selected
-                  })
-                  .map(function(o) {
-                    var val = "_value" in o ? o._value : o.value
-                    return val
-                  })
-                _vm.$set(
-                  _vm.teacher,
-                  "gender",
-                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                )
-              }
-            }
-          },
-          [
-            _c("option", { attrs: { value: "Hombre" } }, [_vm._v("Hombre")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Mujer" } }, [_vm._v("Mujer")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "Otro" } }, [_vm._v("Otro")])
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "form-submit" }, [
         _c(
           "a",
@@ -41798,7 +41770,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Editar")]
+          [_vm._v("\n                Editar\n            ")]
         )
       ])
     ])
@@ -41962,14 +41934,12 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("p", [
-          _c("strong", [_vm._v("Genro:")]),
-          _vm._v("\n            " + _vm._s(_vm.teacher.gender) + "\n          ")
+          _c("strong", [_vm._v("Email:")]),
+          _vm._v(
+            "\n                " + _vm._s(_vm.teacher.email) + "\n            "
+          )
         ]),
         _vm._v(" "),
-        _c("p", [
-          _c("strong", [_vm._v("Email:")]),
-          _vm._v("\n            " + _vm._s(_vm.teacher.email) + "\n          ")
-        ]),
         _c("br"),
         _c("br"),
         _vm._v(" "),
