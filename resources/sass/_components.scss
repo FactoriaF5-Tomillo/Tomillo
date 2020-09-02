@@ -26,6 +26,9 @@
     text-align: center;
     font-weight: 600;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .label-true {

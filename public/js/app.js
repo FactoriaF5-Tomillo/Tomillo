@@ -2364,6 +2364,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["justifications"],
   data: function data() {
@@ -39839,7 +39853,7 @@ var render = function() {
             ),
             _vm._v(" "),
             _c("p", { staticClass: "list-data" }, [
-              _vm._v(_vm._s(justification.description))
+              _vm._v(_vm._s(justification.title))
             ]),
             _vm._v(" "),
             !justification.approved
@@ -39856,17 +39870,13 @@ var render = function() {
             _vm._v(" "),
             _c("p", { staticClass: "list-data" }, [
               _vm._v(
-                _vm._s(justification.start_date) +
-                  " / " +
-                  _vm._s(justification.end_date)
+                "\n                    " +
+                  _vm._s(justification.start_date) +
+                  " /\n                    " +
+                  _vm._s(justification.end_date) +
+                  "\n                "
               )
-            ]),
-            _vm._v(" "),
-            _c(
-              "a",
-              { attrs: { href: "/download/" + String(justification.file) } },
-              [_vm._v("Descargar")]
-            )
+            ])
           ])
         }),
         0
@@ -39912,7 +39922,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "list-row" }, [
         _c("h3", [_vm._v("Alumno")]),
         _vm._v(" "),
-        _c("h3", [_vm._v("Description")]),
+        _c("h3", [_vm._v("Titulo")]),
         _vm._v(" "),
         _c("h3", [_vm._v("Status")]),
         _vm._v(" "),
