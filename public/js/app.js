@@ -2569,18 +2569,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2607,6 +2595,15 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40200,24 +40197,6 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "info" }, [
-      _c("div", { staticClass: "info-header" }, [
-        _c("h3", [_vm._v(_vm._s(_vm.course.title))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-body" }, [
-        _c("p", [_vm._v(_vm._s(_vm.course.description))])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "info-footer" }, [
-        _c("p", [_vm._v("Fecha de inicio: " + _vm._s(_vm.course.start_date))]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("Fecha de terminacion: " + _vm._s(_vm.course.end_date))
-        ])
-      ])
-    ]),
-    _vm._v(" "),
     _c("div", [
       _c("p", [
         _c("strong", [_vm._v("Número total de alumnos:")]),
@@ -40401,7 +40380,7 @@ var render = function() {
           "a",
           {
             staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-studetns" }
+            attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
           },
           [_vm._v("Assignar alumnos")]
         )

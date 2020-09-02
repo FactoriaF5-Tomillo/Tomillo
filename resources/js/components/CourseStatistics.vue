@@ -3,18 +3,6 @@
         <div class="page-title">
             <h1>Estadísticas del curso</h1>
         </div>
-        <div class="info">
-            <div class="info-header">
-                <h3>{{ course.title }}</h3>
-            </div>
-            <div class="info-body">
-                <p>{{ course.description }}</p>
-            </div>
-            <div class="info-footer">
-                <p>Fecha de inicio: {{ course.start_date }}</p>
-                <p>Fecha de terminacion: {{ course.end_date }}</p>
-            </div>
-        </div>
         <div>
             <p>
                 <strong>Número total de alumnos:</strong>
