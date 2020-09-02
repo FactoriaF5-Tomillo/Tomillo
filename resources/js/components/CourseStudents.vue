@@ -18,11 +18,11 @@
         </div>
       </div>
       <div class="list-content">
-        <div class="list-row" v-bind:key="i" v-for="(student, i) in course.students">
-          <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
-          <p class="list-data">{{student.surname}}</p>
-          <p>{{student.email}}</p>
-        </div>
+          <div class="list-row" v-bind:key="i" v-for="(student, i) in course.students">
+              <a :href="'/student/' + student.id" class="list-data">{{student.name}}</a>
+              <p class="list-data">{{student.surname}}</p>
+              <p>{{student.email}}</p>
+          </div>
       </div>
     </div>
     <div>

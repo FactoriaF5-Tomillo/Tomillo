@@ -36,6 +36,7 @@ Route::delete('/teachers/{user}', 'UserController@destroy')->name('teacher.destr
 
 Route::get('/courses', 'CourseController@getCourses');
 Route::get('/courses/{course}', 'CourseController@getCourse');
+//Route::get('/courses/{course}/days', 'CourseController@getCourseDays');
 Route::post('/courses', 'CourseController@store');
 Route::patch('/courses/{course}', 'CourseController@update');
 /*Route::middleware('auth:api')->delete('/courses/{course}', 'CourseController@destroy')

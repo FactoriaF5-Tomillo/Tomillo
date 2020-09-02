@@ -29,6 +29,7 @@ class User extends JsonResource
                     'course' => $this->studentCourse(),
                     'email_verified_at' => $this->email_verified_at,
                     'justifications' => $this->justifications,
+                    'assistedDates' => $this->getAssistedDays(),
                     'assistedDays'=> $this->calculateAssistedDays(),
                     'absentDays'=> $this->calculateAbsentDays(),
                     'justifiedDays'=> $this->calculateJustifiedDays(),
@@ -52,7 +53,7 @@ class User extends JsonResource
                 'justifiedDays'=> "Este estudiante no tiene un curso asignado",
             ];
         }
-        
+
         return [
             'id' => $this->id,
             'name' => $this->name,

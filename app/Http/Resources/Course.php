@@ -108,6 +108,7 @@ class Course extends JsonResource
             'malePercentage' => $this->malePercentage(),
             'femalePercentage' => $this->femalePercentage(),
             'otherPercentage' => $this->otherPercentage(),
+            'dates' => $this->getCourseDaysUntilNow(),
         ];
     }
 }

@@ -47,20 +47,44 @@
         </p>
     </div>
     <br>
+      <div>
+          <table>
+              <thead>
+              <tr>
+                  <th scope="col">#</th>
+                  <th scope="col" v-bind:key="i" v-for="(date, i) in course.dates">{{date}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr v-bind:key="i" v-for="(student, i) in course.students">
+                  <th scope="row">{{student.name}}</th>
+                  <td v-bind:key="j" v-for="(date, j) in course.dates">
+                      <label v-bind:key="i" v-for="(day, i) in student.assistedDates">
+                          <span v-bind:key="j" v-if="date==day">Yes</span>
+                          <span v-bind:key="j" v-if="day!=date">-</span>
+                      </label>
+                  </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+      <br>
     <div>
       <a href="/courses" class="list-actions">&#8592; Volver</a>
     </div>
   </div>
+
 </template>
 
 <script>
 export default {
-  props: ["course"],
+    props: ["course"],
   data() {
     return {};
   },
 
   methods: {
+
     goBack() {
       window.history.back();
     },
