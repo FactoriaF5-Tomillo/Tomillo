@@ -32,11 +32,11 @@
             @yield('content')
         </main>
 
-        <footer class="home-footer">
+        <!-- <footer class="home-footer">
             <div class="container">
                 algo
             </div>
-        </footer>
+        </footer> -->
     </div>
 </body>
 </html>
