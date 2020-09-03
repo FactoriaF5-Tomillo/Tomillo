@@ -49,7 +49,7 @@
             <td v-bind:key="i" v-for="(date, i) in course.dates">
               <label v-bind:key="i" v-for="(day, i) in student.assistedDates">
                 <a
-                  @click="openPopUp()"
+                  @click="openPopUp(day)"
                   @click.prevent
                   href
                   v-if="day.date == date"
@@ -72,7 +72,21 @@
     <div class="modal fade" id="show-hours">
       <div class="modal-dialog">
         <div class="modal-content card-alumni-s">
-          <div class="modal-body">Hello</div>
+          <div class="modal-body">
+            <h3>{{day.date}}</h3>
+            <p>
+              <strong>Check-in:</strong>
+              {{day.checkIn}}
+            </p>
+            <p>
+              <strong>Check-out:</strong>
+              {{day.checkOut}}
+            </p>
+            <p>
+              <strong>Jornada de dia:</strong>
+              {{day.totalWorkedTime['hours']}} horas y {{day.totalWorkedTime['minutes']}} minutos
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -83,11 +97,16 @@
 export default {
   props: ["course"],
   data() {
-    return {};
+    return {
+      day: {
+        totalWorkedTime: [],
+      },
+    };
   },
 
   methods: {
-    openPopUp() {
+    openPopUp(day) {
+      this.day = day;
       $("#show-hours").modal("show");
     },
     goBack() {

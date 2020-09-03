@@ -2574,13 +2574,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
-    return {};
+    return {
+      day: {
+        totalWorkedTime: []
+      }
+    };
   },
   methods: {
-    openPopUp: function openPopUp() {
+    openPopUp: function openPopUp(day) {
+      this.day = day;
       $("#show-hours").modal("show");
     },
     goBack: function goBack() {
@@ -40307,7 +40326,7 @@ var render = function() {
                                   on: {
                                     click: [
                                       function($event) {
-                                        return _vm.openPopUp()
+                                        return _vm.openPopUp(day)
                                       },
                                       function($event) {
                                         $event.preventDefault()
@@ -40366,7 +40385,40 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "modal fade", attrs: { id: "show-hours" } }, [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content card-alumni-s" }, [
+          _c("div", { staticClass: "modal-body" }, [
+            _c("h3", [_vm._v(_vm._s(_vm.day.date))]),
+            _vm._v(" "),
+            _c("p", [
+              _c("strong", [_vm._v("Check-in:")]),
+              _vm._v(
+                "\n            " + _vm._s(_vm.day.checkIn) + "\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("strong", [_vm._v("Check-out:")]),
+              _vm._v(
+                "\n            " + _vm._s(_vm.day.checkOut) + "\n          "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _c("strong", [_vm._v("Jornada de dia:")]),
+              _vm._v(
+                "\n            " +
+                  _vm._s(_vm.day.totalWorkedTime["hours"]) +
+                  " horas y " +
+                  _vm._s(_vm.day.totalWorkedTime["minutes"]) +
+                  " minutos\n          "
+              )
+            ])
+          ])
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -40377,22 +40429,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Estadísticas del curso")])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal fade", attrs: { id: "show-hours" } },
-      [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content card-alumni-s" }, [
-            _c("div", { staticClass: "modal-body" }, [_vm._v("Hello")])
-          ])
-        ])
-      ]
-    )
   }
 ]
 render._withStripped = true
