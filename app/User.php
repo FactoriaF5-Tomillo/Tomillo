@@ -179,17 +179,22 @@ class User extends Authenticatable
         return $assistedDays;
     }
 
-    public function getAbsentDays(){
+    public function getAbsentDays()
+    {
+        $studentCourse = $this->studentCourse();
+        $courseDays = $studentCourse->getCourseDaysUntilNow(); //array of string type
 
-        $StudentCourse = $this->studentCourse();
-        $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
+        if(count($this->days) == 0){
+            return $courseDays;
+        }
+
         $checkedInDays = $this->days;
 
-        $absentDays = array();
+        $absentDays = [];
 
         foreach ($courseDays as $courseDay){
             foreach ($checkedInDays as $checkedInDay){
-                if ($courseDay!=$checkedInDay->date){
+                if ($courseDay != $checkedInDay->date){
                     array_push($absentDays, $courseDay);
                 }
             }

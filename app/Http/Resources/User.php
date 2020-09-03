@@ -32,6 +32,7 @@ class User extends JsonResource
                     'assistedDates' => $this->getAssistedDays(),
                     'assistedDays'=> $this->calculateAssistedDays(),
                     'absentDays'=> $this->calculateAbsentDays(),
+                    'absentDates'=> $this->getAbsentDays(),
                     'justifiedDays'=> $this->calculateJustifiedDays(),
                 ];
             }

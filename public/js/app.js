@@ -2560,17 +2560,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -40212,78 +40201,61 @@ var render = function() {
     _c("div", [
       _c("p", [
         _c("strong", [_vm._v("Número total de alumnos:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.course.totalStudents) + "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.totalStudents) + "\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Número total de hombres:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.course.totalMaleStudents) + "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.totalMaleStudents) + "\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Número total de mujeres:")]),
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.course.totalFemaleStudents) +
-            "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.totalFemaleStudents) + "\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Otros géneros:")]),
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.course.totalOtherStudents) +
-            "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.totalOtherStudents) + "\n    ")
       ]),
       _vm._v(" "),
       _c("br"),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de hombres:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.course.malePercentage) + "%\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.malePercentage) + "%\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de mujeres:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.course.femalePercentage) + "%\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.femalePercentage) + "%\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Porcentaje de otros géneros:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.course.otherPercentage) + "%\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.course.otherPercentage) + "%\n    ")
       ])
     ]),
     _vm._v(" "),
     _c("br"),
     _vm._v(" "),
     _c("div", [
-      _c("table", [
+      _c("table", { staticClass: "assistence-table" }, [
         _c("thead", [
           _c(
             "tr",
+            { staticClass: "heading" },
             [
-              _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+              _c("th", { staticClass: "date", attrs: { scope: "col" } }, [
+                _vm._v("#")
+              ]),
               _vm._v(" "),
               _vm._l(_vm.course.dates, function(date, i) {
-                return _c("th", { key: i, attrs: { scope: "col" } }, [
-                  _vm._v(
-                    "\n                        " +
-                      _vm._s(date) +
-                      "\n                    "
-                  )
-                ])
+                return _c(
+                  "th",
+                  { key: i, staticClass: "date", attrs: { scope: "col" } },
+                  [_vm._v(_vm._s(date))]
+                )
               })
             ],
             2
@@ -40292,31 +40264,42 @@ var render = function() {
         _vm._v(" "),
         _c(
           "tbody",
+          { staticClass: "students" },
           _vm._l(_vm.course.students, function(student, i) {
             return _c(
               "tr",
-              { key: i },
+              { key: i, staticClass: "student" },
               [
                 _c("th", { attrs: { scope: "row" } }, [
                   _vm._v(_vm._s(student.name))
                 ]),
                 _vm._v(" "),
-                _vm._l(_vm.course.dates, function(date, j) {
+                _vm._l(_vm.course.dates, function(date, i) {
                   return _c(
                     "td",
-                    { key: j },
-                    _vm._l(student.assistedDates, function(day, i) {
-                      return _c("label", { key: i }, [
-                        date == day
-                          ? _c("span", { key: j }, [_vm._v("Yes")])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        day != date
-                          ? _c("span", { key: j }, [_vm._v("-")])
-                          : _vm._e()
-                      ])
-                    }),
-                    0
+                    { key: i },
+                    [
+                      _vm._l(student.assistedDates, function(day, i) {
+                        return _c("label", { key: i }, [
+                          day == date
+                            ? _c("span", { staticClass: "label label-true" }, [
+                                _vm._v("Si")
+                              ])
+                            : _vm._e()
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _vm._l(student.absentDates, function(day, i) {
+                        return _c("label", { key: i }, [
+                          day == date
+                            ? _c("span", { staticClass: "label label-false" }, [
+                                _vm._v("No")
+                              ])
+                            : _vm._e()
+                        ])
+                      })
+                    ],
+                    2
                   )
                 })
               ],
