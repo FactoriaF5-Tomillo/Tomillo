@@ -40,12 +40,14 @@
                     <h5>{{ getDate() }}</h5>
                     <div>
                         <button
+                            v-if="student.canCheckIn"
                             class="btn primary-button"
                             @click="checkin(student)"
                         >
                             Check In
                         </button>
                         <button
+                            v-if="!student.canCheckIn"
                             class="btn primary-button"
                             @click="checkout(student)"
                         >

@@ -3176,6 +3176,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -41572,39 +41574,43 @@ var render = function() {
               _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
               _vm._v(" "),
               _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn primary-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.checkin(_vm.student)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Check In\n                    "
+                _vm.student.canCheckIn
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn primary-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.checkin(_vm.student)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Check In\n                    "
+                        )
+                      ]
                     )
-                  ]
-                ),
+                  : _vm._e(),
                 _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn primary-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.checkout(_vm.student)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Check Out\n                    "
+                !_vm.student.canCheckIn
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn primary-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.checkout(_vm.student)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Check Out\n                    "
+                        )
+                      ]
                     )
-                  ]
-                )
+                  : _vm._e()
               ])
             ])
           ])
@@ -56070,8 +56076,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/francisco/Desktop/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/appletest/Desktop/Factoriaf5/Tomillo/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
