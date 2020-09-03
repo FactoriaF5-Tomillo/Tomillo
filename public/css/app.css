@@ -11252,7 +11252,7 @@ p {
   border-radius: 5px;
   text-align: center;
   font-weight: 600;
-  color: white;
+  color: white !important;
   display: flex;
   flex-direction: column;
   justify-content: center;

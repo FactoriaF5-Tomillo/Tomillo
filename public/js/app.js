@@ -2560,12 +2560,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
     return {};
   },
   methods: {
+    openPopUp: function openPopUp() {
+      $("#show-hours").modal("show");
+    },
     goBack: function goBack() {
       window.history.back();
     }
@@ -40281,10 +40298,25 @@ var render = function() {
                     [
                       _vm._l(student.assistedDates, function(day, i) {
                         return _c("label", { key: i }, [
-                          day == date
-                            ? _c("span", { staticClass: "label label-true" }, [
-                                _vm._v("Si")
-                              ])
+                          day.date == date
+                            ? _c(
+                                "a",
+                                {
+                                  staticClass: "label label-true",
+                                  attrs: { href: "" },
+                                  on: {
+                                    click: [
+                                      function($event) {
+                                        return _vm.openPopUp()
+                                      },
+                                      function($event) {
+                                        $event.preventDefault()
+                                      }
+                                    ]
+                                  }
+                                },
+                                [_vm._v("Si")]
+                              )
                             : _vm._e()
                         ])
                       }),
@@ -40332,7 +40364,9 @@ var render = function() {
         },
         [_vm._v("← Volver")]
       )
-    ])
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -40343,6 +40377,22 @@ var staticRenderFns = [
     return _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Estadísticas del curso")])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "modal fade", attrs: { id: "show-hours" } },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content card-alumni-s" }, [
+            _c("div", { staticClass: "modal-body" }, [_vm._v("Hello")])
+          ])
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true

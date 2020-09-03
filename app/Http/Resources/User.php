@@ -3,15 +3,10 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Day as DayResource;
 
 class User extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
     public function toArray($request)
     {
         if($this->type == "Student") {
@@ -29,7 +24,7 @@ class User extends JsonResource
                     'course' => $this->studentCourse(),
                     'email_verified_at' => $this->email_verified_at,
                     'justifications' => $this->justifications,
-                    'assistedDates' => $this->getAssistedDays(),
+                    'assistedDates' => DayResource::collection($this->getAssistedDays()),
                     'assistedDays'=> $this->calculateAssistedDays(),
                     'absentDays'=> $this->calculateAbsentDays(),
                     'absentDates'=> $this->getAbsentDays(),

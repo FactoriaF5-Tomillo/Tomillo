@@ -161,8 +161,8 @@ class User extends Authenticatable
         return True;
     }
 
-    public function getAssistedDays(){
-
+    public function getAssistedDays()
+    {
         $StudentCourse = $this->studentCourse();
         $courseDays = $StudentCourse->getCourseDaysUntilNow(); //array of string type
         $checkedInDays = $this->days;
@@ -172,10 +172,11 @@ class User extends Authenticatable
         foreach ($courseDays as $courseDay){
             foreach ($checkedInDays as $checkedInDay){
                 if ($courseDay==$checkedInDay->date){
-                    array_push($assistedDays, $courseDay);
+                    array_push($assistedDays, $checkedInDay);
                 }
             }
         }
+
         return $assistedDays;
     }
 
@@ -202,8 +203,8 @@ class User extends Authenticatable
         return $absentDays;
     }
 
-    public function getJustifiedDays(){ 
-
+    public function getJustifiedDays()
+    { 
         $justifiedDays= array();
 
         foreach($this->justifications as $justification){
@@ -217,11 +218,5 @@ class User extends Authenticatable
         }
         return $justifiedDays;
     }
-
-    
-
-
-
-    
 }
 

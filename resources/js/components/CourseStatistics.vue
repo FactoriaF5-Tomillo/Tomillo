@@ -48,7 +48,13 @@
             <th scope="row">{{ student.name }}</th>
             <td v-bind:key="i" v-for="(date, i) in course.dates">
               <label v-bind:key="i" v-for="(day, i) in student.assistedDates">
-                <span v-if="day == date" class="label label-true">Si</span>
+                <a
+                  @click="openPopUp()"
+                  @click.prevent
+                  href
+                  v-if="day.date == date"
+                  class="label label-true"
+                >Si</a>
               </label>
               <label v-bind:key="i" v-for="(day, i) in student.absentDates">
                 <span v-if="day == date" class="label label-false">No</span>
@@ -62,6 +68,14 @@
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
     </div>
+
+    <div class="modal fade" id="show-hours">
+      <div class="modal-dialog">
+        <div class="modal-content card-alumni-s">
+          <div class="modal-body">Hello</div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -73,6 +87,9 @@ export default {
   },
 
   methods: {
+    openPopUp() {
+      $("#show-hours").modal("show");
+    },
     goBack() {
       window.history.back();
     },
