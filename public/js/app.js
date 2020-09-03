@@ -2860,8 +2860,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["justification"],
   data: function data() {
@@ -40817,27 +40815,28 @@ var render = function() {
       _c("div", { staticClass: "form-group" }, [
         _c("p", [
           _c("strong", [_vm._v("Nombre del archivo:")]),
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.justification.file) +
-              "\n            "
-          )
+          _vm._v("\n        " + _vm._s(_vm.justification.file) + "\n      ")
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("strong", [_vm._v("Titulo:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.justification.title) + "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.justification.title) + "\n    ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form-group" }, [
         _c("strong", [_vm._v("Descripcion:")]),
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.justification.description) +
-            "\n        "
+        _vm._v("\n      " + _vm._s(_vm.justification.description) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c(
+          "a",
+          {
+            staticClass: "btn primary-button",
+            attrs: { href: "/download/" + String(_vm.justification.file) }
+          },
+          [_vm._v("Descargar justificante")]
         )
       ]),
       _vm._v(" "),
