@@ -54,7 +54,7 @@ export default {
   methods: {
     updateStudentInfo(student) {
       axios
-        .patch("/api/students/" + student.id, this.student)
+        .patch("/students/" + student.id, this.student)
         .then(window.location.replace("/students"));
     },
     goBack() {

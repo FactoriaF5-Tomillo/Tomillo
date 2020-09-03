@@ -52,7 +52,7 @@ export default {
     methods: {
         editTeacher() {
             axios
-                .patch("/api/teachers/" + this.teacher.id, this.teacher)
+                .patch("/teachers/" + this.teacher.id, this.teacher)
                 .then(response => {
                     window.location.replace("/teachers");
                 });

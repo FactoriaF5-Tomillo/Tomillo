@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="page-title">
-      <h1>Alumnos de {{course.title}}</h1>
-      <div>
+      <h1>Profesores de {{course.title}}</h1>
+      <div v-if="user.type == 'Admin'">
         <a
           :href="'/course/' + course.id + '/assign-teachers'"
           class="btn primary-button"
@@ -35,9 +35,16 @@
 export default {
   props: ["course"],
   data() {
-    return {};
+    return {
+      user: {},
+    };
   },
   methods: {
+    getLoggedUser() {
+      axios.get("/loggeduser").then((response) => {
+        this.user = response.data;
+      });
+    },
     goBack() {
       window.history.back();
     },

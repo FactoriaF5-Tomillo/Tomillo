@@ -11321,6 +11321,11 @@ p {
   margin-bottom: 15px;
 }
 
+.profile .profile-course .course-content .course-assistance .profile-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
 .assistence-table {
   display: block;
   max-width: 800px;

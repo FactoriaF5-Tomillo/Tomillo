@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Justification;
 
+use App\User;
+use App\Policies\JustificationPolicy;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -13,6 +15,7 @@ class JustificationController extends Controller
 {
     public function index()
     {
+        $this->authorize('viewAny', User::class);
         $justifications = Justification::all();
         return view('justification.index', compact('justifications'));
     }
@@ -30,10 +33,11 @@ class JustificationController extends Controller
 
     public function show(Justification $justification)
     {
+        $this->authorize('view', User::class);
         return view('justification.show', compact('justification'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
         return view('justification.create');
     }
@@ -41,6 +45,7 @@ class JustificationController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', User::class);
         $justification = Justification::create($request->all());
         return $justification;
     }
@@ -54,9 +59,9 @@ class JustificationController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'user_id' => Auth::user()->id
-        ]);     
+        ]);
 
-        
+
 
         $file = $request->file('file');
 

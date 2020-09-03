@@ -36,10 +36,25 @@ class UserStudentTest extends TestCase
             'id' => $student->id
         ]);
     }
-
-    public function test_api_creates_student()
+    public function test_NotAdmin_Cant_creates_student()
     {
-        $response = $this->post('/api/students', [
+        $response = $this->post('/students', [
+            'name' => 'Pau',
+            'surname' => 'Gasol',
+            'nationality' => 'spanish',
+            'email' => 'paugasol@gmail.com',
+            'gender' => 'hombre',
+            'date_of_birth' => '2005-1-1'
+        ]);
+
+        $response->assertStatus(403);
+        $response->assertSeeText('action is unauthorized');
+    }
+
+    public function test_admin_can_creates_student()
+    {
+        $admin = factory(User::class)->states('Admin')->create();
+        $response = $this->actingAs($admin)->post('/students', [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'nationality' => 'spanish',
@@ -60,11 +75,11 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_api_edits_student()
+    public function test_admin_can_edits_student()
     {
+        $admin = factory(User::class)->states('Admin')->create();
         $student = factory(User::class)->states('Student')->create();
-
-        $response = $this->patch('api/students/' . $student->id, [
+        $response = $this->actingAs($admin)->patch('/students/' . $student->id, [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'nationality' => 'spanish',
@@ -84,11 +99,20 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_delete_student()
+    public function test_student_cant_delete_student()
     {
         $student = factory(User::class)->states('Student')->create();
 
-        $response = $this->delete('/api/students/' . $student->id);
+        $response = $this->delete('/students/' . $student->id);
+
+        $response->assertStatus(403);
+        $response->assertSeeText('action is unauthorized');
+    }
+    public function test_admin_can_delete_student()
+    {
+        $admin = factory(User::class)->states('Admin')->create();
+        $student = factory(User::class)->states('Student')->create();
+        $response = $this->actingAs($admin)->delete('/students/' . $student->id);
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('students', [
@@ -114,8 +138,8 @@ class UserStudentTest extends TestCase
 
         $course->users()->save($student);
 
-        $FakeToday = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeToday); 
+        $FakeToday = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeToday);
 
         $response = $this->post('/api/students/' . $student->id . '/checkin');
 
@@ -140,8 +164,8 @@ class UserStudentTest extends TestCase
 
         $course->users()->save($student);
 
-        $FakeToday = Carbon::create(2020, 2, 1, 12);          
-        Carbon::setTestNow($FakeToday); 
+        $FakeToday = Carbon::create(2020, 2, 1, 12);
+        Carbon::setTestNow($FakeToday);
 
         $response = $this->post('/api/students/' . $student->id . '/checkin');
 
@@ -165,8 +189,8 @@ class UserStudentTest extends TestCase
 
         $course->users()->save($student);
 
-        $FakeToday = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeToday); 
+        $FakeToday = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeToday);
 
         $responseFirstCheckIn = $this->post('/api/students/' . $student->id . '/checkin');
 
@@ -186,8 +210,8 @@ class UserStudentTest extends TestCase
             'end_date' => date("2020-01-31")
         ]);
 
-        $FakeToday = Carbon::create(2020, 1, 2, 12);          
-        Carbon::setTestNow($FakeToday); 
+        $FakeToday = Carbon::create(2020, 1, 2, 12);
+        Carbon::setTestNow($FakeToday);
 
         $response = $this->post('/api/students/' . $student->id . '/checkin');
 

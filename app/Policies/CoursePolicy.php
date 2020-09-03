@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Course;
 use App\User;
+use Hamcrest\Arrays\IsArrayContaining;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CoursePolicy
@@ -12,7 +13,7 @@ class CoursePolicy
 
     public function viewAny(User $user)
     {
-        if ($user->type === 'Admin' || $user->type === 'Teacher')
+        if ($user->type === 'Admin')
         {
             return true;
         }
@@ -21,7 +22,12 @@ class CoursePolicy
 
     public function view(User $user, Course $course)
     {
-        return true;
+        $courseUsers = $course->users()->get();
+        if($courseUsers->contains('id', $user->id) || $user->type === 'Admin')
+        {
+            return true;
+        }
+        return false;
     }
 
     public function create(User $user)

@@ -47,6 +47,7 @@ class CourseController extends Controller
 
     public function show(Course $course)
     {
+        $this->authorize('view', $course);
         $students = Student::all();
         return view('course.show', compact('course', 'students'));
     }
@@ -54,7 +55,6 @@ class CourseController extends Controller
     public function edit(Course $course)
     {
         $this->authorize('update', $course);
-
         return view('course.edit', compact('course'));
     }
 
@@ -77,6 +77,7 @@ class CourseController extends Controller
 
     public function chooseStudent(Course $course)
     {
+        $this->authorize('delete', $course);
         return view('course.chooseStudent', compact('course'));
     }
 
@@ -98,6 +99,7 @@ class CourseController extends Controller
 
     public function showAssignTeacher(Course $course)
     {
+        $this->authorize('delete', $course);
         return view('course.add_teacher', compact('course'));
     }
 

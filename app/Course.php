@@ -29,7 +29,7 @@ class Course extends Model
 
     public function totalMaleStudents()
     {
-        $listOfStudents = $this->users()->where('gender', '=', 'Hombre')->get();
+        $listOfStudents = $this->users()->where('type', '=', 'Student')->where('gender', '=', 'Hombre')->get();
 
         $totalNumberOfMaleStudents = count($listOfStudents);
 
@@ -38,7 +38,7 @@ class Course extends Model
 
     public function totalFemaleStudents()
     {
-        $listOfStudents = $this->users()->where('gender', '=', 'Mujer')->get();
+        $listOfStudents = $this->users()->where('type', '=', 'Student')->where('gender', '=', 'Mujer')->get();
 
         $totalNumberOfFemaleStudents = count($listOfStudents);
 
@@ -47,15 +47,28 @@ class Course extends Model
 
     public function totalOtherStudents()
     {
-        $listOfStudents = $this->users()->where('gender', '=', 'Otro')->get();
+        $listOfStudents = $this->users()->where('type', '=', 'Student')->where('gender', '=', 'Otro')->get();
 
         $totalNumberOfOtherStudents = count($listOfStudents);
 
         return $totalNumberOfOtherStudents;
     }
 
+    public function checkIfThereIsNoStudent(){
+
+        $totalStudents = $this->totalStudents();
+        if($totalStudents==0){
+            return True;
+        }
+        return False;
+    }
+
     public function malePercentage()
     {
+        if($this->checkIfThereIsNoStudent()){
+            return 0;
+        }
+
         $totalStudents = $this->totalStudents();
         $totalMaleStudents = $this->totalMaleStudents();
 
@@ -66,6 +79,10 @@ class Course extends Model
 
     public function femalePercentage()
     {
+        if($this->checkIfThereIsNoStudent()){
+            return 0;
+        }
+
         $totalStudents = $this->totalStudents();
         $totalFemaleStudents = $this->totalFemaleStudents();
 
@@ -76,6 +93,10 @@ class Course extends Model
 
     public function otherPercentage()
     {
+        if($this->checkIfThereIsNoStudent()){
+            return 0;
+        }
+
         $totalStudents = $this->totalStudents();
         $totalOtherStudents = $this->totalOtherStudents();
 

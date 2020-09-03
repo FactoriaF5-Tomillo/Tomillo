@@ -24,10 +24,13 @@
           class="btn primary-button"
           :href="'/course/' + course.id + '/justifications'"
         >Justificaciones</a>
-        <a class="btn primary-button" :href="'/course/' + course.id + '/course-statistics'">Estadísticas</a>
+        <a
+          class="btn primary-button"
+          :href="'/course/' + course.id + '/course-statistics'"
+        >Estadísticas</a>
       </div>
     </div>
-    <div class="actions">
+    <div class="actions" v-if="user.type == 'Admin'">
       <h3>Acciones:</h3>
       <div class="action-buttons">
         <a
@@ -52,22 +55,30 @@
 export default {
   props: ["course"],
   data() {
-    return {};
+    return {
+      user: {},
+    };
   },
 
   methods: {
     deleteCourse(course) {
       if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
-        axios.delete("/api/courses/" + course.id).then((response) => {
+        axios.delete("/courses/" + course.id).then((response) => {
           window.location.replace("/courses");
         });
       }
+    },
+    getLoggedUser() {
+      axios.get("/loggeduser").then((response) => {
+        this.user = response.data;
+      });
     },
     goBack() {
       window.history.back();
     },
   },
   mounted() {
+    this.getLoggedUser();
     console.log("Component mounted.");
   },
 };

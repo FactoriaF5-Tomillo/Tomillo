@@ -1976,7 +1976,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedStudents.splice(index, 1);
     },
     addStudentToTheCourse: function addStudentToTheCourse(student) {
-      axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+      axios.post("/courses/" + this.course.id + "/addStudentToTheCourse", {
         student_id: student.id
       }).then(function (response) {});
     },
@@ -1987,7 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedStudents.forEach(function (student) {
         selectedStudentsIds.push(student.id);
       });
-      axios.post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+      axios.post("/courses/" + this.course.id + "/addStudentToTheCourse", {
         students: selectedStudentsIds,
         course_id: this.course.id
       }).then(function (response) {
@@ -2096,7 +2096,7 @@ __webpack_require__.r(__webpack_exports__);
         selectedTeachersIds.push(teacher.id);
       });
       console.log(selectedTeachersIds);
-      axios.post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
+      axios.post("/courses/" + this.course.id + "/addTeacherToTheCourse", {
         teachers: selectedTeachersIds
       }).then(function (response) {
         window.location.replace("/course/" + _this2.course.id + "/teachers");
@@ -2163,7 +2163,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createCourse: function createCourse() {
-      axios.post("/api/courses", this.course).then(function (response) {
+      axios.post("/courses", this.course).then(function (response) {
         window.location.replace("/courses");
       });
     },
@@ -2460,24 +2460,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
-    return {};
+    return {
+      user: {}
+    };
   },
   methods: {
     deleteCourse: function deleteCourse(course) {
       if (confirm("¿Estas seguro que quieres eliminar este curso?")) {
-        axios["delete"]("/api/courses/" + course.id).then(function (response) {
+        axios["delete"]("/courses/" + course.id).then(function (response) {
           window.location.replace("/courses");
         });
       }
+    },
+    getLoggedUser: function getLoggedUser() {
+      var _this = this;
+
+      axios.get("/loggeduser").then(function (response) {
+        _this.user = response.data;
+      });
     },
     goBack: function goBack() {
       window.history.back();
     }
   },
   mounted: function mounted() {
+    this.getLoggedUser();
     console.log("Component mounted.");
   }
 });
@@ -2659,22 +2672,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
-    return {};
+    return {
+      user: {}
+    };
   },
   methods: {
+    getLoggedUser: function getLoggedUser() {
+      var _this = this;
+
+      axios.get("/loggeduser").then(function (response) {
+        _this.user = response.data;
+      });
+    },
     goBack: function goBack() {
       window.history.back();
     }
   },
   mounted: function mounted() {
+    this.getLoggedUser();
     console.log("Component mounted.");
   }
 });
@@ -2726,9 +2744,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
-    return {};
+    return {
+      user: {}
+    };
   },
   methods: {
+    getLoggedUser: function getLoggedUser() {
+      var _this = this;
+
+      axios.get("/loggeduser").then(function (response) {
+        _this.user = response.data;
+      });
+    },
     goBack: function goBack() {
       window.history.back();
     }
@@ -2975,7 +3002,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createStudent: function createStudent(student) {
-      axios.post("/api/students/", this.student).then(window.location.replace("/students"));
+      axios.post("/students/", this.student).then(window.location.replace("/students"));
     },
     goBack: function goBack() {
       window.history.back();
@@ -3048,7 +3075,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateStudentInfo: function updateStudentInfo(student) {
-      axios.patch("/api/students/" + student.id, this.student).then(window.location.replace("/students"));
+      axios.patch("/students/" + student.id, this.student).then(window.location.replace("/students"));
     },
     goBack: function goBack() {
       window.history.back();
@@ -3118,7 +3145,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (confirm("¿Estas seguro que quieres eliminar este alumno?")) {
-        axios["delete"]("/api/students/" + student.id).then(function (response) {
+        axios["delete"]("/students/" + student.id).then(function (response) {
           _this2.getStudents();
         });
       }
@@ -3141,6 +3168,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3369,7 +3401,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     createTeacher: function createTeacher() {
-      axios.post("/api/teachers", this.teacher).then(function (response) {
+      axios.post("/teachers", this.teacher).then(function (response) {
         window.location.replace("/teachers");
       });
     },
@@ -3445,7 +3477,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     editTeacher: function editTeacher() {
-      axios.patch("/api/teachers/" + this.teacher.id, this.teacher).then(function (response) {
+      axios.patch("/teachers/" + this.teacher.id, this.teacher).then(function (response) {
         window.location.replace("/teachers");
       });
     },
@@ -3519,7 +3551,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (confirm("¿Estas seguro que quieres eliminar al profesor ?")) {
-        axios["delete"]("/api/teachers/" + teacher.id).then(function (response) {
+        axios["delete"]("/teachers/" + teacher.id).then(function (response) {
           _this2.teachers = response.data;
         });
       }
@@ -40135,57 +40167,59 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "actions" }, [
-      _c("h3", [_vm._v("Acciones:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "action-buttons" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
-          },
-          [_vm._v("Asignar Alumnos")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
-          },
-          [_vm._v("Asignar Profesor")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/edit" }
-          },
-          [_vm._v("Editar")]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "" },
-            on: {
-              click: [
-                function($event) {
-                  $event.preventDefault()
-                },
-                function($event) {
-                  return _vm.deleteCourse(_vm.course)
+    _vm.user.type == "Admin"
+      ? _c("div", { staticClass: "actions" }, [
+          _c("h3", [_vm._v("Acciones:")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "action-buttons" }, [
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
+              },
+              [_vm._v("Asignar Alumnos")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
+              },
+              [_vm._v("Asignar Profesor")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "/course/" + _vm.course.id + "/edit" }
+              },
+              [_vm._v("Editar")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "" },
+                on: {
+                  click: [
+                    function($event) {
+                      $event.preventDefault()
+                    },
+                    function($event) {
+                      return _vm.deleteCourse(_vm.course)
+                    }
+                  ]
                 }
-              ]
-            }
-          },
-          [_vm._v("Eliminar")]
-        )
-      ])
-    ]),
+              },
+              [_vm._v("Eliminar")]
+            )
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm._m(1)
   ])
@@ -40456,16 +40490,18 @@ var render = function() {
     _c("div", { staticClass: "page-title" }, [
       _c("h1", [_vm._v("Alumnos de " + _vm._s(_vm.course.title))]),
       _vm._v(" "),
-      _c("div", [
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
-          },
-          [_vm._v("Assignar alumnos")]
-        )
-      ])
+      _vm.user.type == "Admin"
+        ? _c("div", [
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "/course/" + _vm.course.id + "/assign-students" }
+              },
+              [_vm._v("Assignar alumnos")]
+            )
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "list" }, [
@@ -40482,7 +40518,7 @@ var render = function() {
                 staticClass: "list-data",
                 attrs: { href: "/student/" + student.id }
               },
-              [_vm._v(_vm._s(student.name))]
+              [_vm._v("\n          " + _vm._s(student.name) + "\n        ")]
             ),
             _vm._v(" "),
             _c("p", { staticClass: "list-data" }, [
@@ -40557,18 +40593,20 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "page-title" }, [
-      _c("h1", [_vm._v("Alumnos de " + _vm._s(_vm.course.title))]),
+      _c("h1", [_vm._v("Profesores de " + _vm._s(_vm.course.title))]),
       _vm._v(" "),
-      _c("div", [
-        _c(
-          "a",
-          {
-            staticClass: "btn primary-button",
-            attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
-          },
-          [_vm._v("Assignar profesores")]
-        )
-      ])
+      _vm.user.type == "Admin"
+        ? _c("div", [
+            _c(
+              "a",
+              {
+                staticClass: "btn primary-button",
+                attrs: { href: "/course/" + _vm.course.id + "/assign-teachers" }
+              },
+              [_vm._v("Assignar profesores")]
+            )
+          ])
+        : _vm._e()
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "list" }, [
@@ -41188,7 +41226,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn primary-button",
-            attrs: { value: "Crear" },
+            attrs: { type: "submit", value: "Crear" },
             on: {
               click: function($event) {
                 return _vm.createStudent(_vm.student)
@@ -41644,37 +41682,54 @@ var render = function() {
             _c("div", { staticClass: "course-assistance" }, [
               _c("h5", [_vm._v(_vm._s(_vm.getDate()))]),
               _vm._v(" "),
-              _c("div", [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn primary-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.checkin(_vm.student)
-                      }
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Check In\n                    "
+              _c("div", { staticClass: "profile-actions" }, [
+                _vm.student.canCheckIn
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn primary-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.checkin(_vm.student)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Check In\n                    "
+                        )
+                      ]
                     )
-                  ]
-                ),
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.student.canCheckIn
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn primary-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.checkout(_vm.student)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Check Out\n                    "
+                        )
+                      ]
+                    )
+                  : _vm._e(),
                 _vm._v(" "),
                 _c(
-                  "button",
+                  "a",
                   {
                     staticClass: "btn primary-button",
-                    on: {
-                      click: function($event) {
-                        return _vm.checkout(_vm.student)
-                      }
-                    }
+                    attrs: { href: "/upload" }
                   },
                   [
                     _vm._v(
-                      "\n                        Check Out\n                    "
+                      "\n                        Subir Justificación\n                    "
                     )
                   ]
                 )
@@ -41918,6 +41973,7 @@ var render = function() {
           "button",
           {
             staticClass: "btn primary-button",
+            attrs: { type: "submit" },
             on: {
               click: function($event) {
                 return _vm.createTeacher()

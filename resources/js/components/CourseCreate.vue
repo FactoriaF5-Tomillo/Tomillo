@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     createCourse() {
-      axios.post("/api/courses", this.course).then((response) => {
+      axios.post("/courses", this.course).then((response) => {
         window.location.replace("/courses");
       });
     },
