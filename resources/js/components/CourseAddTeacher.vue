@@ -3,38 +3,40 @@
     <div class="page-title">
       <h1>Asignar profesores al curso</h1>
     </div>
-    <div class="list">
-      <div class="list-heading">
-        <div class="list-row">
-          <h3>Nombre</h3>
-          <h3>Email</h3>
-          <h3>Selcionado</h3>
-          <h3>Acciones</h3>
+    <div>
+      <div class="list">
+        <div class="list-heading">
+          <div class="list-row">
+            <h3>Nombre</h3>
+            <h3>Email</h3>
+            <h3>Selcionado</h3>
+            <h3>Acciones</h3>
+          </div>
         </div>
-      </div>
-      <div class="list-content">
-        <div class="list-row" :key="i" v-for="(teacher, i) in teachers">
-          <a :href="'/teacher/' + teacher.id" class="list-data">{{teacher.name}}</a>
-          <p class="list-data">{{teacher.surname}}</p>
-          <p class="list-data">{{teacher.email}}</p>
-          <div class="list-actions">
-            <button
-              v-if="teacher.selected"
-              class="btn primary-button btn-sm selected-button"
-              @click="unselectTeacher(teacher, i)"
-            >Selecionado</button>
-            <button
-              v-if="!teacher.selected"
-              class="btn primary-button btn-sm"
-              @click="selectTeacher(teacher, i)"
-            >Selecionar</button>
+        <div class="list-content">
+          <div class="list-row" :key="i" v-for="(teacher, i) in teachers">
+            <a :href="'/teacher/' + teacher.id" class="list-data">{{teacher.name}}</a>
+            <p class="list-data">{{teacher.surname}}</p>
+            <p class="list-data">{{teacher.email}}</p>
+            <div class="list-actions">
+              <button
+                v-if="teacher.selected"
+                class="btn primary-button btn-sm selected-button"
+                @click="unselectTeacher(teacher, i)"
+              >Selecionado</button>
+              <button
+                v-if="!teacher.selected"
+                class="btn primary-button btn-sm"
+                @click="selectTeacher(teacher, i)"
+              >Selecionar</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div>
-      <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
-      <a @click.prevent @click="assignTeachers()" href class="list-actions">Guardar</a>
+      <div class="form-submit">
+        <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
+        <a @click.prevent @click="assignTeachers()" href class="btn primary-button">Guardar</a>
+      </div>
     </div>
   </div>
 </template>

@@ -2057,6 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -39257,7 +39259,7 @@ var render = function() {
       _c(
         "a",
         {
-          staticClass: "list-actions",
+          staticClass: "btn primary-button",
           attrs: { href: "" },
           on: {
             click: [
@@ -39321,106 +39323,109 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "list" }, [
-      _vm._m(1),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "list-content" },
-        _vm._l(_vm.teachers, function(teacher, i) {
-          return _c("div", { key: i, staticClass: "list-row" }, [
-            _c(
-              "a",
-              {
-                staticClass: "list-data",
-                attrs: { href: "/teacher/" + teacher.id }
-              },
-              [_vm._v(_vm._s(teacher.name))]
-            ),
-            _vm._v(" "),
-            _c("p", { staticClass: "list-data" }, [
-              _vm._v(_vm._s(teacher.surname))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "list-data" }, [
-              _vm._v(_vm._s(teacher.email))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "list-actions" }, [
-              teacher.selected
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn primary-button btn-sm selected-button",
-                      on: {
-                        click: function($event) {
-                          return _vm.unselectTeacher(teacher, i)
-                        }
-                      }
-                    },
-                    [_vm._v("Selecionado")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !teacher.selected
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn primary-button btn-sm",
-                      on: {
-                        click: function($event) {
-                          return _vm.selectTeacher(teacher, i)
-                        }
-                      }
-                    },
-                    [_vm._v("Selecionar")]
-                  )
-                : _vm._e()
-            ])
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
     _c("div", [
-      _c(
-        "a",
-        {
-          staticClass: "list-actions",
-          attrs: { href: "" },
-          on: {
-            click: [
-              function($event) {
-                $event.preventDefault()
-              },
-              function($event) {
-                return _vm.goBack()
-              }
-            ]
-          }
-        },
-        [_vm._v("← Volver")]
-      ),
+      _c("div", { staticClass: "list" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "list-content" },
+          _vm._l(_vm.teachers, function(teacher, i) {
+            return _c("div", { key: i, staticClass: "list-row" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "list-data",
+                  attrs: { href: "/teacher/" + teacher.id }
+                },
+                [_vm._v(_vm._s(teacher.name))]
+              ),
+              _vm._v(" "),
+              _c("p", { staticClass: "list-data" }, [
+                _vm._v(_vm._s(teacher.surname))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "list-data" }, [
+                _vm._v(_vm._s(teacher.email))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "list-actions" }, [
+                teacher.selected
+                  ? _c(
+                      "button",
+                      {
+                        staticClass:
+                          "btn primary-button btn-sm selected-button",
+                        on: {
+                          click: function($event) {
+                            return _vm.unselectTeacher(teacher, i)
+                          }
+                        }
+                      },
+                      [_vm._v("Selecionado")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                !teacher.selected
+                  ? _c(
+                      "button",
+                      {
+                        staticClass: "btn primary-button btn-sm",
+                        on: {
+                          click: function($event) {
+                            return _vm.selectTeacher(teacher, i)
+                          }
+                        }
+                      },
+                      [_vm._v("Selecionar")]
+                    )
+                  : _vm._e()
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
       _vm._v(" "),
-      _c(
-        "a",
-        {
-          staticClass: "list-actions",
-          attrs: { href: "" },
-          on: {
-            click: [
-              function($event) {
-                $event.preventDefault()
-              },
-              function($event) {
-                return _vm.assignTeachers()
-              }
-            ]
-          }
-        },
-        [_vm._v("Guardar")]
-      )
+      _c("div", { staticClass: "form-submit" }, [
+        _c(
+          "a",
+          {
+            staticClass: "list-actions",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.goBack()
+                }
+              ]
+            }
+          },
+          [_vm._v("← Volver")]
+        ),
+        _vm._v(" "),
+        _c(
+          "a",
+          {
+            staticClass: "btn primary-button",
+            attrs: { href: "" },
+            on: {
+              click: [
+                function($event) {
+                  $event.preventDefault()
+                },
+                function($event) {
+                  return _vm.assignTeachers()
+                }
+              ]
+            }
+          },
+          [_vm._v("Guardar")]
+        )
+      ])
     ])
   ])
 }
