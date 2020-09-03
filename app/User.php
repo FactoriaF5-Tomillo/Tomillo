@@ -121,7 +121,7 @@ class User extends Authenticatable
 
     public function checkIfCanCheckIn()
     {
-        if($this->days!=null){
+        if(count($this->days)!=0){
             if($this->days->last()->checkOut==null){
                 return False;
             }
