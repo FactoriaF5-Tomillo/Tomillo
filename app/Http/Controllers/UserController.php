@@ -130,14 +130,17 @@ class UserController extends Controller
     public function showStudent(User $user)
     {
         $this->authorize('view', $user);
+
         $user = new UserResource($user);
+
         return view('student.show', compact('user'));
     }
 
     public function showStudentProfile(User $user)
     {
-        $this->authorize('view', $user);
+        $this->authorize('viewProfile', $user);
         $user = new UserResource($user);
+        //dd($user);
         return view('student.profile', compact('user'));
     }
 
@@ -174,8 +177,8 @@ class UserController extends Controller
         return User::all();
     }
 
-    public function checkIn(User $user){
-
+    public function checkIn(User $user)
+    {
         return Day::checkIn($user);
     }
 

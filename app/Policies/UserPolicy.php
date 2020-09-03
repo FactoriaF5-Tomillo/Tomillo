@@ -34,19 +34,22 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        if ($user->id === $model->id || $user->id === $model->id)
+        if ($user->id === $model->id || $user->type === 'Admin')
         {
             return true;
         }
         return false;
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\User  $user
-     * @return mixed
-     */
+    public function viewProfile(User $user, User $model)
+    {
+        if ($user->id === $model->id)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public function create(User $user)
     {
         if ($user->type === 'Admin')
@@ -56,16 +59,9 @@ class UserPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\User  $user
-     * @param  \App\User  $model
-     * @return mixed
-     */
     public function update(User $user, User $model)
     {
-        if ($model->type === 'Admin' || $user->id === $model->id)
+        if ($user->type === 'Admin' || $user->id === $model->id)
         {
             return true;
         }
@@ -81,7 +77,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if ($model->type === 'Admin')
+        if ($user->type === 'Admin')
         {
             return true;
         }

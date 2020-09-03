@@ -70,7 +70,7 @@ class User extends Authenticatable
         $usersList = User::all();
 
         $numberOfUsers = count($usersList);
-        
+
         return $numberOfUsers;
     }
 
@@ -148,7 +148,7 @@ class User extends Authenticatable
 
     }
 
-    public function calculateJustifiedDays(){ 
+    public function calculateJustifiedDays(){
 
         $justifiedDays = $this->getJustifiedDays();
         return count($justifiedDays);
@@ -197,7 +197,7 @@ class User extends Authenticatable
         return $absentDays;
     }
 
-    public function getJustifiedDays(){ 
+    public function getJustifiedDays(){
 
         $justifiedDays= array();
 
@@ -207,16 +207,16 @@ class User extends Authenticatable
                 foreach($justificationRange as $justifiedDay){
                     array_push($justifiedDays, $justifiedDay);
                 }
-                
+
             }
         }
         return $justifiedDays;
     }
 
-    
 
 
 
-    
+
+
 }
 

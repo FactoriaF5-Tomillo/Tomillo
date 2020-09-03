@@ -23,20 +23,7 @@ class CoursePolicy
     public function view(User $user, Course $course)
     {
         $courseUsers = $course->users()->get();
-        $numUsers = intval(count($courseUsers));
-        if ($numUsers > 0)
-        {
-            foreach ($courseUsers as $courseUser)
-            {
-                if ($courseUser->id === $user->id)
-                {
-                    return true;
-                }
-                return false;
-            }
-            return false;
-        }
-        if ($user->type === 'Admin')
+        if($courseUsers->contains('id', $user->id) || $user->type === 'Admin')
         {
             return true;
         }

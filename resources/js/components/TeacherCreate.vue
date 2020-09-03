@@ -35,7 +35,7 @@
                 <a @click.prevent @click="goBack()" href class="list-actions"
                     >&#8592; Volver</a
                 >
-                <button class="btn primary-button" @click="createTeacher()">
+                <button type="submit" class="btn primary-button" @click="createTeacher()">
                     Crear
                 </button>
             </div>
@@ -52,7 +52,7 @@ export default {
     },
     methods: {
         createTeacher() {
-            axios.post("/api/teachers", this.teacher).then(response => {
+            axios.post("/teachers", this.teacher).then(response => {
                 window.location.replace("/teachers");
             });
         },

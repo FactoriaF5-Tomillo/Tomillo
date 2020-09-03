@@ -21,14 +21,18 @@ class JustificationPolicy
 
     public function view(User $user, Justification $justification)
     {
-        return true;
+        if ($user->type === 'Admin' || $user->type === 'Teacher' || $justification->user_id === $user->id)
+        {
+            return true;
+        }
+        return false;
     }
 
     public function create(User $user)
     {
-        return true;
+        return $user->type === 'Student';
     }
-    
+
     public function update(User $user, Justification $justification)
     {
         return $user->type === 'Teacher';
