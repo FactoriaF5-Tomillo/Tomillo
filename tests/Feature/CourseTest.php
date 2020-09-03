@@ -26,7 +26,7 @@ class CourseTest extends TestCase
 
     public function test_api_creates_course()
     {
-        $response = $this->post('/api/courses', [
+        $response = $this->post('/courses', [
             'title' => 'Full Stack',
             'description' => 'Better boot-camp',
             'start_date' => '27-07-2020',
@@ -45,7 +45,7 @@ class CourseTest extends TestCase
         $response->assertStatus(201);
     }
 
-    public function test_api_edits_course_when_user_is_admin()
+    public function test_edits_course_when_user_is_admin()
     {
         $user = factory(User::class)->states('Admin')->create();
         $course = factory(Course::class)->create();
@@ -66,7 +66,7 @@ class CourseTest extends TestCase
         ]);
     }
 
-    public function test_api_edits_course_when_user_is_not_admin()
+    public function test_edits_course_when_user_is_not_admin()
     {
         $user = factory(User::class)->states('Teacher')->create();
         $course = factory(Course::class)->create();
@@ -112,7 +112,7 @@ class CourseTest extends TestCase
         $course = factory(Course::class)->create();
         $student = factory(User::class)->create();
 
-        $response = $this->post('api/courses/' . $course->id . '/addStudentToTheCourse', ["students"=>[$student->id]]);
+        $response = $this->post('/courses/' . $course->id . '/addStudentToTheCourse', ["students"=>[$student->id]]);
 
         $response->assertStatus(200);
         $this->assertDatabaseHas('course_user', [

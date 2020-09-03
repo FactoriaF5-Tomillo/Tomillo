@@ -77,7 +77,7 @@ export default {
       console.log(selectedTeachersIds);
 
       axios
-        .post("/api/courses/" + this.course.id + "/addTeacherToTheCourse", {
+        .post("/courses/" + this.course.id + "/addTeacherToTheCourse", {
           teachers: selectedTeachersIds,
         })
         .then((response) => {

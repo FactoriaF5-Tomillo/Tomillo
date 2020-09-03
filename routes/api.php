@@ -23,6 +23,7 @@ Route::get('/available-students', 'UserController@getAvailableStudents');
 Route::get('/students/{user}', 'UserController@getStudent');
 Route::post('/students/{user}/checkin', 'UserController@checkIn')->name('student.checkin');
 Route::patch('/students/{user}/checkout', 'UserController@checkOut')->name('student.checkout');
+Route::patch('/students/{user}/checkout', 'UserController@checkOut')->name('student.checkout');
 
 Route::get('/teachers', 'UserController@getTeachers');
 Route::get('/teachers/{user}', 'UserController@getTeacher');

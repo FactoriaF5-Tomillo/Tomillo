@@ -37,9 +37,8 @@ class JustificationController extends Controller
         return view('justification.show', compact('justification'));
     }
 
-    public function create(Request $request)
+    public function create()
     {
-        $this->authorize('create', User::class);
         return view('justification.create');
     }
 

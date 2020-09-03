@@ -65,7 +65,7 @@ export default {
     },
     addStudentToTheCourse(student) {
       axios
-        .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+        .post("/courses/" + this.course.id + "/addStudentToTheCourse", {
           student_id: student.id,
         })
         .then((response) => {});
@@ -78,7 +78,7 @@ export default {
       });
 
       axios
-        .post("/api/courses/" + this.course.id + "/addStudentToTheCourse", {
+        .post("/courses/" + this.course.id + "/addStudentToTheCourse", {
           students: selectedStudentsIds,
           course_id: this.course.id,
         })

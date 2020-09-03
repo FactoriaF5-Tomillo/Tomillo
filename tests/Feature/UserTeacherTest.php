@@ -36,8 +36,9 @@ class UserTeacherTest extends TestCase
         ]);
     }
 
-    public function test_api_create_teacher()
+    public function test_admin_can_create_teacher()
     {
+        $admin = factory(User::class)->states('Admin')->create();
         $teacher = [
             'name' => 'Pau',
             'surname' => 'Gasol',
@@ -45,17 +46,18 @@ class UserTeacherTest extends TestCase
             'gender' => 'hombre',
         ];
 
-        $response = $this->post('/api/teachers', $teacher);
+        $response = $this->actingAs($admin)->post('/teachers', $teacher);
 
         $response->assertStatus(201);
         $this->assertDatabaseHas('users', $teacher);
     }
 
-    public function test_api_edit_teacher()
+    public function test_admin_can_edit_teacher()
     {
+        $admin = factory(User::class)->states('Admin')->create();
         $teacher = factory(User::class)->create();
 
-        $response = $this->patch('api/teachers/' . $teacher->id, [
+        $response = $this->actingAs($admin)->patch('/teachers/' . $teacher->id, [
             'name' => 'Pau',
             'surname' => 'Gasol',
             'email' => 'paugasol@gmail.com',
@@ -71,11 +73,12 @@ class UserTeacherTest extends TestCase
         ]);
     }
 
-    public function test_api_delete_teacher()
+    public function test_delete_teacher()
     {
+        $admin = factory(User::class)->states('Admin')->create();
         $teacher = factory(User::class)->create();
 
-        $response = $this->delete('/api/teachers/' . $teacher->id);
+        $response = $this->actingAs($admin)->delete('/teachers/' . $teacher->id);
 
         $response->assertStatus(200);
         $this->assertDatabaseMissing('teachers', [
