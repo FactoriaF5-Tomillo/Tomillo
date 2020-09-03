@@ -38,7 +38,7 @@
                 <hr />
                 <div class="course-assistance">
                     <h5>{{ getDate() }}</h5>
-                    <div>
+                    <div class="profile-actions">
                         <button
                             v-if="student.canCheckIn"
                             class="btn primary-button"
@@ -53,6 +53,9 @@
                         >
                             Check Out
                         </button>
+                        <a :href="'/upload'" class="btn primary-button">
+                            Subir Justificación
+                        </a>
                     </div>
                 </div>
             </div>
