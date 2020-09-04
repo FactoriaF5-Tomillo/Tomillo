@@ -40,7 +40,7 @@ class UserController extends Controller
     public function getTeacherCourses()
     {
         $user = $this->getLoggedUser();
-        $teacher_courses = User::getAllTeacherCourses($user);
+        $teacher_courses = $user->courses;
         return $teacher_courses;
     }
 

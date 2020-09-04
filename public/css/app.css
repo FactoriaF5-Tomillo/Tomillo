@@ -11252,10 +11252,11 @@ p {
   border-radius: 5px;
   text-align: center;
   font-weight: 600;
-  color: white;
+  color: white !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 5px;
 }
 
 .label-true {
@@ -11323,5 +11324,28 @@ p {
 .profile .profile-course .course-content .course-assistance .profile-actions {
   display: flex;
   justify-content: space-between;
+}
+
+.assistence-table {
+  display: block;
+  max-width: 800px;
+  overflow-x: scroll;
+}
+
+.assistence-table .heading {
+  padding-bottom: 10px;
+}
+
+.assistence-table .heading .date {
+  padding: 0 10px 10px 10px;
+}
+
+.assistence-table .students .student:nth-child(odd) {
+  background-color: #e8e8e8;
+}
+
+.assistence-table .students .student td {
+  text-align: center;
+  padding: 10px;
 }
 

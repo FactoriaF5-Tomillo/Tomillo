@@ -125,19 +125,14 @@ class DayTest extends TestCase
 
     public function test_time_worked_in_a_day()
     {
-        $start = Carbon::createFromTime(DayTest::hour, DayTest::minute, DayTest::second, DayTest::tz);
-        $time = Carbon::now()->setTimezone('Europe/Madrid');
-        $day = factory(Day::class)->create(['checkIn'=> $start, 'checkOut'=> $time]);
-        $workedtimeinDay = Day::getTimeWorkedInADay($day);
+        $checkIn = Carbon::createFromTime(8, 0, 0, 'Europe/Madrid');
+        $checkOut = Carbon::createFromTime(16, 30, 0, 'Europe/Madrid');
 
-        $HourRightNow = Carbon::now()->setTimezone('Europe/Madrid')->hour;
-        $MinutesRightNow = Carbon::now()->setTimezone('Europe/Madrid')->minute;
+        $day = factory(Day::class)->create(['checkIn'=> $checkIn, 'checkOut'=> $checkOut]);
+        $workedtimeinDay = $day->getTimeWorkedInADay();
 
-        $HoursPassedSinceStart   = $HourRightNow - DayTest::hour;
-        $MinutesPassedSinceStart = $MinutesRightNow;
-
-        $this->assertEquals($HoursPassedSinceStart, $workedtimeinDay['Hours']);
-        $this->assertEquals($MinutesPassedSinceStart, $workedtimeinDay['Minutes']);
+        $this->assertEquals($workedtimeinDay['hours'], "8");
+        $this->assertEquals($workedtimeinDay['minutes'], "30");
     }
 
     public function test_time_worked_in_a_course()

@@ -156,7 +156,7 @@ class Course extends Model
 
     public function getRangeOfCourseDatesUntilNow(){
 
-        $begin= $this->start_date; 
+        $begin = $this->start_date; 
 
         $end = Carbon::now()->setTimezone('Europe/Madrid');
 

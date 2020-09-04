@@ -31,7 +31,7 @@
     </div>
     <div>
       <a @click.prevent @click="goBack()" href class="list-actions">&#8592; Volver</a>
-      <a @click.prevent @click="assignStudents()" href class="list-actions">Guardar</a>
+      <a @click.prevent @click="assignStudents()" href class="btn primary-button">Guardar</a>
     </div>
   </div>
 </template>

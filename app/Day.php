@@ -99,16 +99,17 @@ class Day extends Model
     }
 
 
-    public static function getTimeWorkedInADay($day)
+    public function getTimeWorkedInADay()
     {
-        $checkIn  = Carbon::parse($day->checkIn);
-        $checkOut = Carbon::parse($day->checkOut);
+        $checkIn  = Carbon::parse($this->checkIn);
+        $checkOut = Carbon::parse($this->checkOut);
         $diffInHours = $checkOut->diffInHours($checkIn);
         $diffInMinutes = $checkOut->diffInMinutes($checkIn);
-        $minutes = $diffInMinutes % Day::MinutesInHour;
-        $WorkedTimeDay = ['Hours'=> $diffInHours, 'Minutes'=> $minutes];
 
-        return $WorkedTimeDay;
+        $minutes = $diffInMinutes % Day::MinutesInHour;
+        $workedTimeDay = ['hours'=> $diffInHours, 'minutes'=> $minutes];
+
+        return $workedTimeDay;
     }
 
     public static function getWorkedHoursOfAStudentInACourse($days)
@@ -117,15 +118,16 @@ class Day extends Model
         $totalMinutes = 0;
         foreach ($days as $day)
         {
-            $timeDiff= self::getTimeWorkedInADay($day);
-            $totalHours  = $totalHours + $timeDiff['Hours'];
-            $totalMinutes= $totalMinutes +$timeDiff['Minutes'];
+            $timeDiff= $day->getTimeWorkedInADay();
+            $totalHours  = $totalHours + $timeDiff['hours'];
+            $totalMinutes= $totalMinutes +$timeDiff['minutes'];
             $Minutes = $totalMinutes % Day::MinutesInHour;
         }
         $TotalWorkedTimeCourse = ['Hours'=> $totalHours, 'Minutes'=> $Minutes];
 
         return $TotalWorkedTimeCourse;
     }
+
     public static function checkIfTodayCorrespondsCourseDates(Course $course){
 
         $date=self::setDate(); //string
@@ -139,9 +141,9 @@ class Day extends Model
         }
         return False;
     }
+
     public static function average_Attended_Days_course($days ,$course)
     {
-
         $totaldaysAttendedAllStudents = count($days);
         $totalCourseStudents = count($course->users()->get());
         $averageAttendedDays = round ( $totaldaysAttendedAllStudents/$totalCourseStudents);

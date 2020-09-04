@@ -24,7 +24,10 @@
           class="btn primary-button"
           :href="'/course/' + course.id + '/justifications'"
         >Justificaciones</a>
-        <a class="btn primary-button" :href="'/course/' + course.id + '/course-statistics'">Estadísticas</a>
+        <a
+          class="btn primary-button"
+          :href="'/course/' + course.id + '/course-statistics'"
+        >Estadísticas</a>
       </div>
     </div>
     <div class="actions" v-if="user.type == 'Admin'">
@@ -53,7 +56,7 @@ export default {
   props: ["course"],
   data() {
     return {
-        user: {},
+      user: {},
     };
   },
 
@@ -65,17 +68,17 @@ export default {
         });
       }
     },
-      getLoggedUser() {
-          axios.get("/loggeduser").then((response) => {
-              this.user = response.data;
-          });
-      },
+    getLoggedUser() {
+      axios.get("/loggeduser").then((response) => {
+        this.user = response.data;
+      });
+    },
     goBack() {
       window.history.back();
     },
   },
   mounted() {
-      this.getLoggedUser();
+    this.getLoggedUser();
     console.log("Component mounted.");
   },
 };
