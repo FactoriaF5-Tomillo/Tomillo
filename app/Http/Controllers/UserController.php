@@ -173,6 +173,9 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $this->authorize('delete', $user);
+        if(Auth::user()->id == $user->id){
+            return response('Not authorized', 403);
+        }
         $user->delete();
         return User::all();
     }
