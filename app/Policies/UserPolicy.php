@@ -77,7 +77,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        if ($user->type === 'Admin')
+        if ($user->type === 'Admin' && $user->id!=$model->id)
         {
             return true;
         }
