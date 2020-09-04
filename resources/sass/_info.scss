@@ -1,0 +1,27 @@
+.info {
+    max-width: 600px;
+    background-color: $secondary-grey;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    .info-header {
+        border-radius: 10px 10px 0 0;
+        padding: 15px;
+        background-color: $primary-green;
+        h3 {
+            color: white;
+            font-size: 24px;
+        }
+    }
+    .info-body {
+        padding: 15px;
+    }
+    .info-footer {
+        margin: 0 15px;
+        padding: 15px 0;
+        border-top: 1px solid #5a5a5a;
+        p {
+            display: inline;
+            margin-right: 15px !important;
+        }
+    }
+}

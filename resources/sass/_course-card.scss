@@ -1,0 +1,40 @@
+.course-card {
+    max-width: 350px;
+    height: 200px;
+    position: relative;
+    background-color: $secondary-grey;
+    border-radius: 15px 15px 10px 10px;
+    .course-header {
+        border-radius: 10px 10px 0 0;
+        background-color: $primary-green;
+        padding: 10px;
+        a {
+            color: $primary-white;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    }
+    .course-body {
+        color: $primary-black;
+        padding: 10px;
+    }
+    .course-footer {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        padding: 10px;
+        text-align: right;
+        button {
+            border: none;
+            background-color: transparent;
+        }
+        .action-icon {
+            color: $primary-black;
+            padding: 5px;
+            outline: none;
+            ion-icon {
+                font-size: 22px;
+            }
+        }
+    }
+}

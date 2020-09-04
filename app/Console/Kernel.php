@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Day;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        //'App\Console\Commands\workedTimeWeek',
     ];
 
     /**
@@ -24,7 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('weekworked:time')->everyMinute();
+        /*$schedule->call(function () {
+            Day::where( 'user_id', '=', 3)->first()->delete();
+        })->everyMinute();*/
     }
 
     /**

@@ -1,8 +1,30 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+
+// Reset
+@import "reset";
+
+// Layouts
+@import "dashboard-layout";
+@import "course-layout";
+
+// Components
+@import "course-card";
+@import "page-title";
+@import "info";
+@import "actions";
+@import "back-button";
+@import "table-list";
+@import "form-page";
+@import "show-user";
+@import "form-card";
+@import "home-page";
+@import "components";
+@import "profile";
+@import "assistence-table";
