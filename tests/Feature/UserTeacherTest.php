@@ -11,7 +11,7 @@ class UserTeacherTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_returns_teachers_list()
+    public function test_api_returns_list_of_teachers()
     {
         $users = factory(User::class, 5)->states('Teacher')->create();
 
@@ -36,7 +36,7 @@ class UserTeacherTest extends TestCase
         ]);
     }
 
-    public function test_admin_can_create_teacher()
+    public function test_create_teacher_when_user_admin()
     {
         $admin = factory(User::class)->states('Admin')->create();
         $teacher = [
@@ -52,7 +52,7 @@ class UserTeacherTest extends TestCase
         $this->assertDatabaseHas('users', $teacher);
     }
 
-    public function test_admin_can_edit_teacher()
+    public function test_edit_teacher_when_user_admin()
     {
         $admin = factory(User::class)->states('Admin')->create();
         $teacher = factory(User::class)->create();

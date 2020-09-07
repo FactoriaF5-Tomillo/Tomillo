@@ -13,7 +13,7 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_add_day_to_user()
+    public function test_adds_day_to_user()
     {
         $user= factory(User::class)->create();
         $day= factory(Day::class)->create();
@@ -21,10 +21,9 @@ class UserTest extends TestCase
         $user->addDayToUser($day);
 
         $this->assertNotNull($user->days);
-        //$this->assertContains($day, $user->days); //falla pero no entiendo por que falla, Error: Failed asserting that a traversable contains
     }
 
-    public function test_calc_age()
+    public function test_calcs_age()
     {
         $user = factory(User::class)->create();
         $expected = 15;
@@ -34,25 +33,7 @@ class UserTest extends TestCase
         $this->assertEquals($expected, $age);
     }
 
-    /* when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment 
-    public function test_if_can_check_in(){
-
-        $user= factory(User::class)->create();
-
-        $this->assertTrue($user->checkIfCanCheckIn());
-
-        $day= factory(Day::class)->create();
-        $user->addDayToUser($day);
-
-        $this->assertFalse($user->checkIfCanCheckIn());
-
-        $user->days->last()->checkOut();
-
-        $this->assertTrue($user->checkIfCanCheckIn());
-    }
-    */
-
-    public function test_count_total_users()
+    public function test_counts_total_users()
     {
         $users = factory(User::class, 15)->create();
 
@@ -61,7 +42,7 @@ class UserTest extends TestCase
         $this->assertEquals(15, $totalUsers);
     }
 
-    public function test_count_total_number_of_users_type_student()
+    public function test_counts_total_number_of_users_type_student()
     {
         $adminUsers = factory(User::class, 5)->states('Admin')->create();
         $teacherUsers = factory(User::class, 5)->states('Teacher')->create();
@@ -72,7 +53,7 @@ class UserTest extends TestCase
         $this->assertEquals(5, $totalNumberOfStudents);
     }
 
-    public function test_count_total_number_of_male_users()
+    public function test_counts_total_number_of_male_users()
     {
         $maleUsers= factory(User::class, 15)->create(['gender'=>'Hombre']);
         $femaleUsers= factory(User::class, 15)->create(['gender'=>'Mujer']);
@@ -82,7 +63,7 @@ class UserTest extends TestCase
         $this->assertEquals(15, $totalMaleUsers);
     }
 
-    public function test_count_total_number_of_female_users()
+    public function test_counts_total_number_of_female_users()
     {
         $maleUsers= factory(User::class, 15)->create(['gender'=>'Hombre']);
         $femaleUsers= factory(User::class, 15)->create(['gender'=>'Mujer']);
@@ -92,7 +73,7 @@ class UserTest extends TestCase
         $this->assertEquals(15, $totalFemaleUsers);
     }
 
-    public function test_total_other_users()
+    public function test_calcs_total_other_users()
     {
         $maleUsers= factory(User::class, 15)->create(['gender'=>'Hombre']);
         $femaleUsers= factory(User::class, 15)->create(['gender'=>'Mujer']);
@@ -103,8 +84,8 @@ class UserTest extends TestCase
         $this->assertEquals(15, $totalOtherUsers);
     }
 
-    public function test_calculate_assisted_days(){
-
+    public function test_calcs_assisted_days()
+    {
         $student = factory(User::class)->create();
 
         $course= Course::create([
@@ -132,7 +113,8 @@ class UserTest extends TestCase
         $this->assertEquals(4, count($student->days));
     }
 
-    public function test_calculate_absent_days(){
+    public function test_calcs_absent_days()
+    {
         $student = factory(User::class)->create();
 
         $course= Course::create([
@@ -165,8 +147,8 @@ class UserTest extends TestCase
         $this->assertEquals(5, count($student->days));
     }
 
-    public function test_calculate_justified_days_when_accepted(){
-
+    public function test_calculate_justified_days_when_justification_approved()
+    {
         $student = factory(User::class)->create();
 
         $justificationApproved= Justification::create([
@@ -192,8 +174,8 @@ class UserTest extends TestCase
         $this->assertEquals(26 , $justifiedDays);
     }
 
-    public function test_calculate_justified_days_when_rejected(){
-
+    public function test_calcs_justified_days_when_justification_rejected()
+    {
         $student = factory(User::class)->create();
 
         $justificationRejected= Justification::create([
@@ -210,8 +192,8 @@ class UserTest extends TestCase
         $this->assertEquals(0 , $justifiedDays);
     }
 
-    public function test_check_if_student_has_course(){
-
+    public function test_checks_if_student_has_course()
+    {
         $student = factory(User::class)->create();
 
         $course= Course::create([
@@ -230,10 +212,9 @@ class UserTest extends TestCase
         $check2 = $student->checkIfStudentHasCourse();
 
         $this->assertTrue($check2);
-
     }
 
-    public function test_get_assisted_days()
+    public function test_gets_assisted_days()
     {
         $student = factory(User::class)->create();
 
@@ -261,31 +242,8 @@ class UserTest extends TestCase
         $this->assertEquals(3, count($AssistedDays));
     }
 
-    public function test_get_absent_days()
+    public function test_gets_justified_days()
     {
-        $student = factory(User::class)->create();
-
-        $course= Course::create([
-            'title' => 'Web Development',
-            'description' => 'Full-Stack training',
-            'start_date' => date("2020-01-01"),
-            'end_date' => date("2020-01-07")
-        ]);
-
-        $course->users()->save($student);
-
-        $day1= factory(Day::class)->create(['date'=>"2020-01-01"]);
-
-        $student->addDayToUser($day1);  
-
-        $AbsentDays = $student->getAbsentDays();
-
-        $this->assertIsArray($AbsentDays);
-        $this->assertEquals(4, count($AbsentDays));
-    }
-
-    public function test_get_justified_days(){
-
         $student = factory(User::class)->create();
 
         $justificationApproved= Justification::create([
@@ -311,6 +269,4 @@ class UserTest extends TestCase
         $this->assertIsArray($justifiedDays);
         $this->assertEquals(26 , count($justifiedDays));
     }
-
-    
 }

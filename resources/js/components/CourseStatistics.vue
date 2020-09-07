@@ -4,38 +4,6 @@
       <h1>Estadísticas del curso</h1>
     </div>
     <div>
-      <p>
-        <strong>Número total de alumnos:</strong>
-        {{ course.totalStudents }}
-      </p>
-      <p>
-        <strong>Número total de hombres:</strong>
-        {{ course.totalMaleStudents }}
-      </p>
-      <p>
-        <strong>Número total de mujeres:</strong>
-        {{ course.totalFemaleStudents }}
-      </p>
-      <p>
-        <strong>Otros géneros:</strong>
-        {{ course.totalOtherStudents }}
-      </p>
-      <br />
-      <p>
-        <strong>Porcentaje de hombres:</strong>
-        {{ course.malePercentage }}%
-      </p>
-      <p>
-        <strong>Porcentaje de mujeres:</strong>
-        {{ course.femalePercentage }}%
-      </p>
-      <p>
-        <strong>Porcentaje de otros géneros:</strong>
-        {{ course.otherPercentage }}%
-      </p>
-    </div>
-    <br />
-    <div>
       <table class="assistence-table">
         <thead>
           <tr class="heading">
@@ -55,14 +23,42 @@
                   v-if="day.date == date"
                   class="label label-true"
                 >Si</a>
-              </label>
-              <label v-bind:key="i" v-for="(day, i) in student.absentDates">
-                <span v-if="day == date" class="label label-false">No</span>
+                <span v-if="day.date != date" class="label label-false">No</span>
               </label>
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div>
+      <p>
+        <strong>Número total de alumnos:</strong>
+        {{ course.totalStudents }}
+      </p>
+      <p>
+        <strong>Número total de hombres:</strong>
+        {{ course.totalMaleStudents }}
+      </p>
+      <p>
+        <strong>Número total de mujeres:</strong>
+        {{ course.totalFemaleStudents }}
+      </p>
+      <p>
+        <strong>Otros géneros:</strong>
+        {{ course.totalOtherStudents }}
+      </p>
+      <p>
+        <strong>Porcentaje de hombres:</strong>
+        {{ course.malePercentage }}%
+      </p>
+      <p>
+        <strong>Porcentaje de mujeres:</strong>
+        {{ course.femalePercentage }}%
+      </p>
+      <p>
+        <strong>Porcentaje de otros géneros:</strong>
+        {{ course.otherPercentage }}%
+      </p>
     </div>
     <br />
     <div>

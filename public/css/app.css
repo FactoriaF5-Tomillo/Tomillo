@@ -11329,6 +11329,7 @@ p {
 .assistence-table {
   display: block;
   max-width: 800px;
+  margin-bottom: 50px;
   overflow-x: scroll;
 }
 

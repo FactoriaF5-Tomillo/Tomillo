@@ -17,7 +17,7 @@ class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_count_total_students()
+    public function test_counts_total_students()
     {
         $course = factory(Course::class)->create();
         $users  = factory(User::class, 10)->create(['type' => 'Student']);
@@ -31,7 +31,7 @@ class CourseTest extends TestCase
         $this->assertEquals(10, $totalStudents);
     }
 
-    public function test_count_total_male_students()
+    public function test_counts_total_male_students()
     {
         $course = factory(Course::class)->create();
         $maleStudents  = factory(User::class, 10)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -47,7 +47,7 @@ class CourseTest extends TestCase
         $this->assertEquals(10, $totalMales);
     }
 
-    public function test_count_total_female_students()
+    public function test_counts_total_female_students()
     {
         $course = factory(Course::class)->create();
         $maleStudents   = factory(User::class, 10)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -63,7 +63,7 @@ class CourseTest extends TestCase
         $this->assertEquals(10, $totalFemales);
     }
 
-    public function test_count_total_other_students()
+    public function test_counts_total_other_students()
     {
         $course = factory(Course::class)->create();
         $maleStudents   = factory(User::class, 10)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -80,7 +80,7 @@ class CourseTest extends TestCase
         $this->assertEquals(5, $totalOther);
     }
 
-    public function test_calc_male_students_percentage()
+    public function test_calcs_male_students_percentage()
     {
         $course = factory(Course::class)->create();
         $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -97,7 +97,7 @@ class CourseTest extends TestCase
         $this->assertSame(40, $malePercentage);
     }
 
-    public function test_calc_female_students_percentage()
+    public function test_calcs_female_students_percentage()
     {
         $course = factory(Course::class)->create();
         $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -114,7 +114,7 @@ class CourseTest extends TestCase
         $this->assertSame(40, $femalePercentage);
     }
 
-    public function test_calc_other_students_percentage()
+    public function test_calcs_other_students_percentage()
     {
         $course = factory(Course::class)->create();
         $maleStudents   = factory(User::class, 4)->create(['type' => 'Student', 'gender'=>'Hombre']);
@@ -131,8 +131,8 @@ class CourseTest extends TestCase
         $this->assertSame(20, $otherPercentage);
     }
 
-    public function test_convert_carbon_range_into_string_range(){
-
+    public function test_converts_carbon_range_into_string_range()
+    {
         $period = CarbonPeriod::create(date("2020-1-2"), date("2020-1-11"));
         $CarbonRange = $period->toArray();
 
@@ -142,8 +142,8 @@ class CourseTest extends TestCase
         $this->assertIsString($StringRange[0]);
     }
 
-    public function test_get_range_of_dates(){
-
+    public function test_gets_range_of_dates()
+    {
         $start = date("2020-01-02");
         $end = date("2020-01-11");
 
@@ -167,8 +167,8 @@ class CourseTest extends TestCase
         $this->assertNotContains($dayOutOfRange, $StringRange);
     }
 
-    public function test_exclude_weekends_from_range_of_dates(){
-
+    public function test_excludes_weekends_from_range_of_dates()
+    {
         $period = CarbonPeriod::create(date("2020-1-1"), date("2020-1-11"));
         $rangeAllDates = $period->toArray();
 
@@ -188,10 +188,10 @@ class CourseTest extends TestCase
 
         $this->assertContains($Friday, $StringRange);
         $this->assertNotContains($Saturday, $StringRange);
-
     }
-    public function test_get_course_days_as_string(){
 
+    public function test_gets_course_days_as_string()
+    {
         $start = date("2020-01-02");
         $end = date("2020-01-11");
 
@@ -214,11 +214,10 @@ class CourseTest extends TestCase
         $this->assertNotContains($saturday, $CourseDays);
         $this->assertNotContains($sunday, $CourseDays);
         $this->assertNotContains(date("2020-01-12"), $CourseDays);
-
     }
 
-    public function test_get_course_days_until_now(){
-
+    public function test_gets_course_days_until_now()
+    {
         $start = date("2020-01-01");
         $end = date("2020-01-31");
 
@@ -233,7 +232,6 @@ class CourseTest extends TestCase
         Carbon::setTestNow($FakeToday);
 
         $CourseDatesUntilToday = $course->getCourseDaysUntilNow();
-        //$StringRangeUntilToday = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday);
 
         $friday = date("2020-01-03");
         $saturday = date("2020-01-04");
@@ -248,7 +246,6 @@ class CourseTest extends TestCase
         Carbon::setTestNow($FakeTodayAfterCourseDates);
 
         $CourseDatesUntilToday2 = $course->getCourseDaysUntilNow();
-        //$StringRangeUntilToday2 = Course::convertCarbonRangeIntoStringRange($CourseDatesUntilToday2);
 
         $dayAfterCourseRangeButBeforeFakeToday= date("2020-03-15");
         $this->assertNotContains($dayAfterCourseRangeButBeforeFakeToday, $CourseDatesUntilToday2);

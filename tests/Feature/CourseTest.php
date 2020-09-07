@@ -14,7 +14,7 @@ class CourseTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_returns_courses_list()
+    public function test_api_returns_list_of_courses()
     {
         $course = factory(Course::class, 4)->create();
 
@@ -24,23 +24,22 @@ class CourseTest extends TestCase
         $response->assertJsonCount(4);
     }
 
-    public function test_api_creates_course()
+    public function test_api_stores_course()
     {
         $response = $this->post('/courses', [
             'title' => 'Full Stack',
             'description' => 'Better boot-camp',
             'start_date' => '27-07-2020',
             'end_date' => '14-4-2021',
-        ]
-        );
+        ]);
 
         $this->assertDatabaseHas('courses', [
             'title' => 'Full Stack',
             'description' => 'Better boot-camp',
             'start_date' => '27-07-2020',
             'end_date' => '14-4-2021',
-        ]
-        );
+        ]);
+
         $response->assertCreated();
         $response->assertStatus(201);
     }
@@ -66,7 +65,7 @@ class CourseTest extends TestCase
         ]);
     }
 
-    public function test_edits_course_when_user_is_not_admin()
+    public function test_edits_course_unauthorized_when_user_is_not_admin()
     {
         $user = factory(User::class)->states('Teacher')->create();
         $course = factory(Course::class)->create();
@@ -97,7 +96,7 @@ class CourseTest extends TestCase
         ]);
     }
 
-    public function test_course_delete_when_user_is_not_admin()
+    public function test_course_delete_unauthorized_when_user_is_not_admin()
     {
         $user = factory(User::class)->states('Teacher')->create();
         $course = factory(Course::class)->create();

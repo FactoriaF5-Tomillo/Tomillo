@@ -10,8 +10,8 @@ class JustificationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_get_justification_range(){
-
+    public function test_gets_range_of_dates()
+    {
         $justification= Justification::create([
             'title' => 'Enfermedad',
             'description' => 'Estuve enfermo', 
@@ -28,6 +28,5 @@ class JustificationTest extends TestCase
         $this->assertContains($dayInBetween, $justificationRange); 
         $this->assertNotContains($dayOutOfRange, $justificationRange);
         $this->assertNotContains($weekend, $justificationRange);
-
     }
 }

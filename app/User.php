@@ -14,7 +14,6 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-
     protected $fillable = [
         'name', 'surname', 'email', 'password', 'type', 'gender', 'nationality', 'date_of_birth'
     ];
@@ -42,7 +41,6 @@ class User extends Authenticatable
         return $this->hasMany(Justification::class);
     }
 
-
     public function age()
     {
         $timeSince = Carbon::parse($this->date_of_birth)->diff(Carbon::now());
@@ -64,7 +62,6 @@ class User extends Authenticatable
         return $teacher_courses;
     }
 
-    //Static functions
     public static function totalUsers()
     {
         $usersList = User::all();
@@ -110,12 +107,8 @@ class User extends Authenticatable
         return $numberOfOtherUsers;
     }
 
-    // when the user has no days assigned at all, the function and the test break because
-    // $user->days does not exist until the first day assignment
-    // when the user has no days assigned at all, the function and the test break because $user->days does not exist until the first day assignment
     public function addDayToUser($day)
     {
-        //dd($this->days()->save($day));
         return $this->days()->save($day);
     }
 
@@ -178,29 +171,6 @@ class User extends Authenticatable
         }
 
         return $assistedDays;
-    }
-
-    public function getAbsentDays()
-    {
-        $studentCourse = $this->studentCourse();
-        $courseDays = $studentCourse->getCourseDaysUntilNow(); //array of string type
-
-        if(count($this->days) == 0){
-            return $courseDays;
-        }
-
-        $checkedInDays = $this->days;
-
-        $absentDays = [];
-
-        foreach ($courseDays as $courseDay){
-            foreach ($checkedInDays as $checkedInDay){
-                if ($courseDay != $checkedInDay->date){
-                    array_push($absentDays, $courseDay);
-                }
-            }
-        }
-        return $absentDays;
     }
 
     public function getJustifiedDays()

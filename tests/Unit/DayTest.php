@@ -17,19 +17,20 @@ class DayTest extends TestCase
     use RefreshDatabase;
     const hour = 8; const minute = 00; const second = 0; const tz = 'Europe/Madrid';
     const endhour = 16; const endminute = 30; const endsecond = 0;
-    public function test_set_date()
+
+    public function test_sets_date()
     {
         $date = Day::setDate();
         $this->assertNotNull($date);
     }
 
-    public function test_set_time()
+    public function test_sets_time()
     {
         $time = Day::setTime();
         $this->assertNotNull($time);
     }
 
-    public function test_student_can_check_in()
+    public function test_check_in()
     {
         $student= factory(User::class)->create();
 
@@ -78,7 +79,7 @@ class DayTest extends TestCase
         $this->assertNotNull($day->checkOut);
     }
 
-    public function test_check_if_user_checked_out(){
+    public function test_checks_if_user_checked_out(){
 
         $student = factory(User::class)->create();
 
@@ -104,7 +105,7 @@ class DayTest extends TestCase
 
     }
 
-    public function test_check_if_checked_in_same_day()
+    public function test_checks_if_checked_in_same_day()
     {
         $user = factory(User::class)->create();
 
@@ -112,18 +113,12 @@ class DayTest extends TestCase
         $user->addDayToUser($assignedDay); //assigns the day to user
 
         $dayToCompare = factory(Day::class)->create(); //another day instance of today, not assigned
-        /*
-        $anotherDay = Day::create([
-            'date' => '2021-03-03'
-        ]);
-        */
 
-        //when we try to reach the days field of user before assigning any day by check-in, the user object anull itself
         $check1 = $dayToCompare->checkIfCheckedInSameDay($user);
         $this->assertTrue($check1);
     }
 
-    public function test_time_worked_in_a_day()
+    public function test_calcs_time_worked_in_a_day()
     {
         $checkIn = Carbon::createFromTime(8, 0, 0, 'Europe/Madrid');
         $checkOut = Carbon::createFromTime(16, 30, 0, 'Europe/Madrid');
@@ -135,7 +130,7 @@ class DayTest extends TestCase
         $this->assertEquals($workedtimeinDay['minutes'], "30");
     }
 
-    public function test_time_worked_in_a_course()
+    public function test_calcs_time_worked_in_a_course()
     {
         $start = Carbon::createFromTime(DayTest::hour, DayTest::minute, DayTest::second, DayTest::tz);
         $time = Carbon::createFromTime(DayTest::endhour, DayTest::endminute, DayTest::endsecond, DayTest::tz);
@@ -150,8 +145,8 @@ class DayTest extends TestCase
         $this->assertEquals(30, $totalWorkedTimeInCourse['Minutes']);
     }
 
-    public function test_check_if_today_corresponds_course_dates(){
-
+    public function test_checks_if_today_corresponds_course_dates()
+    {
         $course = Course::create([
             'title' => 'Web Development',
             'description' => 'Full-Stack training',
@@ -170,37 +165,5 @@ class DayTest extends TestCase
 
         $check2 = Day::checkIfTodayCorrespondsCourseDates($course);
         $this->assertTrue($check2);
-
-    }
-
-    public function test_average_total_attended_days_all_students_in_course()
-    {
-        $attended_course_days = [];
-        $course_start = date("2020-01-02");
-        $course_end = date("2020-01-08");
-        $users = factory(User::class, 2)->create(['type'=>'Student']);
-        $day1_user1= factory(Day::class)->create(['date'=>'2020-01-02', 'user_id'=>$users[0]->id]);
-        $day2_user1= factory(Day::class)->create(['date'=>'2020-01-03', 'user_id'=>$users[0]->id]);
-        $day3_user1= factory(Day::class)->create(['date'=>'2020-01-06', 'user_id'=>$users[0]->id]);
-        $day4_user1= factory(Day::class)->create(['date'=>'2020-01-07', 'user_id'=>$users[0]->id]);
-        $day1_user2= factory(Day::class)->create(['date'=>'2020-01-02', 'user_id'=>$users[1]->id]);
-        $day2_user2= factory(Day::class)->create(['date'=>'2020-01-06', 'user_id'=>$users[1]->id]);
-        $day3_user2= factory(Day::class)->create(['date'=>'2020-01-08', 'user_id'=>$users[1]->id]);
-        array_push($attended_course_days,$day1_user1, $day2_user1, $day3_user1, $day4_user1, $day1_user2,
-            $day2_user2, $day3_user2);
-        $course = Course::create([
-            'title' => 'Web Development',
-            'description' => 'Full-Stack training',
-            'start_date' => $course_start,
-            'end_date' => $course_end
-        ]);
-
-        foreach ($users as $user) {
-            $course->users()->save($user);
-        };
-        $average_Attended_days = Day::average_Attended_Days_course($attended_course_days, $course);
-        $attended_days = $average_Attended_days['Attended']; $absentDays = $average_Attended_days['Absent'];
-        $this->assertEquals(4, $attended_days);
-        $this->assertEquals(1, $absentDays);
     }
 }

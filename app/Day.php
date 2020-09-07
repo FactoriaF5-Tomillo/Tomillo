@@ -22,14 +22,13 @@ class Day extends Model
     {
         $date= Carbon::now()->setTimezone('Europe/Madrid')->toDateString();
 
-        //->setTimezone('Europe/Madrid')->locale('es_ES')->isoFormat('M/D/YY');
         return $date;
     }
 
     public static function setTime()
     {
         $time = Carbon::now()->setTimezone('Europe/Madrid');
-        //->setTimezone('Europe/Madrid')->isoFormat('HH:mm');
+
         return $time;
 
     }
@@ -89,8 +88,6 @@ class Day extends Model
     public function checkIfCheckedInSameDay(User $user)
     {
         foreach ($user->days as $dayUser){
-            //var_dump($this->date);
-            //var_dump($dayUser->date);
             if ($dayUser->date==$this->date){
                 return True;
             }
@@ -140,17 +137,5 @@ class Day extends Model
             }
         }
         return False;
-    }
-
-    public static function average_Attended_Days_course($days ,$course)
-    {
-        $totaldaysAttendedAllStudents = count($days);
-        $totalCourseStudents = count($course->users()->get());
-        $averageAttendedDays = round ( $totaldaysAttendedAllStudents/$totalCourseStudents);
-
-        $totalCourseDays = count($course->getCourseDaysAsString());
-        $absentDays = $totalCourseDays - (intval($averageAttendedDays));
-        $attendedAndAbsentDays = ['Attended'=> $averageAttendedDays, 'Absent'=> $absentDays];
-        return $attendedAndAbsentDays;
     }
 }

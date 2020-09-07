@@ -16,7 +16,7 @@ class UserStudentTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_api_returns_students_list()
+    public function test_api_returns_list_of_students()
     {
         $students = factory(User::class, 5)->states('Student')->create();
 
@@ -36,7 +36,8 @@ class UserStudentTest extends TestCase
             'id' => $student->id
         ]);
     }
-    public function test_NotAdmin_Cant_creates_student()
+
+    public function test_cant_create_student_when_not_user_admin()
     {
         $response = $this->post('/students', [
             'name' => 'Pau',
@@ -51,7 +52,7 @@ class UserStudentTest extends TestCase
         $response->assertSeeText('action is unauthorized');
     }
 
-    public function test_admin_can_creates_student()
+    public function test_can_create_student_when_user_admin()
     {
         $admin = factory(User::class)->states('Admin')->create();
         $response = $this->actingAs($admin)->post('/students', [
@@ -75,7 +76,7 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_admin_can_edits_student()
+    public function test_can_edit_student_when_user_admin()
     {
         $admin = factory(User::class)->states('Admin')->create();
         $student = factory(User::class)->states('Student')->create();
@@ -99,7 +100,7 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_student_cant_delete_student()
+    public function test_cant_delete_student_when_not_user_admin()
     {
         $student = factory(User::class)->states('Student')->create();
 
@@ -108,7 +109,8 @@ class UserStudentTest extends TestCase
         $response->assertStatus(403);
         $response->assertSeeText('action is unauthorized');
     }
-    public function test_admin_can_delete_student()
+
+    public function test_student_delete_when_user_admin()
     {
         $admin = factory(User::class)->states('Admin')->create();
         $student = factory(User::class)->states('Student')->create();
@@ -125,7 +127,7 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_student_can_check_in()
+    public function test_check_in()
     {
         $student = factory(User::class)->states('Student')->create();
 
@@ -151,8 +153,8 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_student_cannot_check_in_when_it_is_not_a_course_day(){
-
+    public function test_student_cannot_check_in_when_it_is_not_a_course_day()
+    {
         $student = factory(User::class)->states('Student')->create();
 
         $course= Course::create([
@@ -223,7 +225,7 @@ class UserStudentTest extends TestCase
         ]);
     }
 
-    public function test_user_can_check_out()
+    public function test_check_out()
     {
         $student = factory(User::class)->states('Student')->create();
 
@@ -296,5 +298,4 @@ class UserStudentTest extends TestCase
 
         $responseSecondCheckOut->assertStatus(200);
     }
-
 }

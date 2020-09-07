@@ -2597,10 +2597,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["course"],
   data: function data() {
@@ -2762,39 +2758,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     console.log("Component mounted.");
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -3227,12 +3190,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["student"],
   data: function data() {
@@ -3251,10 +3208,14 @@ __webpack_require__.r(__webpack_exports__);
       window.history.back();
     },
     checkin: function checkin(student) {
-      axios.post("/api/students/" + student.id + "/checkin", this.student);
+      axios.post("/api/students/" + student.id + "/checkin", this.student).then(function (response) {
+        location.reload();
+      });
     },
     checkout: function checkout(student) {
-      axios.patch("/api/students/" + student.id + "/checkout", this.student);
+      axios.patch("/api/students/" + student.id + "/checkout", this.student).then(function (response) {
+        location.reload();
+      });
     }
   },
   mounted: function mounted() {
@@ -3273,6 +3234,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -40269,47 +40231,6 @@ var render = function() {
     _vm._m(0),
     _vm._v(" "),
     _c("div", [
-      _c("p", [
-        _c("strong", [_vm._v("Número total de alumnos:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.totalStudents) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Número total de hombres:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.totalMaleStudents) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Número total de mujeres:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.totalFemaleStudents) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Otros géneros:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.totalOtherStudents) + "\n    ")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Porcentaje de hombres:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.malePercentage) + "%\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Porcentaje de mujeres:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.femalePercentage) + "%\n    ")
-      ]),
-      _vm._v(" "),
-      _c("p", [
-        _c("strong", [_vm._v("Porcentaje de otros géneros:")]),
-        _vm._v("\n      " + _vm._s(_vm.course.otherPercentage) + "%\n    ")
-      ])
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c("div", [
       _c("table", { staticClass: "assistence-table" }, [
         _c("thead", [
           _c(
@@ -40348,43 +40269,37 @@ var render = function() {
                   return _c(
                     "td",
                     { key: i },
-                    [
-                      _vm._l(student.assistedDates, function(day, i) {
-                        return _c("label", { key: i }, [
-                          day.date == date
-                            ? _c(
-                                "a",
-                                {
-                                  staticClass: "label label-true",
-                                  attrs: { href: "" },
-                                  on: {
-                                    click: [
-                                      function($event) {
-                                        return _vm.openPopUp(day)
-                                      },
-                                      function($event) {
-                                        $event.preventDefault()
-                                      }
-                                    ]
-                                  }
-                                },
-                                [_vm._v("Si")]
-                              )
-                            : _vm._e()
-                        ])
-                      }),
-                      _vm._v(" "),
-                      _vm._l(student.absentDates, function(day, i) {
-                        return _c("label", { key: i }, [
-                          day == date
-                            ? _c("span", { staticClass: "label label-false" }, [
-                                _vm._v("No")
-                              ])
-                            : _vm._e()
-                        ])
-                      })
-                    ],
-                    2
+                    _vm._l(student.assistedDates, function(day, i) {
+                      return _c("label", { key: i }, [
+                        day.date == date
+                          ? _c(
+                              "a",
+                              {
+                                staticClass: "label label-true",
+                                attrs: { href: "" },
+                                on: {
+                                  click: [
+                                    function($event) {
+                                      return _vm.openPopUp(day)
+                                    },
+                                    function($event) {
+                                      $event.preventDefault()
+                                    }
+                                  ]
+                                }
+                              },
+                              [_vm._v("Si")]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        day.date != date
+                          ? _c("span", { staticClass: "label label-false" }, [
+                              _vm._v("No")
+                            ])
+                          : _vm._e()
+                      ])
+                    }),
+                    0
                   )
                 })
               ],
@@ -40393,6 +40308,43 @@ var render = function() {
           }),
           0
         )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", [
+      _c("p", [
+        _c("strong", [_vm._v("Número total de alumnos:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.totalStudents) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Número total de hombres:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.totalMaleStudents) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Número total de mujeres:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.totalFemaleStudents) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Otros géneros:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.totalOtherStudents) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Porcentaje de hombres:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.malePercentage) + "%\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Porcentaje de mujeres:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.femalePercentage) + "%\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Porcentaje de otros géneros:")]),
+        _vm._v("\n      " + _vm._s(_vm.course.otherPercentage) + "%\n    ")
       ])
     ]),
     _vm._v(" "),
@@ -40671,53 +40623,6 @@ var staticRenderFns = [
         _c("h3", [_vm._v("Apellido")]),
         _vm._v(" "),
         _c("h3", [_vm._v("Email")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" }, [
-              _vm._v(
-                "\n                    I'm an example component.\n                "
-              )
-            ])
-          ])
-        ])
       ])
     ])
   }
@@ -41618,47 +41523,31 @@ var render = function() {
         _c("div", [
           _c("p", [
             _c("strong", [_vm._v("Email:")]),
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.email) +
-                "\n                "
-            )
+            _vm._v("\n          " + _vm._s(_vm.student.email) + "\n        ")
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Fecha:")]),
             _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.date_of_birth) +
-                "\n                "
+              "\n          " + _vm._s(_vm.student.date_of_birth) + "\n        "
             )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Edad:")]),
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.age) +
-                " años\n                "
-            )
+            _vm._v("\n          " + _vm._s(_vm.student.age) + " años\n        ")
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Nacionalidad:")]),
             _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.nationality) +
-                "\n                "
+              "\n          " + _vm._s(_vm.student.nationality) + "\n        "
             )
           ]),
           _vm._v(" "),
           _c("p", [
             _c("strong", [_vm._v("Genro:")]),
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.student.gender) +
-                "\n                "
-            )
+            _vm._v("\n          " + _vm._s(_vm.student.gender) + "\n        ")
           ])
         ])
       ])
@@ -41694,11 +41583,7 @@ var render = function() {
                           }
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                        Check In\n                    "
-                        )
-                      ]
+                      [_vm._v("Check In")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -41713,11 +41598,7 @@ var render = function() {
                           }
                         }
                       },
-                      [
-                        _vm._v(
-                          "\n                        Check Out\n                    "
-                        )
-                      ]
+                      [_vm._v("Check Out")]
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -41727,11 +41608,7 @@ var render = function() {
                     staticClass: "btn primary-button",
                     attrs: { href: "/upload" }
                   },
-                  [
-                    _vm._v(
-                      "\n                        Subir Justificación\n                    "
-                    )
-                  ]
+                  [_vm._v("Subir Justificación")]
                 )
               ])
             ])
@@ -41769,50 +41646,43 @@ var render = function() {
       _c("div", { staticClass: "user-info" }, [
         _c("h3", [
           _vm._v(_vm._s(_vm.student.name) + " " + _vm._s(_vm.student.surname))
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("strong", [_vm._v("Nacionalidad:")]),
-          _vm._v(
-            "\n                " +
-              _vm._s(_vm.student.nationality) +
-              "\n            "
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _c("strong", [_vm._v("Género:")]),
-          _vm._v(
-            "\n                " + _vm._s(_vm.student.gender) + "\n            "
-          )
         ])
       ]),
       _vm._v(" "),
       _c("p", [
+        _c("strong", [_vm._v("Nacionalidad:")]),
+        _vm._v("\n      " + _vm._s(_vm.student.nationality) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Género:")]),
+        _vm._v("\n      " + _vm._s(_vm.student.gender) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
         _c("strong", [_vm._v("Email:")]),
-        _vm._v("\n            " + _vm._s(_vm.student.email) + "\n        ")
+        _vm._v("\n      " + _vm._s(_vm.student.email) + "\n    ")
       ])
     ]),
     _vm._v(" "),
     _c("div", [
       _c("p", [
         _c("strong", [_vm._v("Días Asistidos:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.student.assistedDays) + "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.student.assistedDays) + "\n    ")
       ]),
       _vm._v(" "),
       _c("p", [
         _c("strong", [_vm._v("Días Ausentes:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.student.absentDays) + "\n            "
-        ),
-        _c("strong", [_vm._v(", justificados:")]),
-        _vm._v(
-          "\n            " + _vm._s(_vm.student.justifiedDays) + "\n        "
-        )
+        _vm._v("\n      " + _vm._s(_vm.student.absentDays) + "\n    ")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _c("strong", [_vm._v("Dias justificados:")]),
+        _vm._v("\n      " + _vm._s(_vm.student.justifiedDays) + "\n    ")
       ])
     ]),
+    _vm._v(" "),
+    _c("br"),
     _vm._v(" "),
     _c("div", [
       _c(
@@ -54541,7 +54411,6 @@ var map = {
 	"./components/CourseStatistics.vue": "./resources/js/components/CourseStatistics.vue",
 	"./components/CourseStudents.vue": "./resources/js/components/CourseStudents.vue",
 	"./components/CourseTeachers.vue": "./resources/js/components/CourseTeachers.vue",
-	"./components/ExampleComponent.vue": "./resources/js/components/ExampleComponent.vue",
 	"./components/JustificationEdit.vue": "./resources/js/components/JustificationEdit.vue",
 	"./components/JustificationShow.vue": "./resources/js/components/JustificationShow.vue",
 	"./components/StudentCreate.vue": "./resources/js/components/StudentCreate.vue",
@@ -54605,7 +54474,6 @@ var files = __webpack_require__("./resources/js sync recursive \\.vue$/");
 files.keys().map(function (key) {
   return Vue.component(key.split("/").pop().split(".")[0], files(key)["default"]);
 });
-Vue.component("example-component", __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -55348,75 +55216,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseTeachers_vue_vue_type_template_id_52eda192___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CourseTeachers_vue_vue_type_template_id_52eda192___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/ExampleComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony import */ var _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExampleComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/ExampleComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ExampleComponent.vue?vue&type=template&id=299e239e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

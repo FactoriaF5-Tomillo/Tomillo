@@ -33,7 +33,6 @@ class JustificationController extends Controller
 
     public function show(Justification $justification)
     {
-        $this->authorize('view', User::class);
         return view('justification.show', compact('justification'));
     }
 

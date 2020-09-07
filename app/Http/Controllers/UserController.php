@@ -140,7 +140,6 @@ class UserController extends Controller
     {
         $this->authorize('viewProfile', $user);
         $user = new UserResource($user);
-        //dd($user);
         return view('student.profile', compact('user'));
     }
 
