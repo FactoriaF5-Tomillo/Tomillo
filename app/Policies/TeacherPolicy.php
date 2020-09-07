@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Policies;
-
-use App\Teacher;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Course;
-use App\Student;
-use App\Teacher;
 use App\User;
 
 use App\Http\Resources\Course as CourseResource;
@@ -48,8 +46,7 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         $this->authorize('view', $course);
-        $students = Student::all();
-        return view('course.show', compact('course', 'students'));
+        return view('course.show', compact('course'));
     }
 
     public function edit(Course $course)
